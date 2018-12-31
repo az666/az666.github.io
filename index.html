@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/31/hello-world/" class="article-date">
+  <time datetime="2018-12-31T06:28:55.737Z" itemprop="datePublished">2018-12-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/31/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop.png" alt=""></p>
+<blockquote>
+<p><strong>本版本仅适用于Win环境</strong><br>本文关键字： <strong>Hexo绿色版</strong>，<strong>Hexo便携版</strong>，<strong>Hexo配置</strong>，<strong>Hexo</strong>，<strong>U盘</strong></p>
+</blockquote>
+<p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是一个快速、简洁且高效的博客框架，支持 GitHub Flavored Markdown 的所有功能；具有超快生成速度，让上百个页面在几秒内瞬间完成渲染；还拥有各式各样的插件等等。</p>
+<p>但是就像很多教程里面写的那样，搭建 Hexo 本地环境，需要安装 Node.js、Git 以及使用 npm 进行安装和配置。这对于毫无经验的新手来说，是一个很大的挑战。同时，由于这些环境的存在，导致如果需要更换计算机的时候，重新安装配置一个新的Hexo环境，又得花费一些功夫。</p>
+<p>所以呢，锵锵，我们整合了一个 Hexo 便携版，来简化本地环境的部署。</p>
+<p>####<strong>版本介绍</strong><br>那么所谓的便携版到底是什么？便携版就是将 Hexo 本地环境所需要的各种依赖环境的整合到一起，做成的不需要安装的版本。</p>
+<p>本便携版（Release 1.0.0）所包含的软件如下：</p>
+<blockquote>
+<ul>
+<li>Git: 2.7.4</li>
+<li>Nodejs: 6.10.1</li>
+<li>Npm: 4.4.1</li>
+<li>Hexo: 3.2.2</li>
+</ul>
+</blockquote>
+<p>为了便携的需要，不能配置固定的环境变量，所以除此之外还有相应的批处理文件，下文将详细介绍。</p>
+<p>####<strong>从零开始，1分钟搭建Hexo写作环境</strong><br>说了这么多，我们这就开始教你如何在1分钟内，从零开始搭建Hexo写作环境！</p>
+<p>#####1 注册一个Github帐号</p>
+<p>1.1 进入<a href="https://github.com" target="_blank" rel="external">Github</a>，并在右边的3个框框中分别填写 用户名、邮箱地址、账户密码，并点击 <strong><code>Sign up for Github</code></strong>;</p>
+<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop2.png" alt="图1.1.1"></p>
+<p>1.2 进入欢迎页面后，点击<strong><code>Finish sign up</code></strong>;</p>
+<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop3.png" alt="图1.2.1"></p>
+<p>1.3 进入到这一步之后（<strong>图1.3.1</strong>），先别记着点任何东西，查看你的邮箱，应该会收到如下的邮件（<strong>图1.3.2</strong>），确认你的邮件。否则，你会看到错误页面（<strong>图1.3.3</strong>）。query完毕之后在<strong>图1.3.1</strong>所示的页面，点击<strong><code>+ New repository</code></strong>;</p>
+<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop5.png" alt="图1.3.1"></p>
+<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop6.png" alt="图1.3.2"></p>
+<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop7.png" alt="图1.3.3"></p>
+<p>1.4 请在红框中的 <strong><code>Repository name</code></strong> 里面输入 <strong><code>用户名.github.io</code></strong> ( <strong>用户名</strong> 就是你刚刚 <strong>步骤1.1</strong> 中注册的用户名)，然后点击 <strong><code>Create repository</code></strong>;</p>
+<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop8.png" alt="图1.4.1"></p>
+<p>1.5 至此，Github网页注册的部分完毕</p>
+<p>####2 下载HEXO Portable</p>
+<p>2.1 访问我们的 <a href="https://project.bitmoe.cn/PortableHexo/" target="_blank" rel="external">HEXO Portable</a> 页面，或者 <a href="https://github.com/Bitmoe/PortableHexo" target="_blank" rel="external">Github仓库</a> 下载最新的便携版；</p>
+<p>2.2 双击得到的自解压文件，解压到你需要安装博客的地方，可以选择硬盘或者U盘；</p>
+<p>####3 配置你的环境</p>
+<p>3.1 在你的博客的文件夹，你会发现很多批处理文件，我先介绍下各个文件的用途：</p>
+<blockquote>
+<ul>
+<li>配置基本信息 &gt;&gt; 配置博客的基本环境</li>
+<li>配置Github部署 &gt;&gt; 配置博客的部署</li>
+<li>启动命令行 &gt;&gt; 启动带环境变量的Git-Bash，否则无法使用node、npm、git等命令</li>
+<li>新建文章 &gt;&gt; 新建一篇文章</li>
+<li>渲染并本地测试 &gt;&gt; 生成并本地预览</li>
+<li>渲染并部署 &gt;&gt; 生成并部署到GitHub</li>
+<li>重置配置文件 &gt;&gt; 重置_config.yml</li>
+</ul>
+</blockquote>
+<p>3.2 我们继续进行环境配置，双击<strong><code>配置基本信息</code></strong>并按顺序输入以下信息：</p>
+<blockquote>
+<ul>
+<li>主标题：顾名思义</li>
+<li>副标题：顾名思义</li>
+<li>描述：顾名思义</li>
+<li>作者：顾名思义</li>
+<li>网站地址：填写 <strong>用户名.github.io</strong> （此处的用户名为<strong>步骤1.1</strong>中填写的用户名）<br><strong>如果您已经购买了域名，可以参看相关的文章！</strong></li>
+</ul>
+</blockquote>
+<p>3.3 双击<strong><code>配置Github部署</code></strong>并按顺序输入以下信息：</p>
+<blockquote>
+<ul>
+<li>Github的用户名：此处的用户名为<strong>步骤1.1</strong>中填写的用户名</li>
+<li>Github注册邮箱：此处的注册邮箱为<strong>步骤1.1</strong>中填写的注册邮箱</li>
+</ul>
+</blockquote>
+<p>3.4 输入完毕之后，会进行测试部署，等待屏幕提示<strong>下面将进行部署测试，稍后将有一个openssh的对话框出现，请输入你的github用户密码。</strong>的时候，按回车继续；（此处的用户密码为<strong>步骤1.1</strong>中填写的用户密码）</p>
+<p>3.5 然后继续等待，此时屏幕会出现n多行，耐心等待即可；</p>
+<p>3.6 等待屏幕提示<strong>请访问 <a href="https://用户名.github.io" target="_blank" rel="external">https://用户名.github.io</a> 查看是否部署成功！</strong>的时候，在浏览器中输入<strong><a href="https://用户名.github.io" target="_blank" rel="external">https://用户名.github.io</a> </strong>，理论上可以看到你的Hexo站点！（此处的用户名为<strong>步骤1.1</strong>中填写的用户名）</p>
+<p>3.7 至此，你的Hexo环境就配置完成了，这样你的这个Hexo博客文件夹无论移动到哪一台电脑，都能通过<strong>启动命令行</strong>出现的bash命令行，或者其余便捷的批处理文件比如<strong>新建文章</strong>、<strong>渲染并本地测试</strong>、<strong>渲染并部署</strong>进行相应的操作。</p>
+<p>3.8 如果你在配置中出错，可以运行<strong>重置配置文件</strong>后，再重复<strong>3.1~3.6步骤</strong></p>
+<p>####4 开始享受纯粹的Hexo写作吧！</p>
+<p>####5 备注</p>
+<blockquote>
+<ul>
+<li>本便携版以及本文均使用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external">CC BY-NC-SA 4.0</a>协议；</li>
+<li>本文所有权归 <a href="http://qistchan.com" target="_blank" rel="external">QistChan</a> &amp; <a href="https://wwww.bitmoe.com" target="_blank" rel="external">Bitmoe Inc.</a> 所有；</li>
+<li>本便携版由 <a href="https://www.bitmoe.com" target="_blank" rel="external">Bitmoe Inc.</a> 维护并提供技术支持；</li>
+<li>需要技术支持可以在<a href="https://github.com/Bitmoe/PortableHexo" target="_blank" rel="external">Github仓库</a> 提交<strong><code>Issues</code></strong>；</li>
+<li>Written with <a href="https://stackedit.io/" target="_blank" rel="external">StackEdit</a>.</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cjqbyv41g0008fwwcgmjguyv6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-拖更《工作回顾》" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/26/拖更《工作回顾》/" class="article-date">
+  <time datetime="2018-12-26T02:53:00.000Z" itemprop="datePublished">2018-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/26/拖更《工作回顾》/">拖更《工作回顾》</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">今天是2018年11月30日</div></pre></td></tr></table></figure>
+<blockquote>
+<p>好久没有更新博客了，内心其实一直想着，，无奈最近工作太忙，再加上我发布博客还是相当的难的，首先我电脑有问题，用不了GIT工具，（装的烂系统）</p>
+</blockquote>
+<ul>
+<li>首先我要用csdn来编写MD文档（正好也可以存在csdn上）</li>
+<li>然后我要下载下来</li>
+<li>在用优盘拷贝下来，然后用别人的电脑发布到我github博客上。</li>
+<li>最后。。。我很懒</li>
+</ul>
+<blockquote>
+<p>总结一下最近的成果吧</p>
+</blockquote>
+<ol>
+<li>siri 3.0 的完整版本开发</li>
+<li>咸鱼订单安卓软件项目的开发（独立完成）</li>
+<li>咸鱼订单毕业设计的制作和安卓的开发</li>
+<li>公司最近的项目《基于NB-iot的工业数据采集》</li>
+<li>安卓项目的蓝牙调试成功</li>
+</ol>
+<blockquote>
+<p>下面是图集</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/11/30/5c0144e94e173.png" alt="安卓开发"></p>
+<hr>
+<p><img src="https://i.loli.net/2018/11/30/5c01449879272.png" alt="安卓框架"></p>
+<p><img src="https://i.loli.net/2018/11/30/5c0145960bb58.png" alt=""><br><img src="https://i.loli.net/2018/11/30/5c0145a61562b.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/26/拖更《工作回顾》/" data-id="cjqbyv426000vfwwc83sqaydc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/托更/">托更</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-小白的物联网全栈开发之路" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/30/小白的物联网全栈开发之路/" class="article-date">
+  <time datetime="2018-10-30T02:53:00.000Z" itemprop="datePublished">2018-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/30/小白的物联网全栈开发之路/">小白的物联网全栈开发之路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="小白的物联网全栈开发之路"><a href="#小白的物联网全栈开发之路" class="headerlink" title="小白的物联网全栈开发之路"></a>小白的物联网全栈开发之路</h2><blockquote>
+<p>前两天自己成功完成了物联网的相对全栈开发，包括服务器，包括单片机，包括安卓软件，一气呵成，特作文记之。<br>最近组建了一个小群，感兴趣的可以加入一起玩：476840321</p>
+<p><img src="https://i.loli.net/2018/10/30/5bd825cc8a212.jpg" alt=""></p>
+<p>单片机也是很简单的，用的esp8266最小系统。和oled 以及温湿度上报。</p>
+<p><img src="https://i.loli.net/2018/10/30/5bd825ef9e82b.png" alt=""></p>
+<p>阿里云远程服务器也是很稳定的，经过我的测试还是非常舒服的。速度也非常快。<br>安卓软件采用易安卓开发，界面很简单，但是效果非常好，开机自动登录服务器，自动订阅消息，温度上报也正常，美滋滋。<br><img src="https://i.loli.net/2018/10/31/5bd974aa1d9c6.png" alt=""><br>单片机的代码采用arduino编写esp8266固件，莫名的很快，果然还是单片机玩着顺手，比嵌入式简单的多呀。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/10/30/5bd826a60fbd6.png" alt=""></p>
+<blockquote>
+<p>接下来我又开发了Siri控制esp8266的1.0 2.0 以及稳定完善版本的3.0系统，比较懒，也很忙，没空记录呀。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/30/小白的物联网全栈开发之路/" data-id="cjqbyv420000qfwwchvznna70" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mqtt/">mqtt</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ESP8266嵌入式开发资料汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/17/ESP8266嵌入式开发资料汇总/" class="article-date">
+  <time datetime="2018-10-17T02:53:00.000Z" itemprop="datePublished">2018-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/17/ESP8266嵌入式开发资料汇总/">ESP8266学习资料</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ESP8266学习资料"><a href="#ESP8266学习资料" class="headerlink" title="ESP8266学习资料"></a><strong>ESP8266学习资料</strong></h2><blockquote>
+<p>99元物联网全栈开发视频教程链接：<a href="https://pan.baidu.com/s/1lG8FJhQLW98PRJ9YUmqSEQ" target="_blank" rel="external">https://pan.baidu.com/s/1lG8FJhQLW98PRJ9YUmqSEQ</a><br> 提取码：fk9q<br> 建议去技新网购买收费教程，请不要盗卖。<br>加群获得更多资料教程：476840321</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/17/ESP8266嵌入式开发资料汇总/" data-id="cjqbyv41c0005fwwc6768qybz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ESP8266/">ESP8266</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/" class="article-date">
+  <time datetime="2018-10-16T02:53:00.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/">阿里云自建服务器esp8266和mqtt客户端成功对接</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="阿里云自建服务器esp8266和mqtt客户端成功对接"><a href="#阿里云自建服务器esp8266和mqtt客户端成功对接" class="headerlink" title="阿里云自建服务器esp8266和mqtt客户端成功对接"></a>阿里云自建服务器esp8266和mqtt客户端成功对接</h2><blockquote>
+<p>阿里云服务器部分参考esp8266嵌入式大神资料：<a href="https://blog.csdn.net/xh870189248/article/details/78867173" target="_blank" rel="external">大神博客</a><br>最近组建了一个小群，感兴趣的可以加入一起玩：476840321</p>
+<p><img src="https://i.loli.net/2018/10/16/5bc57c508fd43.png" alt="效果展示"></p>
+<p>单片机也是很简单的，用的esp8266最小系统。</p>
+<p><img src="https://i.loli.net/2018/10/16/5bc57ce6c78c3.png" alt=""></p>
+<p>过程中间遇到了很多问题，还好都一步步解决了，<br>首先是linux的一些常用命令，因为服务器买的是阿里云的空间，跑的是linux的系统，按照网上的资料和教程，总算搞定了。<br>linux常用命令集：<a href="https://www.cnblogs.com/pengwenzheng/p/9795909.html" target="_blank" rel="external">https://www.cnblogs.com/pengwenzheng/p/9795909.html</a><br>其次是硬件端的编程，esp8266的固件的编写。以及mqtt通讯SDK的修改（参考安信可和技新的资料）</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/10/16/5bc57fda5987f.png" alt=""></p>
+<blockquote>
+<p>代码备份如下：mqtt_config.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">/*IMPORTANT: the following configuration maybe need modified*/</div><div class="line">/***********************************************************************************************************************************************************************************************************************************************************/</div><div class="line">#define CFG_HOLDER    		0x66666670	// 持有人标识(只有更新此数值，系统参数才会更新)		/* Change this value to load default configurations */</div><div class="line"></div><div class="line">/*DEFAULT CONFIGURATIONS*/</div><div class="line">// 注：【MQTT协议规定：连接服务端的每个客户端都必须有唯一的客户端标识符（ClientId）】。如果两相同ID的客户端不断重连，就会进入互踢死循环</div><div class="line">//--------------------------------------------------------------------------------------------------------------------------------------</div><div class="line">#define MQTT_HOST			&quot;购买的ip&quot; 		// MQTT服务端域名/IP地址	// the IP address or domain name of your MQTT server or MQTT broker ,such as &quot;mqtt.yourdomain.com&quot;</div><div class="line">#define MQTT_PORT       	1883    										// 网络连接端口号			// the listening port of your MQTT server or MQTT broker</div><div class="line">#define MQTT_CLIENT_ID   	&quot;pengwenzheng&quot;	// 官方例程中是&quot;Device_ID&quot;		// 客户端标识符				// the ID of yourself, any string is OK,client would use this ID register itself to MQTT server</div><div class="line">#define MQTT_USER        	&quot;admin&quot; 			// MQTT用户名				// your MQTT login name, if MQTT server allow anonymous login,any string is OK, otherwise, please input valid login name which you had registered</div><div class="line">#define MQTT_PASS        	&quot;public&quot; 	// MQTT密码					// you MQTT login password, same as above</div><div class="line"></div><div class="line">#define STA_SSID 			&quot;maker_space&quot;    	// WIFI名称					// your AP/router SSID to config your device networking</div><div class="line">#define STA_PASS 			&quot;chuangke666&quot; 	// WIFI密码					// your AP/router password</div><div class="line">#define STA_TYPE			AUTH_WPA2_PSK</div><div class="line"></div><div class="line">#define DEFAULT_SECURITY	NO_TLS      		// 加密传输类型【默认不加密】	// very important: you must config DEFAULT_SECURITY for SSL/TLS</div><div class="line"></div><div class="line">#define CA_CERT_FLASH_ADDRESS 		0x77   		// 【CA证书】烧录地址			// CA certificate address in flash to read, 0x77 means address 0x77000</div><div class="line">#define CLIENT_CERT_FLASH_ADDRESS 	0x78 		// 【设备证书】烧录地址			// client certificate and private key address in flash to read, 0x78 means address 0x78000</div><div class="line">/*********************************************************************************************************************************************************************************************************************************************************************************/</div><div class="line"></div><div class="line"></div><div class="line">/*Please Keep the following configuration if you have no very deep understanding of ESP SSL/TLS*/</div><div class="line">#define CFG_LOCATION    			0x79		// 系统参数的起始扇区	/* Please don&apos;t change or if you know what you doing */</div><div class="line">#define MQTT_BUF_SIZE       		1024		// MQTT缓存大小</div><div class="line">#define MQTT_KEEPALIVE        		120     	// 保持连接时长			/*second*/</div><div class="line">#define MQTT_RECONNECT_TIMEOUT    	5    		// 重连超时时长			/*second*/</div><div class="line"></div><div class="line">#define MQTT_SSL_ENABLE				// SSL使能	//* Please don&apos;t change or if you know what you doing */</div><div class="line"></div><div class="line">#define QUEUE_BUFFER_SIZE      		2048		// 消息队列的缓存大小</div><div class="line"></div><div class="line">//#define PROTOCOL_NAMEv31    		// 使用MQTT协议【v31】版本		/*MQTT version 3.1 compatible with Mosquitto v0.15*/</div><div class="line">#define PROTOCOL_NAMEv311      		// 使用MQTT协议【v311】版本		/*MQTT version 3.11 compatible with https://eclipse.org/paho/clients/testing/*/</div><div class="line"></div><div class="line">#endif // __MQTT_CONFIG_H__</div></pre></td></tr></table></figure>
+<blockquote>
+<p>接下来的思路：准备写安卓端的控制程序，和硬件和网络进行对接，<br>方案1： 利用java编写（这个还是比较难的）<br>方案2： 利用apicloud编写，JavaScript编写（需要购买资料）发工资了再买。<br>方案3： 利用E4A易安卓进行编写，这个应该很简单，准备试一下。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/" data-id="cjqbyv41y000ofwwcjy3gr0be" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mqtt/">mqtt</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Siri 捷径邂逅esp8266实现的智能家居控制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/11/Siri 捷径邂逅esp8266实现的智能家居控制/" class="article-date">
+  <time datetime="2018-10-11T02:53:00.000Z" itemprop="datePublished">2018-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/11/Siri 捷径邂逅esp8266实现的智能家居控制/">Siri对接esp8266语音控制自制智能家居</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Siri对接esp8266语音控制自制智能家居##<br>首先上视频，看下效果：<br><img src="https://i.loli.net/2018/10/11/5bbea27042402.png" alt=""></p>
+<iframe src="//player.bilibili.com/player.html?aid=33278301&cid=58246959&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<blockquote>
+<p>实际安装效果</p>
+</blockquote>
+<iframe src="//player.bilibili.com/player.html?aid=33020840&cid=57798332&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<blockquote>
+<p>其次是esp8266代码在本人github里，转载请注明出处。<br><a href="https://github.com/az666/Siri-and-esp8266" target="_blank" rel="external">https://github.com/az666/Siri-and-esp8266</a></p>
+</blockquote>
+<p>下面是ios捷径的配置（请用苹果内置浏览器打开）：</p>
+<p><a href="https://www.icloud.com/shortcuts/cc23835ce624430f83e5628b88bce13e" target="_blank" rel="external">https://www.icloud.com/shortcuts/cc23835ce624430f83e5628b88bce13e
+</a></p>
+<blockquote>
+<p>工作原理：<br>esp8266建立小型局域网服务器，siri通过捷径访问ip esp8266检测到指定ip执行相应动作。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/11/Siri 捷径邂逅esp8266实现的智能家居控制/" data-id="cjqbyv41j0009fwwc4lm5pbpf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Siri/">Siri</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-九月阶段总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/30/九月阶段总结/" class="article-date">
+  <time datetime="2018-09-30T02:53:00.000Z" itemprop="datePublished">2018-09-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/30/九月阶段总结/">九月工作阶段总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="九月阶段总结"><a href="#九月阶段总结" class="headerlink" title="九月阶段总结"></a>九月阶段总结</h1><blockquote>
+<p>今天是九月的最后一天，终于有时间总结一下最近的学习和工作<br>记录下最近的大事件，首先自己进入了一家公司开始了自己的工作，工作很舒服，很庆幸做的也是自己喜欢的工作，我在部门负责硬件开发，其实也谈不上开发，毕竟自己学的东西比较少，也是由部门同事带着我学习和研究，同事对我都很好，这是最舒服的一点。<br>其次就是自己的公司终于建的差不多了，准备毕业之后公司工作同步发展，开始自己的工作、创业混合前进策略。。。</p>
+<p><img src="https://i.loli.net/2018/09/30/5bb01c579cda2.png" alt=""></p>
+</blockquote>
+<h2 id="具体的工作成果"><a href="#具体的工作成果" class="headerlink" title="具体的工作成果"></a>具体的工作成果</h2><blockquote>
+<p>还是先说工作，最近公司的第一个项目就是做工业仪器仪表的数据采集，我们团队进行元件选型到硬件对接，到程序编写，也是费了九牛二虎之力，最终效果还是很明显的，还是很成功的。尤其是代码部分，我也是研究了好几天才完成了单片机与RS485的通讯，成功读取仪表寄存器数据并对接机智云实现了数据的远程传输。</p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/30/九月阶段总结/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/30/九月阶段总结/" data-id="cjqbyv41r000ifwwccs0qg2nl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工作/">工作</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-本地MQTT服务器的搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/18/本地MQTT服务器的搭建/" class="article-date">
+  <time datetime="2018-09-18T02:53:00.000Z" itemprop="datePublished">2018-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/18/本地MQTT服务器的搭建/">MQTT本地服务器搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2018/09/16/5b9e54096cd41.png" alt=""><br>参考教程：<br><a href="https://blog.csdn.net/xh870189248/article/details/78761948" target="_blank" rel="external">嵌入式大神链接</a></p>
+<hr>
+<blockquote>
+<p>下一步将参考其教程制作嵌入式MQTT局域网通讯，暂时做设备上报吧。 </p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/18/本地MQTT服务器的搭建/" data-id="cjqbyv42f0011fwwcjwjtp8i8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/物联网/">物联网</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-维控PLC学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/15/维控PLC学习笔记/" class="article-date">
+  <time datetime="2018-08-15T13:45:00.000Z" itemprop="datePublished">2018-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/维控PLC学习笔记/">维控PLC学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="维控PLC学习笔记"><a href="#维控PLC学习笔记" class="headerlink" title="维控PLC学习笔记"></a>维控PLC学习笔记</h1><hr>
+<p><img src="https://i.loli.net/2018/08/12/5b6fb82341d7c.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">目录：</div><div class="line">1. 主要编程思想</div><div class="line">2. 梯形图</div><div class="line">3. 视频教程  </div><div class="line">4. 网站和论坛</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>依旧采用我多年的凌乱记忆法：</li>
+<li>感觉PLC就像一个处理函数的集成电路设备，我用的是老师给的维控PLC官网介绍说它很牛逼，可以兼容三菱FX系列而且比三菱快，价格也比三菱便宜。（这波抄袭很稳），</li>
+<li>因为我老师有一个公司是做工业包装机的，所以我这里有很多传感器可以使用。最近研究了称重传感器和触摸屏还有步进电机，其实这几样已经可以做一个工业的称重包装机了。</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="模块通讯重要的指令"><a href="#模块通讯重要的指令" class="headerlink" title="模块通讯重要的指令"></a>模块通讯重要的指令</h2><blockquote>
+<p><img src="https://i.loli.net/2018/08/12/5b6fb988dd7c3.png" alt=""></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/08/12/5b6fb9cbbc3bc.png" alt=""></p>
+</blockquote>
+<hr>
+<blockquote>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/15/维控PLC学习笔记/" data-id="cjqbyv42k0018fwwc17ji6qa3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PLC/">PLC</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2018年7月阶段总结（安卓开发）（远程控制）（语音控制）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/03/2018年7月阶段总结（安卓开发）（远程控制）（语音控制）/" class="article-date">
+  <time datetime="2018-08-03T13:45:00.000Z" itemprop="datePublished">2018-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/03/2018年7月阶段总结（安卓开发）（远程控制）（语音控制）/">阶段总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="阶段总结"><a href="#阶段总结" class="headerlink" title="阶段总结"></a>阶段总结</h2><blockquote>
+<p>总结一下最近半个月的成果：</p>
+</blockquote>
+<ol>
+<li>首先是做出了嵌入式的延时智能开关</li>
+<li>其次焊接了智能开关3D镂空电路</li>
+<li>然后最近学了APIcloud进行了我的另一款APP的开发。正好对接了上面的3D电路板实现了语音远程控制，再加入我的算法，实现了语音识别的精确判断。并且对接的讯飞语音平台，所以，方言识别也不在话下。</li>
+</ol>
+<hr>
+<h2 id=""><a href="#" class="headerlink" title=" "></a><iframe src="//player.bilibili.com/player.html?aid=28276291&cid=48887518&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></h2><h2 id="嵌入式的延时智能开关"><a href="#嵌入式的延时智能开关" class="headerlink" title="嵌入式的延时智能开关"></a>嵌入式的延时智能开关</h2><hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/08/01/5b61a4ad9815b.jpg" alt=""></p>
+</blockquote>
+<h2 id="智能开关3D镂空电路"><a href="#智能开关3D镂空电路" class="headerlink" title="智能开关3D镂空电路"></a>智能开关3D镂空电路</h2><hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/08/01/5b61a62793edc.jpg" alt=""></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/08/01/5b61a54a1ef5e.jpg" alt=""></p>
+</blockquote>
+<h2 id="APIcloud开发安卓应用"><a href="#APIcloud开发安卓应用" class="headerlink" title="APIcloud开发安卓应用"></a>APIcloud开发安卓应用</h2><hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/08/01/5b61a67c6f966.jpg" alt=""><br><img src="https://i.loli.net/2018/08/01/5b61a59ae7b88.png" alt=""></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>最近的收获还是很多的，从学一个新东西到最后做出来，经历了很多，但也学会了很多，很开心。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/03/2018年7月阶段总结（安卓开发）（远程控制）（语音控制）/" data-id="cjqbyv4180003fwwckzz5zzr3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESP8266/">ESP8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PLC/">PLC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Siri/">Siri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/esp8266/">esp8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓编程/">安卓编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作/">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/托更/">托更</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能家居/">智能家居</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机智云/">机智云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温湿度/">温湿度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雷达/">雷达</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ESP8266/" style="font-size: 10px;">ESP8266</a> <a href="/tags/PLC/" style="font-size: 10px;">PLC</a> <a href="/tags/Siri/" style="font-size: 10px;">Siri</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/esp8266/" style="font-size: 20px;">esp8266</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/mqtt/" style="font-size: 15px;">mqtt</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/安卓编程/" style="font-size: 10px;">安卓编程</a> <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/工作/" style="font-size: 10px;">工作</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/托更/" style="font-size: 10px;">托更</a> <a href="/tags/智能家居/" style="font-size: 15px;">智能家居</a> <a href="/tags/机智云/" style="font-size: 10px;">机智云</a> <a href="/tags/树莓派/" style="font-size: 15px;">树莓派</a> <a href="/tags/温湿度/" style="font-size: 10px;">温湿度</a> <a href="/tags/物联网/" style="font-size: 10px;">物联网</a> <a href="/tags/雷达/" style="font-size: 10px;">雷达</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/31/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/26/拖更《工作回顾》/">拖更《工作回顾》</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/小白的物联网全栈开发之路/">小白的物联网全栈开发之路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/ESP8266嵌入式开发资料汇总/">ESP8266学习资料</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/">阿里云自建服务器esp8266和mqtt客户端成功对接</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

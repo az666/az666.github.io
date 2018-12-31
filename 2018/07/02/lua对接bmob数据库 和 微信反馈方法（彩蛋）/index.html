@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>lua对接bmob数据库 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="lua对接bmob数据库
+
+
+学习的最终结果：
+
+
+实现用户注册和登录
+数据库增删改查
+远程公告
+远程更新版本
+微信反馈
+甚至自己做一个聊天室服务器，等等。。。
+最后送大家的彩蛋—–超级无敌微信反馈（文末）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lua对接bmob数据库">
+<meta property="og:url" content="http://yoursite.com/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="lua对接bmob数据库
+
+
+学习的最终结果：
+
+
+实现用户注册和登录
+数据库增删改查
+远程公告
+远程更新版本
+微信反馈
+甚至自己做一个聊天室服务器，等等。。。
+最后送大家的彩蛋—–超级无敌微信反馈（文末）">
+<meta property="og:image" content="https://i.loli.net/2018/06/29/5b35cbd14d883.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/29/5b35cd9d331f5.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/29/5b35cfffa741a.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/29/5b35ceda7b9c8.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/02/5b399bf9e4f04.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/02/5b399a6711214.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/02/5b399d47da435.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a06795aad.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a09a75be9.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a1296b9c9.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a178eff28.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a210dfba5.png">
+<meta property="og:updated_time" content="2018-07-07T11:31:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lua对接bmob数据库">
+<meta name="twitter:description" content="lua对接bmob数据库
+
+
+学习的最终结果：
+
+
+实现用户注册和登录
+数据库增删改查
+远程公告
+远程更新版本
+微信反馈
+甚至自己做一个聊天室服务器，等等。。。
+最后送大家的彩蛋—–超级无敌微信反馈（文末）">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/29/5b35cbd14d883.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-lua对接bmob数据库 和 微信反馈方法（彩蛋）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/" class="article-date">
+  <time datetime="2018-07-02T03:09:00.000Z" itemprop="datePublished">2018-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      lua对接bmob数据库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="lua对接bmob数据库"><a href="#lua对接bmob数据库" class="headerlink" title="lua对接bmob数据库"></a>lua对接bmob数据库</h2><p><img src="https://i.loli.net/2018/06/29/5b35cbd14d883.png" alt=""></p>
+<hr>
+<blockquote>
+<p>学习的最终结果：</p>
+</blockquote>
+<ol>
+<li>实现用户注册和登录</li>
+<li>数据库增删改查</li>
+<li>远程公告</li>
+<li>远程更新版本</li>
+<li>微信反馈</li>
+<li>甚至自己做一个聊天室服务器，等等。。。</li>
+<li>最后送大家的彩蛋—–超级无敌微信反馈（文末）</li>
+</ol>
+<hr>
+<a id="more"></a>
+<blockquote>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>新手一个，一夜基本学会lua，因为以前玩python 两者很像。很早以前我推送都是用自己的博客，虽然也很方便，总感觉很low，就一直想对接数据库。我做的这个软件是辅助我们大学校园网登陆的，很多同学在用，感觉初学lua的同学没有人会用这类的软件，所以整个包就不放出来了。</p>
+</blockquote>
+<hr>
+<h2 id="软件安装包"><a href="#软件安装包" class="headerlink" title="软件安装包"></a>软件安装包</h2><p><a href="https://fir.im/4wgz" target="_blank" rel="external">https://fir.im/4wgz</a><br>你们不是我学校的核心功能是用不了的，不过可以看看功能。</p>
+<hr>
+<hr>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><hr>
+<blockquote>
+<p>1、<a href="http://pbhutn8vv.bkt.clouddn.com/bmob.lua" target="_blank" rel="external">bmob.lua下载</a></p>
+<p>2、准备安卓lua解释器可以使用酷安上的所有lua编程软件，想自己做UI就用基础的软件，不想自己做UI就用FusionApp来做<br><img src="https://i.loli.net/2018/06/29/5b35cd9d331f5.png" alt=""></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2></blockquote>
+<hr>
+<blockquote>
+<p>注册bmob数据库新建一个应用和数据库<br>我把它起名lua其中一个表为（tuisong）推送</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/06/29/5b35cfffa741a.png" alt=""></p>
+<hr>
+<p><img src="https://i.loli.net/2018/06/29/5b35ceda7b9c8.png" alt=""></p>
+<hr>
+<blockquote>
+<p>包含以下值</p>
+<p>on_off   类型Boolean     —开启公告标志位<br>gx_url   类型String        —更新软件链接<br>gx_gg   类型String        —更新公告<br>gg        类型String        —公告<br>bb        类型String      —版本号</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>下面开始教程<br>首先将bmob.lua放入工程根目录。<br>最好使用我修改和备注过的。</p>
+</blockquote>
+<hr>
+<h2 id="bmob教程文档"><a href="#bmob教程文档" class="headerlink" title="bmob教程文档"></a>bmob教程文档</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">b=bmob(id,key)</div><div class="line">id 用户id，key 应用key。</div><div class="line"></div><div class="line">b:insert(key,data,callback)</div><div class="line">新建数据表，key 表名称，data 数据，callback 回调函数。</div><div class="line"></div><div class="line">b:update(key,id,data,callback)</div><div class="line">更新数据表，key 表名称id 数据id，data 数据，callback 回调函数。</div><div class="line"></div><div class="line">b:query(key,data,callback)</div><div class="line">查询数据表，key 表名称，data 查询规则，callback 回调函数。</div><div class="line"></div><div class="line">b:increment(key,id,k,v,c)</div><div class="line">原子计数，key 表名称，id 数据id，k 数据key，v 计数增加量。</div><div class="line"></div><div class="line">b:delete(key,id,callback)</div><div class="line">删除数据，key 表名称,id 数据id，callback 回调函数。</div><div class="line"></div><div class="line">b:sign(user,pass,mail,callback)</div><div class="line">注册用户，user 用户名，pass 密码，mail 电子邮箱，callback 回调函数。</div><div class="line"></div><div class="line">b:login(user or mail,pass,callback)</div><div class="line">登录用户，user 用户名，pass 密码，mail 电子邮箱，callback 回调函数。</div><div class="line"></div><div class="line">b:upload(path,callback)</div><div class="line">上传文件，path 文件路径，callback 回调函数。</div><div class="line"></div><div class="line">b:remove(url,callback)</div><div class="line">删除文件，url 文件路径，callback 回调函数。</div><div class="line"></div><div class="line"></div><div class="line">注：</div><div class="line">1，查询规则支持表或者json格式，具体用法参考官方api</div><div class="line">2，回调函数的第一个参数为状态码，-1 出错，其他状态码参考http状态码，第二个参数为返回内容。</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="远程更新"><a href="#远程更新" class="headerlink" title="远程更新"></a>远程更新</h2><blockquote>
+<p>在程序启动时添加更新检测函数：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import &quot;bmob&quot;</div><div class="line">当前版本 = &quot;2.0&quot;</div><div class="line">function 检查更新()</div><div class="line">  local b=bmob(&quot;你的appid&quot;,&quot;你的apikey&quot;)</div><div class="line">  b:query(&quot;tuisong&quot;,function(code,json)</div><div class="line">    if code~=-1 and code&gt;=200 and code&lt;400 then</div><div class="line">      --print(dump(json))</div><div class="line">      if (json.results[1].bb&gt;当前版本)then</div><div class="line">      --判断远程的版本是否大于软件内部的版本，大于则进行更新</div><div class="line">        对话框()</div><div class="line">        .设置标题(&quot;版本更新&quot;)</div><div class="line">        --显示更新公告</div><div class="line">        .设置消息(json.results[1].gx_gg)</div><div class="line">        .设置积极按钮(&quot;下载更新&quot;,function()</div><div class="line">        --进入下载链接</div><div class="line">          加载网页(json.results[1].gx_url)</div><div class="line">        end)</div><div class="line">        .设置消极按钮(&quot;取消&quot;)</div><div class="line">        .显示()</div><div class="line">      end</div><div class="line">    end</div><div class="line">  end)</div><div class="line">end</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="公告"><a href="#公告" class="headerlink" title="公告"></a>公告</h2><blockquote>
+<p>在程序启动时添加远程公告函数<br>利用数据查询函数进行查询并弹窗</p>
+</blockquote>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">b:query(&quot;tuisong&quot;,function(code,json)</div><div class="line">   if code~=-1 and code&gt;=200 and code&lt;400 then</div><div class="line">     --print(dump(json))</div><div class="line">     if(json.results[1].on_off== true) then</div><div class="line">     --这里是公告标志位，如果是false则不开启远程公告，如果是true则开启远程公告</div><div class="line">       local gg =json.results[1].gg</div><div class="line">       --这里就对应了我的网络端数据里面的gg（公告内容）</div><div class="line">       对话框()</div><div class="line">       .设置标题(&quot;数据库远程公告&quot;)</div><div class="line">       .设置消息(gg)</div><div class="line">       .设置积极按钮(&quot;确定&quot;,function()</div><div class="line">         显示消息(&quot;点击了确定&quot;)</div><div class="line">       end)</div><div class="line">       .设置消极按钮(&quot;取消&quot;)</div><div class="line">       .显示()</div><div class="line">     end</div><div class="line">   end</div><div class="line"> end)</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="其他远程推送功能"><a href="#其他远程推送功能" class="headerlink" title="其他远程推送功能"></a>其他远程推送功能</h2><blockquote>
+<p>比如添加一个免责声明的按钮<br>同理也可以做一个关于作者的按钮、等等<br>这都是可以远程控制的<br>利用数据库查询与显示就可以实现远程控制弹窗的内容<br>进入按钮的单击事件</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>效果图</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/07/02/5b399bf9e4f04.png" alt=""></p>
+<hr>
+<blockquote>
+<p>再添加几个数据点包括about_app（关于软件）  和 mzsm（免责声明） 等</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/07/02/5b399a6711214.png" alt=""></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">b:query(&quot;tuisong&quot;,function(code,json)</div><div class="line">  if code~=-1 and code&gt;=200 and code&lt;400 then</div><div class="line">    --print(dump(json))</div><div class="line">    mzsm = json.results[1].mzsm</div><div class="line">    --在数据库里加一个字“mzsm”即可，原理和公告一样</div><div class="line">    对话框()</div><div class="line">    .设置标题(&quot;免责声明&quot;)</div><div class="line">    .设置消息(mzsm)</div><div class="line">    .设置积极按钮(&quot;确定&quot;,function()</div><div class="line">    end)</div><div class="line">    .设置消极按钮(&quot;取消&quot;)</div><div class="line">    .显示()</div><div class="line">    -- print(type(mzsm))</div><div class="line">  end</div><div class="line">end)</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="注册和登录功能"><a href="#注册和登录功能" class="headerlink" title="注册和登录功能"></a>注册和登录功能</h2><blockquote>
+<p>看到这里应该都会用bmob了吧，代码我也注释的很详细。欢迎反馈；<br>下面是我的软件同学在使用过程中，我获取到的他们的账号和密码以及ip地址（并不是盗号，嘻嘻，只是想统计有多少人在用。。。。。。）</p>
+</blockquote>
+<hr>
+<p><img src="https://i.loli.net/2018/07/02/5b399d47da435.png" alt=""></p>
+<hr>
+<h2 id="最后的彩蛋-微信反馈"><a href="#最后的彩蛋-微信反馈" class="headerlink" title="最后的彩蛋-微信反馈"></a>最后的彩蛋-微信反馈</h2><blockquote>
+<p>这是一位大神做的接口可以直接将消息推送到微信，我之前用单片机做过消息的反馈。使用很简单只需要用get 发送就可以了。几行代码就可以实现。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>效果如图</p>
+</blockquote>
+<hr>
+<blockquote>
+<h2 id="软件端"><a href="#软件端" class="headerlink" title="软件端"></a>软件端</h2><p><img src="https://i.loli.net/2018/07/02/5b39a06795aad.png" alt=""></p>
+<h2 id="微信端"><a href="#微信端" class="headerlink" title="微信端"></a>微信端</h2><p><img src="https://i.loli.net/2018/07/02/5b39a09a75be9.png" alt=""></p>
+</blockquote>
+<hr>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><blockquote>
+<p>相当的简单，进入网站微信登陆</p>
+</blockquote>
+<hr>
+<p><img src="https://i.loli.net/2018/07/02/5b39a1296b9c9.png" alt=""></p>
+<blockquote>
+<p>然后会生成一个key，点击发送消息来测试一下：如图</p>
+<h2 id="网站端"><a href="#网站端" class="headerlink" title="网站端"></a>网站端</h2><p><img src="https://i.loli.net/2018/07/02/5b39a178eff28.png" alt=""></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>微信端<br><img src="https://i.loli.net/2018/07/02/5b39a210dfba5.png" alt=""></p>
+</blockquote>
+<hr>
+<ul>
+<li>测试成功，下面应用到lua中。</li>
+<li></li>
+</ul>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">--输入对话框</div><div class="line">InputLayout=&#123;</div><div class="line">  LinearLayout;</div><div class="line">  orientation=&quot;vertical&quot;;</div><div class="line">  Focusable=true,</div><div class="line">  FocusableInTouchMode=true,</div><div class="line">  &#123;</div><div class="line">    TextView;</div><div class="line">    id=&quot;Prompt&quot;,</div><div class="line">    textSize=&quot;15sp&quot;,</div><div class="line">    layout_marginTop=&quot;10dp&quot;;</div><div class="line">    layout_marginLeft=&quot;3dp&quot;,</div><div class="line">    layout_width=&quot;80%w&quot;;</div><div class="line">    layout_gravity=&quot;center&quot;,</div><div class="line">    text=&quot;BUG提交将推送至我的微信&quot;;</div><div class="line">  &#125;;</div><div class="line">  &#123;</div><div class="line">    EditText;</div><div class="line">    hint=&quot;输入反馈&quot;;</div><div class="line">    layout_marginTop=&quot;5dp&quot;;</div><div class="line">    layout_width=&quot;80%w&quot;;</div><div class="line">    layout_gravity=&quot;center&quot;,</div><div class="line">    id=&quot;edit&quot;;</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">AlertDialog.Builder(this)</div><div class="line">.setTitle(&quot;BUG提交&quot;)</div><div class="line">.setView(loadlayout(InputLayout))</div><div class="line">.setPositiveButton(&quot;确定&quot;,&#123;onClick=function(v) </div><div class="line">    local zh=io.open(&quot;/sdcard/校网助手/账户.txt&quot;):read(&quot;*a&quot;)</div><div class="line">    local z=zh:match(&quot;(.+)@&quot;)</div><div class="line">    local m=edit.Text</div><div class="line">    local time=os.date(&quot;%Y-%m-%d %H:%M:%S&quot;)</div><div class="line">    local ww=&quot;https://sc.ftqq.com/SCU26231T3d328e换成你的5e619d412b2937b0e5af42e7d782a3.send?text=&quot;</div><div class="line">    local x=&quot;主人校网助手有人反馈bug了账号:&quot;</div><div class="line">    local g=&quot;信息为:&quot;</div><div class="line">    local k=&quot;&amp;desp=&quot;</div><div class="line">    local wx=ww..x..z..k..time..g..m</div><div class="line">    local sj=math.random(1000,9999)</div><div class="line">    local wxs =ww..sj..z..m</div><div class="line">    --print(wx)</div><div class="line">    Http.get(wx,nil,&quot;utf8&quot;,nil,function(code,content,cookie,header)</div><div class="line">      if(code==200 and content)then</div><div class="line">        print(&quot;发送成功，谢谢&quot;)</div><div class="line">      else</div><div class="line">        print(&quot;与后台通信异常…尝试第二套方案&quot;..code)</div><div class="line">        Http.get(wxs,nil,&quot;utf8&quot;,nil,function(code,content,cookie,header)</div><div class="line">          if(code==200 and content)then</div><div class="line">            print(&quot;发送成功，谢谢&quot;)</div><div class="line">          end</div><div class="line">        end)</div><div class="line"></div><div class="line">      end</div><div class="line">    end)</div><div class="line">  end&#125;)</div><div class="line">.setNegativeButton(&quot;取消&quot;,nil)</div><div class="line">.show()</div><div class="line">import &quot;android.view.View$OnFocusChangeListener&quot;</div><div class="line">edit.setOnFocusChangeListener(OnFocusChangeListener&#123; </div><div class="line">  onFocusChange=function(v,hasFocus)</div><div class="line">    if hasFocus then</div><div class="line">      Prompt.setTextColor(0xFD009688)</div><div class="line">    end</div><div class="line">  end&#125;)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/" data-id="cjqbyv4380024fwwcxio9dkpb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lua/">lua</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/12/利用机智云APP学习JAVA安卓/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          利用机智云APP学习JAVA安卓
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/26/互联网+比赛记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">互联网+比赛记录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESP8266/">ESP8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PLC/">PLC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Siri/">Siri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/esp8266/">esp8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓编程/">安卓编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作/">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/托更/">托更</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能家居/">智能家居</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机智云/">机智云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温湿度/">温湿度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雷达/">雷达</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ESP8266/" style="font-size: 10px;">ESP8266</a> <a href="/tags/PLC/" style="font-size: 10px;">PLC</a> <a href="/tags/Siri/" style="font-size: 10px;">Siri</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/esp8266/" style="font-size: 20px;">esp8266</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/mqtt/" style="font-size: 15px;">mqtt</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/安卓编程/" style="font-size: 10px;">安卓编程</a> <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/工作/" style="font-size: 10px;">工作</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/托更/" style="font-size: 10px;">托更</a> <a href="/tags/智能家居/" style="font-size: 15px;">智能家居</a> <a href="/tags/机智云/" style="font-size: 10px;">机智云</a> <a href="/tags/树莓派/" style="font-size: 15px;">树莓派</a> <a href="/tags/温湿度/" style="font-size: 10px;">温湿度</a> <a href="/tags/物联网/" style="font-size: 10px;">物联网</a> <a href="/tags/雷达/" style="font-size: 10px;">雷达</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/31/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/26/拖更《工作回顾》/">拖更《工作回顾》</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/小白的物联网全栈开发之路/">小白的物联网全栈开发之路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/ESP8266嵌入式开发资料汇总/">ESP8266学习资料</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/">阿里云自建服务器esp8266和mqtt客户端成功对接</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

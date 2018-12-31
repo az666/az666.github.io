@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>树莓派+arduino+串口屏+百度api人脸识别 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="树莓派+arduino+串口屏+百度api人脸识别升级版本
+
+
+
+
+
+
+
+
+这次对上一次的代码进行了优化，并且完成了树莓派与arduino的串口通信（包括USB串口通信）和GPIO的串口通信。最近比较忙再一个原因就是…懒，本来还录制了调试的视频，总之效果还是可以的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派+arduino+串口屏+百度api人脸识别">
+<meta property="og:url" content="http://yoursite.com/2018/06/07/树莓派人脸识别升级版/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="树莓派+arduino+串口屏+百度api人脸识别升级版本
+
+
+
+
+
+
+
+
+这次对上一次的代码进行了优化，并且完成了树莓派与arduino的串口通信（包括USB串口通信）和GPIO的串口通信。最近比较忙再一个原因就是…懒，本来还录制了调试的视频，总之效果还是可以的。">
+<meta property="og:image" content="https://i.loli.net/2018/06/07/5b193133bb875.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/06/07/5b1930ef5cb3f.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/06/07/5b193304d9ddd.png">
+<meta property="og:updated_time" content="2018-06-07T13:36:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派+arduino+串口屏+百度api人脸识别">
+<meta name="twitter:description" content="树莓派+arduino+串口屏+百度api人脸识别升级版本
+
+
+
+
+
+
+
+
+这次对上一次的代码进行了优化，并且完成了树莓派与arduino的串口通信（包括USB串口通信）和GPIO的串口通信。最近比较忙再一个原因就是…懒，本来还录制了调试的视频，总之效果还是可以的。">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/07/5b193133bb875.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-树莓派人脸识别升级版" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/07/树莓派人脸识别升级版/" class="article-date">
+  <time datetime="2018-06-07T12:06:00.000Z" itemprop="datePublished">2018-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树莓派+arduino+串口屏+百度api人脸识别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="树莓派-arduino-串口屏-百度api人脸识别"><a href="#树莓派-arduino-串口屏-百度api人脸识别" class="headerlink" title="树莓派+arduino+串口屏+百度api人脸识别"></a>树莓派+arduino+串口屏+百度api人脸识别</h2><p>升级版本</p>
+<blockquote>
+<p><img src="https://i.loli.net/2018/06/07/5b193133bb875.jpg" alt="人脸识别升级版"></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/06/07/5b1930ef5cb3f.jpg" alt="人脸识别升级版"></p>
+</blockquote>
+<hr>
+<p>这次对上一次的代码进行了优化，并且完成了树莓派与arduino的串口通信（包括USB串口通信）和GPIO的串口通信。最近比较忙再一个原因就是…懒，本来还录制了调试的视频，总之效果还是可以的。<br><a id="more"></a></p>
+<blockquote>
+<p>其实树莓派的语音识别也已经做好了，知识没时间总结，准备做一个语音对讲，语音控制硬件。。。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/06/07/5b193304d9ddd.png" alt="百度云后台"><br>不行，今天不适合写博客，内心极度不稳定，可能最近太忙了，就这样吧，把代码拷贝进来，等哪天好好总结总结！</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>代码都存储在我的GitHub里<br>我的树莓派也只能通过它和外机通讯…我的远程连接一直失败，暂且只能用显示屏来调试。<br><a href="https://github.com/az666/pi_zerow_projects" target="_blank" rel="external">GitHub地址</a></p>
+</blockquote>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div></pre></td><td class="code"><pre><div class="line">from picamera import PiCamera</div><div class="line">import time</div><div class="line">import RPi.GPIO</div><div class="line">import requests</div><div class="line">import base64</div><div class="line">import sys</div><div class="line">import serial</div><div class="line">import os</div><div class="line"></div><div class="line">def getaccess_token():</div><div class="line">## 获取access_token</div><div class="line"></div><div class="line">    host=&apos;https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id=4fVKa7AqDYNApi6Lz8Z2ZeMv&amp;client_secret=gRVy9GcRRGCMiU2GgT20IbbaMu7QfA8P&apos;</div><div class="line"></div><div class="line">    header_1 = &#123;&apos;Content-Type&apos;:&apos;application/json; charset=UTF-8&apos;&#125;</div><div class="line"></div><div class="line">    request=requests.post(host,headers =header_1)</div><div class="line"></div><div class="line">    access_token=request.json()[&apos;access_token&apos;]</div><div class="line">    print(access_token)</div><div class="line">    return access_token</div><div class="line"></div><div class="line"></div><div class="line">def take_picture():</div><div class="line"> #拍摄当前图片   </div><div class="line">    camera.start_preview()</div><div class="line"></div><div class="line">    time.sleep(0.5)</div><div class="line"></div><div class="line">    camera.capture(&apos;image.jpg&apos;)</div><div class="line"></div><div class="line">    camera.stop_preview()</div><div class="line">def open_pic():</div><div class="line">#打开工程拍摄的图片并转换成字符串</div><div class="line">    f = open(&apos;image.jpg&apos;, &apos;rb&apos;)</div><div class="line"></div><div class="line">    img = base64.b64encode(f.read())</div><div class="line"></div><div class="line">    return img</div><div class="line"></div><div class="line">def search (img,access_token):</div><div class="line">##    人脸搜索白度api_v3以后就叫做“人脸搜索”了</div><div class="line">    request_url = &quot;https://aip.baidubce.com/rest/2.0/face/v3/search&quot;</div><div class="line">    params = &#123;&quot;image&quot;:img,&quot;image_type&quot;:&quot;BASE64&quot;,&quot;group_id_list&quot;:&quot;wenzheng&quot;,&quot;quality_control&quot;:&quot;LOW&quot;,&quot;liveness_control&quot;:&quot;NORMAL&quot;&#125;</div><div class="line">    request_url = request_url + &quot;?access_token=&quot; + access_token</div><div class="line">    ##发送数据利用requests.post（）的方法－－比较简单</div><div class="line">    response = requests.post(request_url, data=params)</div><div class="line">    ##输出json数据</div><div class="line">    output = response.json()</div><div class="line">    return output</div><div class="line">def chuli (output):</div><div class="line">    print(output)</div><div class="line">    print(type(output)) ##输出数据类型为－字典</div><div class="line">    if output[&apos;error_msg&apos;] == &apos;SUCCESS&apos;:</div><div class="line">        ##判断是否成功</div><div class="line">        ##找到字典里的result－以及内层字典里的user_list</div><div class="line">        user_list= output[&apos;result&apos;][&apos;user_list&apos;]</div><div class="line">        print(user_list)</div><div class="line">        ##输出数据类型，发现其为列表</div><div class="line">        print(type(user_list))</div><div class="line">        ##利用列表的检索方式找到列表里的人脸检测分数－score</div><div class="line">        score = user_list[0][&apos;score&apos;]</div><div class="line">        print(score)</div><div class="line">        ##串口发送</div><div class="line">        ser.write(str(score).encode()) </div><div class="line">        #panduan(score)</div><div class="line">        user = user_list[0][&apos;user_info&apos;]</div><div class="line">        time.sleep(1)</div><div class="line">        print(user)</div><div class="line">        ser.write(user.encode())</div><div class="line">    else:</div><div class="line">        print(output[&apos;error_msg&apos;])</div><div class="line">        print(type(output[&apos;error_msg&apos;]))</div><div class="line">        ser.write(output[&apos;error_msg&apos;].encode())</div><div class="line">&quot;&quot;&quot;</div><div class="line">反馈的数据：利用他来解析</div><div class="line">可知此次的人脸对比分数为：93分</div><div class="line">&#123;&apos;error_code&apos;: 0, &apos;error_msg&apos;: &apos;SUCCESS&apos;, &apos;timestamp&apos;: 1528009295, &apos;log_id&apos;: 3173075542, &apos;cached&apos;: 0,</div><div class="line">&apos;result&apos;: &#123;&apos;face_token&apos;: &apos;7fd111f61fb07e034577b277c7caca3f&apos;,</div><div class="line">&apos;user_list&apos;: [&#123;&apos;user_id&apos;: &apos;wenzheng&apos;, &apos;user_info&apos;: &apos;pengwenzheng&apos;, &apos;score&apos;: 93.49373626709, &apos;group_id&apos;: &apos;wenzheng&apos;&#125;]&#125;&#125;</div><div class="line">&quot;&quot;&quot;</div><div class="line">def panduan(score): </div><div class="line">    if score &gt; 80:</div><div class="line">        #print(type(score))</div><div class="line">        ser.write(str(score).encode())          </div><div class="line">    else :</div><div class="line">        ser.write(b&apos;2&apos;)</div><div class="line">def led():</div><div class="line">## led</div><div class="line">    RPi.GPIO.output(18, True)</div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    ser = serial.Serial(&apos;/dev/ttyS0&apos;,115200,timeout=1)</div><div class="line">    ser.close()</div><div class="line">    ser.open()</div><div class="line">    print(&quot;串口已开启&quot;)</div><div class="line">    camera = PiCamera()</div><div class="line">    count=0</div><div class="line">    access_token=getaccess_token()</div><div class="line">    while True :</div><div class="line">        take_picture()</div><div class="line">        img=open_pic()</div><div class="line">        output = search(img,access_token)</div><div class="line">        chuli(output)</div><div class="line">        count=count+1</div><div class="line">        print(count)</div><div class="line">        #加入自动重启命令，防止程序运行时间过长死机</div><div class="line">        if count == 2000 :</div><div class="line">            os.system(&apos;sudo reboot&apos;)</div><div class="line">            count = 0</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/07/树莓派人脸识别升级版/" data-id="cjqbyv42j0017fwwcc4fhkezy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/07/lua语言开发的安卓小软件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          校网登录助手8.0
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/01/2018年5月总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2018年5月总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESP8266/">ESP8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PLC/">PLC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Siri/">Siri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/esp8266/">esp8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓编程/">安卓编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作/">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/托更/">托更</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能家居/">智能家居</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机智云/">机智云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温湿度/">温湿度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雷达/">雷达</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ESP8266/" style="font-size: 10px;">ESP8266</a> <a href="/tags/PLC/" style="font-size: 10px;">PLC</a> <a href="/tags/Siri/" style="font-size: 10px;">Siri</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/esp8266/" style="font-size: 20px;">esp8266</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/mqtt/" style="font-size: 15px;">mqtt</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/安卓编程/" style="font-size: 10px;">安卓编程</a> <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/工作/" style="font-size: 10px;">工作</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/托更/" style="font-size: 10px;">托更</a> <a href="/tags/智能家居/" style="font-size: 15px;">智能家居</a> <a href="/tags/机智云/" style="font-size: 10px;">机智云</a> <a href="/tags/树莓派/" style="font-size: 15px;">树莓派</a> <a href="/tags/温湿度/" style="font-size: 10px;">温湿度</a> <a href="/tags/物联网/" style="font-size: 10px;">物联网</a> <a href="/tags/雷达/" style="font-size: 10px;">雷达</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/31/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/26/拖更《工作回顾》/">拖更《工作回顾》</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/小白的物联网全栈开发之路/">小白的物联网全栈开发之路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/ESP8266嵌入式开发资料汇总/">ESP8266学习资料</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/">阿里云自建服务器esp8266和mqtt客户端成功对接</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

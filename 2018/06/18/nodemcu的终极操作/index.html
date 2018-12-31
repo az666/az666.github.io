@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>利用arduino ide制作的桌面摆件 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="利用arduino ide制作的桌面摆件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用arduino ide制作的桌面摆件">
+<meta property="og:url" content="http://yoursite.com/2018/06/18/nodemcu的终极操作/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="利用arduino ide制作的桌面摆件">
+<meta property="og:image" content="https://i.loli.net/2018/06/17/5b265c62467da.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/06/17/5b265c8d2ce40.jpg">
+<meta property="og:updated_time" content="2018-08-22T13:50:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用arduino ide制作的桌面摆件">
+<meta name="twitter:description" content="利用arduino ide制作的桌面摆件">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/17/5b265c62467da.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nodemcu的终极操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/18/nodemcu的终极操作/" class="article-date">
+  <time datetime="2018-06-18T06:50:00.000Z" itemprop="datePublished">2018-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用arduino ide制作的桌面摆件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="利用arduino-ide制作的桌面摆件"><a href="#利用arduino-ide制作的桌面摆件" class="headerlink" title="利用arduino ide制作的桌面摆件"></a>利用arduino ide制作的桌面摆件</h2><hr>
+<h2 id=""><a href="#" class="headerlink" title=" "></a><iframe src="//player.bilibili.com/player.html?aid=25095928&cid=42475597&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></h2><p><img src="https://i.loli.net/2018/06/17/5b265c62467da.jpg" alt="暂且放在盒子里"><br><img src="https://i.loli.net/2018/06/17/5b265c8d2ce40.jpg" alt="支持微信扫一扫配网"><br><a id="more"></a></p>
+<ul>
+<li>工具</li>
+<li>nodemcu</li>
+<li>arduino ide</li>
+<li>串口屏（淘宝38元）</li>
+</ul>
+<blockquote>
+<p>这是很早以前就想做的作品，因为它不像大的作品那样，所以比较拖沓，一直没做，最近想给女朋友做一个桌面摆件，所以用了一整天的时间来做这个小玩物，整体思路就是利用esp的网络功能来获取网页数据接口返回的数据包括时间，天气，甚至英语，发给串口屏来显示，其中也是一路艰辛，毕竟好久没玩硬件了，也是相当麻烦的。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>首先是串口屏的ui设计，极简，毕竟自己没有太高级的审美，串口屏的教程也是相当复杂的，之前淘宝店给的教程一直没空看，当时感觉老复杂了，就一直搁置了。这次果断拿出来认真看了看，突然发现还是很简单的，毕竟由相应的上位机使用。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>然后就是代码的编写，总结如下：<br>最厉害的就是自动配网的功能-堪称超级无敌：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">void smartConfig()</div><div class="line">&#123;</div><div class="line">  WiFi.mode(WIFI_STA);</div><div class="line">  Serial.println(&quot;\r\nWait for Smartconfig&quot;);</div><div class="line">  WiFi.beginSmartConfig();</div><div class="line">  while (1)</div><div class="line">  &#123;</div><div class="line">    Serial.print(&quot;.&quot;);</div><div class="line">    digitalWrite(LED, 0);</div><div class="line">    sao_sao();</div><div class="line">    delay(500);</div><div class="line">    digitalWrite(LED, 1);</div><div class="line">    delay(500);</div><div class="line">    if (WiFi.smartConfigDone())</div><div class="line">    &#123;</div><div class="line">      Serial.println(&quot;SmartConfig Success&quot;);</div><div class="line">      Serial.printf(&quot;SSID:%s\r\n&quot;, WiFi.SSID().c_str());</div><div class="line">      Serial.printf(&quot;PSW:%s\r\n&quot;, WiFi.psk().c_str());</div><div class="line">      break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>网页数据分析这次都是用的GET访问</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">void http() &#123;</div><div class="line">  HTTPClient http;</div><div class="line">  http.begin(webadd);</div><div class="line">  int httpCode = http.GET();</div><div class="line">  if (httpCode &gt; 0) &#123;</div><div class="line">    payload = http.getString();</div><div class="line">    //Serial.println(payload);</div><div class="line">    int a = payload.indexOf(&quot;101180101&quot;);//自己搜索链接可知指定城市的id郑州市的id为‘101180101’</div><div class="line">    //indexof();在字符串中中查找字符位置，返回值为给定字符的第一个位置，查找失败返回-1</div><div class="line">    com = payload.substring(a - 280, a + 12);</div><div class="line">  &#125;</div><div class="line">  http.end();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>还有就是网页数据解析的精髓:</p>
+</blockquote>
+<ul>
+<li>字符处理–适用于网页源码的解析</li>
+<li>JSON解析–适用于api反馈的json</li>
+</ul>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/*************************************截取字符数据处理*******************************************/</div><div class="line">void data() &#123;</div><div class="line">  int i = 0;</div><div class="line">  i = com.indexOf(&quot;tem1&quot;);</div><div class="line">  tem1 = com.substring(i + 6, i + 8);</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;tem2&quot;);  //tem2=&quot;24&quot;</div><div class="line">  tem2 = com.substring(i + 6, i + 8);</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;temNow&quot;);</div><div class="line">  temnow = com.substring(i + 8, i + 10);</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;humidity&quot;);</div><div class="line">  humi = com.substring(i + 10, i + 13); //humidity=&quot;27%&quot;</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;state1&quot;);</div><div class="line">  state1 = com.substring(i + 8, i + 9);</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;state2&quot;);</div><div class="line">  state2 = com.substring(i + 7, i + 11);</div><div class="line">  i = 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/*********************************获取时间**************************************/</div><div class="line">void get_time()</div><div class="line">&#123;</div><div class="line">  HTTPClient http;</div><div class="line">  http.begin(time_url);</div><div class="line">  int httpCode = http.GET();</div><div class="line">  if (httpCode &gt; 0) &#123;</div><div class="line">    payload = http.getString();</div><div class="line">    //Serial.println(payload);</div><div class="line">    /************************************json 数据处理********************************************/</div><div class="line">    DynamicJsonDocument doc;</div><div class="line">    String  input =   payload;</div><div class="line">    deserializeJson(doc, input);</div><div class="line">    JsonObject&amp; obj = doc.as&lt;JsonObject&gt;();</div><div class="line">    String  daytime = obj[&quot;sysTime2&quot;];</div><div class="line">    time0 = daytime;</div><div class="line">    time1 = daytime.substring(0, 10);//2018-06-17</div><div class="line">    time2 =  daytime.substring(11, 19);//2018-06-17</div><div class="line">  &#125;</div><div class="line">  http.end();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>整体代码放在GitHub里，欢迎关注<br><a href="https://github.com/az666/nodemcu_tianqi" target="_blank" rel="external">https://github.com/az666/nodemcu_tianqi</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>有问题欢迎讨论。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/18/nodemcu的终极操作/" data-id="cjqbyv41n000bfwwc302i4d2t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/esp8266/">esp8266</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/26/互联网+比赛记录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          互联网+比赛记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/07/lua语言开发的安卓小软件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">校网登录助手8.0</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESP8266/">ESP8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PLC/">PLC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Siri/">Siri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/esp8266/">esp8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓编程/">安卓编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作/">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/托更/">托更</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能家居/">智能家居</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机智云/">机智云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温湿度/">温湿度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雷达/">雷达</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ESP8266/" style="font-size: 10px;">ESP8266</a> <a href="/tags/PLC/" style="font-size: 10px;">PLC</a> <a href="/tags/Siri/" style="font-size: 10px;">Siri</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/esp8266/" style="font-size: 20px;">esp8266</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/mqtt/" style="font-size: 15px;">mqtt</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/安卓编程/" style="font-size: 10px;">安卓编程</a> <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/工作/" style="font-size: 10px;">工作</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/托更/" style="font-size: 10px;">托更</a> <a href="/tags/智能家居/" style="font-size: 15px;">智能家居</a> <a href="/tags/机智云/" style="font-size: 10px;">机智云</a> <a href="/tags/树莓派/" style="font-size: 15px;">树莓派</a> <a href="/tags/温湿度/" style="font-size: 10px;">温湿度</a> <a href="/tags/物联网/" style="font-size: 10px;">物联网</a> <a href="/tags/雷达/" style="font-size: 10px;">雷达</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/31/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/26/拖更《工作回顾》/">拖更《工作回顾》</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/小白的物联网全栈开发之路/">小白的物联网全栈开发之路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/ESP8266嵌入式开发资料汇总/">ESP8266学习资料</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/">阿里云自建服务器esp8266和mqtt客户端成功对接</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

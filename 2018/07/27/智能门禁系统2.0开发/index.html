@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>智能门禁系统2.0开发 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="继工作室装修以后，门禁系统1.0再度开发为2.0，这次与上次采用了不同的编程方案，虽然用的依然是机智云，但是采用的方案不同，1、上次采用mcu方案，就是用的esp8266＋arduino开发的，而这次我用的仅仅一块儿esp8266（nodemcu）搞定，2、驱动电机的方式也有所改变，上次采用的继电器进行的电机转向，这次采用的l298N驱动，效果更好。3、 同时也有很多细节发生了改变。
+
+
+视频地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能门禁系统2.0开发">
+<meta property="og:url" content="http://yoursite.com/2018/07/27/智能门禁系统2.0开发/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="继工作室装修以后，门禁系统1.0再度开发为2.0，这次与上次采用了不同的编程方案，虽然用的依然是机智云，但是采用的方案不同，1、上次采用mcu方案，就是用的esp8266＋arduino开发的，而这次我用的仅仅一块儿esp8266（nodemcu）搞定，2、驱动电机的方式也有所改变，上次采用的继电器进行的电机转向，这次采用的l298N驱动，效果更好。3、 同时也有很多细节发生了改变。
+
+
+视频地">
+<meta property="og:updated_time" content="2018-09-18T02:51:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="智能门禁系统2.0开发">
+<meta name="twitter:description" content="继工作室装修以后，门禁系统1.0再度开发为2.0，这次与上次采用了不同的编程方案，虽然用的依然是机智云，但是采用的方案不同，1、上次采用mcu方案，就是用的esp8266＋arduino开发的，而这次我用的仅仅一块儿esp8266（nodemcu）搞定，2、驱动电机的方式也有所改变，上次采用的继电器进行的电机转向，这次采用的l298N驱动，效果更好。3、 同时也有很多细节发生了改变。
+
+
+视频地">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-智能门禁系统2.0开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/27/智能门禁系统2.0开发/" class="article-date">
+  <time datetime="2018-07-27T14:53:00.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      智能门禁系统2.0开发
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>继工作室装修以后，门禁系统1.0再度开发为2.0，这次与上次采用了不同的编程方案，虽然用的依然是机智云，但是采用的方案不同，<br>1、上次采用mcu方案，就是用的esp8266＋arduino开发的，而这次我用的仅仅一块儿esp8266（nodemcu）搞定，<br>2、驱动电机的方式也有所改变，上次采用的继电器进行的电机转向，这次采用的l298N驱动，效果更好。<br>3、 同时也有很多细节发生了改变。</p>
+</blockquote>
+<hr>
+<p><a href="https://www.bilibili.com/video/av29961784/" target="_blank" rel="external">视频地址</a></p>
+<blockquote>
+<p>编写代码</p>
+</blockquote>
+<hr>
+ <iframe src="//player.bilibili.com/player.html?aid=29888278&cid=52057707&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<hr>
+<blockquote>
+<p>装机调试</p>
+</blockquote>
+<hr>
+ <iframe src="//player.bilibili.com/player.html?aid=29961784&cid=52201449&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+<hr>
+<p>代码部分</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">************************************************************</div><div class="line">* @file         user_main.c</div><div class="line">* @brief        The program entry file</div><div class="line">* @author       Gizwits</div><div class="line">* @date         2017-07-19</div><div class="line">* @version      V03030000</div><div class="line">* @copyright    Gizwits</div><div class="line">*</div><div class="line">* @note         鏈烘櫤浜�.鍙负鏅鸿兘纭欢鑰岀敓</div><div class="line">*               Gizwits Smart Cloud  for Smart Products</div><div class="line">*               閾炬帴|澧炲�贾祙寮�鏀緗涓珛|瀹夊叏|鑷湁|鑷敱|鐢熸��</div><div class="line">*               www.gizwits.com</div><div class="line">*</div><div class="line">***********************************************************/</div><div class="line">#include &quot;ets_sys.h&quot;</div><div class="line">#include &quot;osapi.h&quot;</div><div class="line">#include &quot;user_interface.h&quot;</div><div class="line">#include &quot;gagent_soc.h&quot;</div><div class="line">#include &quot;user_devicefind.h&quot;</div><div class="line">#include &quot;user_webserver.h&quot;</div><div class="line">#include &quot;gizwits_product.h&quot;</div><div class="line">#include &quot;driver/hal_key.h&quot;</div><div class="line">#if ESP_PLATFORM</div><div class="line">#include &quot;user_esp_platform.h&quot;</div><div class="line">#endif</div><div class="line"></div><div class="line">#ifdef SERVER_SSL_ENABLE</div><div class="line">#include &quot;ssl/cert.h&quot;</div><div class="line">#include &quot;ssl/private_key.h&quot;</div><div class="line">#else</div><div class="line">#ifdef CLIENT_SSL_ENABLE</div><div class="line">unsigned char *default_certificate;</div><div class="line">unsigned int default_certificate_len = 0;</div><div class="line">unsigned char *default_private_key;</div><div class="line">unsigned int default_private_key_len = 0;</div><div class="line">#endif</div><div class="line">#endif</div><div class="line">/**@&#125; */ </div><div class="line"></div><div class="line">/**@name Key related definitions </div><div class="line">* @&#123;</div><div class="line">*/</div><div class="line">#define GPIO_KEY_NUM                            2                           ///&lt; Defines the total number of key members</div><div class="line">#define KEY_0_IO_MUX                            PERIPHS_IO_MUX_GPIO0_U      ///&lt; ESP8266 GPIO function</div><div class="line">#define KEY_0_IO_NUM                            0                           ///&lt; ESP8266 GPIO number</div><div class="line">#define KEY_0_IO_FUNC                           FUNC_GPIO0                  ///&lt; ESP8266 GPIO name</div><div class="line">#define KEY_1_IO_MUX                            PERIPHS_IO_MUX_MTMS_U       ///&lt; ESP8266 GPIO function</div><div class="line">#define KEY_1_IO_NUM                            14                          ///&lt; ESP8266 GPIO number</div><div class="line">#define KEY_1_IO_FUNC                           FUNC_GPIO14                 ///&lt; ESP8266 GPIO name</div><div class="line">LOCAL key_typedef_t * singleKey[GPIO_KEY_NUM];                              ///&lt; Defines a single key member array pointer</div><div class="line">LOCAL keys_typedef_t keys;                                                  ///&lt; Defines the overall key module structure pointer    </div><div class="line">/**@&#125; */</div><div class="line">bool input_result;</div><div class="line">/**</div><div class="line">* Key1 key short press processing</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">LOCAL void ICACHE_FLASH_ATTR key1ShortPress(void)</div><div class="line">&#123;</div><div class="line">    GIZWITS_LOG(&quot;#### KEY1 short press ,Production Mode\n&quot;);</div><div class="line">    </div><div class="line">    gizwitsSetMode(WIFI_PRODUCTION_TEST);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">* Key1 key presses a long press</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">LOCAL void ICACHE_FLASH_ATTR key1LongPress(void)</div><div class="line">&#123;</div><div class="line">    GIZWITS_LOG(&quot;#### key1 long press, default setup\n&quot;);</div><div class="line">    </div><div class="line">    gizwitsSetMode(WIFI_RESET_MODE);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">* Key2 key to short press processing</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">LOCAL void ICACHE_FLASH_ATTR key2ShortPress(void)</div><div class="line">&#123;</div><div class="line">    GIZWITS_LOG(&quot;#### key2 short press, soft ap mode \n&quot;);</div><div class="line"></div><div class="line">    gizwitsSetMode(WIFI_SOFTAP_MODE);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">* Key2 button long press</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">LOCAL void ICACHE_FLASH_ATTR key2LongPress(void)</div><div class="line">&#123;</div><div class="line">    GIZWITS_LOG(&quot;#### key2 long press, airlink mode\n&quot;);</div><div class="line">    </div><div class="line">    gizwitsSetMode(WIFI_AIRLINK_MODE);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">* Key to initialize</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">LOCAL void ICACHE_FLASH_ATTR keyInit(void)</div><div class="line">&#123;</div><div class="line">    singleKey[0] = keyInitOne(KEY_0_IO_NUM, KEY_0_IO_MUX, KEY_0_IO_FUNC,</div><div class="line">                                key1LongPress, key1ShortPress);</div><div class="line">    singleKey[1] = keyInitOne(KEY_1_IO_NUM, KEY_1_IO_MUX, KEY_1_IO_FUNC,</div><div class="line">                                key2LongPress, key2ShortPress);</div><div class="line">    keys.singleKey = singleKey;</div><div class="line">    keyParaInit(&amp;keys);</div><div class="line">    PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDI_U, FUNC_GPIO12); //GPIO12初始化</div><div class="line">    GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1);//GPIO12 低电平输出</div><div class="line">    PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTCK_U, FUNC_GPIO13);</div><div class="line">    GPIO_OUTPUT_SET(GPIO_ID_PIN(13), 0);</div><div class="line">    PIN_FUNC_SELECT(PERIPHS_IO_MUX_U0RXD_U, FUNC_GPIO3);</div><div class="line">    GPIO_OUTPUT_SET(GPIO_ID_PIN(3), 0);</div><div class="line">    PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO4_U, FUNC_GPIO4);</div><div class="line">    GPIO_DIS_OUTPUT(FUNC_GPIO4);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">* @brief user_rf_cal_sector_set</div><div class="line"></div><div class="line">* Use the 636 sector (2544k ~ 2548k) in flash to store the RF_CAL parameter</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">uint32_t ICACHE_FLASH_ATTR user_rf_cal_sector_set()</div><div class="line">&#123;</div><div class="line">    return 636;</div><div class="line">&#125;</div><div class="line"></div><div class="line">////////////</div><div class="line"></div><div class="line"></div><div class="line">///////////</div><div class="line">/**</div><div class="line">* @brief program entry function</div><div class="line">* In the function to complete the user-related initialization</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">void ICACHE_FLASH_ATTR user_init(void)</div><div class="line">&#123;</div><div class="line">    uint32_t system_free_size = 0;</div><div class="line"></div><div class="line">    wifi_station_set_auto_connect(1);</div><div class="line">    wifi_set_sleep_type(NONE_SLEEP_T);//set none sleep mode</div><div class="line">    espconn_tcp_set_max_con(10);</div><div class="line">    uart_init_3(9600,115200);</div><div class="line">    UART_SetPrintPort(1);</div><div class="line">    GIZWITS_LOG( &quot;---------------SDK version:%s--------------\n&quot;, system_get_sdk_version());</div><div class="line">    GIZWITS_LOG( &quot;system_get_free_heap_size=%d\n&quot;,system_get_free_heap_size());</div><div class="line"></div><div class="line">    struct rst_info *rtc_info = system_get_rst_info();</div><div class="line">    GIZWITS_LOG( &quot;reset reason: %x\n&quot;, rtc_info-&gt;reason);</div><div class="line">    if (rtc_info-&gt;reason == REASON_WDT_RST ||</div><div class="line">        rtc_info-&gt;reason == REASON_EXCEPTION_RST ||</div><div class="line">        rtc_info-&gt;reason == REASON_SOFT_WDT_RST)</div><div class="line">    &#123;</div><div class="line">        if (rtc_info-&gt;reason == REASON_EXCEPTION_RST)</div><div class="line">        &#123;</div><div class="line">            GIZWITS_LOG(&quot;Fatal exception (%d):\n&quot;, rtc_info-&gt;exccause);</div><div class="line">        &#125;</div><div class="line">        GIZWITS_LOG( &quot;epc1=0x%08x, epc2=0x%08x, epc3=0x%08x, excvaddr=0x%08x, depc=0x%08x\n&quot;,</div><div class="line">                rtc_info-&gt;epc1, rtc_info-&gt;epc2, rtc_info-&gt;epc3, rtc_info-&gt;excvaddr, rtc_info-&gt;depc);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if (system_upgrade_userbin_check() == UPGRADE_FW_BIN1)</div><div class="line">    &#123;</div><div class="line">        GIZWITS_LOG( &quot;---UPGRADE_FW_BIN1---\n&quot;);</div><div class="line">    &#125;</div><div class="line">    else if (system_upgrade_userbin_check() == UPGRADE_FW_BIN2)</div><div class="line">    &#123;</div><div class="line">        GIZWITS_LOG( &quot;---UPGRADE_FW_BIN2---\n&quot;);</div><div class="line">    &#125;</div><div class="line">    keyInit();</div><div class="line">    gizwitsInit();  </div><div class="line">    dh11Init();</div><div class="line">    GIZWITS_LOG(&quot;--- system_free_size = %d ---\n&quot;, system_get_free_heap_size());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">************************************************************</div><div class="line">* @file         gizwits_product.c</div><div class="line">* @brief        Control protocol processing, and platform-related hardware initialization</div><div class="line">* @author       Gizwits</div><div class="line">* @date         2017-07-19</div><div class="line">* @version      V03030000</div><div class="line">* @copyright    Gizwits</div><div class="line">*</div><div class="line">* @note         鏈烘櫤浜�.鍙负鏅鸿兘纭欢鑰岀敓</div><div class="line">*               Gizwits Smart Cloud  for Smart Products</div><div class="line">*               閾炬帴|澧炲�贾祙寮�鏀緗涓珛|瀹夊叏|鑷湁|鑷敱|鐢熸��</div><div class="line">*               www.gizwits.com</div><div class="line">*</div><div class="line">***********************************************************/</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#include &quot;gizwits_product.h&quot;</div><div class="line">#include &quot;driver/hal_key.h&quot;</div><div class="line">#include &quot;driver/hal_temp_hum.h&quot;</div><div class="line">/** User area The current device state structure */</div><div class="line">dataPoint_t currentDataPoint;</div><div class="line">bool isTimer;</div><div class="line">long timer_timers;</div><div class="line">long time_mills;//定义总秒数</div><div class="line">static os_timer_t os_timer;</div><div class="line">static os_timer_t delay_timer;</div><div class="line"></div><div class="line">void stop(void)&#123;</div><div class="line">	GPIO_OUTPUT_SET(GPIO_ID_PIN(13), 0);</div><div class="line">	GPIO_OUTPUT_SET(GPIO_ID_PIN(3), 0);</div><div class="line">	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1);</div><div class="line">&#125;</div><div class="line">void open()&#123;</div><div class="line">	GPIO_OUTPUT_SET(GPIO_ID_PIN(13), 0);</div><div class="line">    GPIO_OUTPUT_SET(GPIO_ID_PIN(3), 1);</div><div class="line">&#125;</div><div class="line">void Led_Task_Run(void)&#123;</div><div class="line">    //开门</div><div class="line">	open();</div><div class="line">	//开灯</div><div class="line"> GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 0);</div><div class="line"> //根据继电器的种类和要定时的任务而定。这是低电平触发继电器的定时开机功能。</div><div class="line"> isTimer=false;</div><div class="line"> //执行完毕，我们要把定时时间设置0 ,定时使能状态为false</div><div class="line"> timer_timers= 0;</div><div class="line">&#125;</div><div class="line">void Led_Task_Off(void)&#123;</div><div class="line">//开灯</div><div class="line"> GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1);</div><div class="line"> //根据继电器的种类和要定时的任务而定。这是低电平触发继电器的定时关机功能。</div><div class="line"> isTimer=false;</div><div class="line"> //执行完毕，我们要把定时时间设置0 ,定时使能状态为false</div><div class="line"> timer_timers= 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int8_t ICACHE_FLASH_ATTR gizwitsEventProcess(eventInfo_t *info, uint8_t *data, uint32_t len)</div><div class="line">&#123;</div><div class="line">    uint8_t i = 0;</div><div class="line">    dataPoint_t * dataPointPtr = (dataPoint_t *)data;</div><div class="line">    moduleStatusInfo_t * wifiData = (moduleStatusInfo_t *)data;</div><div class="line"></div><div class="line">    if((NULL == info) || (NULL == data))</div><div class="line">    &#123;</div><div class="line">        GIZWITS_LOG(&quot;!!! gizwitsEventProcess Error \n&quot;);</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">    for(i = 0; i &lt; info-&gt;num; i++)</div><div class="line">    &#123;</div><div class="line">        switch(info-&gt;event[i])</div><div class="line">        &#123;</div><div class="line">        case EVENT_on_off :</div><div class="line">            currentDataPoint.valueon_off = dataPointPtr-&gt;valueon_off;</div><div class="line">            GIZWITS_LOG(&quot;Evt: EVENT_on_off %d \n&quot;, currentDataPoint.valueon_off);</div><div class="line">            if(0x01 == currentDataPoint.valueon_off)</div><div class="line">            &#123;</div><div class="line">            	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 0);</div><div class="line">            	open();</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">              	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1);</div><div class="line"></div><div class="line">            &#125;</div><div class="line">            break;</div><div class="line">        case EVENT_T_on_off :</div><div class="line">            currentDataPoint.valueT_on_off = dataPointPtr-&gt;valueT_on_off;</div><div class="line">            GIZWITS_LOG(&quot;Evt: EVENT_T_on_off %d \n&quot;, currentDataPoint.valueT_on_off);</div><div class="line">            if(0x01 == currentDataPoint.valueT_on_off)</div><div class="line">            &#123;</div><div class="line">            isTimer=true;//开启定时器</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">            /** 关闭该定时器 */</div><div class="line">            os_timer_disarm( &amp;os_timer );</div><div class="line">            /** 定时器使能为false */</div><div class="line">            isTimer=false;</div><div class="line">            &#125;</div><div class="line">            break;</div><div class="line">        case EVENT_time_h:</div><div class="line">            currentDataPoint.valuetime_h= dataPointPtr-&gt;valuetime_h;</div><div class="line">            GIZWITS_LOG(&quot;Evt:EVENT_time_h %d\n&quot;,currentDataPoint.valuetime_h);</div><div class="line">            //user handle</div><div class="line">            break;</div><div class="line">        case EVENT_time_m:</div><div class="line">            currentDataPoint.valuetime_m= dataPointPtr-&gt;valuetime_m;</div><div class="line">            GIZWITS_LOG(&quot;Evt:EVENT_time_m %d\n&quot;,currentDataPoint.valuetime_m);</div><div class="line">            //user handle</div><div class="line">            if(isTimer)&#123;</div><div class="line">                   if (currentDataPoint.valueon_off)&#123;  //判断继电器状态，如果原来是关闭状态，就定时开机，如果原来是开启状态，就定时关闭。</div><div class="line">            	/** 关闭该定时器 */</div><div class="line">            	os_timer_disarm( &amp;os_timer );</div><div class="line">            	// 配置该定时器回调函数，指定的执行方法是： Led_Task_Run （），下面会提供代码</div><div class="line">            	os_timer_setfn( &amp;os_timer, (ETSTimerFunc *) ( Led_Task_Off ), NULL );</div><div class="line">            	time_mills = (currentDataPoint.valuetime_h *60 + currentDataPoint.valuetime_m)*60000;</div><div class="line">            	/** 开启该定时器 ：下发的是秒数，这里的单位是毫秒，要乘1000* ，后面false表示仅仅执行一次**/</div><div class="line">            	os_timer_arm( &amp;os_timer, time_mills, false );</div><div class="line">            	/**赋值给timer_timers，方便会调用 */</div><div class="line">            	timer_timers=currentDataPoint.valuetime_m;</div><div class="line">            	&#125;</div><div class="line">            	else</div><div class="line">            	&#123;</div><div class="line">            	/** 关闭该定时器 */</div><div class="line">            	os_timer_disarm( &amp;os_timer );</div><div class="line">            	// 配置该定时器回调函数，指定的执行方法是： Led_Task_Run （），下面会提供代码</div><div class="line">            	os_timer_setfn( &amp;os_timer, (ETSTimerFunc *) ( Led_Task_Run ), NULL );</div><div class="line">            	time_mills = (currentDataPoint.valuetime_h *60 + currentDataPoint.valuetime_m)*60000;</div><div class="line">            	/** 开启该定时器 ：下发的是秒数，这里的单位是毫秒，要乘1000* ，后面false表示仅仅执行一次**/</div><div class="line">            	os_timer_arm( &amp;os_timer, time_mills, false );</div><div class="line">            	/**赋值给timer_timers，方便会调用 */</div><div class="line">            	timer_timers=currentDataPoint.valuetime_m;</div><div class="line">            	&#125;</div><div class="line">            	&#125;</div><div class="line">            break;</div><div class="line">        case WIFI_SOFTAP:</div><div class="line">            break;</div><div class="line">        case WIFI_AIRLINK:</div><div class="line">            break;</div><div class="line">        case WIFI_STATION:</div><div class="line">            break;</div><div class="line">        case WIFI_CON_ROUTER:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ connected router\n&quot;);</div><div class="line">            break;</div><div class="line">        case WIFI_DISCON_ROUTER:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ disconnected router\n&quot;);</div><div class="line">            break;</div><div class="line">        case WIFI_CON_M2M:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ connected m2m\n&quot;);</div><div class="line">			setConnectM2MStatus(0x01);</div><div class="line">            break;</div><div class="line">        case WIFI_DISCON_M2M:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ disconnected m2m\n&quot;);</div><div class="line">			setConnectM2MStatus(0x00);</div><div class="line"> </div><div class="line">            break;</div><div class="line">        case WIFI_RSSI:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ RSSI %d\n&quot;, wifiData-&gt;rssi);</div><div class="line">            break;</div><div class="line">        case TRANSPARENT_DATA:</div><div class="line">            GIZWITS_LOG(&quot;TRANSPARENT_DATA \n&quot;);</div><div class="line">            //user handle , Fetch data from [data] , size is [len]</div><div class="line">            break;</div><div class="line">        case MODULE_INFO:</div><div class="line">            GIZWITS_LOG(&quot;MODULE INFO ...\n&quot;);</div><div class="line">            break;</div><div class="line">            </div><div class="line">        default:</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    system_os_post(USER_TASK_PRIO_2, SIG_UPGRADE_DATA, 0);</div><div class="line">    </div><div class="line">    return 0; </div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line">* User data acquisition</div><div class="line"></div><div class="line">* Here users need to achieve in addition to data points other than the collection of data collection, can be self-defined acquisition frequency and design data filtering algorithm</div><div class="line"></div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">void ICACHE_FLASH_ATTR userHandle(void)</div><div class="line">&#123;</div><div class="line">	//明天待修改。</div><div class="line">	if(GPIO_INPUT_GET(4) == 0 &amp;&amp; GPIO_INPUT_GET(12) == 0 )&#123;</div><div class="line">	    	GPIO_OUTPUT_SET(GPIO_ID_PIN(13), 1);</div><div class="line">	    	GPIO_OUTPUT_SET(GPIO_ID_PIN(3), 0);</div><div class="line">	    	os_timer_disarm( &amp;delay_timer );</div><div class="line">	    	os_timer_setfn( &amp;delay_timer, (os_timer_func_t *) ( stop ), NULL );</div><div class="line">	    	os_timer_arm( &amp;delay_timer, 1000, false );</div><div class="line">	    &#125;</div><div class="line">    currentDataPoint.valueback = time_mills ;</div><div class="line">	currentDataPoint.valueon_off = !GPIO_INPUT_GET(12) ;</div><div class="line">	//是否开启定时器的回调</div><div class="line">    currentDataPoint.valueT_on_off =isTimer;</div><div class="line">	if(isTimer)&#123;</div><div class="line">	 currentDataPoint.valuetime_m =timer_timers;</div><div class="line">	 &#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		/*数据清零*/</div><div class="line">	  currentDataPoint.valuetime_m =0;</div><div class="line">	  currentDataPoint.valuetime_h =0;</div><div class="line">	  currentDataPoint.valueback =0;</div><div class="line">	 &#125;</div><div class="line">    uint8_t ret = 0;</div><div class="line">    uint8_t curTemperature =0;</div><div class="line">    uint8_t curHumidity = 0;</div><div class="line">    ret = dh11Read(&amp;curTemperature, &amp;curHumidity);</div><div class="line">     if(0 == ret)&#123;</div><div class="line">    	 currentDataPoint.valueTH_h = curTemperature;</div><div class="line">    	 currentDataPoint.valueTH_t = curHumidity;</div><div class="line">         &#125;</div><div class="line">         else&#123;</div><div class="line">         os_printf(&quot;@@@@ dh11Read error ! \n&quot;);</div><div class="line">         &#125;</div><div class="line"></div><div class="line">    system_os_post(USER_TASK_PRIO_2, SIG_UPGRADE_DATA, 0);</div><div class="line">&#125;</div><div class="line">/**</div><div class="line">* Data point initialization function</div><div class="line">* In the function to complete the initial user-related data</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">* @note The developer can add a data point state initialization value within this function</div><div class="line">*/</div><div class="line">void ICACHE_FLASH_ATTR userInit(void)</div><div class="line">&#123;</div><div class="line">    gizMemset((uint8_t *)&amp;currentDataPoint, 0, sizeof(dataPoint_t));</div><div class="line"> 	/** Warning !!! DataPoint Variables Init , Must Within The Data Range **/ </div><div class="line">    /*</div><div class="line">   		currentDataPoint.valueon_off =;</div><div class="line">   		currentDataPoint.valueT_on_off =;</div><div class="line">   		currentDataPoint.valuetime_h =;</div><div class="line">   		currentDataPoint.valuetime_m =;</div><div class="line">   		currentDataPoint.valueTH_h = ;</div><div class="line">   		currentDataPoint.valueTH_t = ;</div><div class="line">   		currentDataPoint.valueback = ;</div><div class="line">    */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/27/智能门禁系统2.0开发/" data-id="cjqbyv43e0029fwwci3simd0z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/27/3D镂空智能插座mini透明探索版/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          3D镂空智能插座mini透明探索版
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/27/超声波雷达扫描仪/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">超声波雷达扫描仪</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESP8266/">ESP8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PLC/">PLC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Siri/">Siri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/esp8266/">esp8266</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓编程/">安卓编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作/">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/托更/">托更</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能家居/">智能家居</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机智云/">机智云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/温湿度/">温湿度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雷达/">雷达</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ESP8266/" style="font-size: 10px;">ESP8266</a> <a href="/tags/PLC/" style="font-size: 10px;">PLC</a> <a href="/tags/Siri/" style="font-size: 10px;">Siri</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/esp8266/" style="font-size: 20px;">esp8266</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/mqtt/" style="font-size: 15px;">mqtt</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/安卓编程/" style="font-size: 10px;">安卓编程</a> <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/工作/" style="font-size: 10px;">工作</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/托更/" style="font-size: 10px;">托更</a> <a href="/tags/智能家居/" style="font-size: 15px;">智能家居</a> <a href="/tags/机智云/" style="font-size: 10px;">机智云</a> <a href="/tags/树莓派/" style="font-size: 15px;">树莓派</a> <a href="/tags/温湿度/" style="font-size: 10px;">温湿度</a> <a href="/tags/物联网/" style="font-size: 10px;">物联网</a> <a href="/tags/雷达/" style="font-size: 10px;">雷达</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/31/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/26/拖更《工作回顾》/">拖更《工作回顾》</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/小白的物联网全栈开发之路/">小白的物联网全栈开发之路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/ESP8266嵌入式开发资料汇总/">ESP8266学习资料</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/">阿里云自建服务器esp8266和mqtt客户端成功对接</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
