@@ -186,7 +186,252 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-opencv配置成功" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      opencv配置成功
+    </h1>
+  
+
+        
+        <a href="/2018/02/26/opencv配置成功/" class="archive-article-date">
+  	<time datetime="2018-02-26T13:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="opencv3-31-vs2015配置成功"><a href="#opencv3-31-vs2015配置成功" class="headerlink" title="opencv3.31+vs2015配置成功"></a>opencv3.31+vs2015配置成功</h2><blockquote>
+<p><img src="http://img.blog.csdn.net/20180226010411877?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dpdGNoX2xvdmVfY2FzZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>话说，这是我半年前就想做的东西，经历过太多次失败，可能是自己脑子愚钝，哎，感慨涕零。<br>科普一下：vs2015就不用介绍了吧。<br>opencv是何物呢？<br><img src="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/w=268;g=0/sign=8adb9aa2b219ebc4c078719fba1da8c1/37d12f2eb9389b50bc2845958435e5dde6116e26.jpg" alt="这里写图片描述"><br>      <strong><em>OpenCV</em></strong>  是一个基于BSD许可（开源）发行的跨平台计算机视觉库，可以运行在Linux、Windows、Android和Mac OS操作系统上。它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。<br>OpenCV用C++语言编写，它的主要接口也是C++语言，但是依然保留了大量的C语言接口。该库也有大量的Python、Java and MATLAB/OCTAVE（版本2.5）的接口。这些语言的API接口函数可以通过在线文档获得。如今也提供对于C#、Ch、Ruby的支持。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>工作领域：<br>1、人机互动<br>2、物体识别<br>3、图像分割<br>4、人脸识别<br>5、动作识别<br>6、运动跟踪<br>7、机器人<br>8、运动分析<br>9、机器视觉<br>10、结构分析<br>11、汽车安全驾驶</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>好的，记录一下自己遇到的坑。风萧萧兮易水寒，想想都后怕。。。。。。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="软件版本问题"><a href="#软件版本问题" class="headerlink" title="软件版本问题"></a>软件版本问题</h1><blockquote>
+<p>大概在半年之前我看的这位大神的教程进行配置opencv和cv2010，<br><a href="http://blog.csdn.net/poem_qianmo/article/details/19809337" target="_blank" rel="external">http://blog.csdn.net/poem_qianmo/article/details/19809337</a><br>哎，无奈，总结如下，opencv到今天2018年2月已经更新到3.31版本，更新了什么功能不再考究，暂且讨论最基本的安装问题。<br>opencv不再支持x86格式，在其安装包里也找不到相关文件，而且其对应文件为vc14，这句话就是说，适用于vs2015.以我的概念就是说–现在的opencv最好安装在vs2015上面（或者更高版本），其他版本我没有测试。<br>之前我在笔记本上装了vs2010，哎磕磕绊绊到放弃也没能装上这神奇的软件。最后就搁置了。<br>现在老师又给了我一台笔记本，又鼓起勇气再尝试一把，熬了几个夜晚（网速太慢），下载vs2015用了一夜，安装2015用了一下午，调试用了好几个小时。<br>最尴尬的问题就是我先测试的还是vs2010，现在想来，真是笨，结果还是失败了，然后卸载2010用了好久，而且卸载不完全，导致2015安装的时候出现bug两者发生了冲突。</p>
+</blockquote>
+<hr>
+<h2 id="环境配置问题"><a href="#环境配置问题" class="headerlink" title="环境配置问题"></a>环境配置问题</h2><blockquote>
+<p>这套环境我配置了不少于5便，现在背都能背下来。。。<br>目前我成功的配置教程如下–<a href="https://www.cnblogs.com/linshuhe/p/5764394.html" target="_blank" rel="external">https://www.cnblogs.com/linshuhe/p/5764394.html</a>配置环境一定要认真！<br>包括：opencv环境变量配置，vs2010支持文件的配置，w32窗体运行程序的属性管理器的配置，链接器的配置等等。<br>此教程是正确的，起码我成功了。</p>
+</blockquote>
+<hr>
+<h2 id="调试出错问题"><a href="#调试出错问题" class="headerlink" title="调试出错问题"></a>调试出错问题</h2><blockquote>
+<p>我调试的时候并没有出现太多错误，唯一就是，无法打开.exe文件，（这个是怎么解决的我也迷糊了，忘记了），另一个就是报错说</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0x00007FFEE17E3FB8 处(位于 opencv.exe 中)有未经处理的异常: Microsoft C++ 异常: cv::Exception，位于内存位置 0x000000856230F880 处。</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个问题是很好解决的，那就是图片位置放错了，有的教程说放在工程目录下，其实不然！<br>需要放在和.cpp同一级的文件夹里才行。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><em>真正成功运行opencv的截图！！！</em><br><img src="http://img.blog.csdn.net/20180226014025618?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dpdGNoX2xvdmVfY2FzZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</blockquote>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">今天睡早一点，好几天都是4点才睡，快不行了，身体是革命的本钱！</div><div class="line">可是我好慌，懂得东西太少，基础不牢，不专一，哎。</div><div class="line">------2018年2月26日.随笔。</div><div class="line">下一篇博客更新python学习进度！</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">opencv</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/26/opencv配置成功/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/05/08/智能家居控制模拟套件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          智能家居控制模拟套件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/19/微信小程序的第一次邂逅/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">微信小程序的第一次邂逅</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
           </div>
         </div>
       </div>
@@ -313,11 +558,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -349,11 +594,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -369,11 +614,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">

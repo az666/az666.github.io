@@ -174,7 +174,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-利用机智云APP学习JAVA安卓" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用机智云APP学习JAVA安卓
+    </h1>
+  
+
+        
+        <a href="/2018/07/12/利用机智云APP学习JAVA安卓/" class="archive-article-date">
+  	<time datetime="2018-07-12T03:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="学习android"><a href="#学习android" class="headerlink" title="学习android"></a>学习android</h2><blockquote>
+<p>昨天遇到了一个很好的视频教程，今天果断把电脑拿回来，在宿舍开始我的android学习之路，学东西不系统，坚持不了只能一点一点摸索，今天进展非常顺利，爽的很，今天成功按照教程将机智云官方SDk添加到androidstudio中。<br>一、成功完成了SDK的初始化<br>二、完成了启动图的添加<br>三、完成了bug的修复，一步一步心惊肉跳，紧张无比。。。<br>四、完成了android 6.0以后的权限动态验证。<br>教程链接–发烧友学院–哎呀，太好了这个网站，很丰富的教程。<br><a href="http://t.elecfans.com/3160.html" target="_blank" rel="external">嵌入式开发安卓篇</a></p>
+</blockquote>
+<hr>
+<p><img src="https://i.loli.net/2018/07/12/5b476ecd6b3cd.png" alt="视频教程"></p>
+<hr>
+<p><img src="https://i.loli.net/2018/07/12/5b476e6219918.png" alt="编程界面"></p>
+<hr>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">package com.example.administrator.jizhiyun;</div><div class="line"></div><div class="line">import android.content.Context;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.os.Bundle;</div><div class="line">import android.util.Log;</div><div class="line">import com.gizwits.gizwifisdk.api.GizWifiDevice;</div><div class="line">import com.gizwits.gizwifisdk.api.GizWifiSDK;</div><div class="line">import com.gizwits.gizwifisdk.enumration.GizEventType;</div><div class="line">import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;</div><div class="line">import com.gizwits.gizwifisdk.listener.GizWifiDeviceListener;</div><div class="line">import com.gizwits.gizwifisdk.listener.GizWifiSDKListener;</div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.List;</div><div class="line">import java.util.concurrent.ConcurrentHashMap;</div><div class="line">import static android.os.Build.VERSION.SDK;</div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        initSDK();</div><div class="line">    &#125;</div><div class="line">    protected  void initSDK()&#123;</div><div class="line">// 设置 SDK 监听</div><div class="line">        GizWifiSDK.sharedInstance().setListener(mListener);</div><div class="line">// 设置 AppInfo</div><div class="line">        ConcurrentHashMap&lt;String,String &gt; appInfo= new ConcurrentHashMap&lt;&gt;();</div><div class="line">        appInfo.put(&quot;appId&quot;, &quot;45689bece90b485db90470b97f320d26&quot;);</div><div class="line">        appInfo.put(&quot;appSecret&quot;, &quot;d08095085c314eee87cb078bcd160035&quot;);</div><div class="line">// 设置要过滤的设备 productKey 列表。不过滤则直接传 null</div><div class="line">        List&lt;ConcurrentHashMap&lt;String,String&gt;&gt; productInfo = new ArrayList&lt;&gt;();</div><div class="line">        ConcurrentHashMap&lt;String,String&gt; product = new ConcurrentHashMap&lt;&gt;();</div><div class="line">        product.put(&quot;productKey&quot;, &quot;30c07f8fac834377aa096067fab24220&quot;);</div><div class="line">        product.put(&quot;productSecret&quot;, &quot;3548e22cd9124fcba728d3db9b767090&quot;);</div><div class="line">        productInfo.add(product);</div><div class="line">// 指定要切换的域名信息。使用机智云生产环境则传 null</div><div class="line">        ConcurrentHashMap&lt;String, Object&gt; cloudServiceInfo = new ConcurrentHashMap&lt;&gt;();</div><div class="line">        cloudServiceInfo.put(&quot;openAPIInfo&quot;, &quot;your_api_domain&quot;);</div><div class="line">// 调用 SDK 的启动接口</div><div class="line">       // GizWifiSDK.sharedInstance().startWithAppInfo(context:this, appInfo, productInfo, null, false);</div><div class="line">        GizWifiSDK.sharedInstance().startWithAppInfo(this, appInfo, productInfo, null, false);</div><div class="line">    &#125;</div><div class="line">    // 实现系统事件通知回调</div><div class="line">      private   GizWifiSDKListener mListener = new GizWifiSDKListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void didNotifyEvent(GizEventType eventType, Object eventSource, GizWifiErrorCode eventID, String eventMessage) &#123;</div><div class="line">            super.didNotifyEvent(eventType, eventSource, eventID, eventMessage);</div><div class="line">            Log.e( &quot;wenzheng&quot;, &quot;didNotifyEvent&quot; + eventType.toString());</div><div class="line">            //初始化成功</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line">package com.example.administrator.jizhiyun.ui;</div><div class="line"></div><div class="line">import android.Manifest;</div><div class="line">import android.content.Intent;</div><div class="line">import android.content.pm.PackageManager;</div><div class="line">import android.os.Build;</div><div class="line">import android.os.Bundle;</div><div class="line">import android.os.Handler;</div><div class="line">import android.os.Message;</div><div class="line">import android.os.PersistableBundle;</div><div class="line">import android.support.annotation.NonNull;</div><div class="line">import android.support.annotation.Nullable;</div><div class="line">import android.support.v4.app.ActivityCompat;</div><div class="line">import android.support.v4.content.ContextCompat;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.widget.Switch;</div><div class="line">import android.widget.Toast;</div><div class="line"></div><div class="line">import com.example.administrator.jizhiyun.MainActivity;</div><div class="line">import com.example.administrator.jizhiyun.R;</div><div class="line"></div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">public class SplashActivity extends AppCompatActivity&#123;</div><div class="line">    private Handler mHander = new Handler()&#123;</div><div class="line">        @Override</div><div class="line">        public void handleMessage(Message msg) &#123;</div><div class="line">            super.handleMessage(msg);</div><div class="line">            if (msg.what==107)&#123;</div><div class="line">                startActivity(new Intent(SplashActivity.this, MainActivity.class));</div><div class="line">                finish();//摧毁当前页面</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    @Override</div><div class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_splash);</div><div class="line">        checkAndroidPrimisson();</div><div class="line">    &#125;</div><div class="line">    private  void checkAndroidPrimisson()&#123;</div><div class="line">        //安卓6.0以上要动态授权</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= 23) &#123;</div><div class="line">            requestRunPerMisson(new String[]&#123;</div><div class="line">                    Manifest.permission.READ_EXTERNAL_STORAGE ,</div><div class="line">                    Manifest.permission.WRITE_EXTERNAL_STORAGE,</div><div class="line">                    Manifest.permission.ACCESS_FINE_LOCATION,</div><div class="line">                    Manifest.permission.ACCESS_WIFI_STATE,</div><div class="line">                    Manifest.permission.READ_PHONE_STATE</div><div class="line">            &#125;);</div><div class="line">        &#125;else &#123;</div><div class="line">            mHander.sendEmptyMessageDelayed(107,2500);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">   private void requestRunPerMisson(String[] strings)&#123;</div><div class="line">        int status = 0;</div><div class="line">        for (String permisson : strings)&#123;</div><div class="line">            //判断是否已经授权</div><div class="line">            if (ContextCompat.checkSelfPermission(this,permisson) != PackageManager.PERMISSION_GRANTED)&#123;</div><div class="line">                ActivityCompat.requestPermissions(this,strings,108);</div><div class="line">            &#125;else &#123;</div><div class="line">                status++;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">            if (status==5)&#123;</div><div class="line">                mHander.sendEmptyMessageDelayed(107,2500);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) &#123;</div><div class="line">        super.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line">        switch(requestCode)&#123;</div><div class="line">            case 108:</div><div class="line">                if (grantResults.length &gt;0)&#123;</div><div class="line">                    List&lt;String&gt; denioedPermisson = new ArrayList&lt;&gt;();</div><div class="line">                    for (int i=0; i&lt; grantResults.length;i++)&#123;</div><div class="line">                        int grantPermisson = grantResults[i];</div><div class="line">                        String permisson = permissions[i];</div><div class="line">                        if (grantPermisson != PackageManager.PERMISSION_GRANTED)&#123;</div><div class="line">                            denioedPermisson.add(permisson);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    if (denioedPermisson.isEmpty())&#123;</div><div class="line">                        //权限全部通过</div><div class="line">                        mHander.sendEmptyMessage(107);</div><div class="line">                    &#125;</div><div class="line">                    else&#123;</div><div class="line">                        Toast.makeText(this,&quot;您拒绝了部分权限&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">                        mHander.sendEmptyMessageDelayed(107,2500);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/07/12/5b476e9275091.png" alt=""></p>
+<hr>
+<blockquote>
+<p>今天学的很舒服，很开心。喜欢这种流畅的感觉，最讨厌编程的时候发生各种问题了，但是有问题能完美解决，是最舒服的。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/12/利用机智云APP学习JAVA安卓/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/07/17/机智云SOC嵌入式开发成功/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          机智云SOC嵌入式开发成功
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">lua对接bmob数据库</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
           </div>
         </div>
       </div>
@@ -301,11 +526,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -337,11 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -357,11 +582,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">

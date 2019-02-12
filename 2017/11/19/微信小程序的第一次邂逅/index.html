@@ -197,7 +197,247 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-微信小程序的第一次邂逅" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序的第一次邂逅
+    </h1>
+  
+
+        
+        <a href="/2017/11/19/微信小程序的第一次邂逅/" class="archive-article-date">
+  	<time datetime="2017-11-19T14:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="微信小程序的第一次邂逅与资料总结"><a href="#微信小程序的第一次邂逅与资料总结" class="headerlink" title="微信小程序的第一次邂逅与资料总结"></a>微信小程序的第一次邂逅与资料总结</h2><blockquote>
+<p><img src="https://i.loli.net/2018/05/12/5af66f67ce5a3.png" alt="微信小程序的布局测试"></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>（这应该是2017年的博客，只是重新备份一下。）前一段儿说要学习H5和微信小程序，说干就干，学了三天，每天两小时，照着课程一步一步来，突然找到了当年学习易语言的激情，和学习iapp时的乐趣，最喜欢学某个新的知识能够流畅的走下去的感觉（起码不要让我遇到太难的瓶颈），这样我也好坚持下去，毕竟我是一个很容易半途而废的人。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>微信小程序官方文档—<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/" target="_blank" rel="external">官方教程</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="知识总结"><a href="#知识总结" class="headerlink" title="知识总结"></a>知识总结</h1><p>备份于有道云笔记。<a href="http://note.youdao.com/noteshare?id=5b394d454ca0edd3fabfe82e272bdc2d" target="_blank" rel="external">我的云笔记</a></p>
+<hr>
+<h6 id="js"><a href="#js" class="headerlink" title=".js"></a>.js</h6><p>可暂且理解为一个获取数据和提供数据的地方</p>
+<h6 id="wxml"><a href="#wxml" class="headerlink" title=".wxml"></a>.wxml</h6><p>为显示数据和内容以及布局的地方</p>
+<h6 id="wxss"><a href="#wxss" class="headerlink" title=".wxss"></a>.wxss</h6><p>为对wxml进行布局设计的地方，包括排版，字体，颜色，背景等等。。。</p>
+<h6 id="item"><a href="#item" class="headerlink" title="item"></a>item</h6><p>比如在list中，它代表list的每一项，大概是指，外部想的字文件。而且这是支持修改的<br>比如利用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;view wx:for=&quot;&#123;&#123;list&#125;&#125;&quot;&gt;</div><div class="line">   &#123;&#123;item.name&#125;&#125;--&#123;&#123;item.address&#125;&#125;</div><div class="line">&lt;/view&gt;</div><div class="line">可以修改为</div><div class="line"></div><div class="line">&lt;view wx:for=&quot;&#123;&#123;list&#125;&#125;&quot; wx:for-item=&quot;a&quot;&gt;</div><div class="line">   &#123;&#123;a.name&#125;&#125;--&#123;&#123;a.address&#125;&#125;</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h1 id="判断语法"><a href="#判断语法" class="headerlink" title="判断语法"></a>判断语法</h1><p>js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var app = getApp();这是是在调用事件必须的设置</div><div class="line">Page(&#123;</div><div class="line">		data:&#123;</div><div class="line">			msg:&quot;nihsao&quot;,</div><div class="line">			time:&quot;20180215&quot;,</div><div class="line">			name:app.globalData.name，</div><div class="line">			此处为调用调用小程序的系统事件</div><div class="line">			condition:100这里和下面的wxml文件对应，进行判断处理</div><div class="line"></div><div class="line">		&#125;,</div></pre></td></tr></table></figure></p>
+<p> 其中app.ls文件为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">globalData: &#123;</div><div class="line">  userInfo: null,</div><div class="line">  name:&quot;enen&quot;这里是上面name:app.globalData.name，调用的东西</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>wxml文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;view class=&quot;msg&quot;&gt;</div><div class="line">     &#123;&#123;msg&#125;&#125;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;view&gt;</div><div class="line">&#123;&#123;time&#125;&#125;--&#123;&#123;name&#125;&#125;</div><div class="line">&lt;/view&gt;</div><div class="line">判断语法</div><div class="line">&lt;view wx:if=&quot;&#123;&#123;condition&gt;90&#125;&#125;&quot;&gt; 90 &lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="循环语法"><a href="#循环语法" class="headerlink" title="循环语法"></a>循环语法</h1><p>js文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Page(&#123;</div><div class="line">	data:&#123;</div><div class="line">		list[</div><div class="line">			&#123;name:&quot;tc01&quot;,address:&quot;eneneenen&quot;&#125;,</div><div class="line"></div><div class="line">			&#123;name:&quot;tc02&quot;,address:&quot;zhengzhou&quot;&#125;,</div><div class="line">			里面包含列表的内容，json文件</div><div class="line"></div><div class="line">		],此处因为是list所以用[]数组形式</div></pre></td></tr></table></figure>
+<p>wxml文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;view wx:for=&quot;&#123;&#123;list&#125;&#125;&quot;&gt;</div><div class="line">for 代表操作和if类似，</div><div class="line">   &#123;&#123;item.name&#125;&#125;--&#123;&#123;item.address&#125;&#125;</div><div class="line">   对应上面的list中的json文件</div><div class="line"></div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="8天学会微信小程序第4课汇总"><a href="#8天学会微信小程序第4课汇总" class="headerlink" title="8天学会微信小程序第4课汇总"></a>8天学会微信小程序第4课汇总</h2><blockquote>
+<p><img src="https://i.loli.net/2018/05/12/5af66f8486a35.png" alt="这里写图片描述"><br>听了这一节的课，感觉有了茅塞顿开的感觉，因为讲到了很多实质性的东西。<br>代码就不做备份了，以后直接传到Github里。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>相对来说还是有进展的，同时也对H5有了一些概念（毕竟以前只是不求甚解罢了）。<br>除夕夜快乐。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/11/19/微信小程序的第一次邂逅/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/02/26/opencv配置成功/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          opencv配置成功
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
           </div>
         </div>
       </div>
@@ -324,11 +564,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -360,11 +600,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -380,11 +620,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">

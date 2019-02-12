@@ -198,7 +198,238 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-树莓派人脸识别升级版" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树莓派+arduino+串口屏+百度api人脸识别
+    </h1>
+  
+
+        
+        <a href="/2018/06/07/树莓派人脸识别升级版/" class="archive-article-date">
+  	<time datetime="2018-06-07T12:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="树莓派-arduino-串口屏-百度api人脸识别"><a href="#树莓派-arduino-串口屏-百度api人脸识别" class="headerlink" title="树莓派+arduino+串口屏+百度api人脸识别"></a>树莓派+arduino+串口屏+百度api人脸识别</h2><p>升级版本</p>
+<blockquote>
+<p><img src="https://i.loli.net/2018/06/07/5b193133bb875.jpg" alt="人脸识别升级版"></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/06/07/5b1930ef5cb3f.jpg" alt="人脸识别升级版"></p>
+</blockquote>
+<hr>
+<p>这次对上一次的代码进行了优化，并且完成了树莓派与arduino的串口通信（包括USB串口通信）和GPIO的串口通信。最近比较忙再一个原因就是…懒，本来还录制了调试的视频，总之效果还是可以的。<br><a id="more"></a></p>
+<blockquote>
+<p>其实树莓派的语音识别也已经做好了，知识没时间总结，准备做一个语音对讲，语音控制硬件。。。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><img src="https://i.loli.net/2018/06/07/5b193304d9ddd.png" alt="百度云后台"><br>不行，今天不适合写博客，内心极度不稳定，可能最近太忙了，就这样吧，把代码拷贝进来，等哪天好好总结总结！</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>代码都存储在我的GitHub里<br>我的树莓派也只能通过它和外机通讯…我的远程连接一直失败，暂且只能用显示屏来调试。<br><a href="https://github.com/az666/pi_zerow_projects" target="_blank" rel="external">GitHub地址</a></p>
+</blockquote>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div></pre></td><td class="code"><pre><div class="line">from picamera import PiCamera</div><div class="line">import time</div><div class="line">import RPi.GPIO</div><div class="line">import requests</div><div class="line">import base64</div><div class="line">import sys</div><div class="line">import serial</div><div class="line">import os</div><div class="line"></div><div class="line">def getaccess_token():</div><div class="line">## 获取access_token</div><div class="line"></div><div class="line">    host=&apos;https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id=4fVKa7AqDYNApi6Lz8Z2ZeMv&amp;client_secret=gRVy9GcRRGCMiU2GgT20IbbaMu7QfA8P&apos;</div><div class="line"></div><div class="line">    header_1 = &#123;&apos;Content-Type&apos;:&apos;application/json; charset=UTF-8&apos;&#125;</div><div class="line"></div><div class="line">    request=requests.post(host,headers =header_1)</div><div class="line"></div><div class="line">    access_token=request.json()[&apos;access_token&apos;]</div><div class="line">    print(access_token)</div><div class="line">    return access_token</div><div class="line"></div><div class="line"></div><div class="line">def take_picture():</div><div class="line"> #拍摄当前图片   </div><div class="line">    camera.start_preview()</div><div class="line"></div><div class="line">    time.sleep(0.5)</div><div class="line"></div><div class="line">    camera.capture(&apos;image.jpg&apos;)</div><div class="line"></div><div class="line">    camera.stop_preview()</div><div class="line">def open_pic():</div><div class="line">#打开工程拍摄的图片并转换成字符串</div><div class="line">    f = open(&apos;image.jpg&apos;, &apos;rb&apos;)</div><div class="line"></div><div class="line">    img = base64.b64encode(f.read())</div><div class="line"></div><div class="line">    return img</div><div class="line"></div><div class="line">def search (img,access_token):</div><div class="line">##    人脸搜索白度api_v3以后就叫做“人脸搜索”了</div><div class="line">    request_url = &quot;https://aip.baidubce.com/rest/2.0/face/v3/search&quot;</div><div class="line">    params = &#123;&quot;image&quot;:img,&quot;image_type&quot;:&quot;BASE64&quot;,&quot;group_id_list&quot;:&quot;wenzheng&quot;,&quot;quality_control&quot;:&quot;LOW&quot;,&quot;liveness_control&quot;:&quot;NORMAL&quot;&#125;</div><div class="line">    request_url = request_url + &quot;?access_token=&quot; + access_token</div><div class="line">    ##发送数据利用requests.post（）的方法－－比较简单</div><div class="line">    response = requests.post(request_url, data=params)</div><div class="line">    ##输出json数据</div><div class="line">    output = response.json()</div><div class="line">    return output</div><div class="line">def chuli (output):</div><div class="line">    print(output)</div><div class="line">    print(type(output)) ##输出数据类型为－字典</div><div class="line">    if output[&apos;error_msg&apos;] == &apos;SUCCESS&apos;:</div><div class="line">        ##判断是否成功</div><div class="line">        ##找到字典里的result－以及内层字典里的user_list</div><div class="line">        user_list= output[&apos;result&apos;][&apos;user_list&apos;]</div><div class="line">        print(user_list)</div><div class="line">        ##输出数据类型，发现其为列表</div><div class="line">        print(type(user_list))</div><div class="line">        ##利用列表的检索方式找到列表里的人脸检测分数－score</div><div class="line">        score = user_list[0][&apos;score&apos;]</div><div class="line">        print(score)</div><div class="line">        ##串口发送</div><div class="line">        ser.write(str(score).encode()) </div><div class="line">        #panduan(score)</div><div class="line">        user = user_list[0][&apos;user_info&apos;]</div><div class="line">        time.sleep(1)</div><div class="line">        print(user)</div><div class="line">        ser.write(user.encode())</div><div class="line">    else:</div><div class="line">        print(output[&apos;error_msg&apos;])</div><div class="line">        print(type(output[&apos;error_msg&apos;]))</div><div class="line">        ser.write(output[&apos;error_msg&apos;].encode())</div><div class="line">&quot;&quot;&quot;</div><div class="line">反馈的数据：利用他来解析</div><div class="line">可知此次的人脸对比分数为：93分</div><div class="line">&#123;&apos;error_code&apos;: 0, &apos;error_msg&apos;: &apos;SUCCESS&apos;, &apos;timestamp&apos;: 1528009295, &apos;log_id&apos;: 3173075542, &apos;cached&apos;: 0,</div><div class="line">&apos;result&apos;: &#123;&apos;face_token&apos;: &apos;7fd111f61fb07e034577b277c7caca3f&apos;,</div><div class="line">&apos;user_list&apos;: [&#123;&apos;user_id&apos;: &apos;wenzheng&apos;, &apos;user_info&apos;: &apos;pengwenzheng&apos;, &apos;score&apos;: 93.49373626709, &apos;group_id&apos;: &apos;wenzheng&apos;&#125;]&#125;&#125;</div><div class="line">&quot;&quot;&quot;</div><div class="line">def panduan(score): </div><div class="line">    if score &gt; 80:</div><div class="line">        #print(type(score))</div><div class="line">        ser.write(str(score).encode())          </div><div class="line">    else :</div><div class="line">        ser.write(b&apos;2&apos;)</div><div class="line">def led():</div><div class="line">## led</div><div class="line">    RPi.GPIO.output(18, True)</div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    ser = serial.Serial(&apos;/dev/ttyS0&apos;,115200,timeout=1)</div><div class="line">    ser.close()</div><div class="line">    ser.open()</div><div class="line">    print(&quot;串口已开启&quot;)</div><div class="line">    camera = PiCamera()</div><div class="line">    count=0</div><div class="line">    access_token=getaccess_token()</div><div class="line">    while True :</div><div class="line">        take_picture()</div><div class="line">        img=open_pic()</div><div class="line">        output = search(img,access_token)</div><div class="line">        chuli(output)</div><div class="line">        count=count+1</div><div class="line">        print(count)</div><div class="line">        #加入自动重启命令，防止程序运行时间过长死机</div><div class="line">        if count == 2000 :</div><div class="line">            os.system(&apos;sudo reboot&apos;)</div><div class="line">            count = 0</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/07/树莓派人脸识别升级版/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/06/07/lua语言开发的安卓小软件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          校网登录助手8.0
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/01/2018年5月总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2018年5月总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
           </div>
         </div>
       </div>
@@ -325,11 +556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -361,11 +592,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -381,11 +612,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">

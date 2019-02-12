@@ -186,7 +186,230 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      阿里云自建服务器esp8266和mqtt客户端成功对接
+    </h1>
+  
+
+        
+        <a href="/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/" class="archive-article-date">
+  	<time datetime="2018-10-16T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="阿里云自建服务器esp8266和mqtt客户端成功对接"><a href="#阿里云自建服务器esp8266和mqtt客户端成功对接" class="headerlink" title="阿里云自建服务器esp8266和mqtt客户端成功对接"></a>阿里云自建服务器esp8266和mqtt客户端成功对接</h2><blockquote>
+<p>阿里云服务器部分参考esp8266嵌入式大神资料：<a href="https://blog.csdn.net/xh870189248/article/details/78867173" target="_blank" rel="external">大神博客</a><br>最近组建了一个小群，感兴趣的可以加入一起玩：476840321</p>
+<p><img src="https://i.loli.net/2018/10/16/5bc57c508fd43.png" alt="效果展示"></p>
+<p>单片机也是很简单的，用的esp8266最小系统。</p>
+<p><img src="https://i.loli.net/2018/10/16/5bc57ce6c78c3.png" alt=""></p>
+<p>过程中间遇到了很多问题，还好都一步步解决了，<br>首先是linux的一些常用命令，因为服务器买的是阿里云的空间，跑的是linux的系统，按照网上的资料和教程，总算搞定了。<br>linux常用命令集：<a href="https://www.cnblogs.com/pengwenzheng/p/9795909.html" target="_blank" rel="external">https://www.cnblogs.com/pengwenzheng/p/9795909.html</a><br>其次是硬件端的编程，esp8266的固件的编写。以及mqtt通讯SDK的修改（参考安信可和技新的资料）</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/10/16/5bc57fda5987f.png" alt=""></p>
+<blockquote>
+<p>代码备份如下：mqtt_config.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">/*IMPORTANT: the following configuration maybe need modified*/</div><div class="line">/***********************************************************************************************************************************************************************************************************************************************************/</div><div class="line">#define CFG_HOLDER    		0x66666670	// 持有人标识(只有更新此数值，系统参数才会更新)		/* Change this value to load default configurations */</div><div class="line"></div><div class="line">/*DEFAULT CONFIGURATIONS*/</div><div class="line">// 注：【MQTT协议规定：连接服务端的每个客户端都必须有唯一的客户端标识符（ClientId）】。如果两相同ID的客户端不断重连，就会进入互踢死循环</div><div class="line">//--------------------------------------------------------------------------------------------------------------------------------------</div><div class="line">#define MQTT_HOST			&quot;购买的ip&quot; 		// MQTT服务端域名/IP地址	// the IP address or domain name of your MQTT server or MQTT broker ,such as &quot;mqtt.yourdomain.com&quot;</div><div class="line">#define MQTT_PORT       	1883    										// 网络连接端口号			// the listening port of your MQTT server or MQTT broker</div><div class="line">#define MQTT_CLIENT_ID   	&quot;pengwenzheng&quot;	// 官方例程中是&quot;Device_ID&quot;		// 客户端标识符				// the ID of yourself, any string is OK,client would use this ID register itself to MQTT server</div><div class="line">#define MQTT_USER        	&quot;admin&quot; 			// MQTT用户名				// your MQTT login name, if MQTT server allow anonymous login,any string is OK, otherwise, please input valid login name which you had registered</div><div class="line">#define MQTT_PASS        	&quot;public&quot; 	// MQTT密码					// you MQTT login password, same as above</div><div class="line"></div><div class="line">#define STA_SSID 			&quot;maker_space&quot;    	// WIFI名称					// your AP/router SSID to config your device networking</div><div class="line">#define STA_PASS 			&quot;chuangke666&quot; 	// WIFI密码					// your AP/router password</div><div class="line">#define STA_TYPE			AUTH_WPA2_PSK</div><div class="line"></div><div class="line">#define DEFAULT_SECURITY	NO_TLS      		// 加密传输类型【默认不加密】	// very important: you must config DEFAULT_SECURITY for SSL/TLS</div><div class="line"></div><div class="line">#define CA_CERT_FLASH_ADDRESS 		0x77   		// 【CA证书】烧录地址			// CA certificate address in flash to read, 0x77 means address 0x77000</div><div class="line">#define CLIENT_CERT_FLASH_ADDRESS 	0x78 		// 【设备证书】烧录地址			// client certificate and private key address in flash to read, 0x78 means address 0x78000</div><div class="line">/*********************************************************************************************************************************************************************************************************************************************************************************/</div><div class="line"></div><div class="line"></div><div class="line">/*Please Keep the following configuration if you have no very deep understanding of ESP SSL/TLS*/</div><div class="line">#define CFG_LOCATION    			0x79		// 系统参数的起始扇区	/* Please don&apos;t change or if you know what you doing */</div><div class="line">#define MQTT_BUF_SIZE       		1024		// MQTT缓存大小</div><div class="line">#define MQTT_KEEPALIVE        		120     	// 保持连接时长			/*second*/</div><div class="line">#define MQTT_RECONNECT_TIMEOUT    	5    		// 重连超时时长			/*second*/</div><div class="line"></div><div class="line">#define MQTT_SSL_ENABLE				// SSL使能	//* Please don&apos;t change or if you know what you doing */</div><div class="line"></div><div class="line">#define QUEUE_BUFFER_SIZE      		2048		// 消息队列的缓存大小</div><div class="line"></div><div class="line">//#define PROTOCOL_NAMEv31    		// 使用MQTT协议【v31】版本		/*MQTT version 3.1 compatible with Mosquitto v0.15*/</div><div class="line">#define PROTOCOL_NAMEv311      		// 使用MQTT协议【v311】版本		/*MQTT version 3.11 compatible with https://eclipse.org/paho/clients/testing/*/</div><div class="line"></div><div class="line">#endif // __MQTT_CONFIG_H__</div></pre></td></tr></table></figure>
+<blockquote>
+<p>接下来的思路：准备写安卓端的控制程序，和硬件和网络进行对接，<br>方案1： 利用java编写（这个还是比较难的）<br>方案2： 利用apicloud编写，JavaScript编写（需要购买资料）发工资了再买。<br>方案3： 利用E4A易安卓进行编写，这个应该很简单，准备试一下。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mqtt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/16/参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/10/17/ESP8266嵌入式开发资料汇总/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ESP8266学习资料
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/11/Siri 捷径邂逅esp8266实现的智能家居控制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Siri对接esp8266语音控制自制智能家居</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
           </div>
         </div>
       </div>
@@ -313,11 +536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -349,11 +572,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -369,11 +592,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">
