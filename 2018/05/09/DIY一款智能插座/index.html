@@ -195,276 +195,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-DIY一款智能插座" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      DIY一款智能插座
-    </h1>
-  
-
-        
-        <a href="/2018/05/09/DIY一款智能插座/" class="archive-article-date">
-  	<time datetime="2018-05-09T13:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>基于esp8266和机智云的远程控制设备的设计</p>
-<hr>
-<blockquote>
-<p>比如这个插座<br><img src="https://i.loli.net/2018/05/08/5af15bd109209.jpg" alt="智能插座"></p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<blockquote>
-<p>比如手机端的app<br><img src="https://i.loli.net/2018/05/08/5af15bf58c8ce.jpg" alt="这里写图片描述"><br>会安卓编程的也可以自己修改一下布局文件，修改一下背景和logo什么的，这样就可以做成自己的软件喽。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>再可以看下这段视频</p>
-<iframe frameborder="0" width="640" height="498" src="https://v.qq.com/iframe/player.html?vid=q05162syqld&tiny=0&auto=0" allowfullscreen></iframe>
-
-</blockquote>
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>前言：（此教程针对新手，大神略过）<br>我这个人比较懒，挣扎了很久才决定写这个教程，主要是源于闲鱼的很多朋友问教程毕竟我在闲鱼从来不卖东西，偶尔发个玩意分享分享教程，哎呀，平时时间不是太多，最近的学习状态也不是太好，还有比赛，说实话（我计算机二级还没过），最近还要考试，哎呦难得很，理论和现实还是有很大差距的，写了那么久的程序，计算机二级也算是难倒我了，主要是没有太多时间去看那些知识点，风萧萧兮易水寒，今天果断下定决心坐下来，给朋友写一个教程。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我还想说的一些话：有些东西的制作，实践比理论要重要得多，当你拿到esp8266的时候商家或者论坛肯定会给给你一些资料，让你一步一步调AT指令，建服务器，，固然有用，但是你不能从中获得优越感，和成就感，因为你根本没有做出一个能实际远程控制的一个实物，只能慢慢的从入门到放弃，让它吃灰。</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>关于标题：<br>为什么说是–<em>远程控制智能插座不用入门直接上手</em> –呢？</p>
-<ol>
-<li>有对应的平台服务器可以对接这次试用机智云–</li>
-<li>服务器自动生成C语言代码</li>
-<li>服务器自动生成安卓SDK</li>
-</ol>
-</blockquote>
-<hr>
-<p><img src="https://i.loli.net/2018/05/08/5af15c1ab5f2b.png" alt="这里写图片描述"></p>
-<blockquote>
-<p>机智云平台–<a href="http://www.gizwits.com/" target="_blank" rel="external">http://www.gizwits.com/</a><br>为什么不选择onenet？为什么不要选择link？和其他的IOT网站？<br>因为其他的我都做失败了。。。。。哈哈<br>备注：我们使用的是mcu方案，为什么不采用soc的嵌入式开发呢，不太适合新手，再说了成本也差不了多少钱，仅仅一个arduino mini板的钱，</p>
-</blockquote>
-<hr>
-<h2 id="材料准备"><a href="#材料准备" class="headerlink" title="材料准备"></a>材料准备</h2><blockquote>
-<p>开始吧，教程开始：<br>首先时软件准备–机智云账号， arduinoIDE<br><img src="https://i.loli.net/2018/05/08/5af15c3255c55.png" alt="这里写图片描述"><br><img src="https://i.loli.net/2018/05/08/5af15c42aa3c7.png" alt="这里写图片描述"><br>其次是硬件准备–arduino板，经测试什么样的板子都可以，无论是arduinoR3还是arduino nano还是arduinomini都可以的，<br><img src="https://i.loli.net/2018/05/08/5af15c614963b.jpg" alt="这里写图片描述"><br>还有esp8266 ESP01<br>为什么选择ESP01呢？——-便宜呀！！<br>其次针对mcu方案，没必要买esp12F那样的板子，接线不方便，也没必要。<br><img src="https://i.loli.net/2018/05/08/5af15c7b86585.jpg" alt="这里写图片描述"></p>
-</blockquote>
-<hr>
-<h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><blockquote>
-<ol>
-<li>开始注册机智云账号并生成应用并配置数据点，这方面不再详述，如果有需求，下次我再下一个文章，一步一步截图发出来。官方教程如下–<a href="http://docs.gizwits.com/zh-cn/quickstart/UseMCU.html" target="_blank" rel="external">http://docs.gizwits.com/zh-cn/quickstart/UseMCU.html</a><br>比如我的插座（带定时功能）<br><img src="https://i.loli.net/2018/05/08/5af15ca15cf0f.png" alt="这里写图片描述"></li>
-<li>当你按照上面的教程做好之后，不夸张的说，你已经完成了</li>
-</ol>
-</blockquote>
-<h2 id="三分之一"><a href="#三分之一" class="headerlink" title="三分之一"></a>三分之一</h2><p>了。哈哈，是不是很简单，<br>3.烧写固件–这是一个重点！<br>论坛的资料和教程我试了很多最终一个稳定的方案就是如图的烧写方式<br><img src="https://i.loli.net/2018/05/08/5af15cb6a8a79.png" alt="这里写图片描述"><br>详细教程可以看我的博客园文档<br><a href="http://www.cnblogs.com/pengwenzheng/p/8053167.html" target="_blank" rel="external">http://www.cnblogs.com/pengwenzheng/p/8053167.html</a><br>烧写的固件为机智云官方的固件<br>下载地址–<a href="https://download.gizwits.com/zh-cn/p/92/94" target="_blank" rel="external">https://download.gizwits.com/zh-cn/p/92/94</a><br><img src="https://i.loli.net/2018/05/08/5af15ccd32a58.png" alt="这里写图片描述"><br>固件烧写完成之后就要进行调试了，使用机智云官方的调试工具进行远程调试，这个时候你就可以在手机下载调试软件实现远程的调试了，<br><img src="https://i.loli.net/2018/05/08/5af15ceb6aaeb.png" alt="这里写图片描述"></p>
-<hr>
-<p>到这里呢，你已经完成</p>
-<h2 id="一半"><a href="#一半" class="headerlink" title="一半"></a>一半</h2><blockquote>
-<p>了，剩下的就是到机智云的服务器开发者中心，生成mcu代码，就是机智云自动生成的arduino的ino文件，是不是很舒服的说。。。。。。<br>流程如下：<br><img src="https://i.loli.net/2018/05/08/5af15d00820a2.png" alt="这里写图片描述"><br>接着下载即可：<br><img src="https://i.loli.net/2018/05/08/5af15d170fa33.png" alt="这里写图片描述"><br>下载之后就是一个压缩包，接下之后是机智云针对你的应用的库文件。<br><img src="https://i.loli.net/2018/05/08/5af15d2b563dd.png" alt="这里写图片描述"><br>解压之后打开，只有一个文件名字为–Gizwits<br>把这个库拷贝到arduinoIDE的库文件夹里即可：不然无法变编译的，大家应该是知道的。<img src="https://i.loli.net/2018/05/08/5af15d40d26f1.png" alt="这里写图片描述"><br>ok到这里差不多</p>
-</blockquote>
-<h2 id="四分之三"><a href="#四分之三" class="headerlink" title="四分之三"></a>四分之三</h2><blockquote>
-<p>了，恩恩，下面的工作就剩代码的调试和硬件的组装了，<br>代码调试如下：比如我的文件为：D:\1arduino2018\Arduino\libraries\Gizwits\examples<br>就是解压下来的库文件里面的两个历程：<br><img src="https://i.loli.net/2018/05/08/5af15d4fd6c3e.png" alt="这里写图片描述"><br>机智云官方是自动生成两个文件的，一个是联网的文件，一个是针对你设置的数据点的应用的控制代码<br>好了将两者融合如下：例如我的插座的代码为：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div></pre></td><td class="code"><pre><div class="line">#include &lt;Gizwits.h&gt;</div><div class="line">#include &lt;Wire.h&gt;</div><div class="line">#include &lt;SoftwareSerial.h&gt;</div><div class="line">SoftwareSerial mySerial(A2,A3); // A2 -&gt; RX, A3 -&gt; TX</div><div class="line">Gizwits myGizwits;</div><div class="line">#define   KEY1              6</div><div class="line">#define   KEY2              7</div><div class="line">#define   KEY1_SHORT_PRESS  1</div><div class="line">#define   KEY1_LONG_PRESS   2</div><div class="line">#define   KEY2_SHORT_PRESS  4</div><div class="line">#define   KEY2_LONG_PRESS   8</div><div class="line">#define   NO_KEY            0</div><div class="line">#define   KEY_LONG_TIMER    3</div><div class="line">int flag =0;</div><div class="line">unsigned long Last_KeyTime = 0;</div><div class="line">unsigned long gokit_time_s(void)</div><div class="line">&#123;</div><div class="line">  return millis() / 1000;</div><div class="line">&#125;</div><div class="line">char gokit_key1down(void)//按键函数，不用管</div><div class="line">&#123;</div><div class="line">  unsigned long keep_time = 0;</div><div class="line">  if (digitalRead(KEY1) == LOW)</div><div class="line">  &#123;</div><div class="line">    delay(100);</div><div class="line">    if (digitalRead(KEY1) == LOW)</div><div class="line">    &#123;</div><div class="line">      keep_time = gokit_time_s();</div><div class="line">      while (digitalRead(KEY1) == LOW)</div><div class="line">      &#123;</div><div class="line">        if ((gokit_time_s() - keep_time) &gt; KEY_LONG_TIMER)</div><div class="line">        &#123;</div><div class="line">          Last_KeyTime = gokit_time_s();</div><div class="line">          return KEY1_LONG_PRESS;</div><div class="line">        &#125;</div><div class="line">      &#125; //until open the key</div><div class="line"></div><div class="line">      if ((gokit_time_s() - Last_KeyTime) &gt; KEY_LONG_TIMER)</div><div class="line">      &#123;</div><div class="line">        return KEY1_SHORT_PRESS;</div><div class="line">      &#125;</div><div class="line">      return 0;</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">  &#125;</div><div class="line">  return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">char gokit_key2down(void)//按键函数不用管。</div><div class="line">&#123;</div><div class="line">  int unsigned long keep_time = 0;</div><div class="line">  if (digitalRead(KEY2) == LOW)</div><div class="line">  &#123;</div><div class="line">    delay(100);</div><div class="line">    if (digitalRead(KEY2) == LOW)</div><div class="line">    &#123;</div><div class="line">      keep_time = gokit_time_s();</div><div class="line">      while (digitalRead(KEY2) == LOW) //until open the key</div><div class="line">      &#123;</div><div class="line"></div><div class="line">        if ((gokit_time_s() - keep_time) &gt; KEY_LONG_TIMER)</div><div class="line">        &#123;</div><div class="line">          Last_KeyTime = gokit_time_s();</div><div class="line">          return KEY2_LONG_PRESS;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      if ((gokit_time_s() - Last_KeyTime) &gt; KEY_LONG_TIMER)</div><div class="line">      &#123;</div><div class="line">        return KEY2_SHORT_PRESS;</div><div class="line">      &#125;</div><div class="line">      return 0;</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">  &#125;</div><div class="line">  return 0;</div><div class="line">&#125;</div><div class="line">char gokit_keydown(void)</div><div class="line">&#123;</div><div class="line">  char ret = 0;</div><div class="line">  ret |= gokit_key2down();</div><div class="line">  ret |= gokit_key1down();</div><div class="line">  return ret;</div><div class="line">&#125;</div><div class="line">void KEY_Handle(void)//这里是检测按键的函数，不用管</div><div class="line">&#123;</div><div class="line">  switch (gokit_keydown())</div><div class="line">  &#123;</div><div class="line">    case KEY1_SHORT_PRESS:</div><div class="line">      myGizwits.setBindMode(WIFI_PRODUCTION_TEST);</div><div class="line">      break;</div><div class="line">    case KEY1_LONG_PRESS:</div><div class="line">      myGizwits.setBindMode(WIFI_RESET_MODE);</div><div class="line">      break;</div><div class="line">    case KEY2_SHORT_PRESS:</div><div class="line">      myGizwits.setBindMode(WIFI_SOFTAP_MODE);</div><div class="line">      break;</div><div class="line">    case KEY2_LONG_PRESS:</div><div class="line">      myGizwits.setBindMode(WIFI_AIRLINK_MODE);//这里我自己加了一个如果开启了配网功能，蜂鸣器就响一秒。很好用哦</div><div class="line">    digitalWrite(5,HIGH);</div><div class="line">    digitalWrite(8,HIGH);</div><div class="line">    delay(1000);</div><div class="line">   digitalWrite(8,LOW);</div><div class="line">   digitalWrite(5,LOW);</div><div class="line">      break;</div><div class="line">    default:</div><div class="line">      break;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">void wifiStatusHandle()//这个函数我做了修改，因为没什么用。</div><div class="line">&#123;</div><div class="line">  if(myGizwits.wifiHasBeenSet(WIFI_SOFTAP))</div><div class="line">  &#123;</div><div class="line">  &#125;  </div><div class="line">  if(myGizwits.wifiHasBeenSet(WIFI_AIRLINK))</div><div class="line">  &#123;</div><div class="line">  &#125; </div><div class="line">&#125;</div><div class="line">void setup() &#123;</div><div class="line">  // put your setup code here, to run once:</div><div class="line">  mySerial.begin(115200);</div><div class="line">   pinMode(KEY1, INPUT_PULLUP);</div><div class="line">  pinMode(KEY2, INPUT_PULLUP);</div><div class="line">  pinMode(5,OUTPUT);//指示灯</div><div class="line">  pinMode(8,OUTPUT);//beeWIFI_AIRLINK成功报警提示这里是配网提示</div><div class="line">  pinMode(9,OUTPUT);//接继电器</div><div class="line">  digitalWrite(5,LOW);</div><div class="line">  digitalWrite(8,LOW);</div><div class="line">  digitalWrite(9,HIGH);</div><div class="line">  myGizwits.begin();</div><div class="line">&#125;</div><div class="line">void loop() &#123;  </div><div class="line">   KEY_Handle();//key handle , network configure网络配置</div><div class="line">  wifiStatusHandle();//WIFI Status Handle无线网络状态处理</div><div class="line">  unsigned long varW_back = 0;//Add Sensor Data Collection</div><div class="line">  myGizwits.write(VALUE_back, varW_back);</div><div class="line">  bool varR_on_off = 0;</div><div class="line">  if(myGizwits.hasBeenSet(EVENT_on_off))</div><div class="line">  &#123;</div><div class="line">    myGizwits.read(EVENT_on_off,&amp;varR_on_off);//Address for storing data</div><div class="line">    //////////////////////////////////////////////////////////////////////控制区</div><div class="line">     if(varR_on_off==1)</div><div class="line">    &#123;</div><div class="line">      digitalWrite(9,LOW);</div><div class="line">      &#125;</div><div class="line">     else</div><div class="line">     digitalWrite(9,HIGH);</div><div class="line">////////////////////////////////////////////////////////////////////////////////下面是定时的代码，暂且没有写定时的程序，先不管。</div><div class="line">  &#125;</div><div class="line">  unsigned long varR_time_h = 0;</div><div class="line">  if(myGizwits.hasBeenSet(EVENT_time_h))</div><div class="line">  &#123;</div><div class="line">    myGizwits.read(EVENT_time_h,&amp;varR_time_h);//Address for storing data</div><div class="line">    mySerial.println(F(&quot;EVENT_time_h&quot;));</div><div class="line">    mySerial.println(varR_time_h,DEC);</div><div class="line">  &#125;</div><div class="line">  unsigned long varR_time_m = 0;</div><div class="line">  if(myGizwits.hasBeenSet(EVENT_time_m))</div><div class="line">  &#123;</div><div class="line">    myGizwits.read(EVENT_time_m,&amp;varR_time_m);//Address for storing data</div><div class="line">    mySerial.println(F(&quot;EVENT_time_m&quot;));</div><div class="line">    mySerial.println(varR_time_m,DEC);</div><div class="line">  &#125;</div><div class="line">  //////////////////////////////////////////////////////////////////////////</div><div class="line">  myGizwits.process();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p><img src="http://img.blog.csdn.net/20180317150427416?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dpdGNoX2xvdmVfY2FzZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="引用块内容"><br>大功告成，装机调试，稳定运行，哎呦累死我了，写了好久，<br>既然能控制一个设备了，哪2个呢？8个呢？<br><img src="http://img.blog.csdn.net/20180317150440013?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dpdGNoX2xvdmVfY2FzZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>肯定不是问题喽。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">好了教程到此结束，累死了，有什么疑问欢迎下方留言，有问必答！</div></pre></td></tr></table></figure>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">esp8266</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/09/DIY一款智能插座/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/12/微信服务器get反馈/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          微信服务器get反馈
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/05/08/python 爬虫制作校园网一键登录软件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python 爬虫制作校园网一键登录软件</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-  </section>
-
+            
           </div>
         </div>
       </div>
@@ -559,10 +290,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
@@ -571,15 +298,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,11 +318,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,11 +330,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,11 +358,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,15 +378,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">

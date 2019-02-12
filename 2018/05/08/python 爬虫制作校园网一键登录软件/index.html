@@ -180,238 +180,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python 爬虫制作校园网一键登录软件" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      python 爬虫制作校园网一键登录软件
-    </h1>
-  
-
-        
-        <a href="/2018/05/08/python 爬虫制作校园网一键登录软件/" class="archive-article-date">
-  	<time datetime="2018-05-08T13:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>python爬虫制作校园网一键登录软件</p>
-<hr>
-<blockquote>
-<p>登录页面，与成功页面<br><img src="https://i.loli.net/2018/05/08/5af1621e59d74.png" alt="登录页面"></p>
-<p><img src="https://i.loli.net/2018/05/08/5af1636b892ef.jpg" alt="成功页面"></p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<blockquote>
-<p><img src="https://i.loli.net/2018/05/08/5af163fe8160e.png" alt="调试页面"></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>总结：<br>首先呢思路和普通的post登录原理一样，而且，我也做过手机端的，但是除此调试并没有成功，不知为何。<br>首先post抓包，然后再模拟浏览器发送，这是很普通的操作<br>之后就是对内容的处理了，这里也学到了很多东西，包括html网页的解析，网页源码的处理等等，正则表达式也用到了一些<a href="https://morvanzhou.github.io/" target="_blank" rel="external">莫烦python</a>莫烦老师的课程也是非常棒的，教会了我很多知识，<br>最后我的小软件运行了几天之后出问题了，就是校园网每隔几天会换一下ip地址，这使得之前保存下来的ip就不能用了，这让我也搞了好一会儿，最终还是巧妙的查到了更换的ip实现了自动捕捉ip应该可以长期使用了。<br>哎呀，还是自己太懒，学的太慢，也特想自己快速的学东西，但是欲速则不达，有些东西还是要脚踏实地的去做才可以。</p>
-</blockquote>
-<hr>
-<p>代码放在这里一份吧，留作参考<a href="https://coding.net/u/pengwenzheng/p/python_papapa/git/blob/master/xiaoyuandenglu.py?public=true" target="_blank" rel="external">coding仓库项目</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div></pre></td><td class="code"><pre><div class="line"># -*- coding: UTF-8 -*-</div><div class="line">from bs4 import BeautifulSoup</div><div class="line">from urllib import request</div><div class="line">from urllib import parse</div><div class="line">import json</div><div class="line">import easygui</div><div class="line">import chardet</div><div class="line">import re</div><div class="line">&quot;&quot;&quot;</div><div class="line">Request_URL = &apos;http://1.1.1.1:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=1.1.1.1&amp;iTermType=1&amp;wlanuserip=10.133.173.186&amp;wlanacip=10.10.9.200&amp;mac=00-00-00-00-00-00&amp;ip=10.133.173.186&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1&apos;</div><div class="line">Request_URL = &apos;http://1.1.1.1:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=1.1.1.1&amp;iTermType=1&amp;wlanuserip=&apos;+dongtai_ip()+&apos;&amp;wlanacip=10.10.9.200&amp;mac=00-00-00-00-00-00&amp;ip=10.133.173.186&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1&apos;</div><div class="line">&quot;&quot;&quot;</div><div class="line">def yulu ():</div><div class="line">    yulu = &quot;http://word.rainss.cn/api_system.php?type=txt&quot;</div><div class="line">    response = request.urlopen(yulu)</div><div class="line">    html = response.read().decode(&apos;utf-8&apos;)</div><div class="line">    #print(str(html))</div><div class="line">def dongtai_ip ():</div><div class="line">    url = &apos;http://1.1.1.1/&apos;</div><div class="line">    response3 = request.urlopen(url)</div><div class="line">    html = response3.read().decode(&apos;gb2312&apos;)</div><div class="line">    soup = BeautifulSoup(html, &apos;lxml&apos;)</div><div class="line">    #  正则表达式寻找字符</div><div class="line">    jieguo = re.findall(&quot;v46m=0;v4ip=&apos;(.*)&apos;;v6ip=&apos;::&quot;, html)</div><div class="line">    jieguo2 = re.findall(&quot;m46=0;v46ip=&apos;(.*)&apos;&quot;, html)</div><div class="line">    #print(html)</div><div class="line">   # print(str(jieguo2))</div><div class="line">    if jieguo2:</div><div class="line">        print(jieguo2[0])</div><div class="line">        return jieguo2[0]</div><div class="line">    else:</div><div class="line">        print(jieguo[0])</div><div class="line">        return jieguo[0]</div><div class="line">   # print(str(jieguo))</div><div class="line">    # 用beautiful soup 测试</div><div class="line">    #print(soup.prettify())</div><div class="line">    #print(soup.title.string)</div><div class="line">def post_denglu():</div><div class="line">    msg = &quot;请输入运营商，账号，密码(此窗口只会出现一次**版本号1.0)&quot;</div><div class="line">    title = &quot;校园网一键登录-阿正原创&quot;</div><div class="line">    user_info = []</div><div class="line">    user_info = easygui.multpasswordbox(msg, title, (&quot;运营商&quot;, &quot;账号&quot;, &quot;密码&quot;))</div><div class="line">    #print(user_info)</div><div class="line">    #print(user_info[0])</div><div class="line">    #对应上图的Request URL</div><div class="line">    test_url = &apos;http://1.1.1.1/&apos;</div><div class="line">    #创建Form_Data字典，存储上图的Form Data</div><div class="line">    Form_Data = &#123;&#125;</div><div class="line">    Request_URL = &apos;http://1.1.1.1:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=1.1.1.1&amp;iTermType=1&amp;wlanuserip=&apos; + dongtai_ip() + &apos;&amp;wlanacip=10.10.9.200&amp;mac=00-00-00-00-00-00&amp;ip=10.133.173.186&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1&apos;</div><div class="line">    fuhao = &quot;,0,&quot;</div><div class="line">    zhanghao = user_info[1]</div><div class="line">    yunyingshang = &quot;@cmcc&quot;</div><div class="line">    Form_Data[&apos;DDDDD&apos;] = zhanghao+yunyingshang</div><div class="line">    Form_Data[&apos;upass&apos;] = user_info[2]</div><div class="line">    Form_Data[&apos;R1&apos;] = &apos;0&apos;</div><div class="line">    Form_Data[&apos;R2&apos;] = &apos;0&apos;</div><div class="line">    Form_Data[&apos;R3&apos;] = &apos;0&apos;</div><div class="line">    Form_Data[&apos;R6&apos;] = &apos;0&apos;</div><div class="line">    Form_Data[&apos;para&apos;] = &apos;00&apos;</div><div class="line">    Form_Data[&apos;0MKKey&apos;] = &quot;123456&quot;</div><div class="line">    #使用urlencode方法转换标准格式</div><div class="line">    data = parse.urlencode(Form_Data).encode(&apos;utf-8&apos;)</div><div class="line">    #传递Request对象和转换完格式的数</div><div class="line">    response = request.urlopen(Request_URL,data)</div><div class="line">    response2 = request.urlopen(test_url)</div><div class="line">    #print(response.getcode())</div><div class="line">    # 判断网页的编码</div><div class="line">    bianma = chardet.detect(response2.read())</div><div class="line">    #print(bianma)</div><div class="line">    bianma = bianma.get(&quot;encoding&quot;,&quot;bianma&quot;)</div><div class="line">   # print(bianma)</div><div class="line">    #读取信息并解码</div><div class="line">    html = response.read().decode(bianma)</div><div class="line">    #print(html)</div><div class="line">    soup = BeautifulSoup(html,&apos;lxml&apos;)</div><div class="line">   # print(soup.prettify())</div><div class="line">   # print(soup.title.string)</div><div class="line">    if soup.title.string == &quot;认证成功页&quot;:</div><div class="line">        yulu = &quot;http://word.rainss.cn/api_system.php?type=txt&quot;</div><div class="line">        response4 = request.urlopen(yulu)</div><div class="line">        yulu_txt = response4.read().decode(&apos;utf-8&apos;)</div><div class="line">     #   print(str(yulu_txt))</div><div class="line">        easygui.buttonbox(&quot;登录成功您的动态IP为：&quot;+dongtai_ip()+&quot;\n&quot;+yulu_txt,image=&quot;success.gif&quot;,choices=(&quot;无敌&quot;,&quot;寂寞&quot;))</div><div class="line">      #  print(&quot;登录成功&quot;)</div><div class="line">        f = open(&quot;zhanghao.txt&quot;, &quot;w&quot;)</div><div class="line">        for i in user_info:</div><div class="line">            json_i = json.dumps(i)</div><div class="line">            f.write(json_i+&quot;\n&quot;)</div><div class="line">        f.close()</div><div class="line">    else:</div><div class="line">        easygui.msgbox(&quot;登录失败&quot;)</div><div class="line">    ##UI设计</div><div class="line">def gogogo():</div><div class="line">    # 利用json读取数据</div><div class="line">    jiance_result = []</div><div class="line">    with open(&quot;zhanghao.txt&quot;, &quot;r&quot;) as f:</div><div class="line">        jiance_jieguo = f.read().split(&apos;\n&apos;)[:-1]</div><div class="line">        for x in jiance_jieguo:</div><div class="line">            json_x = json.loads(x)</div><div class="line">            jiance_result.append(json_x)</div><div class="line">   # print(jiance_result)</div><div class="line">    #print(jiance_result[1])</div><div class="line">    f.close()</div><div class="line">    if jiance_result[1]==&apos;&apos;:</div><div class="line">        post_denglu()</div><div class="line">    else:</div><div class="line">        test_url = &apos;http://1.1.1.1/&apos;</div><div class="line">         # 创建Form_Data字典，存储上图的Form Data</div><div class="line">        Form_Data = &#123;&#125;</div><div class="line">        Request_URL = &apos;http://1.1.1.1:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=1.1.1.1&amp;iTermType=1&amp;wlanuserip=&apos; + dongtai_ip() + &apos;&amp;wlanacip=10.10.9.200&amp;mac=00-00-00-00-00-00&amp;ip=10.133.173.186&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1&apos;</div><div class="line">        zhanghao = jiance_result[1]</div><div class="line">        yunyingshang = &quot;@cmcc&quot;</div><div class="line">        Form_Data[&apos;DDDDD&apos;] = zhanghao + yunyingshang</div><div class="line">        Form_Data[&apos;upass&apos;] = jiance_result[2]</div><div class="line">        Form_Data[&apos;R1&apos;] = &apos;0&apos;</div><div class="line">        Form_Data[&apos;R2&apos;] = &apos;0&apos;</div><div class="line">        Form_Data[&apos;R3&apos;] = &apos;0&apos;</div><div class="line">        Form_Data[&apos;R6&apos;] = &apos;0&apos;</div><div class="line">        Form_Data[&apos;para&apos;] = &apos;00&apos;</div><div class="line">        Form_Data[&apos;0MKKey&apos;] = &quot;123456&quot;</div><div class="line">        # 使用urlencode方法转换标准格式</div><div class="line">        data = parse.urlencode(Form_Data).encode(&apos;utf-8&apos;)</div><div class="line">        # 传递Request对象和转换完格式的数</div><div class="line">        response = request.urlopen(Request_URL, data)</div><div class="line">        response2 = request.urlopen(test_url)</div><div class="line">        #print(response.getcode())</div><div class="line">        if response.getcode() == 200:</div><div class="line">            #print(&quot;登录成功&quot;)</div><div class="line">            yulu = &quot;http://word.rainss.cn/api_system.php?type=txt&quot;</div><div class="line">            response4 = request.urlopen(yulu)</div><div class="line">            yulu_txt = response4.read().decode(&apos;utf-8&apos;)</div><div class="line">           # print(str(yulu_txt))</div><div class="line">            easygui.buttonbox(&quot;登录成功您的动态IP为：&quot;+dongtai_ip()+&quot;\n随机语录：\n&quot;+yulu_txt,image=&quot;success.gif&quot;,choices=(&quot;666&quot;,&quot;666&quot;))</div><div class="line">        # 判断网页的编码</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        bianma = chardet.detect(response2.read())</div><div class="line">        print(bianma)</div><div class="line">        bianma = bianma.get(&quot;encoding&quot;, &quot;bianma&quot;)</div><div class="line">        print(bianma)</div><div class="line">        # 读取信息并解码</div><div class="line">        html = response.read().decode(bianma)</div><div class="line">        print(html)</div><div class="line">        soup = BeautifulSoup(html, &apos;lxml&apos;)</div><div class="line">        print(soup.prettify())</div><div class="line">        print(soup.title.string)</div><div class="line">        &quot;&quot;&quot;</div><div class="line">gogogo()</div><div class="line">#post_denglu()</div><div class="line">#dongtai_ip()</div><div class="line">#yulu()</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>感谢教程，以后也继续努力学习！！<br><a href="https://morvanzhou.github.io/" target="_blank" rel="external">莫烦python</a><br><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="external">廖雪峰老师</a></p>
-</blockquote>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/08/python 爬虫制作校园网一键登录软件/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/09/DIY一款智能插座/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          DIY一款智能插座
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/05/08/智能家居控制模拟套件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">智能家居控制模拟套件</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-  </section>
-
+            
           </div>
         </div>
       </div>
@@ -506,10 +275,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
@@ -518,15 +283,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,11 +303,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,11 +315,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,11 +343,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,15 +363,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -199,311 +199,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-智能家居控制模拟套件" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      智能家居控制模拟套件
-    </h1>
-  
-
-        
-        <a href="/2018/05/08/智能家居控制模拟套件/" class="archive-article-date">
-  	<time datetime="2018-05-08T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="智能家居控制模拟套件"><a href="#智能家居控制模拟套件" class="headerlink" title="智能家居控制模拟套件"></a>智能家居控制模拟套件</h2><blockquote>
-<p>针对有编程基础的学生开发的一套蓝牙局域网控制模拟套件。版本号【1.0】<br>下一版本将更新WiFi远程控制系统。<br>郑州三松信息技术有限公司出品。</p>
-</blockquote>
-<hr>
-<p>电路图如下：</p>
-<blockquote>
-<p><img src="https://i.loli.net/2018/05/08/5af15e6a15331.png" alt="模拟电路图"></p>
-</blockquote>
-<h2 id="1、可实现的功能："><a href="#1、可实现的功能：" class="headerlink" title="1、可实现的功能："></a>1、可实现的功能：</h2><a id="more"></a>
-<blockquote>
-<p>1、手机APP蓝牙控制led。<br>2、手机APP蓝牙控制舵机。<br>3、手机APP蓝牙控制直流电机。<br>4、蜂鸣器交互。</p>
-</blockquote>
-<hr>
-<h2 id="2、元件介绍："><a href="#2、元件介绍：" class="headerlink" title="2、元件介绍："></a>2、元件介绍：</h2><table>
-<thead>
-<tr>
-<th>元件</th>
-<th style="text-align:center">数量</th>
-<th style="text-align:right">教程</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>arduino_uno主控板</td>
-<td style="text-align:center">1块</td>
-<td style="text-align:right">用于程序主控</td>
-</tr>
-<tr>
-<td>舵机</td>
-<td style="text-align:center">1个</td>
-<td style="text-align:right">可实现固定角度转动</td>
-</tr>
-<tr>
-<td>直流空心杯电机</td>
-<td style="text-align:center">1个</td>
-<td style="text-align:right">输入高低电平即可工作</td>
-</tr>
-<tr>
-<td>蜂鸣器</td>
-<td style="text-align:center">1个</td>
-<td style="text-align:right">可实现声音试人机交互</td>
-</tr>
-<tr>
-<td>LED灯</td>
-<td style="text-align:center">1个</td>
-<td style="text-align:right">用于模拟日光灯操作</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="3、手机APP介绍：【此版本为安卓版，目前ios版本正在开发中】"><a href="#3、手机APP介绍：【此版本为安卓版，目前ios版本正在开发中】" class="headerlink" title="3、手机APP介绍：【此版本为安卓版，目前ios版本正在开发中】"></a>3、手机APP介绍：【此版本为安卓版，目前ios版本正在开发中】</h2><blockquote>
-<p><img src="https://i.loli.net/2018/05/08/5af15eed448b2.png" alt="三松信息技术有限公司"></p>
-</blockquote>
-<hr>
-<h2 id="4、手机APP功能详解："><a href="#4、手机APP功能详解：" class="headerlink" title="4、手机APP功能详解："></a>4、手机APP功能详解：</h2><blockquote>
-<p>APP采用简介明了的交互界面，模拟智能家居的局域网控制。</p>
-<ol>
-<li>点按触发。</li>
-<li>语音控制</li>
-<li>语音反馈</li>
-<li>蓝牙检索</li>
-<li>一键连接</li>
-</ol>
-</blockquote>
-<hr>
-<h2 id="5、手机端使用图解："><a href="#5、手机端使用图解：" class="headerlink" title="5、手机端使用图解："></a>5、手机端使用图解：</h2><hr>
-<p> 1、首先打开APP界面如下：</p>
-<blockquote>
-<p><img src="https://i.loli.net/2018/05/08/5af15f1d15962.png" alt="APP开启"><br>等待语音服务启动完毕，即可进入下一步：</p>
-</blockquote>
-<hr>
-<p>2、蓝牙设备配对：<br><img src="https://i.loli.net/2018/05/08/5af15f32bbac9.jpg" alt="蓝牙配对"></p>
-<ul>
-<li>打开手机蓝牙</li>
-<li>单击界面上的搜索设备按钮</li>
-<li>APP将自动搜索局域的蓝牙设备<br>如下图：</li>
-</ul>
-<blockquote>
-<p><img src="https://i.loli.net/2018/05/08/5af15f6834870.jpg" alt="蓝牙配对"><br>找到HC06的蓝牙设备，单击即可配对，秘钥为“1234”<br><img src="https://i.loli.net/2018/05/08/5af15fd15950c.jpg" alt="蓝牙配对"></p>
-</blockquote>
-<hr>
-<p>3、APP的使用：</p>
-<blockquote>
-<p>配对成功之后就可以单击界面上的按钮进行局域网控制了，具体单片机接受端的代码见代码详解篇。</p>
-</blockquote>
-<hr>
-<p>4、语音遥控的使用：</p>
-<blockquote>
-<p>单击界面中央的麦克风按钮，即可进行语音识别。<br><img src="https://i.loli.net/2018/05/08/5af15fe3dc149.png" alt="这里写图片描述"></p>
-</blockquote>
-<hr>
-<p>5、语音识别口令：<br>【本版本软件内置六款口令进行模拟实验，仅供参考。】<br>| 语音关键字 | 对应蓝牙串口值 | 功能 | 备注 |<br>| ————- |:————-:| —–:|<br>| 开灯 | 1 | 对应实现单片机端LED灯开启 | |<br>| 关灯 | 2 | 对应实现单片机端LED灯关闭 |  |<br>| 开门 | 3 | 对应实现单片机端舵机动作 | |<br>| 关门 | 4 | 对应实现单片机段舵机动作 | |<br>| 开风扇 | 5 | 对应实现单片机端电机启动 | |<br>| 关风扇 | 6 | 对应实现单片机端电机关闭 | |<br><em>备注：所有关键字，只需语音中包含即可。</em><br><em>例如：“请开门”、“开开门”、“芝麻开门”等，均可以实现开门的功能。</em></p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">//******************//郑州三松信息技术有限公司//***********************//</div><div class="line">//******************//智能家居系统模拟1.0//******************//</div><div class="line">//arduino手册地址：http://www.ocrobot.com/doku.php?id=learning</div><div class="line">#include&lt;Servo.h&gt;</div><div class="line">#include &lt;SoftwareSerial.h&gt;</div><div class="line">SoftwareSerial mySerial(0, 1);   // RX, TX，定义0端口是接收端，1端口是发射端</div><div class="line">Servo myservo; </div><div class="line">char val=&apos;/&apos;;</div><div class="line">int pos=0;</div><div class="line">int Bee=2;//定义蜂鸣器对应单片机端口为2</div><div class="line">int LED=3; //定义led对应单片机端口为3</div><div class="line">int FAN=4; //定义风扇对应单片机端口为4</div><div class="line">int DUOJI=5;//定义开门舵机对应单片机端口为5</div><div class="line">void setup()  //开机运行的程序代码</div><div class="line">&#123;</div><div class="line">  pinMode(2,OUTPUT); //设置2号IO口为输出模式</div><div class="line">  pinMode(3,OUTPUT); //设置3号IO口为输出模式</div><div class="line">  pinMode(4,OUTPUT); //设置4号IO口为输出模式</div><div class="line">  digitalWrite(2,HIGH);//设置2号IO口为初始高电平状态</div><div class="line">  digitalWrite(4,LOW);//设置4号IO口为初始低电平状态</div><div class="line">  Serial.begin(9600);//设置串口波特率为9600</div><div class="line">  myservo.attach(5);//设置舵机连接口为5号IO口</div><div class="line">&#125; </div><div class="line">void loop()                         // 循环执行的程序代码</div><div class="line">&#123;           </div><div class="line">    val=Serial.read();              //接收数据</div><div class="line">      switch (val)&#123;</div><div class="line">      case &apos;1&apos;: ledopen();  break;</div><div class="line">      case &apos;2&apos;: ledclose(); break;</div><div class="line">      case &apos;3&apos;: dooropen(); break;</div><div class="line">      case &apos;4&apos;: doorclose(); break;</div><div class="line">      case &apos;5&apos;: fanopen();  break;</div><div class="line">      case &apos;6&apos;: fanclose(); break;</div><div class="line">      //以上数据对应手机APP控制代码</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">////////////////////////////////////////////</div><div class="line">void fanopen() // 定义开风扇函数</div><div class="line">&#123;</div><div class="line">  bee();</div><div class="line">  digitalWrite(4,HIGH);</div><div class="line">  &#125;</div><div class="line">void fanclose() // 定义关风扇函数</div><div class="line">&#123;</div><div class="line">  bee();</div><div class="line">  digitalWrite(4,LOW);</div><div class="line">  &#125;</div><div class="line">void dooropen() // 定义开门函数</div><div class="line">&#123;  </div><div class="line">  bee();</div><div class="line">for(pos = 0; pos &lt;= 180; pos += 1) // 此处依靠for循环来实现舵机从0度旋转到180度的控制。 </div><div class="line">&#123;                                  </div><div class="line">   myservo.write(pos);              </div><div class="line">   delay(15);                      </div><div class="line">&#125; </div><div class="line">  &#125;</div><div class="line">void doorclose() //定义关门函数</div><div class="line">&#123;</div><div class="line"> bee();</div><div class="line">   for(pos = 180; pos&gt;=0; pos-=1) // 此处依靠for循环来实现舵机从180度旋转到0度的控制。   </div><div class="line">&#123;                                </div><div class="line">    myservo.write(pos);           </div><div class="line">    delay(15);                       </div><div class="line">&#125;   </div><div class="line">  &#125;</div><div class="line">void ledopen() // 定义LED开启函数</div><div class="line">&#123;</div><div class="line">  bee();</div><div class="line">  digitalWrite(3,HIGH); </div><div class="line">  &#125;</div><div class="line"> void ledclose() //定义LED关闭函数</div><div class="line">  &#123;</div><div class="line">    bee();</div><div class="line">    digitalWrite(3,LOW); </div><div class="line">   &#125;</div><div class="line"> void bee() //定义蜂鸣器函数</div><div class="line"> &#123;</div><div class="line">  tone(2,500,500);</div><div class="line">  delay(200);</div><div class="line">  tone(2,800,500);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<hr>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">智能家居</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/08/智能家居控制模拟套件/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/08/python 爬虫制作校园网一键登录软件/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          python 爬虫制作校园网一键登录软件
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/02/26/opencv配置成功/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">opencv配置成功</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-  </section>
-
+            
           </div>
         </div>
       </div>
@@ -598,10 +294,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
@@ -610,15 +302,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,11 +322,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,11 +334,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,11 +362,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,15 +382,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">

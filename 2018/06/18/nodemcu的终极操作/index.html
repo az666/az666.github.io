@@ -170,259 +170,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-nodemcu的终极操作" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      利用arduino ide制作的桌面摆件
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/nodemcu的终极操作/" class="archive-article-date">
-  	<time datetime="2018-06-18T06:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="利用arduino-ide制作的桌面摆件"><a href="#利用arduino-ide制作的桌面摆件" class="headerlink" title="利用arduino ide制作的桌面摆件"></a>利用arduino ide制作的桌面摆件</h2><hr>
-<h2 id=""><a href="#" class="headerlink" title=" "></a><iframe src="//player.bilibili.com/player.html?aid=25095928&cid=42475597&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></h2><p><img src="https://i.loli.net/2018/06/17/5b265c62467da.jpg" alt="暂且放在盒子里"><br><img src="https://i.loli.net/2018/06/17/5b265c8d2ce40.jpg" alt="支持微信扫一扫配网"><br><a id="more"></a></p>
-<ul>
-<li>工具</li>
-<li>nodemcu</li>
-<li>arduino ide</li>
-<li>串口屏（淘宝38元）</li>
-</ul>
-<blockquote>
-<p>这是很早以前就想做的作品，因为它不像大的作品那样，所以比较拖沓，一直没做，最近想给女朋友做一个桌面摆件，所以用了一整天的时间来做这个小玩物，整体思路就是利用esp的网络功能来获取网页数据接口返回的数据包括时间，天气，甚至英语，发给串口屏来显示，其中也是一路艰辛，毕竟好久没玩硬件了，也是相当麻烦的。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>首先是串口屏的ui设计，极简，毕竟自己没有太高级的审美，串口屏的教程也是相当复杂的，之前淘宝店给的教程一直没空看，当时感觉老复杂了，就一直搁置了。这次果断拿出来认真看了看，突然发现还是很简单的，毕竟由相应的上位机使用。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>然后就是代码的编写，总结如下：<br>最厉害的就是自动配网的功能-堪称超级无敌：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">void smartConfig()</div><div class="line">&#123;</div><div class="line">  WiFi.mode(WIFI_STA);</div><div class="line">  Serial.println(&quot;\r\nWait for Smartconfig&quot;);</div><div class="line">  WiFi.beginSmartConfig();</div><div class="line">  while (1)</div><div class="line">  &#123;</div><div class="line">    Serial.print(&quot;.&quot;);</div><div class="line">    digitalWrite(LED, 0);</div><div class="line">    sao_sao();</div><div class="line">    delay(500);</div><div class="line">    digitalWrite(LED, 1);</div><div class="line">    delay(500);</div><div class="line">    if (WiFi.smartConfigDone())</div><div class="line">    &#123;</div><div class="line">      Serial.println(&quot;SmartConfig Success&quot;);</div><div class="line">      Serial.printf(&quot;SSID:%s\r\n&quot;, WiFi.SSID().c_str());</div><div class="line">      Serial.printf(&quot;PSW:%s\r\n&quot;, WiFi.psk().c_str());</div><div class="line">      break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>网页数据分析这次都是用的GET访问</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">void http() &#123;</div><div class="line">  HTTPClient http;</div><div class="line">  http.begin(webadd);</div><div class="line">  int httpCode = http.GET();</div><div class="line">  if (httpCode &gt; 0) &#123;</div><div class="line">    payload = http.getString();</div><div class="line">    //Serial.println(payload);</div><div class="line">    int a = payload.indexOf(&quot;101180101&quot;);//自己搜索链接可知指定城市的id郑州市的id为‘101180101’</div><div class="line">    //indexof();在字符串中中查找字符位置，返回值为给定字符的第一个位置，查找失败返回-1</div><div class="line">    com = payload.substring(a - 280, a + 12);</div><div class="line">  &#125;</div><div class="line">  http.end();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>还有就是网页数据解析的精髓:</p>
-</blockquote>
-<ul>
-<li>字符处理–适用于网页源码的解析</li>
-<li>JSON解析–适用于api反馈的json</li>
-</ul>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/*************************************截取字符数据处理*******************************************/</div><div class="line">void data() &#123;</div><div class="line">  int i = 0;</div><div class="line">  i = com.indexOf(&quot;tem1&quot;);</div><div class="line">  tem1 = com.substring(i + 6, i + 8);</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;tem2&quot;);  //tem2=&quot;24&quot;</div><div class="line">  tem2 = com.substring(i + 6, i + 8);</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;temNow&quot;);</div><div class="line">  temnow = com.substring(i + 8, i + 10);</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;humidity&quot;);</div><div class="line">  humi = com.substring(i + 10, i + 13); //humidity=&quot;27%&quot;</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;state1&quot;);</div><div class="line">  state1 = com.substring(i + 8, i + 9);</div><div class="line">  i = 0;</div><div class="line">  i = com.indexOf(&quot;state2&quot;);</div><div class="line">  state2 = com.substring(i + 7, i + 11);</div><div class="line">  i = 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/*********************************获取时间**************************************/</div><div class="line">void get_time()</div><div class="line">&#123;</div><div class="line">  HTTPClient http;</div><div class="line">  http.begin(time_url);</div><div class="line">  int httpCode = http.GET();</div><div class="line">  if (httpCode &gt; 0) &#123;</div><div class="line">    payload = http.getString();</div><div class="line">    //Serial.println(payload);</div><div class="line">    /************************************json 数据处理********************************************/</div><div class="line">    DynamicJsonDocument doc;</div><div class="line">    String  input =   payload;</div><div class="line">    deserializeJson(doc, input);</div><div class="line">    JsonObject&amp; obj = doc.as&lt;JsonObject&gt;();</div><div class="line">    String  daytime = obj[&quot;sysTime2&quot;];</div><div class="line">    time0 = daytime;</div><div class="line">    time1 = daytime.substring(0, 10);//2018-06-17</div><div class="line">    time2 =  daytime.substring(11, 19);//2018-06-17</div><div class="line">  &#125;</div><div class="line">  http.end();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>整体代码放在GitHub里，欢迎关注<br><a href="https://github.com/az666/nodemcu_tianqi" target="_blank" rel="external">https://github.com/az666/nodemcu_tianqi</a></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>有问题欢迎讨论。</p>
-</blockquote>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">esp8266</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/18/nodemcu的终极操作/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/06/26/互联网+比赛记录/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          互联网+比赛记录
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/06/07/lua语言开发的安卓小软件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">校网登录助手8.0</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-  </section>
-
+            
           </div>
         </div>
       </div>
@@ -517,10 +265,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
@@ -529,15 +273,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +293,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,11 +305,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,11 +333,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,15 +353,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">

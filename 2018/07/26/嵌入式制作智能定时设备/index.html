@@ -176,244 +176,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-嵌入式制作智能定时设备" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      嵌入式制作智能定时设备。
-    </h1>
-  
-
-        
-        <a href="/2018/07/26/嵌入式制作智能定时设备/" class="archive-article-date">
-  	<time datetime="2018-07-26T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="嵌入式制作智能定时设备。"><a href="#嵌入式制作智能定时设备。" class="headerlink" title="嵌入式制作智能定时设备。"></a>嵌入式制作智能定时设备。</h2><hr>
-<blockquote>
-<p>最简单的嵌入式开发即利用机智云的SOC方案，利用安信可的编译器进行bin固件的编写。最后在烧写进esp8266中，实现最简单的智能远程控制设备，这次的另一个重要亮点在于实现的硬件计时，也就是实现了硬件端的定时触发，这次的效果是定时启动设备。</p>
-</blockquote>
-<hr>
-<p><img src="https://i.loli.net/2018/07/26/5b59ae5991f05.jpg" alt=""></p>
-<hr>
-<p><img src="https://i.loli.net/2018/07/26/5b59adbe298d2.png" alt=""></p>
-<hr>
-<a id="more"></a>
-<blockquote>
-<p>依旧是最经典的Makefile修改为esp编译模式</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">BOOT?=new</div><div class="line">APP?=1</div><div class="line">SPI_SPEED?=40</div><div class="line">SPI_MODE?=QIO</div><div class="line">SPI_SIZE_MAP?=6</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>user_main.c的文件简单修改即可，加入要控制的按键初始化。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>LOCAL void ICACHE_FLASH_ATTR keyInit(void)<br>{<br>    singleKey[0] = keyInitOne(KEY_0_IO_NUM, KEY_0_IO_MUX, KEY_0_IO_FUNC,<br>                                key1LongPress, key1ShortPress);<br>    singleKey[1] = keyInitOne(KEY_1_IO_NUM, KEY_1_IO_MUX, KEY_1_IO_FUNC,<br>                                key2LongPress, key2ShortPress);<br>    keys.singleKey = singleKey;<br>    keyParaInit(&amp;keys);<br>    PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDI_U, FUNC_GPIO12); //GPIO12初始化<br>    GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1);//GPIO12 低电平输出<br>}</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>下面是gizwits_product.c的代码。里面有很详细的代码。</p>
-</blockquote>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#include &quot;gizwits_product.h&quot;</div><div class="line">#include &quot;driver/hal_key.h&quot;</div><div class="line"></div><div class="line">/** User area The current device state structure */</div><div class="line">dataPoint_t currentDataPoint;</div><div class="line">bool isTimer;</div><div class="line">long timer_timers;</div><div class="line">long time_mills;//定义总秒数</div><div class="line">static os_timer_t os_timer;</div><div class="line">/**</div><div class="line"> * 定时任务函数</div><div class="line"> */</div><div class="line">void Led_Task_Run(void)&#123;</div><div class="line">//开灯</div><div class="line"> GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 0);</div><div class="line"> //执行完毕，我们要把定时时间设置0 ,定时使能状态为false</div><div class="line"> timer_timers=0;         //根据继电器的种类和要定时的任务而定。这是低电平触发继电器的定时开机功能。</div><div class="line"> isTimer=false;</div><div class="line">&#125;</div><div class="line">void Led_Task_Off(void)&#123;</div><div class="line">//开灯</div><div class="line"> GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1);</div><div class="line"> //执行完毕，我们要把定时时间设置0 ,定时使能状态为false</div><div class="line"> timer_timers=0;         //根据继电器的种类和要定时的任务而定。这是低电平触发继电器的定时关机功能。</div><div class="line"> isTimer=false;</div><div class="line">&#125;</div><div class="line">int8_t ICACHE_FLASH_ATTR gizwitsEventProcess(eventInfo_t *info, uint8_t *data, uint32_t len)</div><div class="line">&#123;</div><div class="line">    uint8_t i = 0;</div><div class="line">    dataPoint_t * dataPointPtr = (dataPoint_t *)data;</div><div class="line">    moduleStatusInfo_t * wifiData = (moduleStatusInfo_t *)data;</div><div class="line"></div><div class="line">    if((NULL == info) || (NULL == data))</div><div class="line">    &#123;</div><div class="line">        GIZWITS_LOG(&quot;!!! gizwitsEventProcess Error \n&quot;);</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for(i = 0; i &lt; info-&gt;num; i++)</div><div class="line">    &#123;</div><div class="line">        switch(info-&gt;event[i])</div><div class="line">        &#123;</div><div class="line">        case EVENT_on_off :</div><div class="line">            currentDataPoint.valueon_off = dataPointPtr-&gt;valueon_off;</div><div class="line">            GIZWITS_LOG(&quot;Evt: EVENT_on_off %d \n&quot;, currentDataPoint.valueon_off);</div><div class="line">            if(0x01 == currentDataPoint.valueon_off)</div><div class="line">            &#123;</div><div class="line">            	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 0); //开灯</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">            	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1); //关灯</div><div class="line">            &#125;</div><div class="line">            break;</div><div class="line">        case EVENT_T_on_off :</div><div class="line">            currentDataPoint.valueT_on_off = dataPointPtr-&gt;valueT_on_off;</div><div class="line">            if(0x01 == currentDataPoint.valueT_on_off)</div><div class="line">            &#123;</div><div class="line">            	isTimer=true;//开启定时器</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">            	 /** 关闭该定时器 */</div><div class="line">            	            os_timer_disarm( &amp;os_timer );</div><div class="line">            	 /** 定时器使能为false */</div><div class="line">            	            isTimer=false;</div><div class="line">            &#125;</div><div class="line">            break;</div><div class="line">        case EVENT_time_h:</div><div class="line">            currentDataPoint.valuetime_h= dataPointPtr-&gt;valuetime_h;</div><div class="line">            GIZWITS_LOG(&quot;Evt:EVENT_time_h %d\n&quot;,currentDataPoint.valuetime_h);</div><div class="line">            //user handle</div><div class="line">            break;</div><div class="line">        case EVENT_time_m:</div><div class="line">            currentDataPoint.valuetime_m= dataPointPtr-&gt;valuetime_m;</div><div class="line">            GIZWITS_LOG(&quot;Evt:EVENT_time_m %d\n&quot;,currentDataPoint.valuetime_m);</div><div class="line">            if(isTimer)&#123;</div><div class="line">            	if (currentDataPoint.valueon_off)&#123;  //判断继电器状态，如果原来是关闭状态，就定时开机，如果原来是开启状态，就定时关闭。</div><div class="line">            		 /** 关闭该定时器 */</div><div class="line">            		os_timer_disarm( &amp;os_timer );</div><div class="line">            		// 配置该定时器回调函数，指定的执行方法是： Led_Task_Run （），下面会提供代码</div><div class="line">            		os_timer_setfn( &amp;os_timer, (ETSTimerFunc *) ( Led_Task_Off ), NULL );</div><div class="line">            		time_mills = (currentDataPoint.valuetime_h *60 + currentDataPoint.valuetime_m)*60000;</div><div class="line">            		/** 开启该定时器 ：下发的是秒数，这里的单位是毫秒，要乘1000* ，后面false表示仅仅执行一次**/</div><div class="line">            		//os_timer_arm( &amp;os_timer, currentDataPoint.valuetime_m*1000, false );</div><div class="line">            		os_timer_arm( &amp;os_timer, time_mills, false );</div><div class="line">            		/**赋值给timer_timers，方便会调用 */</div><div class="line">            		timer_timers=currentDataPoint.valuetime_m;</div><div class="line">            	&#125;</div><div class="line">            	else</div><div class="line">            	&#123;</div><div class="line">            		/** 关闭该定时器 */</div><div class="line">            		os_timer_disarm( &amp;os_timer );</div><div class="line">            	    // 配置该定时器回调函数，指定的执行方法是： Led_Task_Run （），下面会提供代码</div><div class="line">            		os_timer_setfn( &amp;os_timer, (ETSTimerFunc *) ( Led_Task_Run ), NULL );</div><div class="line">            		time_mills = (currentDataPoint.valuetime_h *60 + currentDataPoint.valuetime_m)*60000;</div><div class="line">            		/** 开启该定时器 ：下发的是秒数，这里的单位是毫秒，要乘1000* ，后面false表示仅仅执行一次**/</div><div class="line">            		//os_timer_arm( &amp;os_timer, currentDataPoint.valuetime_m*1000, false );</div><div class="line">            	    os_timer_arm( &amp;os_timer, time_mills, false );</div><div class="line">            		/**赋值给timer_timers，方便会调用 */</div><div class="line">            		timer_timers=currentDataPoint.valuetime_m;</div><div class="line">            	&#125;</div><div class="line">                &#125;</div><div class="line">            break;</div><div class="line"></div><div class="line">        case WIFI_SOFTAP:</div><div class="line">            break;</div><div class="line">        case WIFI_AIRLINK:</div><div class="line">            break;</div><div class="line">        case WIFI_STATION:</div><div class="line">            break;</div><div class="line">        case WIFI_CON_ROUTER:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ connected router\n&quot;);</div><div class="line"> </div><div class="line">            break;</div><div class="line">        case WIFI_DISCON_ROUTER:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ disconnected router\n&quot;);</div><div class="line"> </div><div class="line">            break;</div><div class="line">        case WIFI_CON_M2M:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ connected m2m\n&quot;);</div><div class="line">			setConnectM2MStatus(0x01);</div><div class="line"> </div><div class="line">            break;</div><div class="line">        case WIFI_DISCON_M2M:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ disconnected m2m\n&quot;);</div><div class="line">			setConnectM2MStatus(0x00);</div><div class="line"> </div><div class="line">            break;</div><div class="line">        case WIFI_RSSI:</div><div class="line">            GIZWITS_LOG(&quot;@@@@ RSSI %d\n&quot;, wifiData-&gt;rssi);</div><div class="line">            break;</div><div class="line">        case TRANSPARENT_DATA:</div><div class="line">            GIZWITS_LOG(&quot;TRANSPARENT_DATA \n&quot;);</div><div class="line">            //user handle , Fetch data from [data] , size is [len]</div><div class="line">            break;</div><div class="line">        case MODULE_INFO:</div><div class="line">            GIZWITS_LOG(&quot;MODULE INFO ...\n&quot;);</div><div class="line">            break;</div><div class="line">            </div><div class="line">        default:</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    system_os_post(USER_TASK_PRIO_2, SIG_UPGRADE_DATA, 0);</div><div class="line">    </div><div class="line">    return 0; </div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line">* User data acquisition</div><div class="line"></div><div class="line">* Here users need to achieve in addition to data points other than the collection of data collection, can be self-defined acquisition frequency and design data filtering algorithm</div><div class="line"></div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">*/</div><div class="line">void ICACHE_FLASH_ATTR userHandle(void)</div><div class="line">&#123;</div><div class="line"></div><div class="line">    currentDataPoint.valueback = time_mills ;</div><div class="line"></div><div class="line">	currentDataPoint.valueon_off = !GPIO_INPUT_GET(12) ;</div><div class="line">	//是否开启定时器的回调</div><div class="line">    currentDataPoint.valueT_on_off =isTimer;</div><div class="line">	if(isTimer)&#123;</div><div class="line">	 currentDataPoint.valuetime_m =timer_timers ;</div><div class="line">	 &#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		/*数据清零*/</div><div class="line">	  currentDataPoint.valuetime_m =0;</div><div class="line">	  currentDataPoint.valuetime_h =0;</div><div class="line">	  currentDataPoint.valueback = 0;</div><div class="line">	 &#125;</div><div class="line">    system_os_post(USER_TASK_PRIO_2, SIG_UPGRADE_DATA, 0);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line">* Data point initialization function</div><div class="line"></div><div class="line">* In the function to complete the initial user-related data</div><div class="line">* @param none</div><div class="line">* @return none</div><div class="line">* @note The developer can add a data point state initialization value within this function</div><div class="line">*/</div><div class="line">void ICACHE_FLASH_ATTR userInit(void)</div><div class="line">&#123;</div><div class="line">    gizMemset((uint8_t *)&amp;currentDataPoint, 0, sizeof(dataPoint_t));</div><div class="line"></div><div class="line"> 	/** Warning !!! DataPoint Variables Init , Must Within The Data Range</div><div class="line"> 	 * 警告！！！！必须在数据范围内的数据池变量init**/</div><div class="line">/*</div><div class="line">   		currentDataPoint.valueon_off = 0;</div><div class="line">   		currentDataPoint.valueT_on_off = 0;</div><div class="line">   		currentDataPoint.valuetime_h = 0;</div><div class="line">   		currentDataPoint.valuetime_m = 0;</div><div class="line">   		currentDataPoint.valueback = 0;</div><div class="line">*/</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>整体文件下载地址。七牛云链接：<a href="http://pbhutn8vv.bkt.clouddn.com/soc_dingshi.zip" target="_blank" rel="external">http://pbhutn8vv.bkt.clouddn.com/soc_dingshi.zip</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">嵌入式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/26/嵌入式制作智能定时设备/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/07/27/超声波雷达扫描仪/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          超声波雷达扫描仪
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/07/17/机智云SOC嵌入式开发成功/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机智云SOC嵌入式开发成功</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-  </section>
-
+            
           </div>
         </div>
       </div>
@@ -508,10 +271,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
@@ -520,15 +279,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,11 +299,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,11 +311,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,11 +339,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,15 +359,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">

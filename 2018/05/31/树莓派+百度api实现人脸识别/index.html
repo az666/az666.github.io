@@ -175,242 +175,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-树莓派+百度api实现人脸识别" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      树莓派+百度api实现人脸识别
-    </h1>
-  
-
-        
-        <a href="/2018/05/31/树莓派+百度api实现人脸识别/" class="archive-article-date">
-  	<time datetime="2018-05-31T12:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="树莓派对接百度api"><a href="#树莓派对接百度api" class="headerlink" title="树莓派对接百度api"></a>树莓派对接百度api</h2><blockquote>
-<p><img src="https://i.loli.net/2018/05/31/5b0fedc7d7810.jpg" alt="树莓派实现人脸识别"><br>我以前玩安卓的时候一直用的讯飞的平台和api，对于百度的api很陌生，也很少用，<br>今年百度开发平台提出了“所有功能免费”的口号，确实，其他平台的开放都是局限的。有些需要开会员，基础的功能能免费是最好的了。<br><a id="more"></a></p>
-</blockquote>
-<hr>
-<p><img src="https://i.loli.net/2018/05/31/5b0fedc76fa9c.jpg" alt="树莓派zerow"></p>
-<hr>
-<blockquote>
-<p>之前，我用python做过face++的人脸识别，效果还是不错的，后来也在学校进行了展览，face++的平台可是支付宝用的呀，所以也是很强大的。<br>后来买了树莓派，一直想用opencv自己做，可是opencv装了很久，貌似一直出问题，迟迟不能解决，非常吃力。<br>今天遇到了一个教程是做的百度api，就想跟着做—–谁曾想，总是不易的，总出问题！！<br><a href="https://github.com/az666/pizerow_facelock/blob/master/face.py" target="_blank" rel="external">https://github.com/az666/pizerow_facelock/blob/master/face.py</a><br>这位大神的资料是百度API2.0的教程，可是我登录百度开发者平台发现现在已经是api3.0了。<br>只能自己照着官方的文档，一点一点的调，最终成功，效果还可以，和笔记本上的python同时实现了“人脸搜索”（api2.0叫做人脸查找）</p>
-</blockquote>
-<hr>
-<blockquote>
-<p><a href="https://ai.baidu.com/docs#/" target="_blank" rel="external">百度文档中心</a><br>后台数据：<br><img src="https://i.loli.net/2018/05/31/5b0ff1a90ec04.png" alt="后台数据"></p>
-</blockquote>
-<hr>
-<blockquote>
-<p><img src="https://i.loli.net/2018/05/31/5b0ff3d3e02fa.png" alt="电脑python实现"><br>电脑端的输出结果为：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">D:\python_64_projects\venv\Scripts\python.exe D:/python_64_projects/pizreow.py</div><div class="line">&#123;&apos;error_code&apos;: 0, &apos;error_msg&apos;: &apos;SUCCESS&apos;, &apos;log_id&apos;: 3049016445, &apos;timestamp&apos;: 1527771832, &apos;cached&apos;: 0, &apos;result&apos;: &#123;&apos;face_token&apos;: &apos;08c78a3239ad1d06548ec031fbb7f320&apos;, &apos;user_list&apos;: [&#123;&apos;group_id&apos;: &apos;wenzheng&apos;, &apos;user_id&apos;: &apos;wenzheng&apos;, &apos;user_info&apos;: &apos;pengwenzheng&apos;, &apos;score&apos;: 98.010856628418&#125;]&#125;&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>可见：相似度为：’user_info’: ‘pengwenzheng’, ‘score’: 98.010856628418<br>注：<em>python 3.x中urllib库和urilib2库合并成了urllib库。。其中urllib2.urlopen()变成了urllib.request.urlopen()…….urllib2.Request()变成了urllib.request.Request()</em></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>树莓派代码</p>
-</blockquote>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def search ():</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    人脸搜索</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    f = open(&quot;E:/opencv_pictures/face++/image/my_face.jpg&quot;, &apos;rb&apos;)</div><div class="line">    img = base64.b64encode(f.read())</div><div class="line">    request_url = &quot;https://aip.baidubce.com/rest/2.0/face/v3/search&quot;</div><div class="line">    params = &#123;&quot;image&quot;:img,&quot;image_type&quot;:&quot;BASE64&quot;,&quot;group_id_list&quot;:&quot;wenzheng&quot;,&quot;quality_control&quot;:&quot;LOW&quot;,&quot;liveness_control&quot;:&quot;NORMAL&quot;&#125;</div><div class="line">    access_token = &apos;24.1d38fa613271b16392ddf5bad969480b.2592000.1530352882.282335-11330742&apos;</div><div class="line">    request_url = request_url + &quot;?access_token=&quot; + access_token</div><div class="line">    response = requests.post(request_url, data=params)</div><div class="line">    test = response.json().get(&apos;score&apos;)</div><div class="line">    print(response.json())</div><div class="line">    print(test)</div><div class="line">search()</div></pre></td></tr></table></figure>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/31/树莓派+百度api实现人脸识别/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/06/01/python制作QQ机器人-QQbot/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          python实现qq机器人qqbot
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/05/25/智能家居控制系统资料和教程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">智能家居完结版</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-  </section>
-
+            
           </div>
         </div>
       </div>
@@ -505,10 +270,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
@@ -517,15 +278,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +298,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +310,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +338,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,15 +358,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">

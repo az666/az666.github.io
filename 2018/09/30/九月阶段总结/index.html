@@ -175,233 +175,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-九月阶段总结" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      九月工作阶段总结
-    </h1>
-  
-
-        
-        <a href="/2018/09/30/九月阶段总结/" class="archive-article-date">
-  	<time datetime="2018-09-30T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="九月阶段总结"><a href="#九月阶段总结" class="headerlink" title="九月阶段总结"></a>九月阶段总结</h1><blockquote>
-<p>今天是九月的最后一天，终于有时间总结一下最近的学习和工作<br>记录下最近的大事件，首先自己进入了一家公司开始了自己的工作，工作很舒服，很庆幸做的也是自己喜欢的工作，我在部门负责硬件开发，其实也谈不上开发，毕竟自己学的东西比较少，也是由部门同事带着我学习和研究，同事对我都很好，这是最舒服的一点。<br>其次就是自己的公司终于建的差不多了，准备毕业之后公司工作同步发展，开始自己的工作、创业混合前进策略。。。</p>
-<p><img src="https://i.loli.net/2018/09/30/5bb01c579cda2.png" alt=""></p>
-</blockquote>
-<h2 id="具体的工作成果"><a href="#具体的工作成果" class="headerlink" title="具体的工作成果"></a>具体的工作成果</h2><blockquote>
-<p>还是先说工作，最近公司的第一个项目就是做工业仪器仪表的数据采集，我们团队进行元件选型到硬件对接，到程序编写，也是费了九牛二虎之力，最终效果还是很明显的，还是很成功的。尤其是代码部分，我也是研究了好几天才完成了单片机与RS485的通讯，成功读取仪表寄存器数据并对接机智云实现了数据的远程传输。</p>
-</blockquote>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"> float getrs485()//读取rs485,波特率：9600； 校验位：无； 停止位：1 位； 数据位：8；数据包长度为7字节</div><div class="line">&#123;</div><div class="line">  int x, cnt,pmval,readcmd[7];</div><div class="line">  unsigned char gdata,eFlag,rbytes=0;</div><div class="line">  float A;</div><div class="line">  cnt=0;</div><div class="line">   eFlag =0;</div><div class="line">  while(mySerial.available()&gt;0)</div><div class="line">  &#123;</div><div class="line">    gdata = mySerial.read();//保存接收字符 </div><div class="line">   // Serial.print(gdata,HEX);</div><div class="line">    if(gdata==254&amp;&amp;eFlag==0)</div><div class="line">     &#123;</div><div class="line">        eFlag=1;        </div><div class="line">    &#125;</div><div class="line">    if(eFlag==1)</div><div class="line">    &#123;</div><div class="line">        readcmd[rbytes++]=gdata;</div><div class="line">    &#125;    </div><div class="line">    delay(2);</div><div class="line">    cnt++;</div><div class="line">    if(cnt&gt;100)</div><div class="line">    return 0;</div><div class="line">    if(rbytes==7)//完整帧</div><div class="line">    &#123;</div><div class="line">      break;</div><div class="line">      &#125;   </div><div class="line">    &#125;</div><div class="line">    if(rbytes==0)</div><div class="line">     return 0;</div><div class="line">/*Serial.println(&quot;&quot;);</div><div class="line">Serial.println(readcmd[0]);</div><div class="line">Serial.println(readcmd[1],HEX);</div><div class="line">Serial.println(readcmd[2],HEX);</div><div class="line">Serial.println(readcmd[3],HEX);</div><div class="line">Serial.println(readcmd[4],HEX);</div><div class="line">Serial.println(readcmd[5],HEX);</div><div class="line">Serial.println(readcmd[6],HEX);</div><div class="line">*/</div><div class="line">x= x+readcmd[3];</div><div class="line">x&lt;&lt;=8;  //左移8位</div><div class="line">x+= readcmd[4];  //相加</div><div class="line">A = x;</div><div class="line">if (A==0) A=4000;  //排除未校测时的误差，默认为零</div><div class="line">//A=A*1.2375/1000-4.75;  //单片机内部计算，有待调试</div><div class="line">x=0;</div><div class="line">return A;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2018/09/30/5bb01a2a90388.png" alt=""></p>
-<p><img src="https://i.loli.net/2018/09/30/5bb01a8cbdac1.png" alt=""></p>
-<blockquote>
-<p>学习上的话，最近学校要搞学科竞赛，班里同学大多不会做，或者没时间做，最终这个艰巨的任务就交给了我，没曾想，班里同学，学院学弟，瞬间来了20几个人让我来做作品，真的也是相当无奈。没办法，昨天刚采购了物品，国庆七天假期准备加加班，再搞一波。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2018/09/30/5bb01bb0cfad2.jpg" alt=""></p>
-<blockquote>
-<p>而且令我高兴地另一件事就是，我之前把我在互联网＋参赛的作品卖给了一个大学生，他也靠着这个作品在北大获得了“国际创新创业大赛”的二等奖。很开心。</p>
-</blockquote>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/30/九月阶段总结/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/10/11/Siri 捷径邂逅esp8266实现的智能家居控制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Siri对接esp8266语音控制自制智能家居
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/09/18/本地MQTT服务器的搭建/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MQTT本地服务器搭建</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-  </section>
-
+            
           </div>
         </div>
       </div>
@@ -496,10 +270,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
@@ -508,15 +278,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,11 +298,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,11 +310,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,11 +338,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,15 +358,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
