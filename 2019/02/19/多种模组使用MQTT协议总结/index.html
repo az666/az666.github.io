@@ -6,14 +6,45 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 评论系统 | WenZheng</title>
+  <title>多种模组使用MQTT协议总结 | WenZheng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WenZheng">
-<meta property="og:url" content="http://yoursite.com/tags/评论系统/index.html">
+  <meta name="description" content="&amp;gt; 前言：
+由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组
+
+
+WIFI模组 （使用的是最常见的安信可模组）
+4G模组（采用微雪SIM7600CE模组）
+NB-IOT模组（采用高新兴物联模组ME3616）
+
+&amp;gt; 遇到的问题：
+首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多种模组使用MQTT协议总结">
+<meta property="og:url" content="http://yoursite.com/2019/02/19/多种模组使用MQTT协议总结/index.html">
 <meta property="og:site_name" content="WenZheng">
+<meta property="og:description" content="&amp;gt; 前言：
+由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组
+
+
+WIFI模组 （使用的是最常见的安信可模组）
+4G模组（采用微雪SIM7600CE模组）
+NB-IOT模组（采用高新兴物联模组ME3616）
+
+&amp;gt; 遇到的问题：
+首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其">
+<meta property="og:updated_time" content="2019-02-19T06:25:58.104Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WenZheng">
+<meta name="twitter:title" content="多种模组使用MQTT协议总结">
+<meta name="twitter:description" content="&amp;gt; 前言：
+由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组
+
+
+WIFI模组 （使用的是最常见的安信可模组）
+4G模组（采用微雪SIM7600CE模组）
+NB-IOT模组（采用高新兴物联模组ME3616）
+
+&amp;gt; 遇到的问题：
+首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其">
   
     <link rel="alternative" href="/atom.xml" title="WenZheng" type="application/atom+xml">
   
@@ -163,61 +194,324 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-多种模组使用MQTT协议总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/12/2019博客再次更新评论系统/" class="archive-article-date">
-  	<time datetime="2019-02-12T13:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/12/2019博客再次更新评论系统/">2019博客再次更新评论系统</a>
+    <h1 class="article-title" itemprop="name">
+      多种模组使用MQTT协议总结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/02/19/多种模组使用MQTT协议总结/" class="archive-article-date">
+  	<time datetime="2019-02-19T05:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="gt-前言："><a href="#gt-前言：" class="headerlink" title="&gt; 前言："></a>&gt; 前言：</h2><blockquote>
+<p>由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组</p>
+</blockquote>
+<ul>
+<li>WIFI模组 （使用的是最常见的安信可模组）</li>
+<li>4G模组（采用微雪SIM7600CE模组）</li>
+<li>NB-IOT模组（采用高新兴物联模组ME3616）</li>
+</ul>
+<h2 id="gt-遇到的问题："><a href="#gt-遇到的问题：" class="headerlink" title="&gt; 遇到的问题："></a>&gt; 遇到的问题：</h2><ol>
+<li>首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是山东有人物联网平台的模组，他们的COAP协议不支持自己搭建的服务器，这一点整个不符合我的路线，后来有采用了微雪的NB模组，发现他的COAP也是不太完善。首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是山东有人物联网平台的模组，他们的COAP协议不支持自己搭建的服务器，这一点整个不符合我的路线，后来有采用了微雪的NB模组，发现他的COAP也是不太完善。</li>
+<li>其次是MQTT服务器的搭建，由于他的普适性，其服务器的搭建也相对简单。</li>
+<li>后来我们采用了兼容性更高的MQTT协议，这个协议使用比较普遍，所以相对来说用起来比较简单，尤其是WIFI模组来对接MQTT协议，很简单就能做出来产品，同时我们又对其他类型的通讯模组进行了选型，最终找到了适合MQTT协议的模组，而且，运行起来相对稳定，比如高新兴物联作为主控的NB模组，我们已经将其安装在设备上运行。<ol>
+<li>MQTT协议的安卓开发，安卓针对MQTT协议有一定的固件包可以直接使用，所以这也是很快就可以搞定了的。</li>
+</ol>
+</li>
+</ol>
+<h2 id="gt-下面是调试各种模组的AT指令笔记"><a href="#gt-下面是调试各种模组的AT指令笔记" class="headerlink" title="&gt; 下面是调试各种模组的AT指令笔记:"></a>&gt; 下面是调试各种模组的AT指令笔记:</h2><a id="more"></a>
+<blockquote>
+</blockquote>
+<h2 id="首先是微雪的4G模组SIM7600CE"><a href="#首先是微雪的4G模组SIM7600CE" class="headerlink" title="首先是微雪的4G模组SIM7600CE"></a>首先是微雪的4G模组SIM7600CE</h2><blockquote>
+<p><em>这里必须要吐槽一下，官方给的文档都是错误的，好多地方都错了</em><br>网站：<a href="http://www.simcom.com/product/showproduct.php?lang=cn&amp;id=48" target="_blank" rel="external">http://www.simcom.com/product/showproduct.php?lang=cn&amp;id=48</a><br>微雪网址：<a href="http://www.waveshare.net/wiki/SIM7600CE_4G_HAT" target="_blank" rel="external">http://www.waveshare.net/wiki/SIM7600CE_4G_HAT</a><br>MQTT说明（很多错误）：<a href="http://www.waveshare.net/w/upload/6/65/SIM7500_SIM7600_Series_MQTT_ATC_V1.01.pdf" target="_blank" rel="external">http://www.waveshare.net/w/upload/6/65/SIM7500_SIM7600_Series_MQTT_ATC_V1.01.pdf</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT+CRESET</td>
+<td>模组复位</td>
+</tr>
+<tr>
+<td>AT+CMQTTSTART</td>
+<td>开始连接MQTT</td>
+</tr>
+<tr>
+<td>AT+CMQTTACCQ=0,”client c”</td>
+<td>设置id</td>
+</tr>
+<tr>
+<td>AT+CMQTTCONNECT=0,”tcp://60.205.203.64”,60,1,”root”,”citc2018”</td>
+<td>连接服务器（默认1883端口）</td>
+</tr>
+<tr>
+<td>AT+CMQTTTOPIC=0,5</td>
+<td>设置主题（后面直接发字符，长度要对应）</td>
+</tr>
+<tr>
+<td>AT+CMQTTPAYLOAD=0,5</td>
+<td>设置消息内容（后面直接发字符，长度要对应</td>
+</tr>
+<tr>
+<td>AT+CMQTTPUB=0,1,60</td>
+<td>发布消息</td>
+</tr>
+<tr>
+<td>AT+CMQTTDISC=0, 120</td>
+<td>断开连接</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="高新兴物联ME3616模组"><a href="#高新兴物联ME3616模组" class="headerlink" title="高新兴物联ME3616模组"></a>高新兴物联ME3616模组</h2><blockquote>
+<p>买的是开发板，骑士电子的高配版，带GPS</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT+EMQNEW=”47.105.157.158”,”1883”,12000,100</td>
+<td>设置域名</td>
+</tr>
+<tr>
+<td>AT+EMQCON=0,3,”wenzheng”,60000,1,0,”root”,”citc2018”</td>
+<td>连接MQTT</td>
+</tr>
+<tr>
+<td>AT+EMQSUB=0,”qishiNB”,1</td>
+<td>订阅主题</td>
+</tr>
+<tr>
+<td>AT+EMQPUB=0,”qishiNB”,1,0,0,4,”31323334”</td>
+<td>发布消息（消息类型为ASCII码）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>GPS指令集</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT+ZGRUN=0</td>
+<td>停止定位</td>
+</tr>
+<tr>
+<td>AT+ZGRUN=1</td>
+<td>启动单次定位</td>
+</tr>
+<tr>
+<td>AT+ZGRUN=2</td>
+<td>启动跟踪定位</td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">评论系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工作总结</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/19/多种模组使用MQTT协议总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/02/18/基于MQTT协议的WZ指令开发V3.0版本支持onenet/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于MQTT协议的WZ指令开发V3.0版本支持onenet</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
 
           </div>
         </div>
@@ -239,9 +533,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
