@@ -6,14 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 阿正的个人站</title>
+  <title>STM32多通道DMA—ADC采样 | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿正的个人站">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+  <meta name="description" content="阿正的个人站学习笔记–STM32多通道DMA—ADC采样
+资料来源于杜洋工作室，视频：https://www.bilibili.com/video/av18222153/?p=9
+
+
+
+普通的ADC采样，一般直接采用通道即可，但是利用DMA可以实现快速的数据读取，而且可以实现单片机的高效率运行。–特记录代码来加深印象！从大学在图书馆就看杜洋老师的书，2018他又出了最新的视频教程，非常详细，注释">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32多通道DMA—ADC采样">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/STM32多通道DMA—ADC采样/index.html">
 <meta property="og:site_name" content="阿正的个人站">
+<meta property="og:description" content="阿正的个人站学习笔记–STM32多通道DMA—ADC采样
+资料来源于杜洋工作室，视频：https://www.bilibili.com/video/av18222153/?p=9
+
+
+
+普通的ADC采样，一般直接采用通道即可，但是利用DMA可以实现快速的数据读取，而且可以实现单片机的高效率运行。–特记录代码来加深印象！从大学在图书馆就看杜洋老师的书，2018他又出了最新的视频教程，非常详细，注释">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7553ccd2be1.png">
+<meta property="og:updated_time" content="2019-02-26T15:04:40.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿正的个人站">
+<meta name="twitter:title" content="STM32多通道DMA—ADC采样">
+<meta name="twitter:description" content="阿正的个人站学习笔记–STM32多通道DMA—ADC采样
+资料来源于杜洋工作室，视频：https://www.bilibili.com/video/av18222153/?p=9
+
+
+
+普通的ADC采样，一般直接采用通道即可，但是利用DMA可以实现快速的数据读取，而且可以实现单片机的高效率运行。–特记录代码来加深印象！从大学在图书馆就看杜洋老师的书，2018他又出了最新的视频教程，非常详细，注释">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/26/5c7553ccd2be1.png">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -167,407 +188,255 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-STM32多通道DMA—ADC采样" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      STM32多通道DMA—ADC采样
+    </h1>
+  
+
+        
+        <a href="/2019/02/26/STM32多通道DMA—ADC采样/" class="archive-article-date">
+  	<time datetime="2019-02-26T14:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-26</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>阿正的个人站学习笔记–STM32多通道DMA—ADC采样</strong></p>
+<p>资料来源于杜洋工作室，视频：<a href="https://www.bilibili.com/video/av18222153/?p=9" target="_blank" rel="external">https://www.bilibili.com/video/av18222153/?p=9</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>普通的ADC采样，一般直接采用通道即可，但是利用DMA可以实现快速的数据读取，而且可以实现单片机的高效率运行。–特记录代码来加深印象！从大学在图书馆就看杜洋老师的书，2018他又出了最新的视频教程，非常详细，注释感人！</p>
+</blockquote>
+<hr>
+<p><img src="https://i.loli.net/2019/02/26/5c7553ccd2be1.png" alt=""></p>
+<blockquote>
+<p>学习总结：<br>DMA就像一个缓存数据一样，可以减轻cpu的负担。</p>
+<ol>
+<li>使用DMA的话首先要确定外设的基地址。</li>
+<li>设定缓冲区大小（多通道ADC）</li>
+<li>开启允许多通道（多通道ADC）</li>
+<li>允许地址偏移（多通道ADC）</li>
+<li>使用ADC的话就单独配置即可</li>
+<li>希望自己过几天能独立完成DMA的串口接收</li>
+</ol>
+</blockquote>
+<hr>
+<blockquote>
+<p>adc.c</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">#include &quot;adc.h&quot;</div><div class="line"></div><div class="line">vu16 ADC_DMA_IN[2]; //ADC数值存放的变量</div><div class="line"></div><div class="line">void ADC_DMA_Init(void)&#123; //DMA初始化设置</div><div class="line">	DMA_InitTypeDef DMA_InitStructure;//定义DMA初始化结构体</div><div class="line">	DMA_DeInit(DMA1_Channel1);//复位DMA通道1</div><div class="line">	DMA_InitStructure.DMA_PeripheralBaseAddr = ADC1_DR_Address; //定义 DMA通道外设基地址=ADC1_DR_Address</div><div class="line">	DMA_InitStructure.DMA_MemoryBaseAddr = (u32)&amp;ADC_DMA_IN; //!!!定义DMA通道ADC数据存储器（其他函数可直接读此变量即是ADC值）</div><div class="line">	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;//指定外设为源地址</div><div class="line">	DMA_InitStructure.DMA_BufferSize = 2;//!!!定义DMA缓冲区大小（根据ADC采集通道数量修改）</div><div class="line">	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;//当前外设寄存器地址不变</div><div class="line">	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;//!!! 当前存储器地址：Disable不变，Enable递增（用于多通道采集）</div><div class="line">	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;//定义外设数据宽度16位</div><div class="line">	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord; //定义存储器数据宽度16位</div><div class="line">	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;//DMA通道操作模式位环形缓冲模式</div><div class="line">	DMA_InitStructure.DMA_Priority = DMA_Priority_High;//DMA通道优先级高</div><div class="line">	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;//禁止DMA通道存储器到存储器传输</div><div class="line">	DMA_Init(DMA1_Channel1, &amp;DMA_InitStructure);//初始化DMA通道1</div><div class="line">	DMA_Cmd(DMA1_Channel1, ENABLE); //使能DMA通道1</div><div class="line">&#125;</div><div class="line">void ADC_GPIO_Init(void)&#123; //GPIO初始化设置</div><div class="line">	GPIO_InitTypeDef  GPIO_InitStructure; 	</div><div class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);       </div><div class="line">	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);//使能DMA时钟（用于ADC的数据传送）</div><div class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);//使能ADC1时钟</div><div class="line">    GPIO_InitStructure.GPIO_Pin = ADC_CH4 | ADC_CH5; //!!!选择端口                        </div><div class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN; //选择IO接口工作方式       </div><div class="line">	GPIO_Init(ADCPORT, &amp;GPIO_InitStructure);			</div><div class="line">&#125;</div><div class="line">void ADC_Configuration(void)&#123; //初始化设置</div><div class="line">	ADC_InitTypeDef ADC_InitStructure;//定义ADC初始化结构体变量</div><div class="line">	ADC_GPIO_Init();//GPIO初始化设置</div><div class="line">	ADC_DMA_Init();//DMA初始化设置</div><div class="line">	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;//ADC1和ADC2工作在独立模式</div><div class="line">	ADC_InitStructure.ADC_ScanConvMode = ENABLE; //使能扫描</div><div class="line">	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;//ADC转换工作在连续模式</div><div class="line">	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;//有软件控制转换</div><div class="line">	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;//转换数据右对齐</div><div class="line">	ADC_InitStructure.ADC_NbrOfChannel = 2;//!!!顺序进行规则转换的ADC通道的数目（根据ADC采集通道数量修改）</div><div class="line">	ADC_Init(ADC1, &amp;ADC_InitStructure); //根据ADC_InitStruct中指定的参数初始化外设ADCx的寄存器</div><div class="line">	//设置指定ADC的规则组通道，设置它们的转化顺序和采样时间</div><div class="line">	//ADC1,ADC通道x,规则采样顺序值为y,采样时间为28周期		 </div><div class="line">	ADC_RegularChannelConfig(ADC1, ADC_Channel_4, 1, ADC_SampleTime_28Cycles5);//!!! ADC1选择信道x,采样顺序y,采样时间n个周期</div><div class="line">	ADC_RegularChannelConfig(ADC1, ADC_Channel_5, 2, ADC_SampleTime_28Cycles5);//!!! ADC1选择信道x,采样顺序y,采样时间n个周期</div><div class="line"></div><div class="line">	ADC_DMACmd(ADC1, ENABLE);// 开启ADC的DMA支持（要实现DMA功能，还需独立配置DMA通道等参数）</div><div class="line">	ADC_Cmd(ADC1, ENABLE);//使能ADC1</div><div class="line">	ADC_ResetCalibration(ADC1); //重置ADC1校准寄存器</div><div class="line">	while(ADC_GetResetCalibrationStatus(ADC1));//等待ADC1校准重置完成</div><div class="line">	ADC_StartCalibration(ADC1);//开始ADC1校准</div><div class="line">	while(ADC_GetCalibrationStatus(ADC1));//等待ADC1校准完成</div><div class="line">	ADC_SoftwareStartConvCmd(ADC1, ENABLE); //使能ADC1软件开始转换</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>adc.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#ifndef __ADC_H</div><div class="line">#define __ADC_H 			   </div><div class="line">#include &quot;sys.h&quot;</div><div class="line"></div><div class="line"></div><div class="line">#define ADC1_DR_Address    ((uint32_t)0x4001244C) //ADC1这个外设的地址（查参考手册得出）</div><div class="line"></div><div class="line">#define ADCPORT		GPIOA	//定义ADC接口</div><div class="line">#define ADC_CH4		GPIO_Pin_4	//定义ADC接口 电压电位器</div><div class="line">#define ADC_CH5		GPIO_Pin_5	//定义ADC接口 光敏电阻</div><div class="line">#define ADC_CH6		GPIO_Pin_6	//定义ADC接口 摇杆X轴</div><div class="line">#define ADC_CH7		GPIO_Pin_7	//定义ADC接口 摇杆Y轴</div><div class="line"></div><div class="line"></div><div class="line">void ADC_DMA_Init(void);</div><div class="line">void ADC_GPIO_Init(void);</div><div class="line">void ADC_Configuration(void);</div><div class="line"></div><div class="line">#endif</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>main.c</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#include &quot;delay.h&quot;</div><div class="line">#include &quot;touch_key.h&quot;</div><div class="line">#include &quot;relay.h&quot;</div><div class="line">#include &quot;oled0561.h&quot;</div><div class="line">#include &quot;adc.h&quot;</div><div class="line">extern vu16 ADC_DMA_IN[2]; //声明外部变量</div><div class="line">int main (void)&#123;//主程序</div><div class="line">	delay_ms(500); //上电时等待其他器件就绪</div><div class="line">	RCC_Configuration(); //系统时钟初始化 </div><div class="line">	TOUCH_KEY_Init();//触摸按键初始化</div><div class="line">	RELAY_Init();//继电器初始化</div><div class="line">	ADC_Configuration(); //ADC初始化设置</div><div class="line">	I2C_Configuration();//I2C初始化</div><div class="line">	OLED0561_Init(); //OLED初始化</div><div class="line">	OLED_DISPLAY_8x16_BUFFER(0,&quot;   YoungTalk &quot;); //显示字符串</div><div class="line">	OLED_DISPLAY_8x16_BUFFER(2,&quot;   ADC TEST  &quot;); //显示字符串</div><div class="line">	OLED_DISPLAY_8x16_BUFFER(4,&quot; ADC_IN4:    &quot;); //显示字符串</div><div class="line">	OLED_DISPLAY_8x16_BUFFER(6,&quot; ADC_IN5:    &quot;); //显示字符串</div><div class="line">	while(1)&#123;</div><div class="line">		//将光敏电阻的ADC数据显示在OLED上</div><div class="line">		OLED_DISPLAY_8x16(4,10*8,ADC_DMA_IN[0]/1000+0x30);//</div><div class="line">		OLED_DISPLAY_8x16(4,11*8,ADC_DMA_IN[0]%1000/100+0x30);//</div><div class="line">		OLED_DISPLAY_8x16(4,12*8,ADC_DMA_IN[0]%100/10+0x30);//</div><div class="line">		OLED_DISPLAY_8x16(4,13*8,ADC_DMA_IN[0]%10+0x30);//</div><div class="line">		OLED_DISPLAY_8x16(6,10*8,ADC_DMA_IN[1]/1000+0x30);//</div><div class="line">		OLED_DISPLAY_8x16(6,11*8,ADC_DMA_IN[1]%1000/100+0x30);//</div><div class="line">		OLED_DISPLAY_8x16(6,12*8,ADC_DMA_IN[1]%100/10+0x30);//</div><div class="line">		OLED_DISPLAY_8x16(6,13*8,ADC_DMA_IN[1]%10+0x30);//</div><div class="line"></div><div class="line">		delay_ms(500); //延时</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/18/本地MQTT服务器的搭建/" class="archive-article-date">
-  	<time datetime="2018-09-18T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/18/本地MQTT服务器的搭建/">MQTT本地服务器搭建</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">物联网</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/26/STM32多通道DMA—ADC采样/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/15/维控PLC学习笔记/" class="archive-article-date">
-  	<time datetime="2018-08-15T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/24/Java项目安卓编程UI设计总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java项目安卓编程UI设计总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/15/维控PLC学习笔记/">维控PLC学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PLC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/03/2018年7月阶段总结（安卓开发）（远程控制）（语音控制）/" class="archive-article-date">
-  	<time datetime="2018-08-03T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/03/2018年7月阶段总结（安卓开发）（远程控制）（语音控制）/">阶段总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/27/3D镂空智能插座mini透明探索版/" class="archive-article-date">
-  	<time datetime="2018-07-27T14:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/3D镂空智能插座mini透明探索版/">3D镂空智能插座mini透明探索版</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">嵌入式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/27/智能门禁系统2.0开发/" class="archive-article-date">
-  	<time datetime="2018-07-27T14:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/智能门禁系统2.0开发/">智能门禁系统2.0开发</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">嵌入式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/27/超声波雷达扫描仪/" class="archive-article-date">
-  	<time datetime="2018-07-27T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/超声波雷达扫描仪/">超声波雷达扫描仪</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">雷达</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/26/嵌入式制作智能定时设备/" class="archive-article-date">
-  	<time datetime="2018-07-26T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/26/嵌入式制作智能定时设备/">嵌入式制作智能定时设备。</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">嵌入式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/17/机智云SOC嵌入式开发成功/" class="archive-article-date">
-  	<time datetime="2018-07-17T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/17/机智云SOC嵌入式开发成功/">机智云SOC嵌入式开发成功</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">机智云</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/12/利用机智云APP学习JAVA安卓/" class="archive-article-date">
-  	<time datetime="2018-07-12T03:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/12/利用机智云APP学习JAVA安卓/">利用机智云APP学习JAVA安卓</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/" class="archive-article-date">
-  	<time datetime="2018-07-02T03:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/">lua对接bmob数据库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">lua</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/4/">Next &raquo;</a>
-    </nav>
-  
-
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
 
           </div>
         </div>
@@ -589,8 +458,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
