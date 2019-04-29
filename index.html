@@ -169,6 +169,227 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-中移M5311与onenet资料总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/29/中移M5311与onenet资料总结/">中移M5311与onenet资料总结</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/29/中移M5311与onenet资料总结/" class="archive-article-date">
+  	<time datetime="2019-04-29T15:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>中移onenet再度学习</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>今天有个朋友问我NB模组M5311连接onenet服务器的问题，他已经成功连接了，就是数据下发的时候出现了问题，其实都是小问题，我一看便知，他是在处理按钮的下发逻辑时除了问题，我很快帮他解决了，但是同时我有发现了新的问题。让我对onenet恍然大悟！！</p>
+</blockquote>
+<hr>
+<h2 id="首先利用这个机会再次总结一下M5311的onenet指令集："><a href="#首先利用这个机会再次总结一下M5311的onenet指令集：" class="headerlink" title="首先利用这个机会再次总结一下M5311的onenet指令集："></a>首先利用这个机会再次总结一下M5311的onenet指令集：</h2><blockquote>
+<p>系统设置相关：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT+CMRB</td>
+<td>复位模组</td>
+<td></td>
+</tr>
+<tr>
+<td>AT+CMSYSCTRL=0,2</td>
+<td>打开指示灯</td>
+</tr>
+<tr>
+<td>AT+CEREG?</td>
+<td>扫描IP</td>
+<td>可用于开机准备</td>
+</tr>
+<tr>
+<td>AT+CSQ</td>
+<td>信号指令</td>
+<td></td>
+</tr>
+<tr>
+<td>AT+SM=LOCK_FOREVER</td>
+<td>关闭睡眠</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>普通MQTT指令：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT+MQTTCFG=”60.205.203.64”,1883,”zyNot”,120,”759”,”IIOuz”,1</td>
+<td>MQTT配置</td>
+<td></td>
+</tr>
+<tr>
+<td>AT+MQTTOPEN=1,1,1,1,1,”mywill”,”001bye”</td>
+<td>连接并设置，遗嘱（可选）</td>
+</tr>
+<tr>
+<td>AT+MQTTPUB=”device/nb/citc”,1,1,0,0,”hello”</td>
+<td>发布消息</td>
+<td>可对任意主题发布消息</td>
+</tr>
+<tr>
+<td>AT+MQTTSUB=“/device/NB/zx11111111111111_back”,1</td>
+<td>订阅消息</td>
+<td>接收数据回传</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>针对 onenet  MQTT指令：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT+MQTTCFG=”183.230.40.39”,6002,”设备ID”,120,”产品ID”,”APIKEY”,1</td>
+<td>MQTT配置</td>
+<td></td>
+</tr>
+<tr>
+<td>AT+MQTTOPEN=1,1,0,0,0,””,””</td>
+<td>连接并设置，无遗嘱</td>
+</tr>
+<tr>
+<td>AT+MQTTPUB=$dp,0,1,0,28,0300197b2231223a312c2232223a312c2233223a312c2234223a357d</td>
+<td></td>
+</tr>
+<tr>
+<td>其中28为发送的数据长度，03为第三种json数据格式，0019为数据包的长度</td>
+<td>数据包为：{“1”:1,”2”:1,”3”:1,”4”:1}</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>关于Onenet的数据下发：</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/04/29/5cc7177b6754d.png" alt=""><br>如图，由于Onenet 按钮下发数据的时候有一个默认值，所以很多人电机按钮的时候都是发送0和1，所以很多人就比较迷茫，怎么区分多个按钮的下发指令，其实这很好解决的，onenet是支持自定义数据点的，不同的按钮开和关都可以设置成不同的数据命令，这样就很好办了对吧！</p>
+<ul>
+<li>onenet 的NB快速连接方法，不是使用LWM2M！ 而是依旧使用wifi方案的MQTT！！</li>
+<li>onenet的安卓开发有多重方法，一是使用onenet官方提供的SDK和API，另外一种更简单粗暴的就是使用安卓的mqtt协议（之前多次失败的原因终于找到了）就是发布消息时的格式问题，普通的MQTT客户端和平台都是支持发送字符串的，，比如publish（“T”，“20”），但是onenet是不允许的，而且你强制发送的话，发武器会使你掉线！这就是我很久之前遇到的问题，今天看了一个博客恍然大悟：参考链接见文末。</li>
+<li>onenet支持的MQTT数据流都是16进制的。而且他的数据下发是不需要订阅的，而且是不支持订阅系统$开头的主题的。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/04/29/5cc7128a5cce7.png" alt=""></p>
+<p>OK先总结到这里，有问题欢迎下方留言或者咨询：QQ群：476840321</p>
+<blockquote>
+<p>参考链接：<br> 1、<a href="https://blog.csdn.net/renanrenan/article/details/83381187" target="_blank" rel="external">onenet利用MQTT协议的开发逻辑</a><br> 2、<a href="https://www.amobbs.com/thread-5698272-1-1.html?_dsign=68a2c3e0" target="_blank" rel="external">不支持MQTT的NB模组利用TCP强行mqtt通讯</a><br> 3、<a href="https://blog.csdn.net/Sanjay_Wu/article/details/84304177" target="_blank" rel="external">高新兴ME3616调试Onenet笔记</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NBIOT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/29/中移M5311与onenet资料总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-IOT硬件与服务器通讯流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1205,122 +1426,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-Arduino+WZ指令+Onenet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/24/Arduino+WZ指令+Onenet/">Arduino+WZ指令+Onenet</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/24/Arduino+WZ指令+Onenet/" class="archive-article-date">
-  	<time datetime="2019-02-23T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://i.loli.net/2019/02/24/5c7176c149ed4.jpg" alt=""></p>
-<hr>
-<p><img src="https://i.loli.net/2019/02/24/5c7176e812b38.jpg" alt=""></p>
-<hr>
-<p><img src="https://i.loli.net/2019/02/24/5c7179baf3d76.png" alt=""></p>
-<hr>
-<blockquote>
-<p>视频演示：</p>
-</blockquote>
-<hr>
-<iframe src="//player.bilibili.com/player.html?aid=44421747&cid=77777406&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<blockquote>
-<p>这个小项目看似简单却费了很大劲才做出来。同时也解决了很多遇到的问题。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2019/02/24/Arduino+WZ指令+Onenet/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Onenet</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/24/Arduino+WZ指令+Onenet/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1422,15 +1527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1438,7 +1539,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOT</a>
+                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,7 +1547,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+                <a href="javascript:void(0)" class="js-tag color4">IOT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1454,7 +1555,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
+                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1462,15 +1563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">STM32</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,11 +1575,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1514,19 +1615,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">托更</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">智能家居</a>
+                <a href="javascript:void(0)" class="js-tag color3">托更</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color5">智能家居</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1538,11 +1635,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1554,7 +1647,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心语</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
