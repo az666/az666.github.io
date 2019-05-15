@@ -6,14 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: opencv | 阿正的个人站</title>
+  <title>STM32外设驱动总结（公司项目需要） | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿正的个人站">
-<meta property="og:url" content="http://yoursite.com/tags/opencv/index.html">
+  <meta name="description" content="今天已经是2019年的5月中旬了，马上要毕业论文检查了，但是我一个字还没有写。本来计划今天写的，无奈无从下手呀，突然想到今天的工作记录还没有写，果断放弃了毕业论文，写论文是不可能写的，，，，（0*0）今天来总结下我一天内完成的工作成果。
+
+
+STM32-SPI 外置内存的调试（W25Q128）参考的正点原子例程
+STM32-I2C 外置内存的调试（AT24C128）
+STM32关键参数的超级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32外设驱动总结（公司项目需要）">
+<meta property="og:url" content="http://yoursite.com/2019/05/15/STM32外设驱动总结（公司项目需要）/index.html">
 <meta property="og:site_name" content="阿正的个人站">
+<meta property="og:description" content="今天已经是2019年的5月中旬了，马上要毕业论文检查了，但是我一个字还没有写。本来计划今天写的，无奈无从下手呀，突然想到今天的工作记录还没有写，果断放弃了毕业论文，写论文是不可能写的，，，，（0*0）今天来总结下我一天内完成的工作成果。
+
+
+STM32-SPI 外置内存的调试（W25Q128）参考的正点原子例程
+STM32-I2C 外置内存的调试（AT24C128）
+STM32关键参数的超级">
+<meta property="og:image" content="https://i.loli.net/2019/05/15/5cdc354c76d5160235.jpg">
+<meta property="og:updated_time" content="2019-05-15T15:51:18.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿正的个人站">
+<meta name="twitter:title" content="STM32外设驱动总结（公司项目需要）">
+<meta name="twitter:description" content="今天已经是2019年的5月中旬了，马上要毕业论文检查了，但是我一个字还没有写。本来计划今天写的，无奈无从下手呀，突然想到今天的工作记录还没有写，果断放弃了毕业论文，写论文是不可能写的，，，，（0*0）今天来总结下我一天内完成的工作成果。
+
+
+STM32-SPI 外置内存的调试（W25Q128）参考的正点原子例程
+STM32-I2C 外置内存的调试（AT24C128）
+STM32关键参数的超级">
+<meta name="twitter:image" content="https://i.loli.net/2019/05/15/5cdc354c76d5160235.jpg">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -167,61 +188,353 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-STM32外设驱动总结（公司项目需要）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/opencv配置成功/" class="archive-article-date">
-  	<time datetime="2018-02-26T13:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/opencv配置成功/">opencv配置成功</a>
+    <h1 class="article-title" itemprop="name">
+      STM32外设驱动总结（公司项目需要）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/15/STM32外设驱动总结（公司项目需要）/" class="archive-article-date">
+  	<time datetime="2019-05-15T14:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2019/05/15/5cdc354c76d5160235.jpg" alt=""></p>
+<hr>
+<blockquote>
+<p>今天已经是2019年的5月中旬了，马上要毕业论文检查了，但是我一个字还没有写。本来计划今天写的，无奈无从下手呀，突然想到今天的工作记录还没有写，果断放弃了毕业论文，写论文是不可能写的，，，，（0*0）<br>今天来总结下我一天内完成的工作成果。</p>
+</blockquote>
+<ul>
+<li>STM32-SPI 外置内存的调试（W25Q128）参考的正点原子例程</li>
+<li>STM32-I2C 外置内存的调试（AT24C128）</li>
+<li>STM32关键参数的超级串口终端（可以进行关键参数的快速配置）-阿正原创</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p><strong>W25Q128遇到的问题：无法读取FlashID</strong></p>
+<p>首先，刚开始调试SPI的时候就遇到了致命的问题，我调试了接近一晚上，但是连Flash的ID都读不出来，一度让我很烦躁，一行代码一行代码的调试，也没有发现异常，毕竟Flash的ID读取也就是几个函数而已，底层的SPI其实是不需要配置的，为了解决这个问题，我尝试了很多办法，代码几乎肯定是没问题的，我把W25Q128换成了W25Q16，依旧无法读取出来ID，此时我又把主机上的Flash换到了一块能正常运行的F4单片机上，此时是可以读出ID的，所以排除了硬件问题，但是代码是否有问题依旧无法确认，一直到下午，把办公室的老大哥，发现了原理图上面的引脚MOSI与MISO的引脚画反了！！！最终我把引脚飞线交叉以后，问题解决了，哎呀，下午的时候和我的恩同事一起去吃了土豆粉。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>STM32-I2C 外置内存的调试（AT24C128）</p>
+<p>调试代码总是不顺利的，这款IC也出现了问题，初始化无法校验成功，后来发现是我的红底昂一有问题，再加上论坛生的一些资料，帮助我解决了问题，成功实现flash读写。</p>
+<p>STM32超级串口的设计<br>首先我手头的主板为STM32F103R8t6<br>三个串口已经全部使用了，<br>串口1用来做调试<br>串口2用来与NB模组通讯<br>串口3用来与485设备通讯<br>最后我次用了串口1作为超级串口终端。</p>
+<p>超级串口的用途：</p>
+</blockquote>
+<ol>
+<li>批量配置设备主要参数，例如：NB模组IP地址、MQTT服务器域名、设备ID、问询设备状态等。</li>
+<li>通过串口助手快速批量设置设备</li>
+<li>通过PC端软件快速便捷设置（QT上位机开发）</li>
+</ol>
+<hr>
+<blockquote>
+<p>超级串口的实现方法：</p>
+</blockquote>
+<ol>
+<li>串口中断的使用，包括接收中断与空闲中断（用来接收长帧数据）</li>
+<li>自定义字符处理函数（参考网上教程）</li>
+<li>原创类似AT指令的串口配置命令：<br>指令配置表：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CITC+IP[192.168.1.120]</td>
+<td>更改服务器IP地址</td>
+</tr>
+<tr>
+<td>CITC+PORT[1883]</td>
+<td>更改服务器端口号</td>
+</tr>
+<tr>
+<td>CITC+ID[TEST_NB]</td>
+<td>更改设备ID</td>
+</tr>
+<tr>
+<td>CITC+USER[admin]</td>
+<td>更改MQTT用户名</td>
+</tr>
+<tr>
+<td>CITC+PASSWORD[public]</td>
+<td>更改MQTT密码</td>
+</tr>
+<tr>
+<td>CITC+TOPIC[/device/NB/102365]</td>
+<td>更改发布消息Topic</td>
+</tr>
+</tbody>
+</table>
+<p>地址对应表：</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>功能</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-50</td>
+<td>存储开机打印信息与程序版本号等</td>
+<td>50</td>
+</tr>
+<tr>
+<td>50-70</td>
+<td>IP地址</td>
+<td>20</td>
+</tr>
+<tr>
+<td>70-80</td>
+<td>PORT端口</td>
+<td>10</td>
+</tr>
+<tr>
+<td>80-100</td>
+<td>ID设备ID</td>
+<td>20</td>
+</tr>
+<tr>
+<td>100-120</td>
+<td>USER用户名</td>
+<td>20</td>
+</tr>
+<tr>
+<td>120-140</td>
+<td>PASSWORD密码</td>
+<td>20</td>
+</tr>
+<tr>
+<td>150-200</td>
+<td>TOPIC消息主题</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>代码简单记录：</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>截取字符函数：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/***********************************************************</div><div class="line">  函数名称：Find_string(char *pcBuf,char*left,char*right, char *pcRes)</div><div class="line">  函数功能：寻找特定字符串</div><div class="line">  入口参数：</div><div class="line">           char *pcBuf 为传入的字符串</div><div class="line">           char*left   为搜索字符的左边标识符  例如：&quot;[&quot;</div><div class="line">           char*right  为搜索字符的右边标识符  例如：&quot;]&quot;</div><div class="line">					 char *pcRes 为输出转存的字符串数组</div><div class="line">  返回值：用来校验是否成功，无所谓的。</div><div class="line">  备注：</div><div class="line"> 服务器下发命令举例：+MQTTPUBLISH: 0,0,0,0,/device/NB/zx99999999999999_back,6,[reastrobot]</div><div class="line">***********************************************************/</div><div class="line">int Find_string(char *pcBuf,char*left,char*right, char *pcRes)</div><div class="line">&#123;</div><div class="line">	char *pcBegin = NULL;</div><div class="line">	char *pcEnd = NULL;</div><div class="line">	</div><div class="line">	pcBegin = strstr(pcBuf, left);</div><div class="line">	pcEnd = strstr(pcBuf, right);</div><div class="line"> </div><div class="line">	if(pcBegin == NULL || pcEnd == NULL || pcBegin &gt; pcEnd)</div><div class="line">	&#123;</div><div class="line">		printf(&quot;Mail name not found!\n&quot;);</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		pcBegin += strlen(left);</div><div class="line">		memcpy(pcRes, pcBegin, pcEnd-pcBegin);</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>超级串口终端代码：</p>
+<p>串口中断部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">/***********************************************************</div><div class="line">  函数名称：USART1_IRQHandler(void)</div><div class="line">  函数功能：串口2中断服务程序</div><div class="line">  入口参数：无</div><div class="line">  返回值：无</div><div class="line">  备注：</div><div class="line">   实现了数据接收中断缓存，以及空闲中断处理，实现长字符数据的接收</div><div class="line">   同时检测是否有下发命令的数据回传。</div><div class="line">***********************************************************/</div><div class="line">void USART1_IRQHandler(void)                  //串口2中断服务程序</div><div class="line">&#123;</div><div class="line">  uint8_t ch;</div><div class="line">  uint8_t Clear = Clear;</div><div class="line">  if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)</div><div class="line">  &#123;</div><div class="line">    USART_ClearITPendingBit(USART1, USART_IT_RXNE); //接收中断</div><div class="line">    ch = USART_ReceiveData(USART1);</div><div class="line">    struct_usart.USART1_BUFF[struct_usart.USART1_Length++] = ch;</div><div class="line">  &#125;</div><div class="line">  if ( USART_GetITStatus( USART1, USART_IT_IDLE ) == SET ) //空闲总线中断</div><div class="line">  &#123;</div><div class="line">    USART_ClearITPendingBit(USART1, USART_IT_IDLE);</div><div class="line">    ch = USART_ReceiveData(USART1);</div><div class="line">    if (struct_usart.USART1_Length != 0) //返回值不为空</div><div class="line">    &#123;</div><div class="line">			 printf(&quot;\r\nBACK_CITC\r\n&#123;%s&#125;\r\n&quot;,struct_usart.USART1_BUFF);</div><div class="line">			</div><div class="line">      if (strstr((char*)struct_usart.USART1_BUFF, &quot;CITC&quot;)) //是否包含回传数据</div><div class="line">      &#123;</div><div class="line">        printf(&quot;\r\nBACK_CITC_OK!\r\n[%s]\r\n&quot;,struct_usart.USART1_BUFF);</div><div class="line">				scan_CITC();</div><div class="line">        memset(&amp;struct_usart.USART1_BUFF,0,sizeof(struct_usart.USART1_BUFF));//清空结构体数组(此处不能清空，因为有可能数据正在处理的时候，服务器下发了数据)</div><div class="line">				struct_usart.USART1_Length = 0;</div><div class="line">      &#125;</div><div class="line">			else &#123;</div><div class="line">			 printf(&quot;\r\nBACK_CITC_ERROR!\r\n&quot;);</div><div class="line">			 memset(&amp;struct_usart.USART1_BUFF,0,sizeof(struct_usart.USART1_BUFF));//清空结构体数组</div><div class="line">       struct_usart.USART1_Length = 0;				</div><div class="line">			&#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接收数据处理部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">void scan_CITC(void)&#123;</div><div class="line">	memset(&amp;CITC_MSG,0,sizeof(CITC_MSG));</div><div class="line">	memset(&amp;CITC_msg,0,sizeof(CITC_msg));</div><div class="line"> if (strstr((char*)struct_usart.USART1_BUFF, &quot;CITC+IP&quot;)) //是否包含回传数据</div><div class="line"> &#123;</div><div class="line"> Find_string((char*)struct_usart.USART1_BUFF,&quot;[&quot;,&quot;]&quot;,CITC_msg);</div><div class="line">	sprintf(CITC_MSG,&quot;%s%s%s&quot;,&quot;[&quot;,CITC_msg,&quot;]&quot;); //再次组装数据便于不定长数据的截取</div><div class="line">  AT24CXX_Write(50,(u8*)CITC_MSG,strlen(CITC_MSG));</div><div class="line"> &#125;else if(strstr((char*)struct_usart.USART1_BUFF, &quot;CITC+PORT&quot;))</div><div class="line"> &#123;</div><div class="line"> Find_string((char*)struct_usart.USART1_BUFF,&quot;[&quot;,&quot;]&quot;,CITC_msg);</div><div class="line">	sprintf(CITC_MSG,&quot;%s%s%s&quot;,&quot;[&quot;,CITC_msg,&quot;]&quot;); //再次组装数据便于不定长数据的截取</div><div class="line"> AT24CXX_Write(70,(u8*)CITC_MSG,strlen(CITC_MSG));</div><div class="line"> &#125;else if(strstr((char*)struct_usart.USART1_BUFF, &quot;CITC+ID&quot;))</div><div class="line"> &#123;</div><div class="line"> Find_string((char*)struct_usart.USART1_BUFF,&quot;[&quot;,&quot;]&quot;,CITC_msg);</div><div class="line">	sprintf(CITC_MSG,&quot;%s%s%s&quot;,&quot;[&quot;,CITC_msg,&quot;]&quot;); //再次组装数据便于不定长数据的截取</div><div class="line"> AT24CXX_Write(80,(u8*)CITC_MSG,strlen(CITC_MSG));</div><div class="line"> &#125;else if(strstr((char*)struct_usart.USART1_BUFF, &quot;CITC+USER&quot;))</div><div class="line"> &#123;</div><div class="line"> Find_string((char*)struct_usart.USART1_BUFF,&quot;[&quot;,&quot;]&quot;,CITC_msg);</div><div class="line">	sprintf(CITC_MSG,&quot;%s%s%s&quot;,&quot;[&quot;,CITC_msg,&quot;]&quot;); //再次组装数据便于不定长数据的截取</div><div class="line"> AT24CXX_Write(100,(u8*)CITC_MSG,strlen(CITC_MSG));</div><div class="line"> &#125;else if(strstr((char*)struct_usart.USART1_BUFF, &quot;CITC+PASSWORD&quot;))</div><div class="line"> &#123;</div><div class="line"> Find_string((char*)struct_usart.USART1_BUFF,&quot;[&quot;,&quot;]&quot;,CITC_msg);</div><div class="line">	sprintf(CITC_MSG,&quot;%s%s%s&quot;,&quot;[&quot;,CITC_msg,&quot;]&quot;); //再次组装数据便于不定长数据的截取</div><div class="line"> AT24CXX_Write(120,(u8*)CITC_MSG,strlen(CITC_MSG));</div><div class="line"> &#125;else if(strstr((char*)struct_usart.USART1_BUFF, &quot;CITC+TOPIC&quot;))</div><div class="line"> &#123;</div><div class="line"> Find_string((char*)struct_usart.USART1_BUFF,&quot;[&quot;,&quot;]&quot;,CITC_msg);</div><div class="line">	sprintf(CITC_MSG,&quot;%s%s%s&quot;,&quot;[&quot;,CITC_msg,&quot;]&quot;); //再次组装数据便于不定长数据的截取</div><div class="line"> AT24CXX_Write(150,(u8*)CITC_MSG,strlen(CITC_MSG));</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>主机开机初始化部分（从内存中读取信息）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">/***********************************************************</div><div class="line">  函数名称：CITC_Init()</div><div class="line">  函数功能：内存初始化</div><div class="line">  入口参数：无</div><div class="line">  返回值：</div><div class="line">***********************************************************/</div><div class="line">void CITC_Init(void)</div><div class="line">&#123;</div><div class="line">		AT24CXX_Read(50,datatemp,20);</div><div class="line">	  Find_string((char*)datatemp,&quot;[&quot;,&quot;]&quot;,Find_msg);  </div><div class="line">	  sprintf(IP,&quot;%s&quot;,Find_msg);</div><div class="line">		printf(&quot;IP: %s\r\n&quot;,Find_msg); </div><div class="line">	  memset(&amp;Find_msg,0,sizeof(Find_msg));</div><div class="line">	</div><div class="line">	  AT24CXX_Read(70,datatemp,10);</div><div class="line">	  Find_string((char*)datatemp,&quot;[&quot;,&quot;]&quot;,Find_msg);  </div><div class="line">	  sprintf(Port,&quot;%s&quot;,Find_msg);</div><div class="line">		printf(&quot;PORT: %s\r\n&quot;,Find_msg); </div><div class="line">	  memset(&amp;Find_msg,0,sizeof(Find_msg));</div><div class="line">	</div><div class="line">	  AT24CXX_Read(80,datatemp,20);</div><div class="line">	  Find_string((char*)datatemp,&quot;[&quot;,&quot;]&quot;,Find_msg);  </div><div class="line">	  sprintf(ID,&quot;%s&quot;,Find_msg);</div><div class="line">		printf(&quot;ID: %s\r\n&quot;,Find_msg); </div><div class="line">	  memset(&amp;Find_msg,0,sizeof(Find_msg));</div><div class="line">	</div><div class="line">	  AT24CXX_Read(100,datatemp,20);</div><div class="line">	  Find_string((char*)datatemp,&quot;[&quot;,&quot;]&quot;,Find_msg);  </div><div class="line">	  sprintf(User,&quot;%s&quot;,Find_msg);</div><div class="line">		printf(&quot;USER: %s\r\n&quot;,Find_msg);</div><div class="line">		 memset(&amp;Find_msg,0,sizeof(Find_msg));</div><div class="line">	</div><div class="line">	  AT24CXX_Read(120,datatemp,20);</div><div class="line">	  Find_string((char*)datatemp,&quot;[&quot;,&quot;]&quot;,Find_msg);  </div><div class="line">	  sprintf(Pwd,&quot;%s&quot;,Find_msg);</div><div class="line">		printf(&quot;PWD: %s\r\n&quot;,Find_msg);</div><div class="line">		memset(&amp;Find_msg,0,sizeof(Find_msg));</div><div class="line">	</div><div class="line">	  AT24CXX_Read(150,datatemp,50);</div><div class="line">	  Find_string((char*)datatemp,&quot;[&quot;,&quot;]&quot;,Find_msg);  </div><div class="line">	  sprintf(TOPIC,&quot;%s&quot;,Find_msg);</div><div class="line">		printf(&quot;TOPIC: %s\r\n&quot;,Find_msg);</div><div class="line">		memset(&amp;Find_msg,0,sizeof(Find_msg));</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>晚安世界，希望以后自己更加努力，好好学习，努力工作。<br>学到更多的东西、学到更多的知识。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">opencv</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/15/STM32外设驱动总结（公司项目需要）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/05/04/Smart-Clock/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Smart-Clock</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
 
           </div>
         </div>
@@ -243,9 +556,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
