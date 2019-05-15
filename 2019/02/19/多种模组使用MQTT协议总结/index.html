@@ -38,7 +38,7 @@ NB-IOT模组（采用高新兴物联模组ME3616）
 
 &amp;gt; 遇到的问题：
 首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是">
-<meta property="og:updated_time" content="2019-05-13T08:52:14.385Z">
+<meta property="og:updated_time" content="2019-05-15T05:13:03.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多种模组使用MQTT协议总结">
 <meta name="twitter:description" content="前言：
@@ -279,7 +279,7 @@ var _hmt = _hmt || [];
 </tr>
 <tr>
 <td>AT+CMQTTTOPIC=0,5</td>
-<td>设置主题（后面直接发字符，长度要对应）</td>
+<td>设置发布主题（后面直接发字符，长度要对应）</td>
 </tr>
 <tr>
 <td>AT+CMQTTPAYLOAD=0,5</td>
@@ -288,6 +288,10 @@ var _hmt = _hmt || [];
 <tr>
 <td>AT+CMQTTPUB=0,1,60</td>
 <td>发布消息</td>
+</tr>
+<tr>
+<td>AT+CMQTTSUB=0,9,1,1</td>
+<td>设置订阅主题（有消息会自动返回）</td>
 </tr>
 <tr>
 <td>AT+CMQTTDISC=0, 120</td>
@@ -400,6 +404,10 @@ var _hmt = _hmt || [];
 <tr>
 <td>AT+MQTTPUB=”device/nb/citc”,1,1,0,0,”hello”</td>
 <td>发布消息</td>
+</tr>
+<tr>
+<td>AT+MQTTSUB=”/device/NB/zx11111_back”,1</td>
+<td>订阅主题（有消息的话会自动返回）</td>
 </tr>
 </tbody>
 </table>
@@ -736,15 +744,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
+                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,6 +757,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,15 +776,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,11 +792,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,15 +812,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
+                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -816,19 +824,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">托更</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -844,7 +852,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -852,11 +860,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color3">雷达</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">雷达</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
