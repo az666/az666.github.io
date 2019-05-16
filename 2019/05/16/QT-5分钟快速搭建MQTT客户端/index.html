@@ -6,67 +6,45 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>lua对接bmob数据库 | 阿正的个人站</title>
+  <title>QT-5分钟快速搭建MQTT客户端 | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lua对接bmob数据库
+  <meta name="description" content="QT-5分钟快速搭建MQTT客户端
+参考链接：https://blog.csdn.net/sxpsxp12/article/details/79353743参考链接：https://www.jianshu.com/p/7dc81771d246
 
+今天下午刚装上QT就迫不及待的撸一波！
 
-学习的最终结果：
-
-
-实现用户注册和登录
-数据库增删改查
-远程公告
-远程更新版本
-微信反馈
-甚至自己做一个聊天室服务器，等等。。。
-最后送大家的彩蛋—–超级无敌微信反馈（文末）">
+QT的MQTT工程搭建的步骤为：首先编译MQTT库其次将MQTT库加入到自己的QT工程中然后调用相关函数实现服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lua对接bmob数据库">
-<meta property="og:url" content="http://yoursite.com/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/index.html">
+<meta property="og:title" content="QT-5分钟快速搭建MQTT客户端">
+<meta property="og:url" content="http://yoursite.com/2019/05/16/QT-5分钟快速搭建MQTT客户端/index.html">
 <meta property="og:site_name" content="阿正的个人站">
-<meta property="og:description" content="lua对接bmob数据库
+<meta property="og:description" content="QT-5分钟快速搭建MQTT客户端
+参考链接：https://blog.csdn.net/sxpsxp12/article/details/79353743参考链接：https://www.jianshu.com/p/7dc81771d246
 
+今天下午刚装上QT就迫不及待的撸一波！
 
-学习的最终结果：
-
-
-实现用户注册和登录
-数据库增删改查
-远程公告
-远程更新版本
-微信反馈
-甚至自己做一个聊天室服务器，等等。。。
-最后送大家的彩蛋—–超级无敌微信反馈（文末）">
-<meta property="og:image" content="https://i.loli.net/2018/06/29/5b35cbd14d883.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/29/5b35cd9d331f5.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/29/5b35cfffa741a.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/29/5b35ceda7b9c8.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/02/5b399bf9e4f04.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/02/5b399a6711214.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/02/5b399d47da435.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a06795aad.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a09a75be9.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a1296b9c9.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a178eff28.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/02/5b39a210dfba5.png">
-<meta property="og:updated_time" content="2018-07-07T11:31:44.000Z">
+QT的MQTT工程搭建的步骤为：首先编译MQTT库其次将MQTT库加入到自己的QT工程中然后调用相关函数实现服务">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd6dc98dac984148.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd6e5fd5a8237609.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd6f78e5e8e36582.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd6fe38816813908.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd700f0ad5076167.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd708c03cfd59980.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd7111cdb6b93660.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd7123a3dfd41311.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd72d5aeb4c41665.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd72e59d90418065.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/16/5cdd73da0a2fb19425.png">
+<meta property="og:updated_time" content="2019-05-16T14:33:20.751Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lua对接bmob数据库">
-<meta name="twitter:description" content="lua对接bmob数据库
+<meta name="twitter:title" content="QT-5分钟快速搭建MQTT客户端">
+<meta name="twitter:description" content="QT-5分钟快速搭建MQTT客户端
+参考链接：https://blog.csdn.net/sxpsxp12/article/details/79353743参考链接：https://www.jianshu.com/p/7dc81771d246
 
+今天下午刚装上QT就迫不及待的撸一波！
 
-学习的最终结果：
-
-
-实现用户注册和登录
-数据库增删改查
-远程公告
-远程更新版本
-微信反馈
-甚至自己做一个聊天室服务器，等等。。。
-最后送大家的彩蛋—–超级无敌微信反馈（文末）">
-<meta name="twitter:image" content="https://i.loli.net/2018/06/29/5b35cbd14d883.png">
+QT的MQTT工程搭建的步骤为：首先编译MQTT库其次将MQTT库加入到自己的QT工程中然后调用相关函数实现服务">
+<meta name="twitter:image" content="https://i.loli.net/2019/05/16/5cdd6dc98dac984148.png">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -220,139 +198,70 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-lua对接bmob数据库 和 微信反馈方法（彩蛋）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-QT-5分钟快速搭建MQTT客户端" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      lua对接bmob数据库
+      QT-5分钟快速搭建MQTT客户端
     </h1>
   
 
         
-        <a href="/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/" class="archive-article-date">
-  	<time datetime="2018-07-02T03:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
+        <a href="/2019/05/16/QT-5分钟快速搭建MQTT客户端/" class="archive-article-date">
+  	<time datetime="2019-05-16T14:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="lua对接bmob数据库"><a href="#lua对接bmob数据库" class="headerlink" title="lua对接bmob数据库"></a>lua对接bmob数据库</h2><p><img src="https://i.loli.net/2018/06/29/5b35cbd14d883.png" alt=""></p>
-<hr>
+        <p><strong>QT-5分钟快速搭建MQTT客户端</strong></p>
+<p>参考链接：<a href="https://blog.csdn.net/sxpsxp12/article/details/79353743" target="_blank" rel="external">https://blog.csdn.net/sxpsxp12/article/details/79353743</a><br>参考链接：<a href="https://www.jianshu.com/p/7dc81771d246" target="_blank" rel="external">https://www.jianshu.com/p/7dc81771d246</a></p>
 <blockquote>
-<p>学习的最终结果：</p>
+<p>今天下午刚装上QT就迫不及待的撸一波！</p>
 </blockquote>
-<ol>
-<li>实现用户注册和登录</li>
-<li>数据库增删改查</li>
-<li>远程公告</li>
-<li>远程更新版本</li>
-<li>微信反馈</li>
-<li>甚至自己做一个聊天室服务器，等等。。。</li>
-<li>最后送大家的彩蛋—–超级无敌微信反馈（文末）</li>
-</ol>
-<hr>
+<p>QT的MQTT工程搭建的步骤为：<br>首先编译MQTT库<br>其次将MQTT库加入到自己的QT工程中<br>然后调用相关函数实现服务器的连接与通讯<br><strong><em>接下来是我半个小时的成果（部分图片来源自以上两个链接）</em></strong></p>
+<blockquote>
+<p>1、从EMQ官网下载MQTT的QT工程，并用QT打开</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/05/16/5cdd6dc98dac984148.png" alt=""></p>
+<blockquote>
+<p>2、使用QTCreater打开qmqtt-master/qmqtt.pro并在工程文件添加CONFIG += NO_UNIT_TESTS</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/05/16/5cdd6e5fd5a8237609.png" alt=""></p>
 <a id="more"></a>
 <blockquote>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>新手一个，一夜基本学会lua，因为以前玩python 两者很像。很早以前我推送都是用自己的博客，虽然也很方便，总感觉很low，就一直想对接数据库。我做的这个软件是辅助我们大学校园网登陆的，很多同学在用，感觉初学lua的同学没有人会用这类的软件，所以整个包就不放出来了。</p>
+<p>3、将qmqtt-master\src\mqtt里面的头文件添加到刚生成的构建目录的盘的根目录生成的include文件夹</p>
 </blockquote>
-<hr>
-<h2 id="软件安装包"><a href="#软件安装包" class="headerlink" title="软件安装包"></a>软件安装包</h2><p><a href="https://fir.im/4wgz" target="_blank" rel="external">https://fir.im/4wgz</a><br>你们不是我学校的核心功能是用不了的，不过可以看看功能。</p>
-<hr>
-<hr>
-<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><hr>
+<p><img src="https://i.loli.net/2019/05/16/5cdd6f78e5e8e36582.png" alt=""></p>
 <blockquote>
-<p>1、<a href="http://pbhutn8vv.bkt.clouddn.com/bmob.lua" target="_blank" rel="external">bmob.lua下载</a></p>
-<p>2、准备安卓lua解释器可以使用酷安上的所有lua编程软件，想自己做UI就用基础的软件，不想自己做UI就用FusionApp来做<br><img src="https://i.loli.net/2018/06/29/5b35cd9d331f5.png" alt=""></p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2></blockquote>
+<p>4、新建QT项目，将上面编译好的项目里的include与lib文件拷贝到工程目录下<br>其中lib中只需要四个文件即可</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/05/16/5cdd6fe38816813908.png" alt=""></p>
 <hr>
+<p><img src="https://i.loli.net/2019/05/16/5cdd700f0ad5076167.png" alt=""></p>
 <blockquote>
-<p>注册bmob数据库新建一个应用和数据库<br>我把它起名lua其中一个表为（tuisong）推送</p>
+<p>5、接下来就是用QT添加MQTT库 并选择外部库 然后选择lib下的文件即可</p>
 </blockquote>
-<p><img src="https://i.loli.net/2018/06/29/5b35cfffa741a.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/05/16/5cdd708c03cfd59980.png" alt=""></p>
 <hr>
-<p><img src="https://i.loli.net/2018/06/29/5b35ceda7b9c8.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/05/16/5cdd7111cdb6b93660.png" alt=""></p>
 <hr>
+<p><img src="https://i.loli.net/2019/05/16/5cdd7123a3dfd41311.png" alt=""></p>
 <blockquote>
-<p>包含以下值</p>
-<p>on_off   类型Boolean     —开启公告标志位<br>gx_url   类型String        —更新软件链接<br>gx_gg   类型String        —更新公告<br>gg        类型String        —公告<br>bb        类型String      —版本号</p>
+<p>6、开始编程吧！</p>
 </blockquote>
+<p><img src="https://i.loli.net/2019/05/16/5cdd72d5aeb4c41665.png" alt=""></p>
 <hr>
+<p><img src="https://i.loli.net/2019/05/16/5cdd72e59d90418065.png" alt=""></p>
 <blockquote>
-<p>下面开始教程<br>首先将bmob.lua放入工程根目录。<br>最好使用我修改和备注过的。</p>
+<p>7、连接服务器成功！</p>
 </blockquote>
-<hr>
-<h2 id="bmob教程文档"><a href="#bmob教程文档" class="headerlink" title="bmob教程文档"></a>bmob教程文档</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">b=bmob(id,key)</div><div class="line">id 用户id，key 应用key。</div><div class="line"></div><div class="line">b:insert(key,data,callback)</div><div class="line">新建数据表，key 表名称，data 数据，callback 回调函数。</div><div class="line"></div><div class="line">b:update(key,id,data,callback)</div><div class="line">更新数据表，key 表名称id 数据id，data 数据，callback 回调函数。</div><div class="line"></div><div class="line">b:query(key,data,callback)</div><div class="line">查询数据表，key 表名称，data 查询规则，callback 回调函数。</div><div class="line"></div><div class="line">b:increment(key,id,k,v,c)</div><div class="line">原子计数，key 表名称，id 数据id，k 数据key，v 计数增加量。</div><div class="line"></div><div class="line">b:delete(key,id,callback)</div><div class="line">删除数据，key 表名称,id 数据id，callback 回调函数。</div><div class="line"></div><div class="line">b:sign(user,pass,mail,callback)</div><div class="line">注册用户，user 用户名，pass 密码，mail 电子邮箱，callback 回调函数。</div><div class="line"></div><div class="line">b:login(user or mail,pass,callback)</div><div class="line">登录用户，user 用户名，pass 密码，mail 电子邮箱，callback 回调函数。</div><div class="line"></div><div class="line">b:upload(path,callback)</div><div class="line">上传文件，path 文件路径，callback 回调函数。</div><div class="line"></div><div class="line">b:remove(url,callback)</div><div class="line">删除文件，url 文件路径，callback 回调函数。</div><div class="line"></div><div class="line"></div><div class="line">注：</div><div class="line">1，查询规则支持表或者json格式，具体用法参考官方api</div><div class="line">2，回调函数的第一个参数为状态码，-1 出错，其他状态码参考http状态码，第二个参数为返回内容。</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="远程更新"><a href="#远程更新" class="headerlink" title="远程更新"></a>远程更新</h2><blockquote>
-<p>在程序启动时添加更新检测函数：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import &quot;bmob&quot;</div><div class="line">当前版本 = &quot;2.0&quot;</div><div class="line">function 检查更新()</div><div class="line">  local b=bmob(&quot;你的appid&quot;,&quot;你的apikey&quot;)</div><div class="line">  b:query(&quot;tuisong&quot;,function(code,json)</div><div class="line">    if code~=-1 and code&gt;=200 and code&lt;400 then</div><div class="line">      --print(dump(json))</div><div class="line">      if (json.results[1].bb&gt;当前版本)then</div><div class="line">      --判断远程的版本是否大于软件内部的版本，大于则进行更新</div><div class="line">        对话框()</div><div class="line">        .设置标题(&quot;版本更新&quot;)</div><div class="line">        --显示更新公告</div><div class="line">        .设置消息(json.results[1].gx_gg)</div><div class="line">        .设置积极按钮(&quot;下载更新&quot;,function()</div><div class="line">        --进入下载链接</div><div class="line">          加载网页(json.results[1].gx_url)</div><div class="line">        end)</div><div class="line">        .设置消极按钮(&quot;取消&quot;)</div><div class="line">        .显示()</div><div class="line">      end</div><div class="line">    end</div><div class="line">  end)</div><div class="line">end</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="公告"><a href="#公告" class="headerlink" title="公告"></a>公告</h2><blockquote>
-<p>在程序启动时添加远程公告函数<br>利用数据查询函数进行查询并弹窗</p>
-</blockquote>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">b:query(&quot;tuisong&quot;,function(code,json)</div><div class="line">   if code~=-1 and code&gt;=200 and code&lt;400 then</div><div class="line">     --print(dump(json))</div><div class="line">     if(json.results[1].on_off== true) then</div><div class="line">     --这里是公告标志位，如果是false则不开启远程公告，如果是true则开启远程公告</div><div class="line">       local gg =json.results[1].gg</div><div class="line">       --这里就对应了我的网络端数据里面的gg（公告内容）</div><div class="line">       对话框()</div><div class="line">       .设置标题(&quot;数据库远程公告&quot;)</div><div class="line">       .设置消息(gg)</div><div class="line">       .设置积极按钮(&quot;确定&quot;,function()</div><div class="line">         显示消息(&quot;点击了确定&quot;)</div><div class="line">       end)</div><div class="line">       .设置消极按钮(&quot;取消&quot;)</div><div class="line">       .显示()</div><div class="line">     end</div><div class="line">   end</div><div class="line"> end)</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="其他远程推送功能"><a href="#其他远程推送功能" class="headerlink" title="其他远程推送功能"></a>其他远程推送功能</h2><blockquote>
-<p>比如添加一个免责声明的按钮<br>同理也可以做一个关于作者的按钮、等等<br>这都是可以远程控制的<br>利用数据库查询与显示就可以实现远程控制弹窗的内容<br>进入按钮的单击事件</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>效果图</p>
-</blockquote>
-<p><img src="https://i.loli.net/2018/07/02/5b399bf9e4f04.png" alt=""></p>
-<hr>
-<blockquote>
-<p>再添加几个数据点包括about_app（关于软件）  和 mzsm（免责声明） 等</p>
-</blockquote>
-<p><img src="https://i.loli.net/2018/07/02/5b399a6711214.png" alt=""></p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">b:query(&quot;tuisong&quot;,function(code,json)</div><div class="line">  if code~=-1 and code&gt;=200 and code&lt;400 then</div><div class="line">    --print(dump(json))</div><div class="line">    mzsm = json.results[1].mzsm</div><div class="line">    --在数据库里加一个字“mzsm”即可，原理和公告一样</div><div class="line">    对话框()</div><div class="line">    .设置标题(&quot;免责声明&quot;)</div><div class="line">    .设置消息(mzsm)</div><div class="line">    .设置积极按钮(&quot;确定&quot;,function()</div><div class="line">    end)</div><div class="line">    .设置消极按钮(&quot;取消&quot;)</div><div class="line">    .显示()</div><div class="line">    -- print(type(mzsm))</div><div class="line">  end</div><div class="line">end)</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="注册和登录功能"><a href="#注册和登录功能" class="headerlink" title="注册和登录功能"></a>注册和登录功能</h2><blockquote>
-<p>看到这里应该都会用bmob了吧，代码我也注释的很详细。欢迎反馈；<br>下面是我的软件同学在使用过程中，我获取到的他们的账号和密码以及ip地址（并不是盗号，嘻嘻，只是想统计有多少人在用。。。。。。）</p>
-</blockquote>
-<hr>
-<p><img src="https://i.loli.net/2018/07/02/5b399d47da435.png" alt=""></p>
-<hr>
-<h2 id="最后的彩蛋-微信反馈"><a href="#最后的彩蛋-微信反馈" class="headerlink" title="最后的彩蛋-微信反馈"></a>最后的彩蛋-微信反馈</h2><blockquote>
-<p>这是一位大神做的接口可以直接将消息推送到微信，我之前用单片机做过消息的反馈。使用很简单只需要用get 发送就可以了。几行代码就可以实现。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>效果如图</p>
-</blockquote>
-<hr>
-<blockquote>
-<h2 id="软件端"><a href="#软件端" class="headerlink" title="软件端"></a>软件端</h2><p><img src="https://i.loli.net/2018/07/02/5b39a06795aad.png" alt=""></p>
-<h2 id="微信端"><a href="#微信端" class="headerlink" title="微信端"></a>微信端</h2><p><img src="https://i.loli.net/2018/07/02/5b39a09a75be9.png" alt=""></p>
-</blockquote>
-<hr>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><blockquote>
-<p>相当的简单，进入网站微信登陆</p>
-</blockquote>
-<hr>
-<p><img src="https://i.loli.net/2018/07/02/5b39a1296b9c9.png" alt=""></p>
-<blockquote>
-<p>然后会生成一个key，点击发送消息来测试一下：如图</p>
-<h2 id="网站端"><a href="#网站端" class="headerlink" title="网站端"></a>网站端</h2><p><img src="https://i.loli.net/2018/07/02/5b39a178eff28.png" alt=""></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>微信端<br><img src="https://i.loli.net/2018/07/02/5b39a210dfba5.png" alt=""></p>
-</blockquote>
-<hr>
-<ul>
-<li>测试成功，下面应用到lua中。</li>
-<li></li>
-</ul>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">--输入对话框</div><div class="line">InputLayout=&#123;</div><div class="line">  LinearLayout;</div><div class="line">  orientation=&quot;vertical&quot;;</div><div class="line">  Focusable=true,</div><div class="line">  FocusableInTouchMode=true,</div><div class="line">  &#123;</div><div class="line">    TextView;</div><div class="line">    id=&quot;Prompt&quot;,</div><div class="line">    textSize=&quot;15sp&quot;,</div><div class="line">    layout_marginTop=&quot;10dp&quot;;</div><div class="line">    layout_marginLeft=&quot;3dp&quot;,</div><div class="line">    layout_width=&quot;80%w&quot;;</div><div class="line">    layout_gravity=&quot;center&quot;,</div><div class="line">    text=&quot;BUG提交将推送至我的微信&quot;;</div><div class="line">  &#125;;</div><div class="line">  &#123;</div><div class="line">    EditText;</div><div class="line">    hint=&quot;输入反馈&quot;;</div><div class="line">    layout_marginTop=&quot;5dp&quot;;</div><div class="line">    layout_width=&quot;80%w&quot;;</div><div class="line">    layout_gravity=&quot;center&quot;,</div><div class="line">    id=&quot;edit&quot;;</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">AlertDialog.Builder(this)</div><div class="line">.setTitle(&quot;BUG提交&quot;)</div><div class="line">.setView(loadlayout(InputLayout))</div><div class="line">.setPositiveButton(&quot;确定&quot;,&#123;onClick=function(v) </div><div class="line">    local zh=io.open(&quot;/sdcard/校网助手/账户.txt&quot;):read(&quot;*a&quot;)</div><div class="line">    local z=zh:match(&quot;(.+)@&quot;)</div><div class="line">    local m=edit.Text</div><div class="line">    local time=os.date(&quot;%Y-%m-%d %H:%M:%S&quot;)</div><div class="line">    local ww=&quot;https://sc.ftqq.com/SCU26231T3d328e换成你的5e619d412b2937b0e5af42e7d782a3.send?text=&quot;</div><div class="line">    local x=&quot;主人校网助手有人反馈bug了账号:&quot;</div><div class="line">    local g=&quot;信息为:&quot;</div><div class="line">    local k=&quot;&amp;desp=&quot;</div><div class="line">    local wx=ww..x..z..k..time..g..m</div><div class="line">    local sj=math.random(1000,9999)</div><div class="line">    local wxs =ww..sj..z..m</div><div class="line">    --print(wx)</div><div class="line">    Http.get(wx,nil,&quot;utf8&quot;,nil,function(code,content,cookie,header)</div><div class="line">      if(code==200 and content)then</div><div class="line">        print(&quot;发送成功，谢谢&quot;)</div><div class="line">      else</div><div class="line">        print(&quot;与后台通信异常…尝试第二套方案&quot;..code)</div><div class="line">        Http.get(wxs,nil,&quot;utf8&quot;,nil,function(code,content,cookie,header)</div><div class="line">          if(code==200 and content)then</div><div class="line">            print(&quot;发送成功，谢谢&quot;)</div><div class="line">          end</div><div class="line">        end)</div><div class="line"></div><div class="line">      end</div><div class="line">    end)</div><div class="line">  end&#125;)</div><div class="line">.setNegativeButton(&quot;取消&quot;,nil)</div><div class="line">.show()</div><div class="line">import &quot;android.view.View$OnFocusChangeListener&quot;</div><div class="line">edit.setOnFocusChangeListener(OnFocusChangeListener&#123; </div><div class="line">  onFocusChange=function(v,hasFocus)</div><div class="line">    if hasFocus then</div><div class="line">      Prompt.setTextColor(0xFD009688)</div><div class="line">    end</div><div class="line">  end&#125;)</div></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/05/16/5cdd73da0a2fb19425.png" alt=""></p>
+
       
 
       
@@ -396,7 +305,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">lua</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
         		</li>
       		
 		</ul>
@@ -452,7 +361,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/02/lua对接bmob数据库 和 微信反馈方法（彩蛋）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/16/QT-5分钟快速搭建MQTT客户端/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -466,18 +375,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/07/12/利用机智云APP学习JAVA安卓/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          利用机智云APP学习JAVA安卓
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/26/互联网+比赛记录/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">互联网+比赛记录</div>
+    <a href="/2019/05/15/STM32外设驱动总结（公司项目需要）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">STM32外设驱动总结（公司项目需要）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -504,7 +404,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lua对接bmob数据库"><span class="toc-number">1.</span> <span class="toc-text">lua对接bmob数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备注"><span class="toc-number">2.</span> <span class="toc-text">备注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件安装包"><span class="toc-number">3.</span> <span class="toc-text">软件安装包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">4.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">5.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bmob教程文档"><span class="toc-number">6.</span> <span class="toc-text">bmob教程文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程更新"><span class="toc-number">7.</span> <span class="toc-text">远程更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公告"><span class="toc-number">8.</span> <span class="toc-text">公告</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他远程推送功能"><span class="toc-number">9.</span> <span class="toc-text">其他远程推送功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注册和登录功能"><span class="toc-number">10.</span> <span class="toc-text">注册和登录功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后的彩蛋-微信反馈"><span class="toc-number">11.</span> <span class="toc-text">最后的彩蛋-微信反馈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件端"><span class="toc-number">12.</span> <span class="toc-text">软件端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信端"><span class="toc-number">13.</span> <span class="toc-text">微信端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用方法"><span class="toc-number">14.</span> <span class="toc-text">使用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站端"><span class="toc-number">15.</span> <span class="toc-text">网站端</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
