@@ -6,54 +6,50 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>多种模组使用MQTT协议总结 | 阿正的个人站</title>
+  <title>STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计 | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言：
+  <meta name="description" content="视频展示 
 
 
+整体架构分析
+整个项目主要的功能在于底层MCU进行数据采集和485问询，然后通过NB模组进行数据准发，采用的通讯协议为MQTT，同时自己搭建阿里云的MQTT服务器进行数据接收，然后自己再开发安卓APP客户端进行数据展示。OVER！
 
-由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组
 
-
-WIFI模组 （使用的是最常见的安信可模组）
-4G模组（采用微雪SIM7600CE模组）
-NB-IOT模组（采用高新兴物联模组ME3616）
-
-&amp;gt; 遇到的问题：
-首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是">
+操作系统：
+操作系统：RT-thread这是一个国产的操作系统，官网给出的说明是：小而美，的确用在STM32上确实是很方便的。资料和教程也是非常">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多种模组使用MQTT协议总结">
-<meta property="og:url" content="http://yoursite.com/2019/02/19/多种模组使用MQTT协议总结/index.html">
+<meta property="og:title" content="STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计">
+<meta property="og:url" content="http://yoursite.com/2019/06/08/STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计/index.html">
 <meta property="og:site_name" content="阿正的个人站">
-<meta property="og:description" content="前言：
+<meta property="og:description" content="视频展示 
 
 
+整体架构分析
+整个项目主要的功能在于底层MCU进行数据采集和485问询，然后通过NB模组进行数据准发，采用的通讯协议为MQTT，同时自己搭建阿里云的MQTT服务器进行数据接收，然后自己再开发安卓APP客户端进行数据展示。OVER！
 
-由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组
 
-
-WIFI模组 （使用的是最常见的安信可模组）
-4G模组（采用微雪SIM7600CE模组）
-NB-IOT模组（采用高新兴物联模组ME3616）
-
-&amp;gt; 遇到的问题：
-首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是">
-<meta property="og:updated_time" content="2019-05-15T05:13:03.710Z">
+操作系统：
+操作系统：RT-thread这是一个国产的操作系统，官网给出的说明是：小而美，的确用在STM32上确实是很方便的。资料和教程也是非常">
+<meta property="og:image" content="https://i.loli.net/2019/06/08/5cfb693fc03f319303.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/06/08/5cfb6e2d110c779978.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/08/5cfb6c704fdac26680.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/08/5cfb6ba05447973618.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/08/5cfb6f34381e152940.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/08/5cfb70eaf0f4f24856.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/08/5cfb6fe1ec29435538.png">
+<meta property="og:updated_time" content="2019-06-08T08:41:20.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多种模组使用MQTT协议总结">
-<meta name="twitter:description" content="前言：
+<meta name="twitter:title" content="STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计">
+<meta name="twitter:description" content="视频展示 
 
 
+整体架构分析
+整个项目主要的功能在于底层MCU进行数据采集和485问询，然后通过NB模组进行数据准发，采用的通讯协议为MQTT，同时自己搭建阿里云的MQTT服务器进行数据接收，然后自己再开发安卓APP客户端进行数据展示。OVER！
 
-由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组
 
-
-WIFI模组 （使用的是最常见的安信可模组）
-4G模组（采用微雪SIM7600CE模组）
-NB-IOT模组（采用高新兴物联模组ME3616）
-
-&amp;gt; 遇到的问题：
-首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是">
+操作系统：
+操作系统：RT-thread这是一个国产的操作系统，官网给出的说明是：小而美，的确用在STM32上确实是很方便的。资料和教程也是非常">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/08/5cfb693fc03f319303.jpg">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -207,239 +203,63 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-多种模组使用MQTT协议总结" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      多种模组使用MQTT协议总结
+      STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计
     </h1>
   
 
         
-        <a href="/2019/02/19/多种模组使用MQTT协议总结/" class="archive-article-date">
-  	<time datetime="2019-02-19T05:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
+        <a href="/2019/06/08/STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计/" class="archive-article-date">
+  	<time datetime="2019-06-08T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>前言：</p>
-</blockquote>
+        <p><img src="https://i.loli.net/2019/06/08/5cfb693fc03f319303.jpg" alt=""></p>
 <hr>
+<h2 id="视频展示"><a href="#视频展示" class="headerlink" title="视频展示"></a>视频展示</h2><iframe src="//player.bilibili.com/player.html?aid=54568700&cid=95449348&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+<h2 id="整体架构分析"><a href="#整体架构分析" class="headerlink" title="整体架构分析"></a>整体架构分析</h2><blockquote>
+<p>整个项目主要的功能在于底层MCU进行数据采集和485问询，然后通过NB模组进行数据准发，采用的通讯协议为MQTT，同时自己搭建阿里云的MQTT服务器进行数据接收，然后自己再开发安卓APP客户端进行数据展示。OVER！</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/06/08/5cfb6e2d110c779978.png" alt=""></p>
+<h2 id="操作系统："><a href="#操作系统：" class="headerlink" title="操作系统："></a>操作系统：</h2><blockquote>
+<p>操作系统：RT-thread<br>这是一个国产的操作系统，官网给出的说明是：小而美，的确用在STM32上确实是很方便的。资料和教程也是非常丰富的。但是不推荐大家去官网学习，我就学了几天就搞懂了其基本逻辑，并运用到了我的毕业设计上。我主要参考的是野火的操作系统资料和教材（教材我一页都没看），我的学习思路就是：直接撸1直接实战才是王道。参考资料可以去我的QQ群。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/06/08/5cfb6c704fdac26680.png" alt=""></p>
+<a id="more"></a>
+<h2 id="STM32编程逻辑："><a href="#STM32编程逻辑：" class="headerlink" title="STM32编程逻辑："></a>STM32编程逻辑：</h2><blockquote>
+<p>STM32方面的编程逻辑如下：主要分为三个线程，各司其职，当时还没怎么深入学习操作系统，所以并没有加入消息队列，而是直接用全局变量进行的数据传输。<br>数据采集方面采用的是RS485的问询采集<br>NBIOT方面也是直接采用的串口AT指令的通讯</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/06/08/5cfb6ba05447973618.png" alt=""></p>
+<h2 id="安卓APP的开发"><a href="#安卓APP的开发" class="headerlink" title="安卓APP的开发"></a>安卓APP的开发</h2><blockquote>
+<p>安卓端的开发就显得有些简单了，因为MQTT有现成的jar包可以拿来使用，我只需要把接收到的数据进行解析处理，并渲染在layout里就行了。整体效果还是可以的。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/06/08/5cfb6f34381e152940.png" alt=""></p>
+<h2 id="PC上位机开发："><a href="#PC上位机开发：" class="headerlink" title="PC上位机开发："></a>PC上位机开发：</h2><blockquote>
+<p>PC端的上位机采用python编写（由于某些原因烂尾了。）<br>但是整体的效果都实现了，UI界面也是有的，只是自己没有太大兴趣去完成和优化了。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/06/08/5cfb70eaf0f4f24856.png" alt=""></p>
+<h2 id="布局分析"><a href="#布局分析" class="headerlink" title="布局分析"></a>布局分析</h2><blockquote>
+<p>下图就是我用三维图绘制的整体的模型。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/06/08/5cfb6fe1ec29435538.png" alt=""></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><blockquote>
+<p>整体来说我的毕业设计还算圆满，自己也花了大量的时间在上面，但是由于我是机械专业 的学生，我们学院老师和领导要求的毕业设计都是和机械相关的，我这个项目做出来基本都是和电子与物联网相关，从开始到最后没有一个老师给我一个展示的机会，所以自始至终，我的设备没开机运行。。。。。。给老师看我做的安卓APP老师也不懂。他们的不懂导致了他们不知道这个项目的工作量，他们的不懂导致了我满腔热血没有得到理解，也导致了我后期没有了优化硬件和代码的兴趣（也是python上位机烂尾的原因）。<br>2019年6月8日<br>愿所有努力都不被辜负！</p>
+</blockquote>
+<p>开源</p>
 <blockquote>
-<p>由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组</p>
+<p>此次项目的所有工程文件和代码都开源在QQ群里，以及个人github中<br>QQ群：476840321<br>github：<a href="https://github.com/az666/my_Rt-thread_STM32_projects" target="_blank" rel="external">https://github.com/az666/my_Rt-thread_STM32_projects</a></p>
 </blockquote>
-<ul>
-<li>WIFI模组 （使用的是最常见的安信可模组）</li>
-<li>4G模组（采用微雪SIM7600CE模组）</li>
-<li>NB-IOT模组（采用高新兴物联模组ME3616）</li>
-</ul>
-<h2 id="gt-遇到的问题："><a href="#gt-遇到的问题：" class="headerlink" title="&gt; 遇到的问题："></a>&gt; 遇到的问题：</h2><ol>
-<li>首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是山东有人物联网平台的模组，他们的COAP协议不支持自己搭建的服务器，这一点整个不符合我的路线，后来有采用了微雪的NB模组，发现他的COAP也是不太完善。首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是山东有人物联网平台的模组，他们的COAP协议不支持自己搭建的服务器，这一点整个不符合我的路线，后来有采用了微雪的NB模组，发现他的COAP也是不太完善。</li>
-<li>其次是MQTT服务器的搭建，由于他的普适性，其服务器的搭建也相对简单。</li>
-<li>后来我们采用了兼容性更高的MQTT协议，这个协议使用比较普遍，所以相对来说用起来比较简单，尤其是WIFI模组来对接MQTT协议，很简单就能做出来产品，同时我们又对其他类型的通讯模组进行了选型，最终找到了适合MQTT协议的模组，而且，运行起来相对稳定，比如高新兴物联作为主控的NB模组，我们已经将其安装在设备上运行。<ol>
-<li>MQTT协议的安卓开发，安卓针对MQTT协议有一定的固件包可以直接使用，所以这也是很快就可以搞定了的。</li>
-</ol>
-</li>
-</ol>
-<h2 id="gt-下面是调试各种模组的AT指令笔记"><a href="#gt-下面是调试各种模组的AT指令笔记" class="headerlink" title="&gt; 下面是调试各种模组的AT指令笔记:"></a>&gt; 下面是调试各种模组的AT指令笔记:</h2><a id="more"></a>
-<blockquote>
-</blockquote>
-<h2 id="首先是微雪的4G模组SIM7600CE"><a href="#首先是微雪的4G模组SIM7600CE" class="headerlink" title="首先是微雪的4G模组SIM7600CE"></a>首先是微雪的4G模组SIM7600CE</h2><blockquote>
-<p><em>这里必须要吐槽一下，官方给的文档都是错误的，好多地方都错了</em><br>网站：<a href="http://www.simcom.com/product/showproduct.php?lang=cn&amp;id=48" target="_blank" rel="external">http://www.simcom.com/product/showproduct.php?lang=cn&amp;id=48</a><br>微雪网址：<a href="http://www.waveshare.net/wiki/SIM7600CE_4G_HAT" target="_blank" rel="external">http://www.waveshare.net/wiki/SIM7600CE_4G_HAT</a><br>MQTT说明（很多错误）：<a href="http://www.waveshare.net/w/upload/6/65/SIM7500_SIM7600_Series_MQTT_ATC_V1.01.pdf" target="_blank" rel="external">http://www.waveshare.net/w/upload/6/65/SIM7500_SIM7600_Series_MQTT_ATC_V1.01.pdf</a></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AT+CRESET</td>
-<td>模组复位</td>
-</tr>
-<tr>
-<td>AT+CMQTTSTART</td>
-<td>开始连接MQTT</td>
-</tr>
-<tr>
-<td>AT+CMQTTACCQ=0,”client c”</td>
-<td>设置id</td>
-</tr>
-<tr>
-<td>AT+CMQTTCONNECT=0,”tcp://60.205.203.64”,60,1,”root”,”citc2018”</td>
-<td>连接服务器（默认1883端口）</td>
-</tr>
-<tr>
-<td>AT+CMQTTTOPIC=0,5</td>
-<td>设置发布主题（后面直接发字符，长度要对应）</td>
-</tr>
-<tr>
-<td>AT+CMQTTPAYLOAD=0,5</td>
-<td>设置消息内容（后面直接发字符，长度要对应</td>
-</tr>
-<tr>
-<td>AT+CMQTTPUB=0,1,60</td>
-<td>发布消息</td>
-</tr>
-<tr>
-<td>AT+CMQTTSUB=0,9,1,1</td>
-<td>设置订阅主题（有消息会自动返回）</td>
-</tr>
-<tr>
-<td>AT+CMQTTDISC=0, 120</td>
-<td>断开连接</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="高新兴物联ME3616模组"><a href="#高新兴物联ME3616模组" class="headerlink" title="高新兴物联ME3616模组"></a>高新兴物联ME3616模组</h2><blockquote>
-<p>买的是开发板，骑士电子的高配版，带GPS</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AT+ZRST</td>
-<td>模组复位</td>
-</tr>
-<tr>
-<td>AT+ZCONTLED=1</td>
-<td>打开指示灯（默认关闭）</td>
-</tr>
-<tr>
-<td>at+ipr=9600</td>
-<td>串口波特率设置</td>
-</tr>
-<tr>
-<td>AT+EMQNEW=”47.105.157.158”,”1883”,12000,100</td>
-<td>设置域名</td>
-</tr>
-<tr>
-<td>AT+EMQCON=0,3,”wenzheng”,60000,1,0,”root”,”citc2018”</td>
-<td>连接MQTT</td>
-</tr>
-<tr>
-<td>AT+EMQSUB=0,”qishiNB”,1</td>
-<td>订阅主题</td>
-</tr>
-<tr>
-<td>AT+EMQPUB=0,”qishiNB”,1,0,0,4,”31323334”</td>
-<td>发布消息（消息类型为ASCII码）</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>GPS指令集</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AT+ZGRUN=0</td>
-<td>停止定位</td>
-</tr>
-<tr>
-<td>AT+ZGRUN=1</td>
-<td>启动单次定位</td>
-</tr>
-<tr>
-<td>AT+ZGRUN=2</td>
-<td>启动跟踪定位</td>
-</tr>
-</tbody>
-</table>
-<h2 id="移动M5311"><a href="#移动M5311" class="headerlink" title="移动M5311"></a>移动M5311</h2><blockquote>
-<p>MQTT</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AT+CMRB</td>
-<td>软复位</td>
-</tr>
-<tr>
-<td>AT+IPR=9600</td>
-<td>设置波特率</td>
-</tr>
-<tr>
-<td>AT+CMSYSCTRL=0,2</td>
-<td>打开指示灯</td>
-</tr>
-<tr>
-<td>AT+CSQ</td>
-<td>信号质量</td>
-</tr>
-<tr>
-<td>AT+MQTTCFG=”域名”,1883,”zyNBiot”,120,”75829”,”IIOu0oFUg1guk20ornTK1uzAcnM=”,1</td>
-<td>MQTT配置</td>
-</tr>
-<tr>
-<td>AT+MQTTOPEN=1,1,1,1,1,”mywill”,”001bye”</td>
-<td>连接MQTT</td>
-</tr>
-<tr>
-<td>AT+MQTTPUB=”device/nb/citc”,1,1,0,0,”hello”</td>
-<td>发布消息</td>
-</tr>
-<tr>
-<td>AT+MQTTSUB=”/device/NB/zx11111_back”,1</td>
-<td>订阅主题（有消息的话会自动返回）</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>HTTP</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AT+HTTPCREATE=”<a href="http://47.105.157.158:9094/" target="_blank" rel="external">http://47.105.157.158:9094/</a>“</td>
-<td>设置HTTP</td>
-</tr>
-<tr>
-<td>AT+HTTPHEADER=0,”User-Agent: Unkown\r\nConnection: close\r\n”</td>
-<td>设置协议头</td>
-</tr>
-<tr>
-<td>AT+HTTPSEND=0,1,”/topic/123”</td>
-<td>发送post请求</td>
-</tr>
-<tr>
-<td>AT+HTTPCLOSE=0</td>
-<td>关闭HTTP</td>
-</tr>
-</tbody>
-</table>
 
       
 
@@ -484,7 +304,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工作总结</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32</a>
         		</li>
       		
 		</ul>
@@ -540,7 +360,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/19/多种模组使用MQTT协议总结/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/08/STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -554,18 +374,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/02/20/QQ群开发板日常抽奖/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          QQ群开发板日常抽奖
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/18/基于MQTT协议的WZ指令开发V3.0版本支持onenet/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于MQTT协议的WZ指令开发V3.0版本支持onenet</div>
+    <a href="/2019/05/27/托马斯NB-M5311新品发布会/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">托马斯NB-M5311新品发布会</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -592,7 +403,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gt-遇到的问题："><span class="toc-number">1.</span> <span class="toc-text">> 遇到的问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gt-下面是调试各种模组的AT指令笔记"><span class="toc-number">2.</span> <span class="toc-text">> 下面是调试各种模组的AT指令笔记:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#首先是微雪的4G模组SIM7600CE"><span class="toc-number">3.</span> <span class="toc-text">首先是微雪的4G模组SIM7600CE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高新兴物联ME3616模组"><span class="toc-number">4.</span> <span class="toc-text">高新兴物联ME3616模组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动M5311"><span class="toc-number">5.</span> <span class="toc-text">移动M5311</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#视频展示"><span class="toc-number">1.</span> <span class="toc-text">视频展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整体架构分析"><span class="toc-number">2.</span> <span class="toc-text">整体架构分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统："><span class="toc-number">3.</span> <span class="toc-text">操作系统：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32编程逻辑："><span class="toc-number">4.</span> <span class="toc-text">STM32编程逻辑：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安卓APP的开发"><span class="toc-number">5.</span> <span class="toc-text">安卓APP的开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PC上位机开发："><span class="toc-number">6.</span> <span class="toc-text">PC上位机开发：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布局分析"><span class="toc-number">7.</span> <span class="toc-text">布局分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number">8.</span> <span class="toc-text">总结：</span></a></li></ol>
                     </div>
                 </span>
             </div>
