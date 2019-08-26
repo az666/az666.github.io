@@ -169,6 +169,257 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-【IoT迷你赛】TencentOS真正的智慧城市场景" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/27/【IoT迷你赛】TencentOS真正的智慧城市场景/">【IoT迷你赛】TencentOS真正的智慧城市场景</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/27/【IoT迷你赛】TencentOS真正的智慧城市场景/" class="archive-article-date">
+  	<time datetime="2019-08-26T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>好的，今天给大家带了我们团队以TencentOS内测板EVB—MX为核心的智慧城市项目Demo<br>这一次也是斥巨资打造了这一套项目。购买了多款485工业级传感器。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>主控与通讯</p>
+</blockquote>
+<ul>
+<li>主板：EVB_MX</li>
+<li>通讯协议：MQTT</li>
+<li>硬件采集：485总线</li>
+<li>下发控制：电子阀</li>
+</ul>
+<hr>
+<blockquote>
+<p>传感器与控制设备</p>
+</blockquote>
+<ul>
+<li>光照传感器</li>
+<li>空气质量传感器（PM1、PM10、PM2.5）</li>
+<li>温湿度传感器</li>
+<li>风速仪</li>
+</ul>
+<hr>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hc2sucWNsb3VkaW1nLmNvbS9odHRwLXNhdmUvMjU1MDM5MS8yMnU2ZmlvanZ1LmpwZWc?x-oss-process=image/format,png" alt="IMG_4094.JPG"></p>
+<hr>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hc2sucWNsb3VkaW1nLmNvbS9odHRwLXNhdmUvMjU1MDM5MS8yZnk0c3hiZDE4LmpwZWc?x-oss-process=image/format,png" alt=""></p>
+<hr>
+<p>首先可以看下EVB_MX 初体验的视频：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hc2sucWNsb3VkaW1nLmNvbS9odHRwLXNhdmUvMjU1MDM5MS9pOGRsZ2RzdGdqLnBuZw?x-oss-process=image/format,png" alt=""></p>
+<p>视频连接：</p>
+<p><a href="https://www.bilibili.com/video/av64297098/" target="_blank" rel="external">https://www.bilibili.com/video/av64297098/</a></p>
+<p><strong>来看下配置的流程</strong></p>
+<p>首先是设备注册：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hc2sucWNsb3VkaW1nLmNvbS9odHRwLXNhdmUvMjU1MDM5MS90ODViYXR2dHU5LmpwZWc?x-oss-process=image/format,png" alt=""></p>
+<p>然后是规则引擎：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hc2sucWNsb3VkaW1nLmNvbS9odHRwLXNhdmUvMjU1MDM5MS81YXl3YzcxeXI1LmpwZWc?x-oss-process=image/format,png" alt=""></p>
+<p>最后将设备调试好进行通讯即可：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hc2sucWNsb3VkaW1nLmNvbS9odHRwLXNhdmUvMjU1MDM5MS80MjNhdno0ZmR3LmpwZWc?x-oss-process=image/format,png" alt=""></p>
+<blockquote>
+<p>测试心得：我也只是简单测试，毕竟自己能力有限，作为一个刚毕业的大学生而言，不敢妄加评论。<br>TencentOS运用起来和现有的RT-thread和LiteOS都是类似的，所以也是很好上手的。</p>
+</blockquote>
+<p>我主要针对使用方面做下总结：EVB开发板做工很好，第一眼就感觉很硬核，尤其是低功耗电池的嵌入。很有极客风格，然后就是可拓展的接口，通讯接口区可以接NB、WIFI等其他模组，传感器区可以接腾讯开发者提供的智慧农业场景、智慧城市场景。这些都是对于开发者和使用者非常友好的地方。</p>
+<p>遇到的问题：个人使用中遇到的问题和个人建议</p>
+<p>首先是WIFI模组的通讯，MQTT我已经使用了很久了，通讯逻辑非常清晰，但是腾讯云IOT平台的文档，也是不太详细的，尤其是MQTT设备的非证书认证，如果我没加官方群，我甚至不知道怎么进行加密，记得去年用ESP8266连接腾讯云还是在flash里烧写的证书bin文件，一通操作下来很吃力。现在很好了，一个python命令一键生成，但是官方文档貌似没有提过这个事情。再一个就是ESP8266的MQTT通讯的SDK流程里貌似对于WiFi的质量要求比较高，导致我前期测试时工程总是无故死掉。</p>
+<p>然后是云平台可视化部分，我认为可以参考Onenet和阿里云的物联网平台做一个拖拽式开发的可视化接口，这样可以让开发者更快的看到自己的项目由代码，变为界面和动态的效果。</p>
+<blockquote>
+<p>​</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TencentOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/27/【IoT迷你赛】TencentOS真正的智慧城市场景/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
+    <article id="post-M5311&amp;LWM2M&amp;Onenet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/19/M5311&LWM2M&Onenet/">M5311&amp;LWM2M&amp;Onenet</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/19/M5311&LWM2M&Onenet/" class="archive-article-date">
+  	<time datetime="2019-08-19T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="M5311利用LWM2M协议连接Onenet"><a href="#M5311利用LWM2M协议连接Onenet" class="headerlink" title="M5311利用LWM2M协议连接Onenet"></a>M5311利用LWM2M协议连接Onenet</h2><hr>
+<blockquote>
+<p>其实之前都有演示视频和代码以及说明的，但是很多朋友还是不清除Onenet的LWM2M配置问题，在这里再次做一个具详细的教程！<br>腾讯云和论坛上的教程不是太全面，举的例子也是针对于MQTTfx使用证书认证来进行登录腾讯云的，我也因为这个事研究了好久，官方文档太不友好了，尤其是无证书的情况下连接腾讯云。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/08/19/M5311&LWM2M&Onenet/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NBIOT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/19/M5311&LWM2M&Onenet/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-MQTTfx连接腾讯云(无需证书认证)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1016,253 +1267,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-托马斯NB-M5311新品发布会" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/27/托马斯NB-M5311新品发布会/">托马斯NB-M5311新品发布会</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/27/托马斯NB-M5311新品发布会/" class="archive-article-date">
-  	<time datetime="2019-05-27T13:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://i.loli.net/2019/05/27/5cebd496699ab27792.jpg" alt=""></p>
-<hr>
-<p><img src="https://i.loli.net/2019/05/27/5cebd4f0ca28054896.jpg" alt=""></p>
-<hr>
-<h2 id="这是“阿正工作站”将要发售的第一款物联网开发板-托马斯NB开发板"><a href="#这是“阿正工作站”将要发售的第一款物联网开发板-托马斯NB开发板" class="headerlink" title="这是“阿正工作站”将要发售的第一款物联网开发板-托马斯NB开发板"></a>这是“阿正工作站”将要发售的第一款物联网开发板-托马斯NB开发板</h2><blockquote>
-<p>关于托马斯的一些问题：<br>声明：此开发板，秉承学习的态度进行制作与发售，可能无法提供过于底层的技术支持，但是阿正工作站有很多基于NBIOT的实战项目供大家使用。（建议有单片机编程基础的同学购买）！<br><strong>1.为什么叫托马斯？</strong><br>因为听着骚气。<br><strong>2.开发板是谁设计的？</strong><br>首先主控芯片是中国移动的M5311，我们负责绘制PCB搭建外围电路，PCB设计者为阿正的同事。<br><strong>3.价格便宜吗？</strong><br>首先由于是我和同事个人搞的小项目，其实成本算起来要比淘宝店那些公司做开发板的成本高得多！所以价格属于中等吧。交个朋友的价格！<br><strong>4.技术支持怎么样？</strong><br>阿正会提供从硬件到软件的工程源码，B站提供全套的视频支持，带你从入门到玩转NBIOT！<br>甚至还有安卓APP开发、微信小程序对接、单片机项目开发、PC端上位机开发等，完成物联网的全栈通信。（目前B站和QQ群有STM32工程、RT-thread操作系统实现NBIOT通讯、Arduino工程、安卓工程的教程。）<br><strong>5.为什么不支持OPENCPU二次开发？</strong><br>如果有需求可以支持二次开发！因为在PCB上只是加几个引脚而已，没有难度的。至于为什么这次不支持，是因为考虑到OPENCPU二次开发的资料相对较少，而且做项目的话，其实并不简单。反而AT指令的话，资料在百度上论坛上比比皆是，而且阿正工作站提供全套的技术支持！<br><strong>6.售后服务怎么样？</strong><br>800人QQ群，一起学习。<br><strong>7.能开发票吗？</strong><br>可以！订单金额100+可开普票或者电子发票，郑州业森信息技术有限公司提供发票支持（本公司由阿正在大学时注册）<br><strong>8.支持什么样的单片机进行对接？</strong><br>理论上讲，可以支持市面上所有具有串口的MCU，包括STM32（群里有工程源码）、Arduino（群里有工程源码）、51单片机（群里有工程源码）、甚至你可以使用WIFI模组来驱动NB模组（如果你想这样做的话）等其他单片机（如果有需求，阿正工作站会开发提供）<br><strong>9.适用人群？</strong><br>建议具有单片机编程经验的同学购买此款产品。</p>
-</blockquote>
-<h2 id="关于价格"><a href="#关于价格" class="headerlink" title="关于价格"></a>关于价格</h2><table>
-<thead>
-<tr>
-<th>开发板</th>
-<th>网络类型</th>
-<th>支持接口</th>
-<th>赠品</th>
-<th>价格</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>淘宝款某M5311</td>
-<td>全网通</td>
-<td>AT指令+openCPU</td>
-<td>串口转TTL+PCB天线</td>
-<td>98包邮（不含卡）</td>
-</tr>
-<tr>
-<td>托马斯M5311</td>
-<td>全网通（内测为移动版）</td>
-<td>AT指令（后续可以支持opencpu）</td>
-<td>串口转TTL+PCB天线</td>
-<td>86包邮（不含卡）</td>
-</tr>
-</tbody>
-</table>
-<p>备注：建议购买移动版NB开发板与移动NB物联网卡，因为经过我们的测试，好多地方移动NB的信号是最好的。<br>具体使用手册欢迎关注阿正工作站<br>QQ群：476840321<br>网站：<a href="http://wenzheng.club" target="_blank" rel="external">http://wenzheng.club</a><br>B站：<a href="https://space.bilibili.com/265908761/?share_source=copy_link&amp;share_medium=iphone&amp;bbid=ef4486b4fb4b066c9329e262da520fc5&amp;ts=1558964066" target="_blank" rel="external">阿正啷个哩个啷</a><br>GitHub：<a href="https://github.com/az666" target="_blank" rel="external">https://github.com/az666</a><br>有疑问的话，欢迎留言。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NBIOT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/27/托马斯NB-M5311新品发布会/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
-    <article id="post-QT-5分钟快速搭建MQTT客户端" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/16/QT-5分钟快速搭建MQTT客户端/">QT-5分钟快速搭建MQTT客户端</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/16/QT-5分钟快速搭建MQTT客户端/" class="archive-article-date">
-  	<time datetime="2019-05-16T14:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>QT-5分钟快速搭建MQTT客户端</strong></p>
-<p>参考链接：<a href="https://blog.csdn.net/sxpsxp12/article/details/79353743">https://blog.csdn.net/sxpsxp12/article/details/79353743</a><br>参考链接：<a href="https://www.jianshu.com/p/7dc81771d246">https://www.jianshu.com/p/7dc81771d246</a></p>
-<blockquote>
-<p>今天下午刚装上QT就迫不及待的撸一波！</p>
-</blockquote>
-<p>QT的MQTT工程搭建的步骤为：<br>首先编译MQTT库<br>其次将MQTT库加入到自己的QT工程中<br>然后调用相关函数实现服务器的连接与通讯<br><strong><em>接下来是我半个小时的成果（部分图片来源自以上两个链接）</em></strong></p>
-<blockquote>
-<p>1、从EMQ官网下载MQTT的QT工程，并用QT打开</p>
-</blockquote>
-<p><img src="https://i.loli.net/2019/05/16/5cdd6dc98dac984148.png" alt=""></p>
-<blockquote>
-<p>2、使用QTCreater打开qmqtt-master/qmqtt.pro并在工程文件添加CONFIG += NO_UNIT_TESTS</p>
-</blockquote>
-<p><img src="https://i.loli.net/2019/05/16/5cdd6e5fd5a8237609.png" alt=""></p>
-        
-          <a class="article-more-a" href="/2019/05/16/QT-5分钟快速搭建MQTT客户端/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/16/QT-5分钟快速搭建MQTT客户端/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1368,19 +1372,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">毕业</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1388,11 +1388,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IOT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1404,6 +1416,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
               </li>
              
@@ -1412,11 +1428,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,19 +1436,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1456,23 +1456,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">TencentOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1480,11 +1472,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1492,7 +1496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1516,7 +1520,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
+                <a href="javascript:void(0)" class="js-tag color4">PLC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1524,11 +1528,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PLC</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
