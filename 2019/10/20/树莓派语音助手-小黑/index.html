@@ -6,26 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>树莓派+百度api实现人脸识别 | 阿正的个人站</title>
+  <title>树莓派语音助手-小黑 | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="树莓派对接百度api
-我以前玩安卓的时候一直用的讯飞的平台和api，对于百度的api很陌生，也很少用，今年百度开发平台提出了“所有功能免费”的口号，确实，其他平台的开放都是局限的。有些需要开会员，基础的功能能免费是最好的了。">
+  <meta name="description" content="视频链接：https://www.bilibili.com/video/av70428837/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树莓派+百度api实现人脸识别">
-<meta property="og:url" content="http://yoursite.com/2018/05/31/树莓派+百度api实现人脸识别/index.html">
+<meta property="og:title" content="树莓派语音助手-小黑">
+<meta property="og:url" content="http://yoursite.com/2019/10/20/树莓派语音助手-小黑/index.html">
 <meta property="og:site_name" content="阿正的个人站">
-<meta property="og:description" content="树莓派对接百度api
-我以前玩安卓的时候一直用的讯飞的平台和api，对于百度的api很陌生，也很少用，今年百度开发平台提出了“所有功能免费”的口号，确实，其他平台的开放都是局限的。有些需要开会员，基础的功能能免费是最好的了。">
-<meta property="og:image" content="https://i.loli.net/2018/05/31/5b0fedc7d7810.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/05/31/5b0fedc76fa9c.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/05/31/5b0ff1a90ec04.png">
-<meta property="og:image" content="https://i.loli.net/2018/05/31/5b0ff3d3e02fa.png">
-<meta property="og:updated_time" content="2018-05-31T13:15:56.000Z">
+<meta property="og:description" content="视频链接：https://www.bilibili.com/video/av70428837/">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191020133304594.JPG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=#pic_center,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191020133734164.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191020134344393.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191020135040629.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-10-20T05:57:58.967Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树莓派+百度api实现人脸识别">
-<meta name="twitter:description" content="树莓派对接百度api
-我以前玩安卓的时候一直用的讯飞的平台和api，对于百度的api很陌生，也很少用，今年百度开发平台提出了“所有功能免费”的口号，确实，其他平台的开放都是局限的。有些需要开会员，基础的功能能免费是最好的了。">
-<meta name="twitter:image" content="https://i.loli.net/2018/05/31/5b0fedc7d7810.jpg">
+<meta name="twitter:title" content="树莓派语音助手-小黑">
+<meta name="twitter:description" content="视频链接：https://www.bilibili.com/video/av70428837/">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191020133304594.JPG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=#pic_center,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -179,54 +176,57 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-树莓派+百度api实现人脸识别" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-树莓派语音助手-小黑" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      树莓派+百度api实现人脸识别
+      树莓派语音助手-小黑
     </h1>
   
 
         
-        <a href="/2018/05/31/树莓派+百度api实现人脸识别/" class="archive-article-date">
-  	<time datetime="2018-05-31T12:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
+        <a href="/2019/10/20/树莓派语音助手-小黑/" class="archive-article-date">
+  	<time datetime="2019-10-20T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h2 id="树莓派对接百度api"><a href="#树莓派对接百度api" class="headerlink" title="树莓派对接百度api"></a>树莓派对接百度api</h2><blockquote>
-<p><img src="https://i.loli.net/2018/05/31/5b0fedc7d7810.jpg" alt="树莓派实现人脸识别"><br>我以前玩安卓的时候一直用的讯飞的平台和api，对于百度的api很陌生，也很少用，<br>今年百度开发平台提出了“所有功能免费”的口号，确实，其他平台的开放都是局限的。有些需要开会员，基础的功能能免费是最好的了。<br><a id="more"></a></p>
-</blockquote>
+        <p><img src="https://img-blog.csdnimg.cn/20191020133304594.JPG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=#pic_center,size_16,color_FFFFFF,t_70" alt="树莓派小黑"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191020133734164.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="树莓派语音助手"></p>
 <hr>
-<p><img src="https://i.loli.net/2018/05/31/5b0fedc76fa9c.jpg" alt="树莓派zerow"></p>
-<hr>
+<p>视频链接：<a href="https://www.bilibili.com/video/av70428837/" target="_blank" rel="external">https://www.bilibili.com/video/av70428837/</a></p>
+<div style="height: 0;padding-bottom:65%;position: relative;"><br><iframe width="760" height="510" src="//player.bilibili.com/player.html?aid=70428837&cid=122012246&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen style="position: absolute;height: 105%;width: 100%;"> </iframe><br></div>  
+
+
+
+<a id="more"></a>
 <blockquote>
-<p>之前，我用python做过face++的人脸识别，效果还是不错的，后来也在学校进行了展览，face++的平台可是支付宝用的呀，所以也是很强大的。<br>后来买了树莓派，一直想用opencv自己做，可是opencv装了很久，貌似一直出问题，迟迟不能解决，非常吃力。<br>今天遇到了一个教程是做的百度api，就想跟着做—–谁曾想，总是不易的，总出问题！！<br><a href="https://github.com/az666/pizerow_facelock/blob/master/face.py" target="_blank" rel="external">https://github.com/az666/pizerow_facelock/blob/master/face.py</a><br>这位大神的资料是百度API2.0的教程，可是我登录百度开发者平台发现现在已经是api3.0了。<br>只能自己照着官方的文档，一点一点的调，最终成功，效果还可以，和笔记本上的python同时实现了“人脸搜索”（api2.0叫做人脸查找）</p>
+<p>树莓派小黑的制作历史</p>
 </blockquote>
+<ul>
+<li>首先这个想法在上大学的时候已经萌生了，只是当时能力有限，也没太多的支持储备来做这个东西</li>
+<li>树莓派买了很久，大概从大三的时候就买了，当时作了语音识别，图像识别，装Opencv，装了很多次，最后放弃了。</li>
+<li>尝试安装叮咚，最终失败</li>
+<li>尝试做语音唤醒，最终失败</li>
+<li>尝试用树莓派做点新鲜东西，后来发现也没啥用途，后来就一直在抽屉吃灰了</li>
+</ul>
 <hr>
-<blockquote>
-<p><a href="https://ai.baidu.com/docs#/" target="_blank" rel="external">百度文档中心</a><br>后台数据：<br><img src="https://i.loli.net/2018/05/31/5b0ff1a90ec04.png" alt="后台数据"></p>
-</blockquote>
+<p>直到最后我发现了稚晖君做的语音助手：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020134344393.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="稚晖作品"></p>
 <hr>
+<p>看完偶像的作品，又让我燃起了希望，最后再网上发现了一个语音唤醒平台：  <a href="https://snowboy.kitt.ai/" target="_blank" rel="external">https://snowboy.kitt.ai/</a><br>可以看出，这个网站就是一个进行语音训练模型的网站，他帮咱们训练语音模型，然后安装他的python-SDK<br>就可以实现离线语音唤醒，重点是这一切都是免费的！</p>
+<h2 id="当语音唤醒搞定了，你的一切想法就会迎刃而解，你可以在语音唤醒以后来处理你的逻辑和想法，比如物联网，动作执行，API交互。。。"><a href="#当语音唤醒搞定了，你的一切想法就会迎刃而解，你可以在语音唤醒以后来处理你的逻辑和想法，比如物联网，动作执行，API交互。。。" class="headerlink" title="当语音唤醒搞定了，你的一切想法就会迎刃而解，你可以在语音唤醒以后来处理你的逻辑和想法，比如物联网，动作执行，API交互。。。"></a>当语音唤醒搞定了，你的一切想法就会迎刃而解，你可以在语音唤醒以后来处理你的逻辑和想法，比如物联网，动作执行，API交互。。。</h2><p><img src="https://img-blog.csdnimg.cn/20191020135040629.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>而且这个平台的文档也是非常详细的：<a href="http://docs.kitt.ai/snowboy/" target="_blank" rel="external">http://docs.kitt.ai/snowboy/</a></p>
+<p>整体来说，只要把这语音唤醒这一部分搞定，其他的就可以自己DIY来加入自己的想法，也可以加入智能机器人来接收你的指令，并返回机器人的回答也是可以的。</p>
 <blockquote>
-<p><img src="https://i.loli.net/2018/05/31/5b0ff3d3e02fa.png" alt="电脑python实现"><br>电脑端的输出结果为：</p>
+<p>也很开心自己完成了很多年前的想法，平时自己就是喜欢DIY来玩，最终也是实现了自己的想法，很开心。<br>2019年10月</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">D:\python_64_projects\venv\Scripts\python.exe D:/python_64_projects/pizreow.py</div><div class="line">&#123;&apos;error_code&apos;: 0, &apos;error_msg&apos;: &apos;SUCCESS&apos;, &apos;log_id&apos;: 3049016445, &apos;timestamp&apos;: 1527771832, &apos;cached&apos;: 0, &apos;result&apos;: &#123;&apos;face_token&apos;: &apos;08c78a3239ad1d06548ec031fbb7f320&apos;, &apos;user_list&apos;: [&#123;&apos;group_id&apos;: &apos;wenzheng&apos;, &apos;user_id&apos;: &apos;wenzheng&apos;, &apos;user_info&apos;: &apos;pengwenzheng&apos;, &apos;score&apos;: 98.010856628418&#125;]&#125;&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>可见：相似度为：’user_info’: ‘pengwenzheng’, ‘score’: 98.010856628418<br>注：<em>python 3.x中urllib库和urilib2库合并成了urllib库。。其中urllib2.urlopen()变成了urllib.request.urlopen()…….urllib2.Request()变成了urllib.request.Request()</em></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>树莓派代码</p>
-</blockquote>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def search ():</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    人脸搜索</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    f = open(&quot;E:/opencv_pictures/face++/image/my_face.jpg&quot;, &apos;rb&apos;)</div><div class="line">    img = base64.b64encode(f.read())</div><div class="line">    request_url = &quot;https://aip.baidubce.com/rest/2.0/face/v3/search&quot;</div><div class="line">    params = &#123;&quot;image&quot;:img,&quot;image_type&quot;:&quot;BASE64&quot;,&quot;group_id_list&quot;:&quot;wenzheng&quot;,&quot;quality_control&quot;:&quot;LOW&quot;,&quot;liveness_control&quot;:&quot;NORMAL&quot;&#125;</div><div class="line">    access_token = &apos;24.1d38fa613271b16392ddf5bad969480b.2592000.1530352882.282335-11330742&apos;</div><div class="line">    request_url = request_url + &quot;?access_token=&quot; + access_token</div><div class="line">    response = requests.post(request_url, data=params)</div><div class="line">    test = response.json().get(&apos;score&apos;)</div><div class="line">    print(response.json())</div><div class="line">    print(test)</div><div class="line">search()</div></pre></td></tr></table></figure>
+
       
 
       
@@ -326,7 +326,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/31/树莓派+百度api实现人脸识别/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/20/树莓派语音助手-小黑/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -340,18 +340,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/06/01/python制作QQ机器人-QQbot/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          python实现qq机器人qqbot
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/25/智能家居控制系统资料和教程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">智能家居完结版</div>
+    <a href="/2019/10/05/腾讯物联网项目完结篇（添加微信小程序）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">腾讯物联网项目完结篇（添加微信小程序）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -378,7 +369,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#树莓派对接百度api"><span class="toc-number">1.</span> <span class="toc-text">树莓派对接百度api</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#当语音唤醒搞定了，你的一切想法就会迎刃而解，你可以在语音唤醒以后来处理你的逻辑和想法，比如物联网，动作执行，API交互。。。"><span class="toc-number">1.</span> <span class="toc-text">当语音唤醒搞定了，你的一切想法就会迎刃而解，你可以在语音唤醒以后来处理你的逻辑和想法，比如物联网，动作执行，API交互。。。</span></a></li></ol>
                     </div>
                 </span>
             </div>

@@ -169,6 +169,113 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-STM32_DMA再次研究总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/16/STM32_DMA再次研究总结/">STM32_DMA再次研究总结</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/16/STM32_DMA再次研究总结/" class="archive-article-date">
+  	<time datetime="2019-04-15T17:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>今天花了10分钟简单看了下STM32的DMA</p>
+</blockquote>
+<hr>
+<p>DMA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">直接存储器存取(DMA)用来提供在外设和存储器之间或者存储器和存储器之间的高速数据传</div><div class="line">输。无须CPU干预，数据可以通过DMA快速地移动，这就节省了CPU的资源来做其他操作。</div><div class="line">两个DMA控制器有12个通道(DMA1有7个通道，DMA2有5个通道)，每个通道专门用来管理来自</div><div class="line">于一个或多个外设对存储器访问的请求。还有一个仲裁器来协调各个DMA请求的优先权。</div></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/04/16/5cb4ba92328f9.png" alt=""></p>
+        
+          <a class="article-more-a" href="/2019/04/16/STM32_DMA再次研究总结/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/16/STM32_DMA再次研究总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-M5311模组烤机测试装置（Arduino）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1187,127 +1294,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-多种模组使用MQTT协议总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/19/多种模组使用MQTT协议总结/">多种模组使用MQTT协议总结</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/19/多种模组使用MQTT协议总结/" class="archive-article-date">
-  	<time datetime="2019-02-19T05:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>前言：</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>由于公司搭建的物联网IOT平台是基于MQTT协议的，再加上我们的设备要支持各种类型的模组</p>
-</blockquote>
-<ul>
-<li>WIFI模组 （使用的是最常见的安信可模组）</li>
-<li>4G模组（采用微雪SIM7600CE模组）</li>
-<li>NB-IOT模组（采用高新兴物联模组ME3616）</li>
-</ul>
-<h2 id="gt-遇到的问题："><a href="#gt-遇到的问题：" class="headerlink" title="&gt; 遇到的问题："></a>&gt; 遇到的问题：</h2><ol>
-<li>首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是山东有人物联网平台的模组，他们的COAP协议不支持自己搭建的服务器，这一点整个不符合我的路线，后来有采用了微雪的NB模组，发现他的COAP也是不太完善。首先是COAP协议的兼容问题，我们一开始就想采用NB模组，COAP协议，毕竟现在比较火，但是，测试的效果并不是太好，尤其是山东有人物联网平台的模组，他们的COAP协议不支持自己搭建的服务器，这一点整个不符合我的路线，后来有采用了微雪的NB模组，发现他的COAP也是不太完善。</li>
-<li>其次是MQTT服务器的搭建，由于他的普适性，其服务器的搭建也相对简单。</li>
-<li>后来我们采用了兼容性更高的MQTT协议，这个协议使用比较普遍，所以相对来说用起来比较简单，尤其是WIFI模组来对接MQTT协议，很简单就能做出来产品，同时我们又对其他类型的通讯模组进行了选型，最终找到了适合MQTT协议的模组，而且，运行起来相对稳定，比如高新兴物联作为主控的NB模组，我们已经将其安装在设备上运行。<ol>
-<li>MQTT协议的安卓开发，安卓针对MQTT协议有一定的固件包可以直接使用，所以这也是很快就可以搞定了的。</li>
-</ol>
-</li>
-</ol>
-<h2 id="gt-下面是调试各种模组的AT指令笔记"><a href="#gt-下面是调试各种模组的AT指令笔记" class="headerlink" title="&gt; 下面是调试各种模组的AT指令笔记:"></a>&gt; 下面是调试各种模组的AT指令笔记:</h2>
-        
-          <a class="article-more-a" href="/2019/02/19/多种模组使用MQTT协议总结/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工作总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/19/多种模组使用MQTT协议总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1409,6 +1395,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">毕业</a>
               </li>
              
@@ -1417,23 +1407,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1445,11 +1423,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">腾讯IOT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1461,18 +1447,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
@@ -1481,7 +1455,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1489,11 +1471,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1501,11 +1483,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1529,19 +1511,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1553,7 +1527,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">物联网</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1561,11 +1535,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">物联网</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
+                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1573,7 +1551,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">雷达</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
               </li>
              
               <li class="article-tag-list-item">
