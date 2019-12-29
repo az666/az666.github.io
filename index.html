@@ -169,6 +169,133 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-基于SIM7600的4GDTU设计（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/29/基于SIM7600的4GDTU设计（一）/">基于SIM7600的4GDTU设计（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/29/基于SIM7600的4GDTU设计（一）/" class="archive-article-date">
+  	<time datetime="2019-12-29T12:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://img-blog.csdnimg.cn/20191229195726713.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400" alt="在这里插入图片描述"></p>
+<hr>
+<p><img src="https://img-blog.csdnimg.cn/20191229195933285.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400" alt="在这里插入图片描述"></p>
+<p>首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。</p>
+<p>DTU功能如下：</p>
+<h2 id="预期效果："><a href="#预期效果：" class="headerlink" title="预期效果："></a>预期效果：</h2><ol>
+<li><em>用户0编程，便可将数据远程透传至指定服务器</em>。</li>
+<li>具备远程配置服务终端，可远程更改设备的主要信息和参数</li>
+<li>支持485自动问询透传与串口自定义数据包透传</li>
+<li>配套APP远程配置参数与功能码</li>
+<li>生产时可以快速烧录，实现动态注册的目的</li>
+</ol>
+<h2 id="组成："><a href="#组成：" class="headerlink" title="组成："></a>组成：</h2><p>通讯协议：仅支持MQTT（为达到独立性和减小开发难度）<br>硬件：STM32+SIMCOM7600+485芯片等<br>软件：配套APP<br>前端：具备DTU的远程配置页面</p>
+<ol>
+<li>实现数据的透传，可连接各大平台，例如阿里云、百度云、腾讯云、同时可支持私有的平台。<br>其功能会逐步添加，首先从私有平台出发，完成所有功能设计，再延伸至其他平台，由于是MQTT，所以开发起来比较方便。</li>
+<li>可实现485指定数据问询，主要仿造合宙的DTU来开发，可实现盲插485传感器，就可以实现数据的定时问询与上报。</li>
+<li>具有远程更改和配置功能</li>
+<li>DTU具有自检能力，如果出现掉线等异常情况可进行自修复、自重连。<br>运行流程：</li>
+</ol>
+<p>主要命令码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">tsATCmds ATCmds[] =                                                  //AT指令</div><div class="line">&#123;</div><div class="line">    &#123;&quot;ATE0\r\n&quot;,&quot;OK&quot;,200,NO_REC,100&#125;,                                //空指令测试</div><div class="line">    &#123;&quot;AT+CSQ\r\n&quot;,&quot;OK&quot;,200,NO_REC,3&#125;,                                //测试信号</div><div class="line">    &#123;&quot;AT+CREG?\r\n&quot;,&quot;+CREG: 0,1&quot;,200,NO_REC,150&#125;,                    //测试驻网  150次重发机制</div><div class="line">    &#123;&quot;AT+CMQTTDISC?\r\n&quot;,&quot;+CMQTTDISC: 0,1&quot;,1000,NO_REC,5&#125;,           //是否连接服务器</div><div class="line">    &#123;&quot;AT+CMQTTSTART\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                        //开始连接服务器</div><div class="line">    &#123;&quot;AT+CMQTTACCQ=0,&quot;,&quot;+CMQTTSTART: 0&quot;,3000,NO_REC,3&#125;,              //发送ID</div><div class="line">    &#123;&quot;AT+CMQTTCONNECT=0,&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                       //连接MQTT</div><div class="line">    &#123;&quot;AT+CMQTTSUB=0,&quot;,&quot;&gt;&quot;,3000,NO_REC,3&#125;,                            //开始订阅</div><div class="line">    &#123;&quot;\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                                     //订阅TOPIC名称</div><div class="line">    &#123;&quot;AT+CMQTTTOPIC=0,&quot;,&quot;&gt;&quot;,1000,NO_REC,8&#125;,                          //开始发布</div><div class="line">    &#123;&quot;\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                                     //发布TOPIC名称</div><div class="line">    &#123;&quot;AT+CMQTTPAYLOAD=0,&quot;,&quot;&gt;&quot;,1000,NO_REC,5&#125;,                        //发布消息</div><div class="line">    &#123;&quot;\r\n&quot;,&quot;OK&quot;,2000,NO_REC,3&#125;,                                     //消息内容</div><div class="line">    &#123;&quot;AT+CMQTTPUB=0,1,60\r\n&quot;,&quot;+CMQTTPUB&quot;,1000,NO_REC,3&#125;,            //发布消息</div><div class="line">    &#123;&quot;AT+CRESET\r\n&quot;,&quot;+CPIN: READY&quot;,5000,1&#125;,                         //复位模组</div><div class="line">    &#123;&quot;AT+CMQTTDISC?\r\n&quot;,&quot;+CMQTTDISC: 0,0&quot;,1000,NO_REC,3&#125;,           //自检命令</div><div class="line">	&#123;&quot;ATI\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                                  //设备信息</div><div class="line">    &#123;&quot;AT+HTTPINIT\r\n&quot;,&quot;OK&quot;,2000,NO_REC,3&#125;,                          //HTTP初始化   ATI</div><div class="line">    &#123;&quot;AT+HTTPPARA=\&quot;URL\&quot;,\&quot;https://www.cnblogs.com/pengwenzheng/p/12100814.html\&quot;\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;, //HTTP设置IP地址</div><div class="line">    &#123;&quot;AT+HTTPACTION=0\r\n&quot;,&quot;+HTTPACTION: 0,200&quot;,2000,NO_REC,3&#125;,      //HTTP设置GET</div><div class="line">    &#123;&quot;AT+HTTPREAD=0,1024\r\n&quot;,&quot;CITC@&quot;,1000,NO_REC,6&#125;,                //HTTP读取数据包</div><div class="line">    &#123;&quot;AT+HTTPTERM\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                          //HTTP关闭</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="流程如下："><a href="#流程如下：" class="headerlink" title="流程如下："></a>流程如下：</h2><p><img src="https://img-blog.csdnimg.cn/20191229201936785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>前端界面： 以合宙DTU的管理平台为例</p>
+<p><img src="https://img-blog.csdnimg.cn/20191229195110378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>部分代码截图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191229202713526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>未完待续  2019年12月29日</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SIM7600</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/29/基于SIM7600的4GDTU设计（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-小米手表搭载MQTT物联网控制单片机设备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1211,112 +1338,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-Zigbee+Arduino " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/30/Zigbee+Arduino /">基于ZigBee的Arduino项目开发</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/30/Zigbee+Arduino /" class="archive-article-date">
-  	<time datetime="2019-07-30T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="基于ZigBee的Arduino项目开发"><a href="#基于ZigBee的Arduino项目开发" class="headerlink" title="基于ZigBee的Arduino项目开发"></a>基于ZigBee的Arduino项目开发</h2><p><strong>视频演示：</strong></p>
-<p><a href="https://www.bilibili.com/video/av59087756/">https://www.bilibili.com/video/av59087756/</a></p>
-<div style="height: 0;padding-bottom:65%;position: relative;"><br><iframe width="760" height="510" src="//player.bilibili.com/player.html?aid=59087756&cid=102989244&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen style="position: absolute;height: 105%;width: 100%;"> </iframe><br></div> 
-
-<hr>
-<p>今天来总结下很久以前做的小东西，这是我之前做的一个关于ZigBee的小项目，主要是用来验证ZigBee的通讯，最终的效果也是实现的相对好一些。</p>
-        
-          <a class="article-more-a" href="/2019/07/30/Zigbee+Arduino /#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ZigBee</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/30/Zigbee+Arduino /">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1426,19 +1447,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1454,11 +1475,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
+                <a href="javascript:void(0)" class="js-tag color1">腾讯IOT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">腾讯IOT</a>
+                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1470,14 +1491,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
               </li>
              
@@ -1486,11 +1499,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
+                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1506,11 +1531,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1522,7 +1547,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,11 +1555,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
+                <a href="javascript:void(0)" class="js-tag color3">SIM7600</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1542,23 +1567,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">WearOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">托更</a>
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">托更</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1567,6 +1588,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">物联网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
               </li>
              
               <li class="article-tag-list-item">
