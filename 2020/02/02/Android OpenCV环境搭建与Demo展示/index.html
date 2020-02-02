@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200202001940241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200202002124482.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200202002142496.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2020-02-01T16:32:05.337Z">
+<meta property="og:updated_time" content="2020-02-02T09:44:34.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android OpenCV环境搭建与Demo展示">
 <meta name="twitter:description" content="最终效果
@@ -214,7 +214,7 @@ var _hmt = _hmt || [];
         <h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="https://img-blog.csdnimg.cn/20200201192711506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>首先，这个项目说实话我做了两年，上学的时候很想做这个东西，由于当时能力不足，对于编程方面的知识储备也不足，而且对于未知的东西有种渴望，但是无奈心有余而力不足，导致自己的很多想法都放弃了，有些甚至夭折了。</p>
 <a id="more"></a>
-<h2 id="环境配置："><a href="#环境配置：" class="headerlink" title="环境配置："></a>环境配置：</h2><p>Android studio版本：V3.5.2<br>OpenCV版本：3.4.6<br>接下来我将逐一给大家截图分析环境的搭建过程，后面应该还会录制一期视频来讲解。<br>资料下载：<br>工程仓库地址：<br>待补充<br>opencv-3.4.6-android-sdk.zip<br><a href="https://download.csdn.net/download/switch_love_case/12129739" target="_blank" rel="external">https://download.csdn.net/download/switch_love_case/12129739</a><br>SO库：libopencv_info.so （用于免Manager APP） <a href="https://download.csdn.net/download/wawayuchibang/10614343" target="_blank" rel="external">https://download.csdn.net/download/wawayuchibang/10614343</a><br>博主APK文件： <a href="https://fir.im/ve24" target="_blank" rel="external">https://fir.im/ve24</a></p>
+<h2 id="环境配置："><a href="#环境配置：" class="headerlink" title="环境配置："></a>环境配置：</h2><p>Android studio版本：V3.5.2<br>OpenCV版本：3.4.6<br>接下来我将逐一给大家截图分析环境的搭建过程，后面应该还会录制一期视频来讲解。<br>资料下载：<br>工程仓库地址：<br><a href="https://github.com/az666/Android-Opencv" target="_blank" rel="external">https://github.com/az666/Android-Opencv</a><br>opencv-3.4.6-android-sdk.zip<br><a href="https://download.csdn.net/download/switch_love_case/12129739" target="_blank" rel="external">https://download.csdn.net/download/switch_love_case/12129739</a><br>SO库：libopencv_info.so （用于免Manager APP） <a href="https://download.csdn.net/download/wawayuchibang/10614343" target="_blank" rel="external">https://download.csdn.net/download/wawayuchibang/10614343</a><br>博主APK文件： <a href="https://fir.im/ve24" target="_blank" rel="external">https://fir.im/ve24</a></p>
 <p>备注： 下面的所有流程成立的前提是你的AndroidStudio能够正常工作！即代表你的AndroidStudio的运行环境是OK的。不然后面出现问题不好排查。</p>
 <hr>
 <hr>
@@ -254,7 +254,7 @@ var _hmt = _hmt || [];
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    xmlns:app="http://schemas.android.com/apk/res-auto"</div><div class="line">    android:layout_width="match_parent"</div><div class="line">    android:layout_height="match_parent"</div><div class="line">    android:orientation="horizontal"&gt;</div><div class="line">    &lt;org.opencv.android.JavaCameraView</div><div class="line">        android:id="@+id/camera_view"</div><div class="line">        android:layout_width="0dp"</div><div class="line">        android:layout_height="match_parent"</div><div class="line">        android:layout_weight="1"/&gt;</div><div class="line">    &lt;Button</div><div class="line">        android:layout_margin="10dp"</div><div class="line">        android:text="'皮'"</div><div class="line">        android:id="@+id/switch_camera"</div><div class="line">        android:layout_width="43dp"</div><div class="line">        android:layout_height="37dp"</div><div class="line">        android:layout_gravity="center_vertical" /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
 <p>接下来不出意外地话，代码错误会比较少，如下：<br>是由于依赖库冲突导致，利用快捷键更改为Opencv即可。<br><img src="https://img-blog.csdnimg.cn/20200202001757891.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>修改完以后编译，直接真机调试，会出现下图错误，原因为Opencv库的版本（过低）或者与本APP版本不一致，修改一下即可<br><img src="https://img-blog.csdnimg.cn/20200202001940241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="APP真机安装调试"><a href="#APP真机安装调试" class="headerlink" title="APP真机安装调试"></a>APP真机安装调试</h2><p><img src="https://img-blog.csdnimg.cn/20200202002124482.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200202002142496.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>致此，所有流程完毕。后续会有更详细的视频讲解。<br>物联网学习群：476840321<br>UP博客： <a href="http://wenzheng.club" target="_blank" rel="external">http://wenzheng.club</a></p>
+<p>致此，所有流程完毕。后续会有更详细的视频讲解。<br>物联网学习群：476840321<br>UP博客： <a href="https://github.com/az666/Android-Opencv" target="_blank" rel="external">http://wenzheng.club</a></p>
 
       
 
@@ -578,11 +578,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">腾讯IOT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
+                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,19 +610,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Siri</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,11 +622,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">micropython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,19 +642,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PCB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,11 +650,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mqtt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SIM7600</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
+                <a href="javascript:void(0)" class="js-tag color2">WearOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,11 +678,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WearOS</a>
+                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,11 +706,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PLC</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">PLC</a>
               </li>
              
               <li class="article-tag-list-item">
