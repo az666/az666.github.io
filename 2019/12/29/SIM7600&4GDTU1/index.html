@@ -6,14 +6,45 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 物联网 | 阿正的个人站</title>
+  <title>基于SIM7600的4GDTU设计（一） | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿正的个人站">
-<meta property="og:url" content="http://yoursite.com/tags/物联网/index.html">
+  <meta name="description" content="首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。
+DTU功能如下：
+预期效果：
+用户0编程，便可将数据远程透传至指定服务器。
+具备远程配置服务终端，可远程更改设备的主要信息和参数
+支持485自动问询透传与串口自定义数据包透传
+配套APP远程配置参数与功能码
+生产时可以快速烧录，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于SIM7600的4GDTU设计（一）">
+<meta property="og:url" content="http://yoursite.com/2019/12/29/SIM7600&4GDTU1/index.html">
 <meta property="og:site_name" content="阿正的个人站">
+<meta property="og:description" content="首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。
+DTU功能如下：
+预期效果：
+用户0编程，便可将数据远程透传至指定服务器。
+具备远程配置服务终端，可远程更改设备的主要信息和参数
+支持485自动问询透传与串口自定义数据包透传
+配套APP远程配置参数与功能码
+生产时可以快速烧录，">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191229195726713.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191229195933285.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191229201936785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191229195110378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191229202713526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-02-23T07:09:07.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿正的个人站">
+<meta name="twitter:title" content="基于SIM7600的4GDTU设计（一）">
+<meta name="twitter:description" content="首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。
+DTU功能如下：
+预期效果：
+用户0编程，便可将数据远程透传至指定服务器。
+具备远程配置服务终端，可远程更改设备的主要信息和参数
+支持485自动问询透传与串口自定义数据包透传
+配套APP远程配置参数与功能码
+生产时可以快速烧录，">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191229195726713.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -165,61 +196,256 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-基于SIM7600的4GDTU设计（一）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/18/index/" class="archive-article-date">
-  	<time datetime="2018-09-18T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/18/index/">MQTT本地服务器搭建</a>
+    <h1 class="article-title" itemprop="name">
+      基于SIM7600的4GDTU设计（一）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/12/29/SIM7600&4GDTU1/" class="archive-article-date">
+  	<time datetime="2019-12-29T12:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://img-blog.csdnimg.cn/20191229195726713.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400" alt="在这里插入图片描述"></p>
+<hr>
+<p><img src="https://img-blog.csdnimg.cn/20191229195933285.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400" alt="在这里插入图片描述"></p>
+<p>首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。</p>
+<p>DTU功能如下：</p>
+<h2 id="预期效果："><a href="#预期效果：" class="headerlink" title="预期效果："></a>预期效果：</h2><ol>
+<li><em>用户0编程，便可将数据远程透传至指定服务器</em>。</li>
+<li>具备远程配置服务终端，可远程更改设备的主要信息和参数</li>
+<li>支持485自动问询透传与串口自定义数据包透传</li>
+<li>配套APP远程配置参数与功能码</li>
+<li>生产时可以快速烧录，实现动态注册的目的</li>
+</ol>
+<h2 id="组成："><a href="#组成：" class="headerlink" title="组成："></a>组成：</h2><p>通讯协议：仅支持MQTT（为达到独立性和减小开发难度）<br>硬件：STM32+SIMCOM7600+485芯片等<br>软件：配套APP<br>前端：具备DTU的远程配置页面</p>
+<ol>
+<li>实现数据的透传，可连接各大平台，例如阿里云、百度云、腾讯云、同时可支持私有的平台。<br>其功能会逐步添加，首先从私有平台出发，完成所有功能设计，再延伸至其他平台，由于是MQTT，所以开发起来比较方便。</li>
+<li>可实现485指定数据问询，主要仿造合宙的DTU来开发，可实现盲插485传感器，就可以实现数据的定时问询与上报。</li>
+<li>具有远程更改和配置功能</li>
+<li>DTU具有自检能力，如果出现掉线等异常情况可进行自修复、自重连。<br>运行流程：</li>
+</ol>
+<p>主要命令码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">tsATCmds ATCmds[] =                                                  //AT指令</div><div class="line">&#123;</div><div class="line">    &#123;&quot;ATE0\r\n&quot;,&quot;OK&quot;,200,NO_REC,100&#125;,                                //空指令测试</div><div class="line">    &#123;&quot;AT+CSQ\r\n&quot;,&quot;OK&quot;,200,NO_REC,3&#125;,                                //测试信号</div><div class="line">    &#123;&quot;AT+CREG?\r\n&quot;,&quot;+CREG: 0,1&quot;,200,NO_REC,150&#125;,                    //测试驻网  150次重发机制</div><div class="line">    &#123;&quot;AT+CMQTTDISC?\r\n&quot;,&quot;+CMQTTDISC: 0,1&quot;,1000,NO_REC,5&#125;,           //是否连接服务器</div><div class="line">    &#123;&quot;AT+CMQTTSTART\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                        //开始连接服务器</div><div class="line">    &#123;&quot;AT+CMQTTACCQ=0,&quot;,&quot;+CMQTTSTART: 0&quot;,3000,NO_REC,3&#125;,              //发送ID</div><div class="line">    &#123;&quot;AT+CMQTTCONNECT=0,&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                       //连接MQTT</div><div class="line">    &#123;&quot;AT+CMQTTSUB=0,&quot;,&quot;&gt;&quot;,3000,NO_REC,3&#125;,                            //开始订阅</div><div class="line">    &#123;&quot;\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                                     //订阅TOPIC名称</div><div class="line">    &#123;&quot;AT+CMQTTTOPIC=0,&quot;,&quot;&gt;&quot;,1000,NO_REC,8&#125;,                          //开始发布</div><div class="line">    &#123;&quot;\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                                     //发布TOPIC名称</div><div class="line">    &#123;&quot;AT+CMQTTPAYLOAD=0,&quot;,&quot;&gt;&quot;,1000,NO_REC,5&#125;,                        //发布消息</div><div class="line">    &#123;&quot;\r\n&quot;,&quot;OK&quot;,2000,NO_REC,3&#125;,                                     //消息内容</div><div class="line">    &#123;&quot;AT+CMQTTPUB=0,1,60\r\n&quot;,&quot;+CMQTTPUB&quot;,1000,NO_REC,3&#125;,            //发布消息</div><div class="line">    &#123;&quot;AT+CRESET\r\n&quot;,&quot;+CPIN: READY&quot;,5000,1&#125;,                         //复位模组</div><div class="line">    &#123;&quot;AT+CMQTTDISC?\r\n&quot;,&quot;+CMQTTDISC: 0,0&quot;,1000,NO_REC,3&#125;,           //自检命令</div><div class="line">	&#123;&quot;ATI\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                                  //设备信息</div><div class="line">    &#123;&quot;AT+HTTPINIT\r\n&quot;,&quot;OK&quot;,2000,NO_REC,3&#125;,                          //HTTP初始化   ATI</div><div class="line">    &#123;&quot;AT+HTTPPARA=\&quot;URL\&quot;,\&quot;https://www.cnblogs.com/pengwenzheng/p/12100814.html\&quot;\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;, //HTTP设置IP地址</div><div class="line">    &#123;&quot;AT+HTTPACTION=0\r\n&quot;,&quot;+HTTPACTION: 0,200&quot;,2000,NO_REC,3&#125;,      //HTTP设置GET</div><div class="line">    &#123;&quot;AT+HTTPREAD=0,1024\r\n&quot;,&quot;CITC@&quot;,1000,NO_REC,6&#125;,                //HTTP读取数据包</div><div class="line">    &#123;&quot;AT+HTTPTERM\r\n&quot;,&quot;OK&quot;,1000,NO_REC,3&#125;,                          //HTTP关闭</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="流程如下："><a href="#流程如下：" class="headerlink" title="流程如下："></a>流程如下：</h2><p><img src="https://img-blog.csdnimg.cn/20191229201936785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>前端界面： 以合宙DTU的管理平台为例</p>
+<p><img src="https://img-blog.csdnimg.cn/20191229195110378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>部分代码截图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191229202713526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>未完待续  2019年12月29日</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">物联网</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SIM7600</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/29/SIM7600&4GDTU1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/01/01/my2019/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          我的2019
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/11/18/index/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小米手表搭载MQTT物联网控制单片机设备</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#预期效果："><span class="toc-number">1.</span> <span class="toc-text">预期效果：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组成："><span class="toc-number">2.</span> <span class="toc-text">组成：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程如下："><span class="toc-number">3.</span> <span class="toc-text">流程如下：</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
 
           </div>
         </div>
@@ -241,9 +467,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

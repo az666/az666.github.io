@@ -6,14 +6,38 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 物联网 | 阿正的个人站</title>
+  <title>基于SIM7600的4GDTU设计（二） | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿正的个人站">
-<meta property="og:url" content="http://yoursite.com/tags/物联网/index.html">
+  <meta name="description" content="4GDTU的代码流程
+接下来 来讲解一下硬件的整体代码流程，整体框架类似于现有的大部分安卓APP的流程，开机先查询是否需要更新，如果数据库中有数据更新，则先更新内部数据点，然后使用最新的数据进行平台通讯，同时完成下面的业务，并且进行自检，如果自检异常则进行重连，一直循环下去。如果用户需要更新设备数据，则只需要在管理平台更改参数，然后设备重启即可。
+
+
+
+同时前端也会有一个管理平台进行数据库的管理和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于SIM7600的4GDTU设计（二）">
+<meta property="og:url" content="http://yoursite.com/2020/01/17/SIM7600&4GDTU/index.html">
 <meta property="og:site_name" content="阿正的个人站">
+<meta property="og:description" content="4GDTU的代码流程
+接下来 来讲解一下硬件的整体代码流程，整体框架类似于现有的大部分安卓APP的流程，开机先查询是否需要更新，如果数据库中有数据更新，则先更新内部数据点，然后使用最新的数据进行平台通讯，同时完成下面的业务，并且进行自检，如果自检异常则进行重连，一直循环下去。如果用户需要更新设备数据，则只需要在管理平台更改参数，然后设备重启即可。
+
+
+
+同时前端也会有一个管理平台进行数据库的管理和">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108102912800.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =250x400">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200117100558489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200117095840582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200117100314671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-02-23T07:08:20.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿正的个人站">
+<meta name="twitter:title" content="基于SIM7600的4GDTU设计（二）">
+<meta name="twitter:description" content="4GDTU的代码流程
+接下来 来讲解一下硬件的整体代码流程，整体框架类似于现有的大部分安卓APP的流程，开机先查询是否需要更新，如果数据库中有数据更新，则先更新内部数据点，然后使用最新的数据进行平台通讯，同时完成下面的业务，并且进行自检，如果自检异常则进行重连，一直循环下去。如果用户需要更新设备数据，则只需要在管理平台更改参数，然后设备重启即可。
+
+
+
+同时前端也会有一个管理平台进行数据库的管理和">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200108102912800.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =250x400">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -165,61 +189,246 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-基于SIM7600的4GDTU设计（二）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/18/index/" class="archive-article-date">
-  	<time datetime="2018-09-18T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/18/index/">MQTT本地服务器搭建</a>
+    <h1 class="article-title" itemprop="name">
+      基于SIM7600的4GDTU设计（二）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/01/17/SIM7600&4GDTU/" class="archive-article-date">
+  	<time datetime="2020-01-17T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4GDTU的代码流程"><a href="#4GDTU的代码流程" class="headerlink" title="4GDTU的代码流程"></a>4GDTU的代码流程</h2><blockquote>
+<p>接下来 来讲解一下硬件的整体代码流程，整体框架类似于现有的大部分安卓APP的流程，开机先查询是否需要更新，如果数据库中有数据更新，则先更新内部数据点，然后使用最新的数据进行平台通讯，同时完成下面的业务，并且进行自检，如果自检异常则进行重连，一直循环下去。<br>如果用户需要更新设备数据，则只需要在管理平台更改参数，然后设备重启即可。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20200108102912800.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =250x400" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>同时前端也会有一个管理平台进行数据库的管理和API的处理，当设备开机时,会首先进行http的POST访问将设备内部的imei上传到平台进行比对</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="服务器管理后台–采用Node-RED来搭建"><a href="#服务器管理后台–采用Node-RED来搭建" class="headerlink" title="服务器管理后台–采用Node-RED来搭建"></a>服务器管理后台–采用Node-RED来搭建</h2><p><img src="https://img-blog.csdnimg.cn/20200117100558489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<hr>
+<p><img src="https://img-blog.csdnimg.cn/20200117095840582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>可实现数据库的增删改查与硬件设备管理，包含了指定数据点的OTA升级与设备主动获取信息接口的设计<br>目前采用get方式方便测试，后期可以优化为POST保证数据的稳定性</p>
+</blockquote>
+<h2 id="数据库节点"><a href="#数据库节点" class="headerlink" title="数据库节点"></a>数据库节点</h2><p><img src="https://img-blog.csdnimg.cn/20200117100314671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="Postman测试API效果"><a href="#Postman测试API效果" class="headerlink" title="Postman测试API效果"></a>Postman测试API效果</h2><p>硬件设备发送GET请求携带IMEI，后台会回复对应数据包（json格式）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">硬件发送：http://106.13.150.28:1880/4G_DTU?imei=864999042554889</div><div class="line"></div><div class="line">平台回复：</div><div class="line">[</div><div class="line">    &#123;</div><div class="line">        &quot;id&quot;: 76,</div><div class="line">        &quot;user&quot;: &quot;SIM7600&quot;,</div><div class="line">        &quot;imei&quot;: &quot;864999042554889&quot;,</div><div class="line">        &quot;mq_ip&quot;: &quot;106.14.150.28&quot;,</div><div class="line">        &quot;mq_port&quot;: 1883,</div><div class="line">        &quot;mq_id&quot;: &quot;sim7600&quot;,</div><div class="line">        &quot;mq_username&quot;: &quot;sim7600&quot;,</div><div class="line">        &quot;mq_password&quot;: &quot;sim7600&quot;,</div><div class="line">        &quot;mq_pubtopic&quot;: &quot;sim7600&quot;,</div><div class="line">        &quot;mq_subtopic&quot;: &quot;sim7600&quot;</div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>整体效果已实机测试，完美运行<br>待续</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">物联网</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SIM7600</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/17/SIM7600&4GDTU/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/02/02/AndroidOpenCV/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Android OpenCV环境搭建与Demo展示
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/01/01/my2019/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的2019</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4GDTU的代码流程"><span class="toc-number">1.</span> <span class="toc-text">4GDTU的代码流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器管理后台–采用Node-RED来搭建"><span class="toc-number">2.</span> <span class="toc-text">服务器管理后台–采用Node-RED来搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库节点"><span class="toc-number">3.</span> <span class="toc-text">数据库节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Postman测试API效果"><span class="toc-number">4.</span> <span class="toc-text">Postman测试API效果</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
 
           </div>
         </div>
@@ -241,9 +450,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
