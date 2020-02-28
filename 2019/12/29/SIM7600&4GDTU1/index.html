@@ -9,41 +9,23 @@
   <title>基于SIM7600的4GDTU设计（一） | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。
-DTU功能如下：
-预期效果：
-用户0编程，便可将数据远程透传至指定服务器。
-具备远程配置服务终端，可远程更改设备的主要信息和参数
-支持485自动问询透传与串口自定义数据包透传
-配套APP远程配置参数与功能码
-生产时可以快速烧录，">
+DTU功能如下：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于SIM7600的4GDTU设计（一）">
 <meta property="og:url" content="http://yoursite.com/2019/12/29/SIM7600&4GDTU1/index.html">
 <meta property="og:site_name" content="阿正的个人站">
 <meta property="og:description" content="首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。
-DTU功能如下：
-预期效果：
-用户0编程，便可将数据远程透传至指定服务器。
-具备远程配置服务终端，可远程更改设备的主要信息和参数
-支持485自动问询透传与串口自定义数据包透传
-配套APP远程配置参数与功能码
-生产时可以快速烧录，">
+DTU功能如下：">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191229195726713.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191229195933285.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191229201936785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191229195110378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191229202713526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2020-02-23T07:09:07.896Z">
+<meta property="og:updated_time" content="2020-02-28T13:20:20.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于SIM7600的4GDTU设计（一）">
 <meta name="twitter:description" content="首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。
-DTU功能如下：
-预期效果：
-用户0编程，便可将数据远程透传至指定服务器。
-具备远程配置服务终端，可远程更改设备的主要信息和参数
-支持485自动问询透传与串口自定义数据包透传
-配套APP远程配置参数与功能码
-生产时可以快速烧录，">
+DTU功能如下：">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191229195726713.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
@@ -221,6 +203,7 @@ var _hmt = _hmt || [];
 <p><img src="https://img-blog.csdnimg.cn/20191229195933285.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400" alt="在这里插入图片描述"></p>
 <p>首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。</p>
 <p>DTU功能如下：</p>
+<a id="more"></a>
 <h2 id="预期效果："><a href="#预期效果：" class="headerlink" title="预期效果："></a>预期效果：</h2><ol>
 <li><em>用户0编程，便可将数据远程透传至指定服务器</em>。</li>
 <li>具备远程配置服务终端，可远程更改设备的主要信息和参数</li>
@@ -561,6 +544,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
               </li>
              
@@ -569,19 +556,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IOT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,15 +580,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,11 +684,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">托更</a>
+                <a href="javascript:void(0)" class="js-tag color5">智能家居</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">智能家居</a>
+                <a href="javascript:void(0)" class="js-tag color3">托更</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,11 +696,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color2">2020疫情</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,10 +713,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PLC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">2020疫情</a>
               </li>
              
               <li class="article-tag-list-item">
