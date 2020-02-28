@@ -167,6 +167,124 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-STM32Cube踩坑记录（一）--SPI_HardFault_Handler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/05/index/">STM32Cube_SPI_HardFault_Handler</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/05/index/" class="archive-article-date">
+  	<time datetime="2019-09-05T15:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天记录一个问题，一个困扰我两天的问题，STM32CubeMX SPI 进行串行Flash W25Q通讯，进入硬件中断的问题。</p>
+<blockquote>
+<p>首先，我第一次生成CUbe工程，添加SPI测试读取W25Q的ID，OK 一切正常，分分钟搞定，但是紧接着第二天打开通盈的代码，居然跑死了，直接不往下走了，真的是奇了怪了，紧接着就是两天的测试，搜索，百度。。。。无果</p>
+</blockquote>
+<hr>
+<p>今天晚上，又一次开始搜索，测试了很多方法，最终回忆起昨天看到的一个帖子，决定试一下，果然OJBK，搞定！：<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDkvMDUvc1FsbXQzZEhVZkN4YUpFLnBuZw?x-oss-process=image/format,png" alt=""></p>
+<blockquote>
+<p>{@。@}  我太难了~~<br>今天记录一下整体的问题与解决方法。<br>首先参考链接：  <a href="http://www.eemaker.com/stm32-hal-spi-hardfault.html" target="_blank" rel="external">http://www.eemaker.com/stm32-hal-spi-hardfault.html</a><br>上面解释的很好，就是半字节对齐的问题，不然程序会跑死在SPI接收区，然后卡死在</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">void HardFault_Handler(void)</div><div class="line">&#123;</div><div class="line">  /* USER CODE BEGIN HardFault_IRQn 0 */</div><div class="line"></div><div class="line">  /* USER CODE END HardFault_IRQn 0 */</div><div class="line">  while (1)</div><div class="line">  &#123;</div><div class="line">    /* USER CODE BEGIN W1_HardFault_IRQn 0 */</div><div class="line">    /* USER CODE END W1_HardFault_IRQn 0 */</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>解决方法为：在接收buffer定义的前面加一个半字节对齐的标识</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* USER CODE BEGIN PTD */</div><div class="line">uint8_t cmd[4] = &#123;READ_ID_CMD,0x00,0x00,0x00&#125;;</div><div class="line">uint8_t wData[0x100];</div><div class="line">uint8_t rData[0x100];</div><div class="line">uint32_t i;</div><div class="line">uint8_t ID_1[2] = &#123;0xFF,0xFF&#125;;</div><div class="line">uint8_t ID_2[2];</div><div class="line">__attribute((aligned (2)))  uint8_t ID[2] = &#123;0&#125;; //__attribute((aligned (2)))  按照半字节对齐</div><div class="line">/* USER CODE END PTD */</div></pre></td></tr></table></figure>
+<p>然后就是，即使解决了这个问题 有可能读出来的ID是做的，比如： 0x00 0x53<br>这是什么鬼？ 最后找到原因如下： CPOL设置为HIGH，但是微雪的教程设置为了LOW</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDkvMDUvRURzSFA5eXBObDR1eGRSLnBuZw?x-oss-process=image/format,png" alt=""></p>
+<p>下图为微雪教程：<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDkvMDUvOFp5N2NmdFM5clVkVzFRLnBuZw?x-oss-process=image/format,png" alt=""></p>
+<blockquote>
+<p>或许和芯片类型不一样，我用的是F030的芯片，主频比较低。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">STM32Cube</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/05/index/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-【IoT迷你赛】TencentOS真正的智慧城市场景" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1152,119 +1270,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/index/">STM32F103+RT-thread操作系统+M5311NB模组物联网项目毕业设计</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/08/index/" class="archive-article-date">
-  	<time datetime="2019-06-08T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://i.loli.net/2019/06/08/5cfb693fc03f319303.jpg" alt=""></p>
-<hr>
-<h2 id="视频展示"><a href="#视频展示" class="headerlink" title="视频展示"></a>视频展示</h2><iframe src="//player.bilibili.com/player.html?aid=54568700&cid=95449348&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-
-<h2 id="整体架构分析"><a href="#整体架构分析" class="headerlink" title="整体架构分析"></a>整体架构分析</h2><blockquote>
-<p>整个项目主要的功能在于底层MCU进行数据采集和485问询，然后通过NB模组进行数据准发，采用的通讯协议为MQTT，同时自己搭建阿里云的MQTT服务器进行数据接收，然后自己再开发安卓APP客户端进行数据展示。OVER！</p>
-</blockquote>
-<p><img src="https://i.loli.net/2019/06/08/5cfb6e2d110c779978.png" alt=""></p>
-<h2 id="操作系统："><a href="#操作系统：" class="headerlink" title="操作系统："></a>操作系统：</h2><blockquote>
-<p>操作系统：RT-thread<br>这是一个国产的操作系统，官网给出的说明是：小而美，的确用在STM32上确实是很方便的。资料和教程也是非常丰富的。但是不推荐大家去官网学习，我就学了几天就搞懂了其基本逻辑，并运用到了我的毕业设计上。我主要参考的是野火的操作系统资料和教材（教材我一页都没看），我的学习思路就是：直接撸1直接实战才是王道。参考资料可以去我的QQ群。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2019/06/08/5cfb6c704fdac26680.png" alt=""></p>
-        
-          <a class="article-more-a" href="/2019/06/08/index/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/08/index/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1370,15 +1375,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1386,11 +1383,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1402,11 +1407,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,19 +1435,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1438,15 +1443,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
+                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1458,7 +1471,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
+                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1470,15 +1483,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1498,11 +1515,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1522,7 +1543,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">PLC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,31 +1551,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PLC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">雷达</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color2">2020疫情</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
             
             <div class="clearfix"></div>

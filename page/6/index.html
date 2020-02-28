@@ -167,6 +167,119 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-参考大神教程完成阿里云自建服务器esp8266和mqtt客户端成功对接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/16/index/">阿里云自建服务器esp8266和mqtt客户端成功对接</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/16/index/" class="archive-article-date">
+  	<time datetime="2018-10-16T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="阿里云自建服务器esp8266和mqtt客户端成功对接"><a href="#阿里云自建服务器esp8266和mqtt客户端成功对接" class="headerlink" title="阿里云自建服务器esp8266和mqtt客户端成功对接"></a>阿里云自建服务器esp8266和mqtt客户端成功对接</h2><blockquote>
+<p>阿里云服务器部分参考esp8266嵌入式大神资料：<a href="https://blog.csdn.net/xh870189248/article/details/78867173" target="_blank" rel="external">大神博客</a><br>最近组建了一个小群，感兴趣的可以加入一起玩：476840321</p>
+<p><img src="https://i.loli.net/2018/10/16/5bc57c508fd43.png" alt="效果展示"></p>
+<p>单片机也是很简单的，用的esp8266最小系统。</p>
+<p><img src="https://i.loli.net/2018/10/16/5bc57ce6c78c3.png" alt=""></p>
+<p>过程中间遇到了很多问题，还好都一步步解决了，<br>首先是linux的一些常用命令，因为服务器买的是阿里云的空间，跑的是linux的系统，按照网上的资料和教程，总算搞定了。<br>linux常用命令集：<a href="https://www.cnblogs.com/pengwenzheng/p/9795909.html" target="_blank" rel="external">https://www.cnblogs.com/pengwenzheng/p/9795909.html</a><br>其次是硬件端的编程，esp8266的固件的编写。以及mqtt通讯SDK的修改（参考安信可和技新的资料）</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/10/16/5bc57fda5987f.png" alt=""></p>
+<blockquote>
+<p>代码备份如下：mqtt_config.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">/*IMPORTANT: the following configuration maybe need modified*/</div><div class="line">/***********************************************************************************************************************************************************************************************************************************************************/</div><div class="line">#define CFG_HOLDER    		0x66666670	// 持有人标识(只有更新此数值，系统参数才会更新)		/* Change this value to load default configurations */</div><div class="line"></div><div class="line">/*DEFAULT CONFIGURATIONS*/</div><div class="line">// 注：【MQTT协议规定：连接服务端的每个客户端都必须有唯一的客户端标识符（ClientId）】。如果两相同ID的客户端不断重连，就会进入互踢死循环</div><div class="line">//--------------------------------------------------------------------------------------------------------------------------------------</div><div class="line">#define MQTT_HOST			&quot;购买的ip&quot; 		// MQTT服务端域名/IP地址	// the IP address or domain name of your MQTT server or MQTT broker ,such as &quot;mqtt.yourdomain.com&quot;</div><div class="line">#define MQTT_PORT       	1883    										// 网络连接端口号			// the listening port of your MQTT server or MQTT broker</div><div class="line">#define MQTT_CLIENT_ID   	&quot;pengwenzheng&quot;	// 官方例程中是&quot;Device_ID&quot;		// 客户端标识符				// the ID of yourself, any string is OK,client would use this ID register itself to MQTT server</div><div class="line">#define MQTT_USER        	&quot;admin&quot; 			// MQTT用户名				// your MQTT login name, if MQTT server allow anonymous login,any string is OK, otherwise, please input valid login name which you had registered</div><div class="line">#define MQTT_PASS        	&quot;public&quot; 	// MQTT密码					// you MQTT login password, same as above</div><div class="line"></div><div class="line">#define STA_SSID 			&quot;maker_space&quot;    	// WIFI名称					// your AP/router SSID to config your device networking</div><div class="line">#define STA_PASS 			&quot;chuangke666&quot; 	// WIFI密码					// your AP/router password</div><div class="line">#define STA_TYPE			AUTH_WPA2_PSK</div><div class="line"></div><div class="line">#define DEFAULT_SECURITY	NO_TLS      		// 加密传输类型【默认不加密】	// very important: you must config DEFAULT_SECURITY for SSL/TLS</div><div class="line"></div><div class="line">#define CA_CERT_FLASH_ADDRESS 		0x77   		// 【CA证书】烧录地址			// CA certificate address in flash to read, 0x77 means address 0x77000</div><div class="line">#define CLIENT_CERT_FLASH_ADDRESS 	0x78 		// 【设备证书】烧录地址			// client certificate and private key address in flash to read, 0x78 means address 0x78000</div><div class="line">/*********************************************************************************************************************************************************************************************************************************************************************************/</div><div class="line"></div><div class="line"></div><div class="line">/*Please Keep the following configuration if you have no very deep understanding of ESP SSL/TLS*/</div><div class="line">#define CFG_LOCATION    			0x79		// 系统参数的起始扇区	/* Please don&apos;t change or if you know what you doing */</div><div class="line">#define MQTT_BUF_SIZE       		1024		// MQTT缓存大小</div><div class="line">#define MQTT_KEEPALIVE        		120     	// 保持连接时长			/*second*/</div><div class="line">#define MQTT_RECONNECT_TIMEOUT    	5    		// 重连超时时长			/*second*/</div><div class="line"></div><div class="line">#define MQTT_SSL_ENABLE				// SSL使能	//* Please don&apos;t change or if you know what you doing */</div><div class="line"></div><div class="line">#define QUEUE_BUFFER_SIZE      		2048		// 消息队列的缓存大小</div><div class="line"></div><div class="line">//#define PROTOCOL_NAMEv31    		// 使用MQTT协议【v31】版本		/*MQTT version 3.1 compatible with Mosquitto v0.15*/</div><div class="line">#define PROTOCOL_NAMEv311      		// 使用MQTT协议【v311】版本		/*MQTT version 3.11 compatible with https://eclipse.org/paho/clients/testing/*/</div><div class="line"></div><div class="line">#endif // __MQTT_CONFIG_H__</div></pre></td></tr></table></figure>
+<blockquote>
+<p>接下来的思路：准备写安卓端的控制程序，和硬件和网络进行对接，<br>方案1： 利用java编写（这个还是比较难的）<br>方案2： 利用apicloud编写，JavaScript编写（需要购买资料）发工资了再买。<br>方案3： 利用E4A易安卓进行编写，这个应该很简单，准备试一下。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mqtt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/16/index/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-Siri 捷径邂逅esp8266实现的智能家居控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1187,114 +1300,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-机智云SOC嵌入式开发成功" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/17/index/">机智云SOC嵌入式开发成功</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/17/index/" class="archive-article-date">
-  	<time datetime="2018-07-17T13:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="机智云SOC方案终于成功"><a href="#机智云SOC方案终于成功" class="headerlink" title="机智云SOC方案终于成功"></a>机智云SOC方案终于成功</h2><hr>
-<p>GitHub地址：<a href="https://github.com/az666/SOC_ESP_projects">https://github.com/az666/SOC_ESP_projects</a></p>
-<hr>
-<p><img src="https://i.loli.net/2018/07/17/5b4e0803e5186.jpg" alt="SOC页面展示"></p>
-<blockquote>
-<p>以前玩机智云一直玩MCU方案，一直不敢触碰SOC，一是SOC属于嵌入式开发，开始相当复杂的，二是自己本来就学的arduino，正好arduino对于这方面还是很简单的。<br>我之前总说，学习东西，要么扎实去学习，去打好基础。<br>要么直接实战，从实战中总结经验，然后总结出知识点，进而让自己的基础更牢固。<br>我由于性格使然，我选择后者。并且深深感受到当知识积累到某一天，茅塞顿开时，多么的快乐和舒畅。啦啦啦</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/07/17/index/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">机智云</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/17/index/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1400,15 +1405,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1416,11 +1413,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1432,11 +1437,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1448,19 +1465,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1468,15 +1473,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
+                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1488,7 +1501,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
+                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1500,15 +1513,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1528,11 +1545,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1552,7 +1573,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
+                <a href="javascript:void(0)" class="js-tag color4">PLC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1560,31 +1581,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PLC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">雷达</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color2">2020疫情</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
             
             <div class="clearfix"></div>
