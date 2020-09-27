@@ -6,25 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>基于MQTT协议的WZ指令开发 | 阿正的个人站</title>
+  <title>我做了STM32MP1实战教程 | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是一款真正的基于MQTT的AT指令
-基于MQTT协议的MCU通讯指令-WZ指令2.0版本已完结，可用于STM32的数据发送。名称：基于MQTT的万能AT指令（名称来源于本人名字故取名为WZ指令）特点：   简单到只需要一行代码就可以将数据点推送至MQTT服务器   可用于个人EMQ服务器，或者树莓派搭建的局域网服务器（暂不支持onenet等商用平台）默认端口：1883同时支持微信配网、安卓A">
+  <meta name="description" content="我做了STM32MP1实战教程
+我在一个多月前，有幸从朋友那里得到了一块STM32MP1的开发板，并在一个月时间内体验了这块儿强大的LINUX板卡，同时自己也录制了一系列的而视频教程，主要是针对应用实战的开发，（毕竟驱动太难了，我一个小白，不敢班门弄斧），不过给大家讲讲应用层的实战开发还是没问题的。所以本课程可以在不开发驱动的情况下实现应用开发，因为官方驱动已经足够满足此项目场景需求。
+
+
+
+这是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于MQTT协议的WZ指令开发">
-<meta property="og:url" content="http://yoursite.com/2019/02/14/index/index.html">
+<meta property="og:title" content="我做了STM32MP1实战教程">
+<meta property="og:url" content="http://yoursite.com/2020/09/26/my_STM32MP1_projects/index.html">
 <meta property="og:site_name" content="阿正的个人站">
-<meta property="og:description" content="这是一款真正的基于MQTT的AT指令
-基于MQTT协议的MCU通讯指令-WZ指令2.0版本已完结，可用于STM32的数据发送。名称：基于MQTT的万能AT指令（名称来源于本人名字故取名为WZ指令）特点：   简单到只需要一行代码就可以将数据点推送至MQTT服务器   可用于个人EMQ服务器，或者树莓派搭建的局域网服务器（暂不支持onenet等商用平台）默认端口：1883同时支持微信配网、安卓A">
-<meta property="og:image" content="https://i.loli.net/2019/02/14/5c6586ba6d596.png">
-<meta property="og:image" content="https://i.loli.net/2019/02/14/5c652b20e7556.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/02/14/5c652be3bb8d8.jpg">
-<meta property="og:updated_time" content="2019-02-14T15:39:59.734Z">
+<meta property="og:description" content="我做了STM32MP1实战教程
+我在一个多月前，有幸从朋友那里得到了一块STM32MP1的开发板，并在一个月时间内体验了这块儿强大的LINUX板卡，同时自己也录制了一系列的而视频教程，主要是针对应用实战的开发，（毕竟驱动太难了，我一个小白，不敢班门弄斧），不过给大家讲讲应用层的实战开发还是没问题的。所以本课程可以在不开发驱动的情况下实现应用开发，因为官方驱动已经足够满足此项目场景需求。
+
+
+
+这是">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200927104009272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200927103041958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200927105055957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:updated_time" content="2020-09-27T03:08:26.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于MQTT协议的WZ指令开发">
-<meta name="twitter:description" content="这是一款真正的基于MQTT的AT指令
-基于MQTT协议的MCU通讯指令-WZ指令2.0版本已完结，可用于STM32的数据发送。名称：基于MQTT的万能AT指令（名称来源于本人名字故取名为WZ指令）特点：   简单到只需要一行代码就可以将数据点推送至MQTT服务器   可用于个人EMQ服务器，或者树莓派搭建的局域网服务器（暂不支持onenet等商用平台）默认端口：1883同时支持微信配网、安卓A">
-<meta name="twitter:image" content="https://i.loli.net/2019/02/14/5c6586ba6d596.png">
+<meta name="twitter:title" content="我做了STM32MP1实战教程">
+<meta name="twitter:description" content="我做了STM32MP1实战教程
+我在一个多月前，有幸从朋友那里得到了一块STM32MP1的开发板，并在一个月时间内体验了这块儿强大的LINUX板卡，同时自己也录制了一系列的而视频教程，主要是针对应用实战的开发，（毕竟驱动太难了，我一个小白，不敢班门弄斧），不过给大家讲讲应用层的实战开发还是没问题的。所以本课程可以在不开发驱动的情况下实现应用开发，因为官方驱动已经足够满足此项目场景需求。
+
+
+
+这是">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200927104009272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -176,53 +188,91 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-基于MQTT协议的WZ指令开发" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-我做了STM32MP1实战教程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      基于MQTT协议的WZ指令开发
+      我做了STM32MP1实战教程
     </h1>
   
 
         
-        <a href="/2019/02/14/index/" class="archive-article-date">
-  	<time datetime="2019-02-14T15:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
+        <a href="/2020/09/26/my_STM32MP1_projects/" class="archive-article-date">
+  	<time datetime="2020-09-25T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://i.loli.net/2019/02/14/5c6586ba6d596.png" alt=""></p>
-<blockquote>
-<p>这是一款真正的基于MQTT的AT指令</p>
-<p>基于MQTT协议的MCU通讯指令-WZ指令<br>2.0版本已完结，可用于STM32的数据发送。<br>名称：基于MQTT的万能AT指令（名称来源于本人名字故取名为WZ指令）<br>特点：   简单到只需要一行代码就可以将数据点推送至MQTT服务器   可用于个人EMQ服务器，或者树莓派搭建的局域网服务器（暂不支持onenet等商用平台）<br>默认端口：1883<br>同时支持微信配网、安卓APP配网，支持掉电存储、支持用户名密码校验、   支持wifi掉线重连、支持服务器掉线重连。<br>版本号：V2.0<br>作者：阿正<br>网站：wenzheng.club<br>固件可以加群下载：476840321</p>
+        <h2 id="我做了STM32MP1实战教程"><a href="#我做了STM32MP1实战教程" class="headerlink" title="我做了STM32MP1实战教程"></a>我做了STM32MP1实战教程</h2><blockquote>
+<p>我在一个多月前，有幸从朋友那里得到了一块STM32MP1的开发板，并在一个月时间内体验了这块儿强大的LINUX板卡，同时自己也录制了一系列的而视频教程，主要是针对应用实战的开发，（毕竟驱动太难了，我一个小白，不敢班门弄斧），不过给大家讲讲应用层的实战开发还是没问题的。<br><em>所以本课程可以在不开发驱动的情况下实现应用开发，因为官方驱动已经足够满足此项目场景需求。</em></p>
 </blockquote>
-<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200927104009272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
 <blockquote>
+<p>这是一套基于智慧物流场景的物联网实战项目开发视频，主要实现数据采集与IOT平台数据交互，同时具备Web的显示大屏。</p>
 </blockquote>
-<ol>
-<li>目前市面上能找到的兼容MQTT的AT指令少之又少</li>
-<li>而且安信可和乐鑫官方也没有开发这个AT指令，基本上都是基于MCU端的处理，同时MQTT是基于TCP转化而来，</li>
-<li>如果想要用MQTT就把TCP数据封包成为MQTT协议，就可以用TCP发出MQTT的数据。</li>
-</ol>
-<h2 id="gt-这是arduino中文社区的一篇帖子，感觉讲的非常好https-www-arduino-cn-thread-82851-1-1-html"><a href="#gt-这是arduino中文社区的一篇帖子，感觉讲的非常好https-www-arduino-cn-thread-82851-1-1-html" class="headerlink" title="&gt; 这是arduino中文社区的一篇帖子，感觉讲的非常好https://www.arduino.cn/thread-82851-1-1.html"></a>&gt; 这是arduino中文社区的一篇帖子，感觉讲的非常好<a href="https://www.arduino.cn/thread-82851-1-1.html" target="_blank" rel="external">https://www.arduino.cn/thread-82851-1-1.html</a></h2><blockquote>
-<p>我的方法，与上面的方法不同，我是从用户端的逻辑来进行的操作，以至于达到了很好的用户体验！</p>
-</blockquote>
-<p>最终效果：</p>
+<hr>
+<p><img src="https://img-blog.csdnimg.cn/20200927103041958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
 <blockquote>
-<p>使用说明：</p>
+<p>这次的课程我录制了8节课，每节课20分钟-60分钟。讲述了我从拿到板子到最后成品完成的整个过程，包括点亮第一个LED灯，到CAT.1网卡拨号以及北斗定位模组的经纬度解析，再到LCD屏幕和触摸的设备树配置驱动，再到华为云平台应用创建，以及Web界面开发。最终实现MQTT数据上报和整个场景的联动。而且全程几乎用不到自己开发驱动（本课程不涉及驱动开发），利用原厂的驱动即可实现咱们的所有需求。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">****************************</div><div class="line">名称：基于MQTT的万能AT指令（名称来源于本人名字故取名为WZ指令）</div><div class="line">特点：</div><div class="line">   简单到只需要一行代码就可以将数据点推送至MQTT服务器</div><div class="line">   可用于个人EMQ服务器，或者树莓派搭建的局域网服务器（暂不支持onenet等商用平台）</div><div class="line">   默认端口：1883</div><div class="line">   同时支持微信配网、安卓APP配网，支持掉电存储、支持用户名密码校验、</div><div class="line">   支持wifi掉线重连、支持服务器掉线重连。</div><div class="line">版本号：V2.0</div><div class="line">作者：阿正</div><div class="line">网站：wenzheng.club</div><div class="line">*****************************</div><div class="line">烧写位置：0x00000000</div><div class="line">建议将ESP01清除缓存后再烧写</div><div class="line">配网：微信智能配网（或者安卓APP配网），可掉电存储，不需要AT指令单独配置。</div><div class="line">  AT指令：仅此一条json数据，没有繁琐的其他配置环节，简单粗暴</div><div class="line">  &#123;&quot;wz&quot;:&quot;wenzheng.club&quot;,&quot;server&quot;:&quot;60.205.203.64&quot;,&quot;user&quot;:&quot;admin1&quot;,&quot;password&quot;:&quot;public&quot;,&quot;topic&quot;:&quot;20190213134505&quot;,&quot;message&quot;:&quot;test2019&quot;&#125;</div><div class="line">AT指令说明：</div><div class="line">  1、&quot;wz&quot;:&quot;wenzheng.club&quot; 为必填项！无此字段无法使用此指令。</div><div class="line">  2、服务器连接：第一次发送这条AT指令时会进行服务器连接，</div><div class="line">  3、消息发布：后续发送这条AT指令则代表发送指定主题的消息。message目前最大支持200字节。</div><div class="line">  3、主题订阅：目前暂不支持用户自定义订阅主题，</div><div class="line">     但是系统开机默认订阅主题名为：wz_server 的主题！</div><div class="line">  4、消息接收：wz_server 发布的消息会在串口中打印出来，</div><div class="line">     如：WZ:[Hello world!]</div><div class="line">     用户可对此进行处理然后执行相关动作。</div><div class="line">     后续版本会支持用户自定义。</div><div class="line">  代码举例：</div><div class="line">  **arduino**</div><div class="line">  void setup() &#123;</div><div class="line">Serial.begin(9600);</div><div class="line">&#125;</div><div class="line">void loop() &#123;</div><div class="line"> Serial.println(&#123;\&quot;wz\&quot;:\&quot;wenzheng.club\&quot;,\&quot;server\&quot;:\&quot;60.205.203.64\&quot;,\&quot;user\&quot;:\&quot;root\&quot;,\&quot;password\&quot;:\&quot;citc2018\&quot;,\&quot;topic\&quot;:\&quot;ZX1040300101000\&quot;,\&quot;message\&quot;:\&quot;T:226;H:232;\&quot;&#125;&quot;);</div><div class="line"> //真正的只需要一行代码实现数据发送！！用户只需要拼接字符即可！</div><div class="line"> delay(1000);</div><div class="line">&#125;</div><div class="line">**STM32**</div><div class="line">单片机配置好串口直接</div><div class="line">printf(&quot;&#123;\&quot;wz\&quot;:\&quot;wenzheng.club\&quot;,\&quot;server\&quot;:\&quot;60.205.203.64\&quot;,\&quot;user\&quot;:\&quot;root\&quot;,\&quot;password\&quot;:\&quot;citc2018\&quot;,\&quot;topic\&quot;:\&quot;ZX10403001010000\&quot;,\&quot;message\&quot;:\&quot;T:226;H:232;\&quot;&#125;&quot;);</div><div class="line">即可！</div><div class="line">///**************///</div><div class="line">更新日志：</div><div class="line">2019年2月13日晚上制作V2.0版本</div><div class="line">  添加mqtt_user验证</div><div class="line">  添加mqtt_passward验证</div><div class="line">2019年2月13日上午制作V1.0版本</div><div class="line">  实现基本通讯</div><div class="line">2019年初有初步想法</div></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200927105055957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>具体开发板硬件相关参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>型号</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心板</td>
+<td>STM32MP157C</td>
+<td>米尔电子核心板</td>
+</tr>
+<tr>
+<td>4G网卡</td>
+<td>广和通L610-cat.1</td>
+</tr>
+<tr>
+<td>显示屏</td>
+<td>微雪4.3寸</td>
+<td>配置设备树即可驱动</td>
+</tr>
+<tr>
+<td>IOT平台</td>
+<td>华为云</td>
+<td>支持Web开发</td>
+</tr>
+<tr>
+<td>物联网通讯协议</td>
+<td>MQTT</td>
+<td></td>
+</tr>
+<tr>
+<td>定位模组</td>
+<td>北斗定位</td>
+<td>任意一款即可</td>
+</tr>
+<tr>
+<td>温湿度</td>
+<td>SHT30</td>
+<td>I2C数据采集</td>
+</tr>
+<tr>
+<td>UI界面</td>
+<td>QT</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>STM32串口测试：</p>
-</blockquote>
-<p><img src="https://i.loli.net/2019/02/14/5c652b20e7556.jpg" alt=""><br><img src="https://i.loli.net/2019/02/14/5c652be3bb8d8.jpg" alt=""></p>
-<blockquote>
-<p>总结，经过我的测试，还是相对稳定的，无论是Arduino还是STM32进行数据发送，都是可以的。经测试Arduino不间断发送3000+数据，服务器接收依然正常！</p>
+<p>目前视频还在审核，具体上线时间待定，上线平台待定。 如果有机会，我会把视频转载到B站，欢迎大家共同讨论学习。但是源码我已经上传在码云上，感兴趣可以看下：<br><a href="https://gitee.com/wenzhengclub/stm32-mp157_-gps_-huawei" target="_blank" rel="external">https://gitee.com/wenzhengclub/stm32-mp157_-gps_-huawei</a></p>
 </blockquote>
 
       
@@ -268,7 +318,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WZ指令</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -324,7 +374,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/14/index/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/26/my_STM32MP1_projects/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -338,18 +388,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/02/18/index/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          基于MQTT协议的WZ指令开发V3.0版本支持onenet
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/12/index/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2019博客再次更新评论系统</div>
+    <a href="/2020/09/20/my_STM32_travel/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记一次STM32全国研讨会之旅</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -376,7 +417,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gt-这是arduino中文社区的一篇帖子，感觉讲的非常好https-www-arduino-cn-thread-82851-1-1-html"><span class="toc-number">1.</span> <span class="toc-text">> 这是arduino中文社区的一篇帖子，感觉讲的非常好https://www.arduino.cn/thread-82851-1-1.html</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我做了STM32MP1实战教程"><span class="toc-number">1.</span> <span class="toc-text">我做了STM32MP1实战教程</span></a></li></ol>
                     </div>
                 </span>
             </div>

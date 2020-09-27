@@ -167,6 +167,170 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-我做了STM32MP1实战教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/26/my_STM32MP1_projects/">我做了STM32MP1实战教程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/26/my_STM32MP1_projects/" class="archive-article-date">
+  	<time datetime="2020-09-25T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="我做了STM32MP1实战教程"><a href="#我做了STM32MP1实战教程" class="headerlink" title="我做了STM32MP1实战教程"></a>我做了STM32MP1实战教程</h2><blockquote>
+<p>我在一个多月前，有幸从朋友那里得到了一块STM32MP1的开发板，并在一个月时间内体验了这块儿强大的LINUX板卡，同时自己也录制了一系列的而视频教程，主要是针对应用实战的开发，（毕竟驱动太难了，我一个小白，不敢班门弄斧），不过给大家讲讲应用层的实战开发还是没问题的。<br><em>所以本课程可以在不开发驱动的情况下实现应用开发，因为官方驱动已经足够满足此项目场景需求。</em></p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20200927104009272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>这是一套基于智慧物流场景的物联网实战项目开发视频，主要实现数据采集与IOT平台数据交互，同时具备Web的显示大屏。</p>
+</blockquote>
+<hr>
+<p><img src="https://img-blog.csdnimg.cn/20200927103041958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>这次的课程我录制了8节课，每节课20分钟-60分钟。讲述了我从拿到板子到最后成品完成的整个过程，包括点亮第一个LED灯，到CAT.1网卡拨号以及北斗定位模组的经纬度解析，再到LCD屏幕和触摸的设备树配置驱动，再到华为云平台应用创建，以及Web界面开发。最终实现MQTT数据上报和整个场景的联动。而且全程几乎用不到自己开发驱动（本课程不涉及驱动开发），利用原厂的驱动即可实现咱们的所有需求。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20200927105055957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>具体开发板硬件相关参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>型号</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心板</td>
+<td>STM32MP157C</td>
+<td>米尔电子核心板</td>
+</tr>
+<tr>
+<td>4G网卡</td>
+<td>广和通L610-cat.1</td>
+</tr>
+<tr>
+<td>显示屏</td>
+<td>微雪4.3寸</td>
+<td>配置设备树即可驱动</td>
+</tr>
+<tr>
+<td>IOT平台</td>
+<td>华为云</td>
+<td>支持Web开发</td>
+</tr>
+<tr>
+<td>物联网通讯协议</td>
+<td>MQTT</td>
+<td></td>
+</tr>
+<tr>
+<td>定位模组</td>
+<td>北斗定位</td>
+<td>任意一款即可</td>
+</tr>
+<tr>
+<td>温湿度</td>
+<td>SHT30</td>
+<td>I2C数据采集</td>
+</tr>
+<tr>
+<td>UI界面</td>
+<td>QT</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>目前视频还在审核，具体上线时间待定，上线平台待定。 如果有机会，我会把视频转载到B站，欢迎大家共同讨论学习。但是源码我已经上传在码云上，感兴趣可以看下：<br><a href="https://gitee.com/wenzhengclub/stm32-mp157_-gps_-huawei" target="_blank" rel="external">https://gitee.com/wenzhengclub/stm32-mp157_-gps_-huawei</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/26/my_STM32MP1_projects/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-记一次STM32全国研讨会之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1171,113 +1335,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-基于SIM7600的4GDTU设计（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/17/SIM7600&4GDTU/">基于SIM7600的4GDTU设计（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/17/SIM7600&4GDTU/" class="archive-article-date">
-  	<time datetime="2020-01-17T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="4GDTU的代码流程"><a href="#4GDTU的代码流程" class="headerlink" title="4GDTU的代码流程"></a>4GDTU的代码流程</h2><blockquote>
-<p>接下来 来讲解一下硬件的整体代码流程，整体框架类似于现有的大部分安卓APP的流程，开机先查询是否需要更新，如果数据库中有数据更新，则先更新内部数据点，然后使用最新的数据进行平台通讯，同时完成下面的业务，并且进行自检，如果自检异常则进行重连，一直循环下去。<br>如果用户需要更新设备数据，则只需要在管理平台更改参数，然后设备重启即可。</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20200108102912800.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =250x400" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>同时前端也会有一个管理平台进行数据库的管理和API的处理，当设备开机时,会首先进行http的POST访问将设备内部的imei上传到平台进行比对</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/01/17/SIM7600&4GDTU/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SIM7600</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/17/SIM7600&4GDTU/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1380,15 +1437,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">毕业</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1400,15 +1457,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,11 +1481,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
+                <a href="javascript:void(0)" class="js-tag color1">腾讯IOT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">腾讯IOT</a>
+                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1440,15 +1497,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1460,15 +1517,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PCB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+                <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1477,6 +1530,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1500,15 +1557,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1520,15 +1577,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">WearOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1540,15 +1605,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">托更</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1560,7 +1621,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">托更</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1569,10 +1630,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">2020疫情</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
