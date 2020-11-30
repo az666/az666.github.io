@@ -6,14 +6,42 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Java | 阿正的个人站</title>
+  <title>小熊派STM32-OTA+IOT教程 | 阿正的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿正的个人站">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+  <meta name="description" content="近期在准备一个物联网课程，主要是针对STM32OTA升级，这次使用的是小熊派物联网开发板项目地址：https://gitee.com/wenzhengclub/bearpi_iot_ota
+  
+
+
+
+
+其实这个开发板去年我就拿到手了，只是一直没有机会和时间去体验，所以就搁置了，最近着重研究了STM32OTA部分，所以想着把OTA移植到小熊派开发板中，来实现远程升级，同时再加入一些IOT方面的知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小熊派STM32-OTA+IOT教程">
+<meta property="og:url" content="http://yoursite.com/2020/11/30/bearpi_OTA/index.html">
 <meta property="og:site_name" content="阿正的个人站">
+<meta property="og:description" content="近期在准备一个物联网课程，主要是针对STM32OTA升级，这次使用的是小熊派物联网开发板项目地址：https://gitee.com/wenzhengclub/bearpi_iot_ota
+  
+
+
+
+
+其实这个开发板去年我就拿到手了，只是一直没有机会和时间去体验，所以就搁置了，最近着重研究了STM32OTA部分，所以想着把OTA移植到小熊派开发板中，来实现远程升级，同时再加入一些IOT方面的知识">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201130134223411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020113013503788.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201130135110668.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201130135131844.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201130135220398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:updated_time" content="2020-11-30T06:32:37.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿正的个人站">
+<meta name="twitter:title" content="小熊派STM32-OTA+IOT教程">
+<meta name="twitter:description" content="近期在准备一个物联网课程，主要是针对STM32OTA升级，这次使用的是小熊派物联网开发板项目地址：https://gitee.com/wenzhengclub/bearpi_iot_ota
+  
+
+
+
+
+其实这个开发板去年我就拿到手了，只是一直没有机会和时间去体验，所以就搁置了，最近着重研究了STM32OTA部分，所以想着把OTA移植到小熊派开发板中，来实现远程升级，同时再加入一些IOT方面的知识">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201130134223411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="阿正的个人站" type="application/atom+xml">
   
@@ -165,61 +193,256 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-小熊派STM32-OTA+IOT教程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/24/bilibili_Java/" class="archive-article-date">
-  	<time datetime="2019-02-23T17:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/24/bilibili_Java/">Java项目安卓编程UI设计总结</a>
+    <h1 class="article-title" itemprop="name">
+      小熊派STM32-OTA+IOT教程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/11/30/bearpi_OTA/" class="archive-article-date">
+  	<time datetime="2020-11-29T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近期在准备一个物联网课程，主要是针对STM32OTA升级，这次使用的是小熊派物联网开发板<br>项目地址：<a href="https://gitee.com/wenzhengclub/bearpi_iot_ota" target="_blank" rel="external">https://gitee.com/wenzhengclub/bearpi_iot_ota</a><br><img src="https://img-blog.csdnimg.cn/20201130134223411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<div style="height: 0;padding-bottom:65%;position: relative;"><br><iframe width="760" height="510" src="//player.bilibili.com/player.html?aid=245381231&bvid=BV1zv411t71G&cid=260962982&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen style="position: absolute;height: 105%;width: 100%;"> </iframe><br></div> 
+
+
+
+<blockquote>
+<p>其实这个开发板去年我就拿到手了，只是一直没有机会和时间去体验，所以就搁置了，最近着重研究了STM32OTA部分，所以想着把OTA移植到小熊派开发板中，来实现远程升级，同时再加入一些IOT方面的知识，最终我选择了STM32+Nodered+ThingsBoard+IOT固件上传平台的方案。全部自己来完成，都是自己搭建的，并没有去使用现有的物联网平台。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Nodered：用于Http Server的搭建，实现固件版本请求API、文件下发API、以及对接Mysql数据库。</div><div class="line">ThingsBoard：用于MQTT Server 实现MQTT的数据交互，同时制作IOT显示大屏</div><div class="line">IOT固件上传平台：主要用于固件的上传以及版本的更新，支持文件拖拽上传，以及和数据库的交互，是Nodered的补充</div></pre></td></tr></table></figure>
+<p>首先看下OTA部分主板的界面：</p>
+<blockquote>
+<p>这里主要是BootLoader启动过程中的界面，有一个图标，同时下方具备一个进度条，提示当前的进度，再一个就是会有一个当前状态的日志。同时一旦启动异常，也是支持固件版本的回滚的。因为在启动的时候，会备份一份代码到外部SPI Flash中。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/2020113013503788.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>接下来是STM32运行过程中的UI界面：</p>
+<blockquote>
+<p>界面上方左上角显示当前固件版本号，右上角具备一个4G信号天线图标，可实时根据模组CSQ值进行一个动态的变化，下方有一个简单的UI可以展示温度湿度光照强度等，刷新速度可以根据自己的需求调整。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20201130135110668.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<a id="more"></a>
+<p>ThingsBoard 数据展示大屏：</p>
+<blockquote>
+<p>大屏主要展示了设备E53插接件上面的传感器值，同时也展示了模组的信号状态变化，有仪表盘也有折线图，一目了然。同时还具备命令下发的功能，可以下发命令开启或者关闭E53插接板上面的电机和LED灯。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20201130135131844.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>最后就是自己做的OTA固件上传平台：</p>
+<blockquote>
+<p>这是我自己学了一上午的PHP做的一个主页，主要是对Nodered的一个补充，因为Nodered暂不支持文件上传（可能我没找到这个功能）。我用PHP做了这个小主页，支持文件的拖拽上传，同时也可以更新版本信息到mysql数据库。非常的方便。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20201130135220398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<hr>
+<p>课程规划：</p>
+<ul>
+<li>录制预告视频</li>
+<li>录制硬件软件材料准备以及服务器搭建视频</li>
+<li>开始正式的教程，预计会在接下来的12月中旬完结</li>
+<li>QQ群：476840321 （欢迎一起讨论学习）</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b63f43d6c.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://i.loli.net/2018/07/02/5b39b69ef1bc9.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/11/30/bearpi_OTA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/11/15/my_DK_activity/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记录得捷电子的一次线下活动</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+  
   
 
-    
+  
 
+  
+
+  
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
 
           </div>
         </div>
@@ -242,9 +465,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
