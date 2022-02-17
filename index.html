@@ -201,7 +201,9 @@ var _hmt = _hmt || [];
 <p>由于华为openharmony3.0对于智慧视觉设备支持的API非常有限，所以目前并没有实现我期待的最完美的效果。其中南向的开发我最初想用陀螺仪实现屏幕倾斜检测，然后自动旋转屏幕和UI，结果，鸿蒙嵌入式设备不支持竖屏，就这么尴尬。</p>
 </blockquote>
 <p>功能演示如下：</p>
-<p>[video(video-49rB6vSA-1644481172325)(type-bilibili)(url-<a href="https://player.bilibili.com/player.html?aid=465421464)(image-https://img-blog.csdnimg.cn/img_convert/59310803c1932daa85c00e01418960eb.png)(title-把鸿蒙3.0的应用装进折叠开发板" target="_blank" rel="external">https://player.bilibili.com/player.html?aid=465421464)(image-https://img-blog.csdnimg.cn/img_convert/59310803c1932daa85c00e01418960eb.png)(title-把鸿蒙3.0的应用装进折叠开发板</a>)]</p>
+<div style="height: 0;padding-bottom:65%;position: relative;"><br><iframe width="760" height="510" src="//player.bilibili.com/player.html?aid=465421464" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen style="position: absolute;height: 105%;width: 100%;"> </iframe><br></div> 
+
+
 <p><img src="https://img-blog.csdnimg.cn/4d83aa6bdf6c41d3ac2ca1c51cdc1258.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6Zi_5q2j5ZW35Liq5ZOp5Liq5ZW3,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h1 id="南向开发总结"><a href="#南向开发总结" class="headerlink" title="南向开发总结"></a>南向开发总结</h1><p>南向的开发还是有一些复杂的，需要遵循鸿蒙的一套驱动开发框架（HDF框架），HDF框架以组件化的驱动模型作为核心设计思路，为开发者提供更精细化的驱动管理，让驱动开发和部署更加规范。HDF框架将一类设备驱动放在同一个host里面，开发者也可以将驱动功能分层独立开发和部署，支持一个驱动多个node，HDF驱动模型如下图所示：<br><img src="https://img-blog.csdnimg.cn/b5663969d5b74ee4896e20accb8a979c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6Zi_5q2j5ZW35Liq5ZOp5Liq5ZW3,size_16,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>我这边也是根据官方文档循序渐进开发了所需要的的驱动，并最终将E53外设板的所有外设整合为一个驱动，同时用一个数据将传感器数据一次传输到应用层，且包含bool型的传感器状态，感觉还是很方便的。这样北向的应用就可以调一次接口来实现所有传感器状态的查询了。具体的HDF框架中的理论知识，不再赘述，可自行查看文末的文档。<br><img src="https://img-blog.csdnimg.cn/08e5fa2034c3419f9446a68cc699dc45.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6Zi_5q2j5ZW35Liq5ZOp5Liq5ZW3,size_11,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>还有一点是北向与南向的交互是调用的JS接口来实现的，但是鸿蒙官方提供的接口非常少，应该只有两个（搞不懂，，），所以所有的与外设交互的接口，都需要自己实现，例如：小熊派例程中的操作LED的接口。这也是我为什么把E53的传感器融合为一个接口的原因，这样调用一次即可查询多个数据。</p>
 <h1 id="北向开发总结"><a href="#北向开发总结" class="headerlink" title="北向开发总结"></a>北向开发总结</h1><p>北向应用的开发，反而更简单一些，因为开发方式与微信小程序几乎是一模一样的，但是也抵挡不住里面的坑多，，，还是刚刚所说的，API接口太少了，尤其是UI和动画方面。</p>
@@ -1507,15 +1509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">google</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毕业</a>
+                <a href="javascript:void(0)" class="js-tag color2">google</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1535,11 +1533,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">BearPi-HM Micro</a>
+                <a href="javascript:void(0)" class="js-tag color3">毕业</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">BearPi-HM Micro</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1551,10 +1553,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
               </li>
              
@@ -1563,15 +1561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">腾讯IOT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1579,7 +1573,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1591,11 +1593,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PCB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Siri</a>
+                <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1615,15 +1621,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TencentOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ZigBee</a>
+                <a href="javascript:void(0)" class="js-tag color2">micropython</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1651,15 +1653,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SIM7600</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1679,11 +1681,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1707,11 +1709,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
+                <a href="javascript:void(0)" class="js-tag color1">开关机器人</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">开关机器人</a>
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
