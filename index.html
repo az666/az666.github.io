@@ -167,6 +167,138 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-NBIOT开发套件与技术沉淀" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/04/tuyaos_nbiot_club/">NBIOT开发套件与技术沉淀</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/04/tuyaos_nbiot_club/" class="archive-article-date">
+  	<time datetime="2023-03-03T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="TuyaOS-nbiot-club"><a href="#TuyaOS-nbiot-club" class="headerlink" title="TuyaOS_nbiot_club"></a>TuyaOS_nbiot_club</h1><h2 id="【开源项目介绍】"><a href="#【开源项目介绍】" class="headerlink" title="【开源项目介绍】"></a>【开源项目介绍】</h2><p>本文为基于TuyaOS的NBIOT系列教程，包含开源硬件与NBIOT的全链路技术讲解与分析。<br>该系列课程分为以下部分：</p>
+<ul>
+<li><p>NBIOT物联网协议中COAP与LWM2M的详细讲解与分析</p>
+</li>
+<li><p>TuyaOS 框架介绍与WindIDE的使用</p>
+</li>
+<li>“磁吸三明治“开发套件的介绍</li>
+<li>搭建环境30min上云快速体验</li>
+<li>以NBIOT温湿度计为例讲解数据上报与下发</li>
+<li>0代码实现固件OTA升级</li>
+<li>课程总结</li>
+</ul>
+<p><img src="https://gitee.com/wenzhengclub/my_tuya_blog/raw/master/4241add1322d7ca153752f411f93b36-2023-3-500:00:46.png" alt=""></p>
+<h2 id="磁吸效果展示"><a href="#磁吸效果展示" class="headerlink" title="磁吸效果展示"></a>磁吸效果展示</h2><p><img src="https://github.com/az666/hexo_blog_pic/blob/main/1677947233876tuyaos_nbiot_club.gif" alt="pp_iot_board"></p>
+<h2 id="完全体展示："><a href="#完全体展示：" class="headerlink" title="完全体展示："></a>完全体展示：</h2><p><img src="https://gitee.com/wenzhengclub/tuya_os_nbiot_club/raw/master/doc/iot_board_ui_phone.jpg" alt="iot board 真机升级效果图"></p>
+<h2 id="磁吸三明治简介："><a href="#磁吸三明治简介：" class="headerlink" title="磁吸三明治简介："></a>磁吸三明治简介：</h2><p>该方案分为三层堆叠设计，且板层连接无任何插针与排线，依靠弹性触点与磁铁实现导通，轻轻一碰即可实现吸附与导通，手感极佳，具备以下特点：</p>
+<ul>
+<li><p>最底层主板为【烧录调试板】板载CH344芯片与电源芯片可实现USB-hub与4路串口供调试使用且板载电平转换芯片，支持Type-c供电与单电池供电的切换，具备ADC分压电路供上层CPU采集电池电量。同时CH344的四路串口可方便为各种模组烧录和调试，不再需要复杂的接线和外设，而且串口和电源通过侧面排针引出，也可作为一个独立的USB-hub+4路串口调试工具使用</p>
+</li>
+<li><p>中间层主板为【模组主控板】采用兼容设计，兼容涂鸦全平台NB模组，本文以NX1-CT为例，板载NB专用射频天线美观简洁，采用超低功耗设计，单板功耗&lt;1ua ,板载电源与网络指示灯，且支持开关切断外设电源（以达到最低功耗），同时金手指触点已引出常用的外设：GPIO、ADC、I2C、SPI等</p>
+</li>
+<li><p>最上层主板为【传感外设板】 本项目以温湿度传感器为例，板载OLED屏幕、SHT30温湿度传感器、BH1750光照传感器、指示灯等外设，且外设电源可通过GPIO管理，以达到最低功耗</p>
+</li>
+</ul>
+<h2 id="公版面板UI界面展示："><a href="#公版面板UI界面展示：" class="headerlink" title="公版面板UI界面展示："></a>公版面板UI界面展示：</h2><p><img src="https://gitee.com/wenzhengclub/tuya_os_nbiot_club/raw/master/doc/work_log.PNG" alt="iot board 真机升级效果图"></p>
+<h2 id="硬件相关："><a href="#硬件相关：" class="headerlink" title="硬件相关："></a>硬件相关：</h2><h3 id="低功耗部分"><a href="#低功耗部分" class="headerlink" title="低功耗部分"></a>低功耗部分</h3><p>单模组功耗&lt;1ua  整机功耗（包含电源芯片与ADC分压采集电路）约3.5ua</p>
+<p><img src="https://gitee.com/wenzhengclub/tuya_os_nbiot_club/raw/master/doc/low_power.png" alt="pp_iot_board"></p>
+<h3 id="基础UI设计，暂未移植复杂的GUI库，仅仅使用简单字符实现"><a href="#基础UI设计，暂未移植复杂的GUI库，仅仅使用简单字符实现" class="headerlink" title="基础UI设计，暂未移植复杂的GUI库，仅仅使用简单字符实现"></a>基础UI设计，暂未移植复杂的GUI库，仅仅使用简单字符实现</h3><p><img src="https://gitee.com/wenzhengclub/tuya_os_nbiot_club/raw/master/doc/iot_board_ui_test.jpg" alt="pp_iot_board"></p>
+<h3 id="基础UI界面展示"><a href="#基础UI界面展示" class="headerlink" title="基础UI界面展示"></a>基础UI界面展示</h3><p><img src="https://gitee.com/wenzhengclub/tuya_os_nbiot_club/raw/master/doc/iot_board_ui.jpg" alt="iot board 基础UI界面"></p>
+<h3 id="FOTA升级进度条展示"><a href="#FOTA升级进度条展示" class="headerlink" title="FOTA升级进度条展示"></a>FOTA升级进度条展示</h3><p><img src="https://gitee.com/wenzhengclub/tuya_os_nbiot_club/raw/master/doc/iot_board_fota.jpg" alt="iot board OTA升级UI界面"></p>
+<h3 id="FOTA升级-硬件与APP展示"><a href="#FOTA升级-硬件与APP展示" class="headerlink" title="FOTA升级 硬件与APP展示"></a>FOTA升级 硬件与APP展示</h3><p><img src="https://gitee.com/wenzhengclub/tuya_os_nbiot_club/raw/master/doc/iot_board_fota_phone.jpg" alt="iot board 真机升级效果图"></p>
+<h2 id="软件相关："><a href="#软件相关：" class="headerlink" title="软件相关："></a>软件相关：</h2><p>协议层面详细解析：<br><a href="https://www.tuyaos.com/viewtopic.php?t=824" target="_blank" rel="external">NBIOT COAP与LWM2M协议详细解析</a></p>
+<p>TuyaOS WindIDE 使用教程：<br>不同平台环境搭建与编译方法可能会有差异<br><a href="https://www.tuyaos.com/viewtopic.php?t=266&amp;sid=a122d1239eddc83ea3da12d004419c9e" target="_blank" rel="external">NE1 TuyaOS WindIDE使用教程</a></p>
+<h2 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h2><p>todo</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NBIOT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/04/tuyaos_nbiot_club/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-SuperKnob超级旋钮" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1285,125 +1417,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-我的第一个Imx6ULL应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/15/my_linux/">我的第一个Linux+QT应用</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/15/my_linux/" class="archive-article-date">
-  	<time datetime="2020-07-14T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Imx6ULL填坑计划"><a href="#Imx6ULL填坑计划" class="headerlink" title="Imx6ULL填坑计划"></a>Imx6ULL填坑计划</h2><p>此次用到的所有资料我都放到了奶牛快传里，下载的话速度极快！<br><a href="https://c-t.work/s/fe0b4a22171342">https://c-t.work/s/fe0b4a22171342</a> </p>
-<blockquote>
-<p>我买这个板子已经很久了，跟着野火正点原子的教程踉踉跄跄学了一段儿，对很多基础知识也是一知半解，最终也算是搞了下字符驱动开发，并且做了自己的第一次尝试：</p>
-</blockquote>
-<div style="height: 0;padding-bottom:65%;position: relative;"><br><iframe width="760" height="510" src="//player.bilibili.com/player.html?aid=968211607&bvid=BV12p4y1Q7gq&cid=192135519&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen style="position: absolute;height: 105%;width: 100%;"> </iframe><br></div> 
-
-
-
-<hr>
-<blockquote>
-<p>然后呢最近终于费了九牛二虎之力搞成了自己第一个最完善的应用：基于百度图像与语音的一个小作品：</p>
-</blockquote>
-<hr>
-<div style="height: 0;padding-bottom:65%;position: relative;"><br><iframe width="760" height="510" src="//player.bilibili.com/player.html?aid=286290368&bvid=BV1Ff4y1R7hW&cid=211746624&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen style="position: absolute;height: 105%;width: 100%;"> </iframe><br></div> 
-
-<hr>
-<blockquote>
-<p>接下来就总结一下我的制作过程，由于我没有该视频的文档，所以我都是跟着视频敲代码，一点一点撸出来的！！<br>参考讯为的图像识别项目教程： <a href="https://www.bilibili.com/video/BV157411c7sc/">https://www.bilibili.com/video/BV157411c7sc/</a></p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/07/15/my_linux/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/15/my_linux/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1418,7 +1431,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 阿正的个人站
+    		&copy; 2023 阿正的个人站
     	</div>
       	<div class="footer-right">
       	    <img src="https://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png">
@@ -1510,19 +1523,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毕业</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
+                <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,15 +1535,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">毕业</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">BearPi-HM Micro</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1546,11 +1551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOT</a>
+                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+                <a href="javascript:void(0)" class="js-tag color1">BearPi-HM Micro</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,7 +1563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
+                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1566,7 +1575,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
+                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1574,11 +1583,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
+                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
+                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1586,11 +1595,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
+                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SuperKnob</a>
+                <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,7 +1611,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color5">SuperKnob</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1618,7 +1631,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color5">TencentOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1626,19 +1643,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TencentOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">拆解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WZ指令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">互联网+</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1650,14 +1667,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SIM7600</a>
               </li>
              
@@ -1666,7 +1675,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WearOS</a>
+                <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1674,11 +1683,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+                <a href="javascript:void(0)" class="js-tag color2">WearOS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1698,10 +1711,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
@@ -1714,7 +1723,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">窗帘机器人</a>
+                <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1722,7 +1731,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">2020疫情</a>
+                <a href="javascript:void(0)" class="js-tag color1">窗帘机器人</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1730,11 +1739,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线下活动</a>
+                <a href="javascript:void(0)" class="js-tag color2">2020疫情</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">雷达</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线下活动</a>
               </li>
             
             <div class="clearfix"></div>
