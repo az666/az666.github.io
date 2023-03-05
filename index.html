@@ -168,6 +168,211 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-NBIOT COAP与LWM2M协议解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/05/nbiot_coap_lwm2m/">NBIOT COAP与LWM2M协议详细解析</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/05/nbiot_coap_lwm2m/" class="archive-article-date">
+  	<time datetime="2023-03-04T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-CoAP协议"><a href="#1-CoAP协议" class="headerlink" title="1. CoAP协议"></a>1. CoAP协议</h2><p>CoAP协议是IETF提出的一种面向网络的协议，采用了与HTTP类似的特征，核心内容为资源抽象、REST式交互以及可扩展的头选项等。CoAP协议基于REST构架，REST是指表述性状态转换架构，是互联网资源访问协议的一般性设计风格。为了克服HTTP对于受限环境的劣势，CoAP既考虑到数据报长度的最优化，又考虑到提供可靠通信。一方面，CoAP提供URI，REST式的方法如GET、POST、PUT和DELETE，以及可以独立定义的头选项提供的可扩展性。另一方面，CoAP基于轻量级的UDP协议，并且允许IP多播。为了弥补UDP传输的不可靠性，CoAP定义了带有重传机制的事务处理机制。并且提供资源发现机制，并带有资源描述。</p>
+<p><img src="https://open.iot.10086.cn/doc/iot_platform/images/iot_platform/lwm2m/image-20210401232104060.png" alt=""></p>
+<p><img src="https://open.iot.10086.cn/doc/iot_platform/images/iot_platform/lwm2m/image-20210401232410953.png" alt=""></p>
+<p>传输层为CoAP协议报文格式，CoAP由UDP作为承载，遵循UDP基本的协议报文格式，UDP数据内容部分按照CoAP协议报文格式进行写入传输。</p>
+<p>CoAP协议格式说明如下：<br>【Ver】版本编号，指示CoAP协议的版本号。类似于HTTP 1.0 HTTP 1.1。版本编号占2位，取值为01B。</p>
+<p>【T】报文类型，CoAP协议定义了4种不同形式的报文：CON报文，NON报文，ACK报文和RST报文。</p>
+<p>【TKL】CoAP标识符长度。CoAP协议中具有两种功能相似的标识符，一种为Message ID（报文编号），一种为Token（标识符）。其中每个报文均包含消息编号，但是标识符对于报文来说是非必须的。</p>
+<p>【Code】功能码/响应码。Code在CoAP请求报文和响应报文中具有不同的表现形式，Code占一个字节，它被分成了两部分，前3位一部分，后5位一部分，为了方便描述它被写成了c.dd结构。其中0.XX表示CoAP请求的某种方法，而2.XX、4.XX或5.XX则表示CoAP响应的某种具体表现。</p>
+<p>【Message ID】报文编号。</p>
+<p>【Token】标识符具体内容，通过TKL指定Token长度。</p>
+<p>【Option】报文选项，通过报文选项可设定CoAP主机、CoAP URI、CoAP请求参数和负载媒体类型等等。</p>
+<p>【1111 1111B】CoAP报文和具体负载之间的分隔符。</p>
+<p>CoAP支持多个Option，CoAP的Option的表示方法比较特殊，采用增量的方式描述。一般情况下Option部分包含Option Delta、Option Length和Option Val三部分：</p>
+<p>【Option Delta】表示Option的增量，当前的Option的具体编号等于之前所有Option Delta的总和。</p>
+<p>【Option Length】表示Option Val终端设备的具体长度。</p>
+<p>【Option Val终端设备】表示Option具体内容。</p>
+<p>CoAP协议报文中具体数值的意义参考CoAP协议：IETF RFC7252。</p>
+<h3 id="1-1-COAP协议的特点："><a href="#1-1-COAP协议的特点：" class="headerlink" title="1.1. COAP协议的特点："></a>1.1. COAP协议的特点：</h3><p>1.CoAP协议网络传输层当前主要支持UDP。</p>
+<p>2.CoAP是二进制的，HTTP是文本格式的，CoAP比HTTP更加紧凑。</p>
+<p>3.轻量化，CoAP协议最小长度仅4个字节，一个HTTP的头部达几十个字节。</p>
+<p>4.支持可靠传输、数据重传、块传输。确保数据可靠到达。</p>
+<p>5.支持IP多播，即可以同时向多个设备发送请求。</p>
+<p>6.非长连接通信，适用于低速率、低功耗物联网场景。</p>
+<p>7.CoAP基于REST，服务器的资源地址和互联网一样也有类似URI的格式，客户端同样有POST、GET、PUT、DELETE方法来访问服务端，但是相对HTTP简化实现降低复杂度（代码更小，封包更小）</p>
+<h3 id="1-2-CoAP协议有4种消息类型："><a href="#1-2-CoAP协议有4种消息类型：" class="headerlink" title="1.2. CoAP协议有4种消息类型："></a>1.2. CoAP协议有4种消息类型：</h3><p>CON—— 需要被确认的请求，如果CON请求被发送，那么对方必须做出响应。这有点像TCP，对方收到消息必须给确认，用以可靠消息传输。</p>
+<p>NON—— 不需要被确认的请求，如果NON请求被发送，那么对方不必做出回应。这适用于消息重复频繁的发送情况，丢包不影响正常操作。这个和UDP很像，用以不可靠消息传输。</p>
+<p>ACK —— 应答消息，对应的是CON消息的应答。</p>
+<p>RST —— 复位消息，可靠传输时候接收的消息不认识或错误时，不能回ACK消息，必须回RST消息。</p>
+<h3 id="1-3-一张表搞懂COAP协议："><a href="#1-3-一张表搞懂COAP协议：" class="headerlink" title="1.3. 一张表搞懂COAP协议："></a>1.3. 一张表搞懂COAP协议：</h3><p><img src="https://images.tuyacn.com/fe-static/docs/img/b60ccf56-8e83-4a97-9735-f647901974ab.png" alt=""></p>
+<h3 id="1-4-COAP协议抓包验证图："><a href="#1-4-COAP协议抓包验证图：" class="headerlink" title="1.4. COAP协议抓包验证图："></a>1.4. COAP协议抓包验证图：</h3><p><img src="https://images.tuyacn.com/fe-static/docs/img/7b0483da-e6cb-46d7-a6a0-d15df7f2c613.png" alt=""></p>
+<h2 id="2-Lwm2m协议"><a href="#2-Lwm2m协议" class="headerlink" title="2. Lwm2m协议"></a>2. Lwm2m协议</h2><p>LwM2M是OMA组织制定的轻量化的M2M协议。LwM2M定义了三个逻辑实体:</p>
+<p>●LwM2M Server 服务器；</p>
+<p>●LwM2M Client 客户端，负责执行服务器的命令和上报执行结果；</p>
+<p>●LwM2M 引导服务器 Bootstrap Server，负责配置LwM2M客户端。</p>
+<p>在这三个逻辑实体之间有4个逻辑接口：</p>
+<p>●Device Discovery and Registration：设备发现和注册；</p>
+<p>●Bootstrap：Bootstrap Server配置Client；</p>
+<p>●Device Management and Service Enablement：设备管理和服务支持</p>
+<p>●Information Reporting：信息报告服务。</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/664ff7ce-c745-4c71-ac59-8031995ada71.png" alt=""></p>
+<p>LwM2M Objects：每个对象对应客户端的某个特定功能实体。LwM2M 规范定义了以下标准Objects，</p>
+<ol>
+<li><p>Security Object</p>
+<p>1. Server Object</p>
+<p>2. Access Control Object</p>
+<p>3. Device Object</p>
+<p>4. Connectivity Monitoring Object</p>
+<p>5. Firmware Update Object</p>
+<p>6. Location Object</p>
+</li>
+<li><p>Connectivity Statistics Object</p>
+</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-53d4295ee8cf1e57e28846f5d9fa68dc_720w.webp" alt=""></p>
+<p>比如urn:oma:lwm2m:oma:2; (LwM2M Server Object)；urn:oma:lwm2m:oma:3; (LwM2M Access Control Object)；每个object下可以有很多resource，比如Firmware object可以有Firmware版本号，size等resource；Vendor可以自己定义object。</p>
+<p>一张图表明三者的关系：</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/bb42b6d9-0f88-4ac5-9fa3-4cdcab05eef4.png" alt=""></p>
+<p>LwM2M Protocol：定义了一些逻辑操作，比如Read, Write, Execute, Create or Delete。</p>
+<p>CoAP：是IETF定义的Constrained Application Protocol，用来做LwM2M的传输层，下层是UDP。CoAP有自己的消息头，重传机制等。</p>
+<p>DTLS 是指 Datagram Transport Level Security，即数据报安全传输协议，其提供了UDP 传输场景下的安全解决方案，能防止消息被窃听、篡改、身份冒充等问题。 LwM2M协议具体参见OMA Lightweight M2M v1.0。</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/d34c7929-a1d8-40e0-a941-12514f9a5a06.png" alt=""></p>
+<p>操作与接口之间的关系如下表所示。</p>
+<p>[img]<a href="https://images.tuyacn.com/fe-static/docs/img/54c351bb-26c8-40f2-8e0d-5b33c47e9682.png[/img" target="_blank" rel="external">https://images.tuyacn.com/fe-static/docs/img/54c351bb-26c8-40f2-8e0d-5b33c47e9682.png[/img</a>]</p>
+<p>关闭自动订阅，则设备注册成功后会收到云平台下发的Discover 请求，此时需要终端回复指定 object 的所有 resource。</p>
+<p>开启自动订阅，平台会下发observe进行资源订阅，客户端进行订阅确认。</p>
+<p>[attachment=2]Snipaste_2023-02-23_23-06-16.png[/attachment]</p>
+<h3 id="2-1-用于传输资源信息的数据格式"><a href="#2-1-用于传输资源信息的数据格式" class="headerlink" title="2.1. 用于传输资源信息的数据格式"></a>2.1. 用于传输资源信息的数据格式</h3><p>LwM2M Enabler定义了四种数据格式：纯文本、不透明文本、TLV和JSON。LwM2M服务器必须支持所有数据格式。LwM2M客户端必须支持TLV数据格式。此外，LwM2M客户端还可以选择支持下表中的其他数据格式，即JSON、纯文本和不透明格式。包含数据的消息必须通过使用受支持的数据格式之一来指定有效负载编码。LwM2M服务器数据请求可能包含一个选项，指定服务器希望接收的数据格式；如果LwM2M客户端不接受此数据格式，则拒绝该请求；如果LwM2M客户端不支持该选项，或者LwM2M服务器没有表示数据格式首选项，则LwM2M客户端将使用自己的首选数据格式。</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/12d44ad1-571f-4b56-9723-30ce3941f13e.png" alt=""></p>
+<p>重点解释一下TLV格式：</p>
+<p>对于“读”和“写”操作，二进制TLV（类型-长度-值）格式使用紧凑的二进制表示来表示值数组或奇异值，这很容易在简单的嵌入式设备上处理。该格式的每个值的最小开销仅为2字节，最大开销为5字节，这取决于标识符的类型和值的长度。在这种格式下的对象实例或资源的最大大小为16.7 MB。</p>
+<p>[attachment=1]Snipaste_2023-02-23_23-06-39.png[/attachment]</p>
+<h3 id="2-2-Bootstrap"><a href="#2-2-Bootstrap" class="headerlink" title="2.2. Bootstrap"></a>2.2. Bootstrap</h3><p>引导接口用于向LwM2M客户端提供基本信息，以使LwM2M客户端能够对一个或多个LwM2M服务器执行“注册”操作。在引导阶段，客户端可能忽略请求并刷新所有与引导序列无关的待起响应。有四个引导模式支持的LwM2M启用器：</p>
+<p>1.工厂引导</p>
+<p>2.引导从智能卡</p>
+<p>3.客户端启动引导</p>
+<p>4.服务器启动引导</p>
+<p>最后两个引导模式需要LwM2M引导服务器实现最终目标连接LwM2M客户端的LwM2M服务器(s)。LwM2M客户端必须支持在引导接口中至少指定的一种引导模式。LwM2M引导-服务器必须支持在引导接口中指定的客户端启动引导模式和服务器启动引导模式。</p>
+<p>举例说明客户端引导模式：</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/5fb2c906-10f0-4b6b-a3f8-ba6489190800.png" alt=""></p>
+<p>官方文档对于bootstrap的步骤说明</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/0255dcd2-be9c-4c96-8b5c-ed252c8a1504.png" alt=""></p>
+<h3 id="2-3-client-Register"><a href="#2-3-client-Register" class="headerlink" title="2.3. client Register"></a>2.3. client Register</h3><p>LwM2M服务器必须支持此接口中的所有操作，而LwM2M客户端必须支持“注册”和“更新”，并应该支持“去注册”操作。客户端注册接口1由LwM2M客户端用来向一个或多个LwM2M服务器注册，维护每个注册并从LwM2M服务器取消注册。注册是基于标识符和资源中定义的资源模型和标识符。注册时，LwM2M客户端执行“注册”操作，并提供LwM2M服务器需要与LwM2M客户端联系的属性（例如，端点名称）；维护LwM2M客户端和LwM2M服务器之间的注册和会话（例如，生命周期、队列模式），以及LwM2M客户端支持的对象和LwM2M客户端中现有对象实例的知识。注册为软状态，其生命周期由该LwM2M服务器对象实例的生命周期资源指示。LwM2M客户端通过执行“更新”操作，定期更新其注册信息到已注册的LwM2M服务器——可能没有任何参数</p>
+<p>LwM2M服务器必须支持表7中列出的所有参数，LwM2M客户端必须支持端点客户端名称、LwM2M版本、生命周期和对象实例，并且可能支持绑定模式和SMS号码。</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/e33657c5-178a-4710-b26d-d982d46e2720.png" alt=""></p>
+<p>Endpoint Client Name：端点客户端名称</p>
+<p>Binding Mode ：指示LwM2M客户端的当前绑定模式和队列模式。此值必须与服务器对象（ID #1）对应实例的名为“绑定”的资源中保存的值相同。默认使用 b=U 除此之外还有其他模式：</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/3780dc2f-dc76-4ea6-a678-b8737ecac91a.png" alt=""></p>
+<h3 id="2-4-client-Update"><a href="#2-4-client-Update" class="headerlink" title="2.4. client Update"></a>2.4. client Update</h3><p>LwM2M客户端定期或基于LwM2M客户端内或由LwM2M服务器发起的某些事件，通过向LwM2M服务器发送“更新”操作，使用LwM2M服务器更新其注册信息。“更新”操作可以由LwM2M服务器通过对LwM2M服务器对象的“注册更新触发器”资源的“执行”操作来启动。LwM2M客户端可以执行“更新”操作，以刷新其向LwM2M服务器的注册生命周期。</p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/9a154f2a-a04c-4771-8ca5-5a3f1f8b6eca.png" alt=""></p>
+<h3 id="2-5-Discover"><a href="#2-5-Discover" class="headerlink" title="2.5. Discover"></a>2.5. Discover</h3><p>“发现”操作用于发现附加到对象、对象实例和资源上的LwM2M属性。此操作可用于发现在给定的对象实例中实例化了哪些资源。返回的有效负载是每个目标对象、对象实例或资源的应用程序/链接格式核心链接[RFC6690]列表，以及附加的属性，包括需要时的对象版本属性</p>
+<p>注：</p>
+<p>自动发现资源：开启后每次上线后自动发现资源列表，方便查看最新资源列表和数据；若关闭，则需要在查看具体设备资源时手动更新，但可以节省流量降低功耗</p>
+<h3 id="2-6-Observe"><a href="#2-6-Observe" class="headerlink" title="2.6. Observe"></a>2.6. Observe</h3><p>LwM2M服务器对一个对象实例中的特定资源、资源或LwM2M客户端中的一个对象的所有对象实例发起观察请求。</p>
+<p>在LwM2M客户端发送一个新的注册之前，LwM2M服务器希望LwM2M客户端记住观察请求。如果一个LwM2M客户端忘记了观察请求（例如，设备出厂重置），它必须执行一个新的“注册”操作。每当LwM2M客户端注册时，LwM2M服务器就必须重新启动观察请求。为了避免网络流量的增加，LwM2M客户端应在重启、电源循环时，保持之前的观察状态。必须注意的是，仅包含对象ID的“观察”操作将生成所有对象实例信息的报告。注意：当LwM2M客户端注销时，LwM2M服务器应该假定过去的状态被无效，包括以前的观察。</p>
+<p>同时该功能体现在Tuya NB模组上就是：仅在上电注册后进行observe、睡眠唤醒后不需要observe。</p>
+<h3 id="2-7-Notify"><a href="#2-7-Notify" class="headerlink" title="2.7. Notify"></a>2.7. Notify</h3><p>在对对象实例或资源进行有效观察期间，“通知”操作从LwM2M客户端发送到LwM2M服务器。此操作包括对象实例或资源的新值。当“写属性”操作满足“观察”操作配置的所有条件（即最小周期、最大周期、大于、小于、步骤）时，应发送“通知”操作</p>
+<h2 id="3-ONENET-LWM2M-数据抓包详细解析："><a href="#3-ONENET-LWM2M-数据抓包详细解析：" class="headerlink" title="3. ONENET LWM2M 数据抓包详细解析："></a>3. ONENET LWM2M 数据抓包详细解析：</h2><h3 id="3-1-Onenet-官方文档LWM2M设备开发说明："><a href="#3-1-Onenet-官方文档LWM2M设备开发说明：" class="headerlink" title="3.1. Onenet 官方文档LWM2M设备开发说明："></a>3.1. Onenet 官方文档LWM2M设备开发说明：</h3><p><img src="https://images.tuyacn.com/fe-static/docs/img/6cc4057e-abfe-49a5-9282-8659a507a733.png" alt=""></p>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/060e6242-104a-4808-86c4-6e7f28d89471.png" alt=""></p>
+<h3 id="3-2-Onenet-bootstrap-报文逐字节解析："><a href="#3-2-Onenet-bootstrap-报文逐字节解析：" class="headerlink" title="3.2. Onenet bootstrap 报文逐字节解析："></a>3.2. Onenet bootstrap 报文逐字节解析：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line">Onenet bootstrap COAP报文逐字节解析：</div><div class="line"></div><div class="line">源文：<span class="number">4402</span>A75959A7F6A1B262734D1565703D3836363234323035303837303039373B343630303439383933303038393533</div><div class="line">-------------------------------------------------------------------------------------</div><div class="line"><span class="number">44</span>        <span class="number">01000100</span>   Ver:<span class="number">1</span>  message_type: CON  token_len:<span class="number">4</span></div><div class="line"><span class="number">02</span>                   POST</div><div class="line">A759                 msgid: <span class="number">42841</span></div><div class="line"><span class="number">59</span>A7F6A1             token</div><div class="line">B262734D1565703D3836363234323035303837303039373B343630303439383933303038393533</div><div class="line"></div><div class="line">            options</div><div class="line">            --------------------------------------------------------------</div><div class="line">            B2: <span class="number">1011</span>         <span class="number">0010</span></div><div class="line">              <span class="number">11</span>          option-length:<span class="number">2</span></div><div class="line">              uri-path </div><div class="line">            <span class="number">6273</span>: bs</div><div class="line">            ----------------------------------------------------------------</div><div class="line">            <span class="number">4</span>D: <span class="number">0100</span>            <span class="number">1101</span></div><div class="line">              <span class="number">4</span>          <span class="number">13</span></div><div class="line">              <span class="number">11</span>+<span class="number">4</span> = <span class="number">15</span>        D+<span class="number">15</span> = <span class="number">34</span></div><div class="line">              uri-query</div><div class="line">            <span class="number">65703</span>D3836363234323035303837303039373B343630303439383933303038393533 ；ep=<span class="number">866242050870097</span>;<span class="number">460049893008953</span></div><div class="line">-------------------------------------------------------------------------------------</div><div class="line"></div><div class="line">应答 源文：<span class="number">6444</span>A75959A7F6A1</div><div class="line">-------------------------------------------------------------------------------------</div><div class="line"><span class="number">64</span>       <span class="number">01100100</span>    ver:<span class="number">1</span>  message_type: ACK  token_len:<span class="number">4</span></div><div class="line"><span class="number">44</span>       response类型 <span class="number">2.04</span>  changed</div><div class="line">A759                 msgid: <span class="number">42841</span></div><div class="line"><span class="number">59</span>A7F6A1             token</div><div class="line">-------------------------------------------------------------------------------------</div><div class="line"></div><div class="line">server 返回bootstrap结果：</div><div class="line"></div><div class="line">源文：<span class="number">4803B</span>A9045E0E6B18E5C1C68B1300130122D16FFC80018636F61703A2F2F3231382E3230312E34352E333A35363833C10100C10203</div><div class="line"></div><div class="line">-------------------------------------------------------------------------------------</div><div class="line"><span class="number">48</span>       <span class="number">01001000</span>     ver:<span class="number">1</span>  message_type: CON   token_len:<span class="number">8</span></div><div class="line"><span class="number">03</span>                    PUT</div><div class="line">BA90                  msgid: <span class="number">47760</span></div><div class="line"><span class="number">45E0</span>E6B18E5C1C68      token</div><div class="line">B1300130122D16        </div><div class="line">            options</div><div class="line">            --------------------------------------------------------------</div><div class="line">            B1: <span class="number">1011</span>         <span class="number">0001</span></div><div class="line">              <span class="number">11</span>          option-length:<span class="number">1</span></div><div class="line">              uri-path </div><div class="line">            <span class="number">30</span>:<span class="number">0</span></div><div class="line">            ----------------------------------------------------------------</div><div class="line">            <span class="number">01</span>: <span class="number">0000</span>            <span class="number">0001</span></div><div class="line">                <span class="number">11</span>+<span class="number">0</span>=<span class="number">11</span>      option-length:<span class="number">1</span></div><div class="line">              uri-path</div><div class="line">            <span class="number">30</span>:<span class="number">0</span></div><div class="line">            -----------------------------------------------------------</div><div class="line">            <span class="number">12</span>: <span class="number">0001</span>            <span class="number">0010</span></div><div class="line">              <span class="number">11</span>+<span class="number">1</span>=<span class="number">12</span>      option-length:<span class="number">2</span></div><div class="line">              Content-Format</div><div class="line">            <span class="number">2</span>D16: <span class="number">11542</span>      Content type <span class="number">11542</span>   TLV格式  application/vnd.oma.lwm2m+tlv</div><div class="line">            ----------------------------------------------------------</div><div class="line">FF                   分隔符</div><div class="line">C80018 <span class="number">636F</span>61703A2F2F3231382E3230312E34352E333A35363833C10100C10203</div><div class="line">    </div><div class="line">          包含了bootstrap结果：coap:<span class="comment">//218.201.45.3:5683</span></div><div class="line">-------------------------------------------------------------------------------------  </div><div class="line"></div><div class="line">server下发 bootstrap结束</div><div class="line">源文：<span class="number">4802B</span>A918408788635B3398AB26273</div><div class="line"></div><div class="line">-------------------------------------------------------------------------------------</div><div class="line"><span class="number">48</span>       <span class="number">01001000</span>    ver:<span class="number">1</span>  message_type: CON  token_len:<span class="number">8</span></div><div class="line"><span class="number">02</span>                POST</div><div class="line">BA91                 msgid: <span class="number">47761</span></div><div class="line"><span class="number">8408788635B</span>3398A      token</div><div class="line"></div><div class="line">B26273</div><div class="line">          options:</div><div class="line">          -----------------------------------------</div><div class="line">          B2: <span class="number">1011</span>          <span class="number">0010</span></div><div class="line">            <span class="number">11</span>        option-length:<span class="number">2</span></div><div class="line">            uri-path    </div><div class="line">          <span class="number">6273</span>: bs</div><div class="line">          -----------------------------------------</div><div class="line">-------------------------------------------------------------------------------------  </div><div class="line"></div><div class="line">client ACK</div><div class="line">源文：<span class="number">6844B</span>A918408788635B3398A</div><div class="line">-------------------------------------------------------------------------------------</div><div class="line"><span class="number">68</span>       <span class="number">01101000</span>    ver:<span class="number">1</span>  message_type: ACK  token_len:<span class="number">8</span></div><div class="line"><span class="number">44</span>                Changed</div><div class="line">BA91                 msgid: <span class="number">47761</span></div><div class="line"><span class="number">8408788635B</span>3398A      token</div><div class="line">-------------------------------------------------------------------------------------</div></pre></td></tr></table></figure>
+<h3 id="3-3-Onenet注册报文逐字节解析"><a href="#3-3-Onenet注册报文逐字节解析" class="headerlink" title="3.3. Onenet注册报文逐字节解析"></a>3.3. Onenet注册报文逐字节解析</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">Onenet注册 COAP报文逐字节解析：</div><div class="line"></div><div class="line">源文：<span class="number">4402</span>A75A5AA706A2B2726411283D1565703D3836363234323035303837303039373B34363030343938393330303839353303623D55096C743D313732383030FF3C2F3E3B72743D226F6D612E6C776D326D222C3C2F302F303E2C3C2F302F313E2C3C2F333230302F303E2C3C2F333230302F313E</div><div class="line"></div><div class="line">-------------------------------------------------------------------------------------</div><div class="line"><span class="number">44</span>       <span class="number">0100</span> <span class="number">0100</span>   Ver:<span class="number">1</span>  message_type: CON  token_len:<span class="number">4</span></div><div class="line"><span class="number">02</span>                   POST</div><div class="line">A75A                 msgid: <span class="number">42842</span></div><div class="line"><span class="number">5</span>AA706A2             token</div><div class="line">           </div><div class="line">B2726411283D1565703D3836363234323035303837303039373B34363030343938393330303839353303623D55096C743D313732383030</div><div class="line">          options:</div><div class="line">          -----------------------------------------</div><div class="line">          B2: <span class="number">1011</span>          <span class="number">0010</span></div><div class="line">            <span class="number">11</span>        option-length:<span class="number">2</span></div><div class="line">            uri-path    </div><div class="line">          <span class="number">7264</span>: rd</div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">11</span>: <span class="number">0001</span>          <span class="number">0001</span></div><div class="line">            <span class="number">11</span>+<span class="number">1</span>: <span class="number">12</span>     option-length:<span class="number">1</span></div><div class="line">            content-format</div><div class="line">          <span class="number">28</span>: <span class="number">40</span>     application/link-format</div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">3</span>D: <span class="number">0011</span>          <span class="number">1101</span></div><div class="line">            <span class="number">12</span>+<span class="number">3</span>: <span class="number">15</span>      option-length:<span class="number">13</span></div><div class="line">            uri-query</div><div class="line">            D+<span class="number">15</span> = <span class="number">34</span></div><div class="line">          <span class="number">65703</span>D3836363234323035303837303039373B343630303439383933303038393533: ep=<span class="number">866242050870097</span>;<span class="number">460049893008953</span></div><div class="line">          ------------------------------------------</div><div class="line">          <span class="number">03</span>: <span class="number">0000</span>          <span class="number">0011</span></div><div class="line">            <span class="number">15</span>+<span class="number">0</span>: <span class="number">15</span>      <span class="number">3</span></div><div class="line">            uri-query</div><div class="line">          <span class="number">3623</span>D5:  b=U</div><div class="line">          -------------------------------------------</div><div class="line">          <span class="number">09</span>: <span class="number">0000</span>          <span class="number">1001</span></div><div class="line">              <span class="number">15</span>+<span class="number">0</span>: <span class="number">15</span>       <span class="number">9</span></div><div class="line">            uri-query</div><div class="line">          <span class="number">6</span>C743D313732383030: lt=<span class="number">172800</span></div><div class="line">          -------------------------------------------</div><div class="line">FF                  分割符 payload</div><div class="line"><span class="number">3</span>C2F3E3B72743D22     &lt;/&gt;;rt=<span class="string">"oma.lwm2m"</span>,&lt;/<span class="number">0</span>/<span class="number">0</span>&gt;,&lt;/<span class="number">0</span>/<span class="number">1</span>&gt;,&lt;/<span class="number">3200</span>/<span class="number">0</span>&gt;,&lt;/<span class="number">3200</span>/<span class="number">1</span>&gt;</div><div class="line"><span class="number">6F</span>6D612E6C776D32</div><div class="line"><span class="number">6</span>D222C3C2F302F30</div><div class="line"><span class="number">3E2</span>C3C2F302F313E</div><div class="line"><span class="number">2</span>C3C2F333230302F</div><div class="line"><span class="number">303E2</span>C3C2F333230</div><div class="line"><span class="number">302F</span>313E</div><div class="line">-------------------------------------------------------------------------------------</div></pre></td></tr></table></figure>
+<h3 id="3-4-Onenet-Observe报文解析"><a href="#3-4-Onenet-Observe报文解析" class="headerlink" title="3.4. Onenet Observe报文解析"></a>3.4. Onenet Observe报文解析</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">server 下发的Observe报文：</div><div class="line">源文：<span class="number">480178</span>A72DD9565ADEF247C16054333230300130622D16</div><div class="line"></div><div class="line">---------------------------------------------------------------</div><div class="line"><span class="number">48</span>      <span class="number">0100</span> <span class="number">0100</span>  Ver:<span class="number">1</span>     message_type: CON  token_len:<span class="number">8</span>  </div><div class="line"><span class="number">01</span>          get</div><div class="line"><span class="number">78</span>A7        msgid: <span class="number">30887</span></div><div class="line"><span class="number">2</span>DD9565ADEF247C1      token</div><div class="line"></div><div class="line"><span class="number">6054333230300130622</span>D16</div><div class="line">          options:</div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">60</span>: <span class="number">0110</span>    <span class="number">0000</span></div><div class="line">            <span class="number">6</span>      option-length:<span class="number">0</span></div><div class="line">            observe</div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">54</span>: <span class="number">0101</span>        <span class="number">0100</span></div><div class="line">            <span class="number">6</span>+<span class="number">5</span>=<span class="number">11</span>    option-length:<span class="number">4</span></div><div class="line">            uri-path</div><div class="line">          <span class="number">33323030</span> : <span class="number">3200</span></div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">01</span>: <span class="number">0000</span>        <span class="number">0001</span></div><div class="line">            <span class="number">11</span>+<span class="number">0</span>=<span class="number">11</span>    option-length:<span class="number">1</span></div><div class="line">            uri-path    </div><div class="line">          <span class="number">30</span>: <span class="number">0</span></div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">62</span>: <span class="number">0110</span>        <span class="number">0010</span></div><div class="line">              <span class="number">11</span>+<span class="number">6</span>=<span class="number">17</span></div><div class="line">            accept</div><div class="line">          <span class="number">2</span>D16: <span class="number">11542</span>      Content type <span class="number">11542</span>   TLV格式</div><div class="line">--------------------------------------------------------------</div><div class="line"></div><div class="line">client 应答 observe 完成</div><div class="line">源文：<span class="number">684578</span>A72DD9565ADEF247C16100</div><div class="line">---------------------------------------------------------------</div><div class="line"><span class="number">68</span>      <span class="number">0110</span> <span class="number">1000</span>  Ver:<span class="number">1</span>     message_type: ACK  token_len:<span class="number">8</span>  </div><div class="line"><span class="number">45</span>          content</div><div class="line"><span class="number">78</span>A7        msgid: <span class="number">30887</span></div><div class="line"><span class="number">2</span>DD9565ADEF247C1      token</div><div class="line"></div><div class="line"><span class="number">6100</span></div><div class="line">          options:</div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">61</span>: <span class="number">0110</span>    <span class="number">0001</span></div><div class="line">            <span class="number">8</span>      option-length:<span class="number">1</span></div><div class="line">            observe</div><div class="line">          <span class="number">0</span>: observe</div><div class="line">          -----------------------------------------</div><div class="line">--------------------------------------------------------------</div><div class="line"></div><div class="line"></div><div class="line">server下发</div><div class="line">源文：<span class="number">480178</span>A89A71255D4E73883B6054333230300131622D16</div><div class="line">---------------------------------------------------------------</div><div class="line"><span class="number">48</span>      <span class="number">0100</span> <span class="number">0100</span>  Ver:<span class="number">1</span>     message_type: CON  token_len:<span class="number">8</span>  </div><div class="line"><span class="number">01</span>          get</div><div class="line"><span class="number">78</span>A8        msgid: <span class="number">30888</span></div><div class="line"><span class="number">9</span>A71255D4E73883B      token</div><div class="line"></div><div class="line"><span class="number">6054333230300130622</span>D16</div><div class="line">          options:</div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">60</span>: <span class="number">0110</span>    <span class="number">0000</span></div><div class="line">            <span class="number">6</span>      option-length:<span class="number">0</span></div><div class="line">            observe</div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">54</span>: <span class="number">0101</span>        <span class="number">0100</span></div><div class="line">            <span class="number">6</span>+<span class="number">5</span>=<span class="number">11</span>    option-length:<span class="number">4</span></div><div class="line">            uri-path</div><div class="line">          <span class="number">33323030</span> : <span class="number">3200</span></div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">01</span>: <span class="number">0000</span>        <span class="number">0001</span></div><div class="line">            <span class="number">11</span>+<span class="number">0</span>=<span class="number">11</span>    option-length:<span class="number">1</span></div><div class="line">            uri-path    </div><div class="line">          <span class="number">31</span>: <span class="number">1</span></div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">62</span>: <span class="number">0110</span>        <span class="number">0010</span></div><div class="line">              <span class="number">11</span>+<span class="number">6</span>=<span class="number">17</span></div><div class="line">            accept</div><div class="line">          <span class="number">2</span>D16: <span class="number">11542</span>      Content type <span class="number">11542</span>   TLV格式</div><div class="line">--------------------------------------------------------------</div><div class="line"></div><div class="line"><span class="comment">//Observe 应答：content</span></div><div class="line">源文：<span class="number">684578</span>A89A71255D4E73883B6100</div><div class="line">---------------------------------------------------------------</div><div class="line"><span class="number">68</span>      <span class="number">0110</span> <span class="number">1000</span>  Ver:<span class="number">1</span>     message_type: ACK  token_len:<span class="number">8</span>  </div><div class="line"><span class="number">45</span>          content</div><div class="line"><span class="number">78</span>A8        msgid: <span class="number">30888</span></div><div class="line"><span class="number">9</span>A71255D4E73883B      token</div><div class="line"></div><div class="line"><span class="number">6100</span></div><div class="line">          options:</div><div class="line">          -----------------------------------------</div><div class="line">          <span class="number">61</span>: <span class="number">0110</span>    <span class="number">0001</span></div><div class="line">            <span class="number">6</span>      option-length:<span class="number">1</span></div><div class="line">            observe</div><div class="line">          <span class="number">0</span>: observe</div><div class="line">          -----------------------------------------</div><div class="line">--------------------------------------------------------------</div></pre></td></tr></table></figure>
+<h2 id="根据理论来进行实操UDP上线onenet"><a href="#根据理论来进行实操UDP上线onenet" class="headerlink" title="根据理论来进行实操UDP上线onenet"></a>根据理论来进行实操UDP上线onenet</h2><p>[attachment=0]4241add1322d7ca153752f411f93b36.png[/attachment]</p>
+<h2 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4. 参考资料"></a>4. 参考资料</h2><p>LWM2M 协议文档：<a href="http://www.openmobilealliance.org/release/LightweightM2M/V1_0_1-20170704-A/OMA-TS-LightweightM2M-V1_0_1-20170704-A.pdf" title="LWM2M" target="_blank" rel="external">LWM2M</a></p>
+<p>OMA 官网：<a href="https://www.omaspecworks.org/" title="https://www.omaspecworks.org/" target="_blank" rel="external">https://www.omaspecworks.org/</a></p>
+<p>LWM2M定义的Object和Resourc</p>
+<p>Onenet官方文档：<a href="https://open.iot.10086.cn/doc/iot_platform/book/device-connect\&amp;manager/LwM2M/LwM2M-introduce.html#2-lwm2m%E5%8D%8F%E8%AE%AE" title="LWM2M 设备接入" target="_blank" rel="external">LWM2M 设备接入</a></p>
+<p>B站相关理论介绍视频：<a href="https://www.bilibili.com/video/BV1uS4y1H79m" title="LWM2M" target="_blank" rel="external">LWM2M</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NBIOT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/05/nbiot_coap_lwm2m/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-NBIOT开发套件与技术沉淀" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1299,123 +1504,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-我的第二个imx6ULL应用《QT+485传感器采集》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/my_linux_485/">我的第二个Linux+QT应用《485传感器采集》</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/23/my_linux_485/" class="archive-article-date">
-  	<time datetime="2020-07-22T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="IMX6ULL-QT-485采集"><a href="#IMX6ULL-QT-485采集" class="headerlink" title="IMX6ULL+QT+485采集"></a>IMX6ULL+QT+485采集</h2><hr>
-<p><img src="https://img-blog.csdnimg.cn/20200721132847592.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>演示视频：</p>
-</blockquote>
-<p>[video(video-eoQAKeRX-1595308580443)(type-bilibili)(url-<a href="https://player.bilibili.com/player.html?aid=328985147)(image-https://ss.csdn.net/p?http://i1.hdslb.com/bfs/archive/729aef0d4ee0e996ca423964d20ddc9836139422.jpg)(title-【野火linux】linux嵌入式问询485传感器" target="_blank" rel="external">https://player.bilibili.com/player.html?aid=328985147)(image-https://ss.csdn.net/p?http://i1.hdslb.com/bfs/archive/729aef0d4ee0e996ca423964d20ddc9836139422.jpg)(title-【野火linux】linux嵌入式问询485传感器</a>)]</p>
-<blockquote>
-<p>接下来记录我的第二个linux+QT的应用，其实原理很简单，打开串口，配置波特率，然后对接485传感器即可。具体流程如下：</p>
-</blockquote>
-<p>由野火的linux板原理图和手册可知，CAN和485是公用的，切换跳线帽即可使能485接口<br><img src="https://img-blog.csdnimg.cn/20200721132305762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>接着就是QT部分的编程：整体不是太复杂，而且我在代码中做了比较详细的中文注释<br>代码链接：<a href="https://gitee.com/wenzhengclub/Imx6ULL_QT_RS485" target="_blank" rel="external">https://gitee.com/wenzhengclub/Imx6ULL_QT_RS485</a><br>接下来主要是针对代码和制作过程中遇到的问题进行分析：</p>
-</blockquote>
-<p>首先是初始化部分，主要是进行串口相关的信息的配置<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//打开串口</span></div><div class="line"><span class="keyword">void</span> Widget::on_open_btn_clicked()</div><div class="line">&#123;</div><div class="line">    update();</div><div class="line">    sleep(<span class="number">100</span>);      <span class="comment">//延时100ms</span></div><div class="line">    <span class="comment">//find_port();     //重新查找com</span></div><div class="line">    <span class="comment">//初始化串口</span></div><div class="line">    serialport-&gt;setPortName(ui-&gt;com-&gt;currentText());        <span class="comment">//设置串口名</span></div><div class="line">    <span class="keyword">if</span>(serialport-&gt;open(QIODevice::ReadWrite))              <span class="comment">//打开串口成功</span></div><div class="line">    &#123;</div><div class="line">        serialport-&gt;setBaudRate(ui-&gt;baud-&gt;currentText().toInt());       <span class="comment">//设置波特率</span></div><div class="line">        <span class="keyword">switch</span>(ui-&gt;bit-&gt;currentIndex())                   <span class="comment">//设置数据位数</span></div><div class="line">        &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">8</span>:serialport-&gt;setDataBits(QSerialPort::Data8);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">switch</span>(ui-&gt;check_bit-&gt;currentIndex())                   <span class="comment">//设置奇偶校验</span></div><div class="line">        &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>: serialport-&gt;setParity(QSerialPort::NoParity);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">switch</span>(ui-&gt;stop_bit-&gt;currentIndex())                     <span class="comment">//设置停止位</span></div><div class="line">        &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>: serialport-&gt;setStopBits(QSerialPort::OneStop);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>: serialport-&gt;setStopBits(QSerialPort::TwoStop);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        serialport-&gt;setFlowControl(QSerialPort::NoFlowControl);     <span class="comment">//设置流控制</span></div><div class="line">        <span class="comment">//连接槽函数</span></div><div class="line">        QObject::connect(serialport, &amp;QSerialPort::readyRead, <span class="keyword">this</span>, &amp;Widget::Read_Date);</div><div class="line"></div><div class="line">        <span class="comment">// 设置控件可否使用</span></div><div class="line">        ui-&gt;open_btn-&gt;setEnabled(<span class="literal">false</span>);</div><div class="line">        ui-&gt;close_btn-&gt;setEnabled(<span class="literal">true</span>);</div><div class="line">        ui-&gt;send_btn-&gt;setEnabled(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>    <span class="comment">//打开失败提示</span></div><div class="line">    &#123;</div><div class="line">        sleep(<span class="number">100</span>);</div><div class="line">        QMessageBox::information(<span class="keyword">this</span>,tr(<span class="string">"Erro"</span>),tr(<span class="string">"Open the failure"</span>),QMessageBox::Ok);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后就是串口到来的数据的解析：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//窗口显示串口传来的数据</span></div><div class="line"><span class="keyword">void</span> Widget::Read_Date()</div><div class="line">&#123;</div><div class="line">    QByteArray buf;</div><div class="line">    quint8 outChar4 ;</div><div class="line">    buf = serialport-&gt;readAll();</div><div class="line">    <span class="comment">// 下面是很重要的部分，可以将QT输出的QByteArry拼接为16进制buf</span></div><div class="line">    <span class="function">QDataStream <span class="title">out4</span><span class="params">(&amp;buf,QIODevice::ReadWrite)</span></span>;    <span class="comment">//将字节数组读入</span></div><div class="line">    <span class="keyword">while</span>(!out4.atEnd())</div><div class="line">    &#123;</div><div class="line">        outChar4 = <span class="number">0</span>;</div><div class="line">        out4&gt;&gt;outChar4;   <span class="comment">//每字节填充一次，直到结束</span></div><div class="line">        testbuf[msg_flag]=outChar4;</div><div class="line">        msg_flag++;</div><div class="line">        <span class="comment">//qDebug() &lt;&lt; testbuf[wendu_flag];</span></div><div class="line">    &#125;</div><div class="line">    msg_flag =<span class="number">0</span>;</div><div class="line">    <span class="comment">//下面开始计算16进制数据</span></div><div class="line">    qint16 tem= (testbuf[<span class="number">3</span>]&lt;&lt;<span class="number">8</span>)+testbuf[<span class="number">4</span>];</div><div class="line">    qint16 hum = (testbuf[<span class="number">5</span>]&lt;&lt;<span class="number">8</span>)+testbuf[<span class="number">6</span>];</div><div class="line">    <span class="keyword">double</span> tem_double = tem/<span class="number">10.00</span>;</div><div class="line">    <span class="keyword">double</span> hum_double = hum/<span class="number">10.00</span>;</div><div class="line">    <span class="comment">//    qDebug() &lt;&lt; tem;</span></div><div class="line">    <span class="comment">//    qDebug() &lt;&lt; hum;</span></div><div class="line">    <span class="comment">//UI界面的显示</span></div><div class="line">    ui-&gt;temperature_bar-&gt;setValue(tem_double);</div><div class="line">    ui-&gt;humidity_bar-&gt;setValue(hum_double);</div><div class="line">    ui-&gt;temperature_label-&gt;setText(QString::number(tem_double));</div><div class="line">    ui-&gt;humidity_label-&gt;setText(QString::number(hum_double));</div><div class="line">    <span class="comment">//  qDebug() &lt;&lt; buf;</span></div><div class="line">    <span class="keyword">if</span>(!buf.isEmpty())          <span class="comment">//将数据显示到文本串口</span></div><div class="line">    &#123;</div><div class="line">        QString str = ui-&gt;rev_msg-&gt;toPlainText();</div><div class="line">        <span class="comment">// byteArray 转 16进制   注意：这里是转换成了16进制的字符串，并不是可以直接使用的16进制buf</span></div><div class="line">        QByteArray temp = buf.toHex();</div><div class="line">        ui-&gt;rev_msg-&gt;clear();</div><div class="line">        ui-&gt;rev_msg-&gt;append(temp);</div><div class="line">    &#125;</div><div class="line">    buf.clear();    <span class="comment">//清空缓存区</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>其中最重要的就是这里：  QDataStream out4(&amp;buf,QIODevice::ReadWrite);    //将字节数组读入<br>因为我测试发现QT对于16进制buf的处理有一些问题，QT里有一个QByteArray  它用来接收串口数据，然后还有一个函数：toHex()但是它并不能将数据准换为16进制buf，而是转成了16进制的字符串。最终查阅资料发现别人使用的拼接函数，把字节一个一个拼接成c语言常用的16进制buf，接下来就和单片机处理485的方法一致了，解析数据，计算传感器值。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/my_linux_485/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1518,6 +1606,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">毕业</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">google</a>
               </li>
              
@@ -1526,11 +1618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毕业</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1542,11 +1634,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
+                <a href="javascript:void(0)" class="js-tag color1">BearPi-HM Micro</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">BearPi-HM Micro</a>
+                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1554,7 +1646,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
+                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1566,7 +1658,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1578,7 +1670,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
+                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1586,15 +1678,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
+                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1606,7 +1694,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
+                <a href="javascript:void(0)" class="js-tag color5">SuperKnob</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1614,11 +1702,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SuperKnob</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1626,7 +1710,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1634,15 +1718,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">micropython</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TencentOS</a>
+                <a href="javascript:void(0)" class="js-tag color3">拆解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">拆解</a>
+                <a href="javascript:void(0)" class="js-tag color5">TencentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1666,6 +1754,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
               </li>
              
@@ -1674,7 +1766,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
+                <a href="javascript:void(0)" class="js-tag color1">3Dprojects</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1682,11 +1774,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">3Dprojects</a>
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1695,10 +1787,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1714,19 +1802,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">开关机器人</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1742,11 +1830,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">雷达</a>
+                <a href="javascript:void(0)" class="js-tag color5">线下活动</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线下活动</a>
+                <a href="javascript:void(0)" class="js-tag color3">雷达</a>
               </li>
             
             <div class="clearfix"></div>

@@ -168,6 +168,123 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-我的第二个imx6ULL应用《QT+485传感器采集》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/23/my_linux_485/">我的第二个Linux+QT应用《485传感器采集》</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/23/my_linux_485/" class="archive-article-date">
+  	<time datetime="2020-07-22T16:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="IMX6ULL-QT-485采集"><a href="#IMX6ULL-QT-485采集" class="headerlink" title="IMX6ULL+QT+485采集"></a>IMX6ULL+QT+485采集</h2><hr>
+<p><img src="https://img-blog.csdnimg.cn/20200721132847592.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>演示视频：</p>
+</blockquote>
+<p>[video(video-eoQAKeRX-1595308580443)(type-bilibili)(url-<a href="https://player.bilibili.com/player.html?aid=328985147)(image-https://ss.csdn.net/p?http://i1.hdslb.com/bfs/archive/729aef0d4ee0e996ca423964d20ddc9836139422.jpg)(title-【野火linux】linux嵌入式问询485传感器" target="_blank" rel="external">https://player.bilibili.com/player.html?aid=328985147)(image-https://ss.csdn.net/p?http://i1.hdslb.com/bfs/archive/729aef0d4ee0e996ca423964d20ddc9836139422.jpg)(title-【野火linux】linux嵌入式问询485传感器</a>)]</p>
+<blockquote>
+<p>接下来记录我的第二个linux+QT的应用，其实原理很简单，打开串口，配置波特率，然后对接485传感器即可。具体流程如下：</p>
+</blockquote>
+<p>由野火的linux板原理图和手册可知，CAN和485是公用的，切换跳线帽即可使能485接口<br><img src="https://img-blog.csdnimg.cn/20200721132305762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>接着就是QT部分的编程：整体不是太复杂，而且我在代码中做了比较详细的中文注释<br>代码链接：<a href="https://gitee.com/wenzhengclub/Imx6ULL_QT_RS485" target="_blank" rel="external">https://gitee.com/wenzhengclub/Imx6ULL_QT_RS485</a><br>接下来主要是针对代码和制作过程中遇到的问题进行分析：</p>
+</blockquote>
+<p>首先是初始化部分，主要是进行串口相关的信息的配置<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//打开串口</span></div><div class="line"><span class="keyword">void</span> Widget::on_open_btn_clicked()</div><div class="line">&#123;</div><div class="line">    update();</div><div class="line">    sleep(<span class="number">100</span>);      <span class="comment">//延时100ms</span></div><div class="line">    <span class="comment">//find_port();     //重新查找com</span></div><div class="line">    <span class="comment">//初始化串口</span></div><div class="line">    serialport-&gt;setPortName(ui-&gt;com-&gt;currentText());        <span class="comment">//设置串口名</span></div><div class="line">    <span class="keyword">if</span>(serialport-&gt;open(QIODevice::ReadWrite))              <span class="comment">//打开串口成功</span></div><div class="line">    &#123;</div><div class="line">        serialport-&gt;setBaudRate(ui-&gt;baud-&gt;currentText().toInt());       <span class="comment">//设置波特率</span></div><div class="line">        <span class="keyword">switch</span>(ui-&gt;bit-&gt;currentIndex())                   <span class="comment">//设置数据位数</span></div><div class="line">        &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">8</span>:serialport-&gt;setDataBits(QSerialPort::Data8);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">switch</span>(ui-&gt;check_bit-&gt;currentIndex())                   <span class="comment">//设置奇偶校验</span></div><div class="line">        &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>: serialport-&gt;setParity(QSerialPort::NoParity);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">switch</span>(ui-&gt;stop_bit-&gt;currentIndex())                     <span class="comment">//设置停止位</span></div><div class="line">        &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>: serialport-&gt;setStopBits(QSerialPort::OneStop);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>: serialport-&gt;setStopBits(QSerialPort::TwoStop);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        serialport-&gt;setFlowControl(QSerialPort::NoFlowControl);     <span class="comment">//设置流控制</span></div><div class="line">        <span class="comment">//连接槽函数</span></div><div class="line">        QObject::connect(serialport, &amp;QSerialPort::readyRead, <span class="keyword">this</span>, &amp;Widget::Read_Date);</div><div class="line"></div><div class="line">        <span class="comment">// 设置控件可否使用</span></div><div class="line">        ui-&gt;open_btn-&gt;setEnabled(<span class="literal">false</span>);</div><div class="line">        ui-&gt;close_btn-&gt;setEnabled(<span class="literal">true</span>);</div><div class="line">        ui-&gt;send_btn-&gt;setEnabled(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>    <span class="comment">//打开失败提示</span></div><div class="line">    &#123;</div><div class="line">        sleep(<span class="number">100</span>);</div><div class="line">        QMessageBox::information(<span class="keyword">this</span>,tr(<span class="string">"Erro"</span>),tr(<span class="string">"Open the failure"</span>),QMessageBox::Ok);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后就是串口到来的数据的解析：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//窗口显示串口传来的数据</span></div><div class="line"><span class="keyword">void</span> Widget::Read_Date()</div><div class="line">&#123;</div><div class="line">    QByteArray buf;</div><div class="line">    quint8 outChar4 ;</div><div class="line">    buf = serialport-&gt;readAll();</div><div class="line">    <span class="comment">// 下面是很重要的部分，可以将QT输出的QByteArry拼接为16进制buf</span></div><div class="line">    <span class="function">QDataStream <span class="title">out4</span><span class="params">(&amp;buf,QIODevice::ReadWrite)</span></span>;    <span class="comment">//将字节数组读入</span></div><div class="line">    <span class="keyword">while</span>(!out4.atEnd())</div><div class="line">    &#123;</div><div class="line">        outChar4 = <span class="number">0</span>;</div><div class="line">        out4&gt;&gt;outChar4;   <span class="comment">//每字节填充一次，直到结束</span></div><div class="line">        testbuf[msg_flag]=outChar4;</div><div class="line">        msg_flag++;</div><div class="line">        <span class="comment">//qDebug() &lt;&lt; testbuf[wendu_flag];</span></div><div class="line">    &#125;</div><div class="line">    msg_flag =<span class="number">0</span>;</div><div class="line">    <span class="comment">//下面开始计算16进制数据</span></div><div class="line">    qint16 tem= (testbuf[<span class="number">3</span>]&lt;&lt;<span class="number">8</span>)+testbuf[<span class="number">4</span>];</div><div class="line">    qint16 hum = (testbuf[<span class="number">5</span>]&lt;&lt;<span class="number">8</span>)+testbuf[<span class="number">6</span>];</div><div class="line">    <span class="keyword">double</span> tem_double = tem/<span class="number">10.00</span>;</div><div class="line">    <span class="keyword">double</span> hum_double = hum/<span class="number">10.00</span>;</div><div class="line">    <span class="comment">//    qDebug() &lt;&lt; tem;</span></div><div class="line">    <span class="comment">//    qDebug() &lt;&lt; hum;</span></div><div class="line">    <span class="comment">//UI界面的显示</span></div><div class="line">    ui-&gt;temperature_bar-&gt;setValue(tem_double);</div><div class="line">    ui-&gt;humidity_bar-&gt;setValue(hum_double);</div><div class="line">    ui-&gt;temperature_label-&gt;setText(QString::number(tem_double));</div><div class="line">    ui-&gt;humidity_label-&gt;setText(QString::number(hum_double));</div><div class="line">    <span class="comment">//  qDebug() &lt;&lt; buf;</span></div><div class="line">    <span class="keyword">if</span>(!buf.isEmpty())          <span class="comment">//将数据显示到文本串口</span></div><div class="line">    &#123;</div><div class="line">        QString str = ui-&gt;rev_msg-&gt;toPlainText();</div><div class="line">        <span class="comment">// byteArray 转 16进制   注意：这里是转换成了16进制的字符串，并不是可以直接使用的16进制buf</span></div><div class="line">        QByteArray temp = buf.toHex();</div><div class="line">        ui-&gt;rev_msg-&gt;clear();</div><div class="line">        ui-&gt;rev_msg-&gt;append(temp);</div><div class="line">    &#125;</div><div class="line">    buf.clear();    <span class="comment">//清空缓存区</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>其中最重要的就是这里：  QDataStream out4(&amp;buf,QIODevice::ReadWrite);    //将字节数组读入<br>因为我测试发现QT对于16进制buf的处理有一些问题，QT里有一个QByteArray  它用来接收串口数据，然后还有一个函数：toHex()但是它并不能将数据准换为16进制buf，而是转成了16进制的字符串。最终查阅资料发现别人使用的拼接函数，把字节一个一个拼接成c语言常用的16进制buf，接下来就和单片机处理485的方法一致了，解析数据，计算传感器值。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/23/my_linux_485/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
+            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
+            placeholder: "来吧，你有故事我有酒！",
+            avatar:"monsterid"
+        });
+    }
+</script>
+  </section>
+
+  
     <article id="post-我的第一个Imx6ULL应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1169,111 +1286,6 @@ var _hmt = _hmt || [];
   </section>
 
   
-    <article id="post-基于SIM7600的4GDTU设计（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/29/SIM7600&4GDTU1/">基于SIM7600的4GDTU设计（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/29/SIM7600&4GDTU1/" class="archive-article-date">
-  	<time datetime="2019-12-29T12:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://img-blog.csdnimg.cn/20191229195726713.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400" alt="在这里插入图片描述"></p>
-<hr>
-<p><img src="https://img-blog.csdnimg.cn/20191229195933285.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N3aXRjaF9sb3ZlX2Nhc2U=,size_16,color_FFFFFF,t_70#pic_center =500x400" alt="在这里插入图片描述"></p>
-<p>首先为了达到精简和实用性，本计划单单采用MQTT协议来完成此款DTU的设计，因为如果把设备做的过于繁杂就打不到项目的独立和专一性，同时设计和开发的工作量也会比较大。</p>
-<p>DTU功能如下：</p>
-        
-          <a class="article-more-a" href="/2019/12/29/SIM7600&4GDTU1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SIM7600</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/29/SIM7600&4GDTU1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<section id="comments" class="comments">
-  <style>
-    .comments{margin:30px;padding:10px;background:#fff}
-    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-  </style>
-  <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "cekyL0RTsoKaBcaTXbEcsrBl-gzGzoHsz",
-            app_key: "SpVmG5VJxwcvkyhrkTQSNtS0",
-            placeholder: "来吧，你有故事我有酒！",
-            avatar:"monsterid"
-        });
-    }
-</script>
-  </section>
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1376,6 +1388,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">毕业</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">google</a>
               </li>
              
@@ -1384,11 +1400,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毕业</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1400,11 +1416,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Onenet</a>
+                <a href="javascript:void(0)" class="js-tag color1">BearPi-HM Micro</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">BearPi-HM Micro</a>
+                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1412,7 +1428,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
+                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,7 +1440,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NBIOT</a>
+                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1436,7 +1452,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OPENCPU</a>
+                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1444,15 +1460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IAP</a>
+                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">STM32Cube</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">LiteOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1464,7 +1476,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
+                <a href="javascript:void(0)" class="js-tag color5">SuperKnob</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1472,11 +1484,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SuperKnob</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
+                <a href="javascript:void(0)" class="js-tag color4">PCB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1484,7 +1492,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+                <a href="javascript:void(0)" class="js-tag color5">安卓编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1492,15 +1500,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">micropython</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TencentOS</a>
+                <a href="javascript:void(0)" class="js-tag color3">拆解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">拆解</a>
+                <a href="javascript:void(0)" class="js-tag color5">TencentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1524,6 +1536,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MQTT</a>
               </li>
              
@@ -1532,7 +1548,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作总结</a>
+                <a href="javascript:void(0)" class="js-tag color1">3Dprojects</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1540,11 +1556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">3Dprojects</a>
+                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">温湿度</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1553,10 +1569,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">年终总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1572,19 +1584,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">机智云</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心语</a>
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">开关机器人</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1600,11 +1612,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">雷达</a>
+                <a href="javascript:void(0)" class="js-tag color5">线下活动</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线下活动</a>
+                <a href="javascript:void(0)" class="js-tag color3">雷达</a>
               </li>
             
             <div class="clearfix"></div>
